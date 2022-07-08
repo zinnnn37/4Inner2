@@ -14,26 +14,16 @@
 
 char	*strnstr(const char *haystack, const char *needle, size_t len)
 {
-	unsigned int	hi;
-	unsigned int	i;
+	size_t	nlen;
 
 	if (!*needle)
-		return (haystack);
-	hi = 0;
-	while (haystack[hi])
+		return ((char *)haystack);
+	nlen = ft_strlen(needle);
+	while (*haystack && len - nlen >= 0)
 	{
-		if (haystack[hi] == needle[0])
-		{
-			i = 0;
-			while (needle[i])
-			{
-				if (haystack[hi + i] != needle[i])
-					break ;
-				if (needle[i] == '\0' && hi + i < len)
-					return (haystack + hi);
-				i++;
-			}
-		}
-		hi++;
+		if (*haystack == *needle && ft_strcmp(haystack, needle, nlen) == 0)
+			return ((char *)haystack);
+		len--;
 	}
+	return (0);
 }
