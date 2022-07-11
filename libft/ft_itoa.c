@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,22 +12,53 @@
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+static long ft_convert(int n)
 {
-	size_t			i;
+  long  new_n;
 
-	i = 0;
-	while (i < len)
-		((unsigned char *)b)[i++] = c;
-	return (b);
+  if (n == 0)
+    return (ft_strdup("0"));
+  else if (n < 0)
+    new_n = -(long)n;
+  else
+    new_n = (long)n;
+  
+  return (new_n);
 }
 
-/*
-#include <stdio.h>
-int	main()
+static size_t ft_count_digit(int n)
 {
-	char	arr[10] = "abcdefg";
-	printf("%s\n", arr);
-	printf("%s\n", ft_memset(arr, 'a', 4));
+  size_t  cnt;
+
+  cnt = 0;
+  while (n)
+  {
+    n /= 10;
+    cnt++;
+  }
+  return (cnt);
 }
-*/
+
+char  *ft_itoa(int n)
+{
+  char  *res;
+  long  new_n;
+  size_t  len;
+
+  new_n = ft_convert(n);
+  len = ft_count_digit(n);
+  if (n < 0)
+    len++;
+  res = (char *)malloc(sizeof(char) * (len + 1));
+  if (!res)
+    return (0);
+  res[len] = 0;
+  while (--len >= 0)
+  {
+    res[len] = new_n % 10 + '0';
+    new_n /= 10;
+  }
+  if (n < 0)
+    res[len] = '-';
+  return (res);
+}

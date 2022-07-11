@@ -15,25 +15,23 @@
 int	atoi(const char *str)
 {
 	int	minus;
-	int	ans;
+	long long	ans;
+	size_t	i;
 
-	minus = 1;
-	ans = 0;
-	while (*str)
-		if (!(9 <= *str && *str++ <= 13))
-			break ;
-	while (*str)
+	i = 0;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' ||
+			str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+		i++;
+	minus = 1
+	while (str[i] == '-' || str[i] == '+')
 	{
-		if (*str == '-')
+		if (str[i++] == '-')
 			minus *= -1;
-		if (!(*str == '+' || *str++ == '-'))
-			break ;
 	}
-	while (*str)
+	while ('0' <= str[i] && str[i] <= '9')
 	{
-		if ('0' <= *str && *str <= '9')
-			ans = ans * 10 + (*str - '0');
-		str++;
+		ans = ans * 10 + (str[i] - '0');
+		i++;
 	}
 	return (minus * ans);
 }

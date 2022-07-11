@@ -14,6 +14,7 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
+	/*
 	while (n-- && (*s1 || *s2))
 	{
 		if (*s1 != *s2)
@@ -22,4 +23,18 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 		s2++;
 	}
 	return (0);
+	*/
+	unsigned char	*new_s1;
+	unsigned char *new_s2;
+
+	new_s1 = (unsigned char *)s1;
+	new_s2 = (unsigned char *)s2;
+	while (--n)
+	{
+		if (*new_s1 != *new_s2)
+			return (*new_s1 - *new_s2);
+		new_s1++;
+		new_s2++;
+	}
+	return (*new_s1 - *new_s2); // intentionally compare only n-1 time so that the code return nth compared one
 }
