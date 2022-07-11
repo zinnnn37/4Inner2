@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:02:35 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/07 16:12:42 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/11 15:07:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ char  *ft_strmapi(char const *s, char (*f)(unsigned int, char))
   if (!res)
     return (0);
   i = 0;
+  res[len] = 0;
   while (s[i])
   {
     res[i] = f(i, s[i]);
     i++;
   }
-  res[len] = 0;
   return (res);
 }
