@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42seoul.com>    +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 14:18:10 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/09 17:05:10 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/11 16:13:18 by minjinki          #+#    #+#             */
+/*   Updated: 2022/07/11 16:15:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
+	t_list	*node;
+
+	node = ft_lstlast(*lst);
+	node->next = new;
 }

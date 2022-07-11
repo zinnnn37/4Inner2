@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42seoul.com>    +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 14:18:10 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/09 17:05:10 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/11 15:48:15 by minjinki          #+#    #+#             */
+/*   Updated: 2022/07/11 16:00:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+t_list	*ft_lstnew(void *content)
 {
-	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
+	t_list	*node;
+
+	node = (t_list *)malloc(sizeof(t_list));
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }

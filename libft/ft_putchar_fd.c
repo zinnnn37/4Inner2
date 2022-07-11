@@ -5,24 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 16:02:35 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/07 16:12:42 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/11 15:09:10 by minjinki          #+#    #+#             */
+/*   Updated: 2022/07/11 15:31:39 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void  ft_putchar_fd(char c, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
-  write(fd, &c, 1);
+	write(fd, c, 1);
 }
-
-/*
-파일 디스크립터: 시스템으로 부터 할당받은 파일이나 소켓을 대표하는 정수다.
-                시스템으로부터 할당 받은 파일을 대표하는 0이 아닌 정수 값
-표준 입력(Standard Input) : File Descriptor 0
-표준 출력(Standard Output) : File Descriptor 1
-표준 에러 출력(Standard Error) : File Descriptor 2
-파일 오픈 or 소켓생성 시 부여되는 파일 디스크립터는 3부터 시작한다.
-프로세스가 실행중인 파일을 Open하면 커널은 해당 프로세스의 파일 디스크립터 숫자 중에 사용하지 않는 가장 작은 값을 할당해준다.
-*/

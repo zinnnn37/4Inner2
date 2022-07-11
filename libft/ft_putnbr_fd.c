@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 16:02:35 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/11 15:16:54 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/11 15:15:33 by minjinki          #+#    #+#             */
+/*   Updated: 2022/07/11 15:31:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void  ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-  char  *arr;
+	char	*arr;
 
-  arr = ft_itoa(n);
-  ft_putstr_fd(arr, fd);
+	arr = ft_itoa(n);
+	ft_putstr_fd(arr, fd);
 }

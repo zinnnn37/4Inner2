@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 13:34:10 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/08 13:43:28 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/09 17:23:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,3 @@ int	ft_toupper(int c)
 		return (c - 32);
 	return (c);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	printf("%c\n", ft_toupper('c'));
-	printf("%c\n", ft_toupper('C'));
-	printf("%c\n", ft_toupper('~'));
-	printf("%c\n", ft_toupper('z'));
-}
-*/

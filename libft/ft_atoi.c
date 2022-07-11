@@ -6,31 +6,28 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 17:16:51 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/08 17:27:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/09 18:04:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int	minus;
-	long long	ans;
+	int		minus;
+	int		ans;
 	size_t	i;
 
 	i = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' ||
-			str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		|| str[i] '\f' || str[i] == '\r' || str[i] == ' ')
 		i++;
-	minus = 1
 	while (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i++] == '-')
+		if (str[i] == '-')
 			minus *= -1;
-	}
 	while ('0' <= str[i] && str[i] <= '9')
 	{
-		ans = ans * 10 + (str[i] - '0');
+		ans = ans * 10 + (*str - '0');
 		i++;
 	}
 	return (minus * ans);
