@@ -14,4 +14,27 @@
 
 t_list	ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
+	// 할당 실패 시 리스트 삭제할 때 del 사용
+	t_list	*head;
+	t_list	*cur;
+	t_list	*tmp;
+
+	if (!lst)
+		return (0);
+	head = f(ft_lstnew(lst->content));
+	cur = head;
+	tmp = lst->next;
+	while (tmp)
+	{
+		cur->next = f(ft_lstnew(tmp->content));
+		if (!(cur->next))
+		{
+			ft_lstclear(&head, del);
+			return (0);
+		}
+		cur = cur->next;
+		tmp = tmp->next;
+	}
+	return (head);
 }
+// strmapi랑 똑같은데 이건 연결리스트

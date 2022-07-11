@@ -14,10 +14,9 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*node;
-
-	node = lst;
-	while (node->next)
-		node = node->next;
-	return (node);
+	if (!lst)
+		return (0);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }
