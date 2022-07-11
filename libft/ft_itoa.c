@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 13:23:55 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/08 13:31:32 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/11 14:50:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,10 @@ static long ft_convert(int n)
 {
   long  new_n;
 
-  if (n == 0)
-    return (ft_strdup("0"));
-  else if (n < 0)
+  if (n < 0)
     new_n = -(long)n;
   else
     new_n = (long)n;
-  
   return (new_n);
 }
 
@@ -53,7 +50,7 @@ char  *ft_itoa(int n)
   if (!res)
     return (0);
   res[len] = 0;
-  while (--len >= 0)
+  while (new_n > 0 && --len >= 0)
   {
     res[len] = new_n % 10 + '0';
     new_n /= 10;

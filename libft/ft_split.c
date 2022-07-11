@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 13:23:55 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/08 13:31:32 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/11 14:40:05 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static  void  ft_copy(char *res, char *s, char c)
   size_t  i;
 
   i = 0;
-  while (*s != c)
+  while (s[i] != c)
   {
     res[i] = s[i];
     i++;
@@ -62,8 +62,8 @@ static void ft_malloc(char **res, char *s, char c)
       i++;
     else
     {
-      i = 0;
-      while (str[i + j] && str[i + j] != c)
+      j = 0;
+      while (s[i + j] && s[i + j] != c)
         j++;
       res[word] = (char *)malloc(sizeof(char) * (j + 1));
       if (!res[word])
@@ -71,7 +71,7 @@ static void ft_malloc(char **res, char *s, char c)
         ft_free(res, word - 1);
         return ;
       }
-      ft_copy(res[word++], str + i, c);
+      ft_copy(res[word++], s + i, c);
       i += j;
     }
   }
@@ -85,7 +85,7 @@ char  **ft_split(char const *s, char c)
   if (!s)
     return (0);
   words = ft_countwords(s, c);
-  res = (char **)malloc(sizeof(char) * (words + 1));
+  res = (char **)malloc(sizeof(char *) * (words + 1));
   if (!res)
     return (0);
   res[words] = 0;
