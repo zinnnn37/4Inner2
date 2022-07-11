@@ -21,18 +21,16 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!s1 || !set)
 		return (0);
 	front = 0;
-	rear = ft_strlen(s1);
-	while (s1[front])
-		if (!ft_strchr(set, s1[front++]))
-			break ;
-	if (front == rear)
+	rear = ft_strlen(s1) - 1;
+	while (s1[front] && ft_strchar(set, s1[front]))
+		front++;
+	if (front > rear)
 		return (ft_strdup(""));
-	while (s1[--rear])
-		if (!ft_strchr(set, s1[rear]))
-			break ;
-	res = (char *)malloc(sizeof(char) * (rear - front + 1));
+	while (s1[rear] && ft_strchr(set, s1[rear]))
+		rear--;
+	res = (char *)malloc(sizeof(char) * (rear - front + 2)); // rear - front 하면 \0 없이 딱 들어맞는 배열이 할당됨 \0 자리까지 +2
 	if (!res)
 		return (0);
-	ft_strlcpy(res, s1 + front, rear - front + 1);
+	ft_strlcpy(res, s1 + front, rear - front + 2);
 	return (res);
 }
