@@ -19,12 +19,13 @@ int	ft_atoi(const char *str)
 	size_t	i;
 
 	i = 0;
+	ans = 0;
 	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
 		|| str[i] '\f' || str[i] == '\r' || str[i] == ' ')
 		i++;
-	while (str[i] == '-' || str[i] == '+')
+	if (str[i] == '-' || str[i] == '+')
 		if (str[i] == '-')
-			minus *= -1;
+			minus = -1;
 	while ('0' <= str[i] && str[i] <= '9')
 	{
 		ans = ans * 10 + (*str - '0');
