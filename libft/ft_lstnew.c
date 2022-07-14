@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 15:48:15 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/11 16:00:48 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/12 13:26:16 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*new;
+	t_list	*node;
 
-	new = malloc(sizeof(t_list));
-	if (!new)
+	node = (t_list *)malloc(sizeof(t_list));
+	if (!node)
 		return (0);
-	new->content = content;
-	new->next = 0;
-	return (new);
+	node->content = content;
+	node->next = 0;
+	return (node);
 }

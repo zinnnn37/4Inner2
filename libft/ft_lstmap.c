@@ -6,20 +6,19 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 16:41:31 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/11 16:42:23 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/12 13:26:42 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	// 할당 실패 시 리스트 삭제할 때 del 사용
 	t_list	*head;
 	t_list	*cur;
 	t_list	*tmp;
 
-	if (!lst)
+	if (!lst || !f || !del)
 		return (0);
 	head = f(ft_lstnew(lst->content));
 	cur = head;
@@ -37,4 +36,3 @@ t_list	ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (head);
 }
-// strmapi랑 똑같은데 이건 연결리스트

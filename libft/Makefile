@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 17:47:48 by minjinki          #+#    #+#              #
-#    Updated: 2022/07/13 17:47:48 by minjinki         ###   ########.fr        #
+#    Updated: 2022/07/14 13:18:59 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,10 +73,12 @@ NAME	=	libft.a
 OBJS		=	$(SRCS:.c=.o)
 OBJS_BNS	=	$(SRCS_BNS:.c=.o)
 
+HDRS		=	libft.h
+
 all		:	$(NAME)
 
 $(NAME)		:	$(OBJS)
-			ar rcs $(NAME) $(OBJS)
+			ar rcs $(NAME) $(HDRS) $(OBJS)
 
 clean		:
 			$(RM) $(OBJS) $(OBJS_BNS)
@@ -87,6 +89,6 @@ fclean		:	clean
 re		:	fclean all
 
 bonus		:	$(OBJS) $(OBJS_BNS)
-			ar rcs $(NAME) $(OBJS) $(OBJS_BNS)
+			ar rcs $(NAME) $(HDRS) $(OBJS) $(OBJS_BNS)
 
 .PHONY		:	all clean fclean re bonus
