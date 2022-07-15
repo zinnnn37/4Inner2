@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 17:47:48 by minjinki          #+#    #+#              #
-#    Updated: 2022/07/14 13:18:59 by minjinki         ###   ########.fr        #
+#    Updated: 2022/07/14 13:42:41 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,7 @@ SRCS		=\
 			ft_isascii.c\
 			ft_isdigit.c\
 			ft_isprint.c\
-			ft_isspace.c\
-			ft_isupper.c\
-			ft_islower.c\
 			ft_itoa.c\
-			ft_memccpy.c\
 			ft_memchr.c\
 			ft_memcmp.c\
 			ft_memcpy.c\
@@ -36,13 +32,11 @@ SRCS		=\
 			ft_split.c\
 			ft_strchr.c\
 			ft_strdup.c\
-			ft_strndup.c\
+			ft_striteri.c\
 			ft_strjoin.c\
 			ft_strlcat.c\
 			ft_strlcpy.c\
 			ft_strlen.c\
-			ft_strnlen.c\
-			ft_strrev.c\
 			ft_strmapi.c\
 			ft_strncmp.c\
 			ft_strnstr.c\
@@ -63,22 +57,31 @@ SRCS_BNS	=\
 			ft_lstnew.c\
 			ft_lstsize.c
 
+HDRS		=	libft.h
+
 GCC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -I
+CFLAGS	=	-Wall -Wextra -Werror
 
 RM		=	rm -f
+
+AR		=	ar
+ARFLAGS	= 	rcs
 
 NAME	=	libft.a
 
 OBJS		=	$(SRCS:.c=.o)
 OBJS_BNS	=	$(SRCS_BNS:.c=.o)
 
-HDRS		=	libft.h
+all			:	$(NAME)
 
-all		:	$(NAME)
+%.o			:	%.c
+			$(GCC) $(CFLAGS) -c $< -o $@
 
 $(NAME)		:	$(OBJS)
-			ar rcs $(NAME) $(HDRS) $(OBJS)
+			$(AR) $(ARFLAGS) $@ $^
+
+bonus		:	$(OBJS) $(OBJS_BNS)
+			$(AR) $(ARFLAGS) $(NAME) $^
 
 clean		:
 			$(RM) $(OBJS) $(OBJS_BNS)
@@ -87,8 +90,5 @@ fclean		:	clean
 			$(RM) $(NAME)
 
 re		:	fclean all
-
-bonus		:	$(OBJS) $(OBJS_BNS)
-			ar rcs $(NAME) $(HDRS) $(OBJS) $(OBJS_BNS)
 
 .PHONY		:	all clean fclean re bonus

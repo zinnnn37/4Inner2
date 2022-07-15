@@ -1,0 +1,6 @@
+*.out
+test*
+.DS_Store
+*.swp
+*.sh
+.vscode/launch.json

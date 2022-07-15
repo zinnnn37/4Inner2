@@ -6,13 +6,13 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 14:45:02 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/11 15:01:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/15 13:52:38 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_convert(int n)
+static long	ft_convert(int n)
 {
 	long	new_n;
 
@@ -51,11 +51,12 @@ char	*ft_itoa(int n)
 	res = (char *)malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (0);
-	res[len] = 0;
+	res[len--] = 0;
 	while (new_n)
 	{
 		res[len] = new_n % 10 + '0';
 		new_n /= 10;
+		len--;
 	}
 	if (n < 0)
 		res[len] = '-';

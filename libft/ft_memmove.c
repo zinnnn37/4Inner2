@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:27:02 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/11 15:02:48 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/15 17:19:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		return (0);
 	new_dst = (unsigned char *)dst;
 	new_src = (unsigned char *)src;
-	if (dst < src)
+	if (dst <= src)
 		while (len--)
-			*new_dst++ = *new_src++;
+			*new_dst = *new_src++;
 	else
 		while (len--)
 			new_dst[len] = new_src[len];
