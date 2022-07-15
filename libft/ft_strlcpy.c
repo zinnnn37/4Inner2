@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:42:31 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/14 13:48:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/15 19:37:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,19 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t destsize)
 {
-	unsigned int	cnt;
-	unsigned int	i;
+	size_t	srclen;
+	size_t	i;
 
-	cnt = 0;
+	if (!dst && !src)
+		return (0);
 	i = 0;
-	while (src[cnt])
+	srclen = ft_strlen(src);
+	while (i < srclen && i + 1 < destsize)
 	{
-		if (i < destsize - 1)
-		{
-			dst[i] = src[i];
-			i++;
-			cnt++;
-		}
-		else
-			cnt++;
+		dst[i] = src[i];
+		i++;
 	}
 	if (destsize != 0)
 		dst[i] = '\0';
-	return (cnt);
+	return (srclen);
 }
