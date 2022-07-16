@@ -18,14 +18,16 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*cur;
 	t_list	*tmp;
 
-	if (!lst || !f || !del)
+	if (!lst)
 		return (0);
-	head = f(ft_lstnew(lst->content));
+	head = ft_lstnew(f(lst->content)); // 바보같이 f를 이상한 데에 붙임
+	if (!head)
+		return (0);
 	cur = head;
 	tmp = lst->next;
 	while (tmp)
 	{
-		cur->next = f(ft_lstnew(tmp->content));
+		cur->next = ft_lstnew(f(tmp->content));
 		if (!(cur->next))
 		{
 			ft_lstclear(&head, del);
