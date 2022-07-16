@@ -12,11 +12,15 @@
 
 #include "libft.h"
 
-static void	ft_free(char **s, size_t i)
+static char	*ft_free(char **s)
 {
-	while (i--)
-		free(s[i]);
+	int	i;
+
+	i = 0;
+	while (s[i])
+		free(s[i++]);
 	free(s);
+	return (0);
 }
 
 static int	ft_countwords(char const *s, char c)
@@ -37,60 +41,58 @@ static int	ft_countwords(char const *s, char c)
 	return (cnt);
 }
 
-static void	ft_copy(char *res, char *s, char c)
+static char	*ft_copy(char *res, size_t len)
 {
 	size_t	i;
+	char	*s;
 
 	i = 0;
-	while (s[i] != c)
+	if (len == 0)
+		return (0);
+	s = (char *)malloc(sizeof(char) * (len + 1));
+	if (!s)
+		return (0);
+	while (i < len)
 	{
 		res[i] = s[i];
 		i++;
 	}
 	res[i] = 0;
+	return (s);
 }
 
-static void	ft_malloc(char **res, char *s, char c)
+static char	**ft_malloc(char **res, char *s, char c)
 {
-	size_t	word;
+	size_t	front;
+	size_t	rear;
 	size_t	i;
-	size_t	j;
 
-	word = 0;
+	rear = 0;
 	i = 0;
-	while (s[i])
+	while (s[rear] && j < ft_countwords(s, c))
 	{
-		if (s[i] == c)
-			i++;
-		else
-		{
-			j = 0;
-			while (s[i + j] && s[i + j] != c)
-				j++;
-			res[word] = (char *)malloc(sizeof(char) * (j + 1));
-			if (!res[word])
-			{
-				ft_free(res, word - 1);
-				return ;
-			}
-			ft_copy(res[word++], s + i, c);
-			i += j;
-		}
+		while (s[rear] == c)
+			rear++;
+		start = rear;
+		while (s[rear] && s[rear] != c)
+			rear++;
+		res[i] = ft_copy(s + start, rear - start);
+		if (!res[i++])
+			return (ft_free(res))
 	}
+	res[i] = 0;
+	return (res);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**res;
-	int		words;
 
 	if (!s)
 		return (0);
-	words = ft_countwords(s, c);
-	res = (char **)malloc(sizeof(char *) * (words + 1));
+	res = (char **)malloc(sizeof(char *) * (ft_countwords(s, c) + 1));
 	if (!res)
 		return (0);
-	res[words] = 0;
-	ft_malloc(res, (char *)s, c);
+	ft_malloc(res, (char *)s, c)
 	return (res);
 }
