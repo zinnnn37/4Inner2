@@ -6,43 +6,45 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 14:19:02 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/15 14:48:12 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/17 17:11:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_free(char **s, size_t i)
+static void	ft_free(char **s, size_t cnt)
 {
-	while (i--)
-		free(s[i]);
+	size_t	i;
+
+	i = 0;
+	while (i < cnt)
+		free(s[i++]);
 	free(s);
 }
 
-static int	ft_countwords(char const *s, char c)
+static size_t	ft_count_words(const char *s, char c)
 {
-	int		cnt;
+	size_t	cnt;
 	size_t	i;
 
 	cnt = 0;
 	i = 0;
 	while (s[i])
 	{
-		while (s[i] && s[i] == c)
-			i++;
-		while (s[i] && s[i] != c)
-			i++;
-		cnt++;
+		if (s[i] != (unsigned char)c
+			&& (s[i + 1] == (unsigned char)c || s[i + 1] == '\0'))
+			cnt++;
+		i++;
 	}
 	return (cnt);
 }
 
-static void	ft_copy(char *res, char *s, char c)
+static void	ft_copy(char *res, const char *s, char c)
 {
 	size_t	i;
 
 	i = 0;
-	while (s[i] != c)
+	while (s[i] && s[i] != (unsigned char)c)
 	{
 		res[i] = s[i];
 		i++;
@@ -50,47 +52,60 @@ static void	ft_copy(char *res, char *s, char c)
 	res[i] = 0;
 }
 
-static void	ft_malloc(char **res, char *s, char c)
+static char	**ft_malloc(char **res, const char *s, char c, int cnt)
 {
-	size_t	word;
 	size_t	i;
 	size_t	j;
 
-	word = 0;
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] == (unsigned char)c)
 			i++;
 		else
 		{
 			j = 0;
-			while (s[i + j] && s[i + j] != c)
+			while (s[i + j] && s[i + j] != (unsigned char)c)
 				j++;
-			res[word] = (char *)malloc(sizeof(char) * (j + 1));
-			if (!res[word])
+			res[cnt] = (char *)malloc(sizeof(char) * (j + 1));
+			if (!res[cnt])
 			{
-				ft_free(res, word - 1);
-				return ;
+				ft_free(res, cnt);
+				return (0);
 			}
-			ft_copy(res[word++], s + i, c);
+			ft_copy(res[cnt++], s + i, c);
 			i += j;
 		}
 	}
+	return (res);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**res;
-	int		words;
+	size_t	words;
 
 	if (!s)
 		return (0);
-	words = ft_countwords(s, c);
+	words = ft_count_words(s, c);
 	res = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!res)
 		return (0);
 	res[words] = 0;
-	ft_malloc(res, (char *)s, c);
-	return (res);
+	return (ft_malloc(res, s, c, 0));
 }
+/*
+int	main()
+{
+	char	**res;
+	size_t	words;
+	res = ft_split("  tripouille   42 ", ' ');
+
+	res = ft_split("chinimala", ' ');
+	words = ft_count_words("chinimala", ' ');
+	for (int i = 0; i <= words; i++)
+		printf("%s ", res[i]);
+	printf("\n\n");
+	return (0);
+}
+*/
