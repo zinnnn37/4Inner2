@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 17:31:16 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/14 13:49:35 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/17 14:33:28 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*res;
 	size_t	i;
-	size_t	j;
 
 	if (!s)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 14:19:02 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/15 14:48:12 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/17 14:33:08 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static char	*ft_free(char **s)
 	return (0);
 }
 
-static int	ft_countwords(char const *s, char c)
+static size_t	ft_countwords(char const *s, char c)
 {
-	int		cnt;
+	size_t	cnt;
 	size_t	i;
 
 	cnt = 0;
@@ -69,16 +69,19 @@ static char	**ft_malloc(char **res, char *s, char c)
 
 	rear = 0;
 	i = 0;
-	while (s[rear] && j < ft_countwords(s, c))
+	while (s[rear] && i < ft_countwords(s, c))
 	{
 		while (s[rear] == c)
 			rear++;
-		start = rear;
+		front = rear;
 		while (s[rear] && s[rear] != c)
 			rear++;
-		res[i] = ft_copy(s + start, rear - start);
+		res[i] = ft_copy(s + front, rear - front);
 		if (!res[i++])
-			return (ft_free(res))
+		{
+			ft_free(res);
+			return (0);
+		}
 	}
 	res[i] = 0;
 	return (res);
@@ -93,6 +96,6 @@ char	**ft_split(char const *s, char c)
 	res = (char **)malloc(sizeof(char *) * (ft_countwords(s, c) + 1));
 	if (!res)
 		return (0);
-	ft_malloc(res, (char *)s, c)
+	ft_malloc(res, (char *)s, c);
 	return (res);
 }
