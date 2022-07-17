@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 16:41:31 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/17 14:30:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/17 14:42:39 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	if (!lst)
 		return (0);
 	head = ft_lstnew(f(lst->content));
-	if (!head)
-		return (0);
 	cur = head;
 	tmp = lst->next;
 	while (tmp)

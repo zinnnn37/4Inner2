@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 14:36:11 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/15 17:48:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/17 14:47:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strrchr(const char *s, int c)
 	new_c = (unsigned char)c;
 	while (s[len] != new_c && len > 0)
 		len--;
-	if (s[len] == c)
+	if (s[len] == new_c)
 		return ((char *)(s + len));
 	return (0);
 }
