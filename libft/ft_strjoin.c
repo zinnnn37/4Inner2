@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 17:52:51 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/12 11:53:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/18 17:42:22 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	len2;
 	char	*res;
 
-	if (!s1 && !s2)
+	if (!s1 || !s2)
 		return (0);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);

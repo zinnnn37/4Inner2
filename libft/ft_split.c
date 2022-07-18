@@ -6,20 +6,20 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 14:19:02 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/17 17:11:48 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/18 17:25:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_free(char **s, size_t cnt)
+static void	ft_free(char **res, size_t cnt)
 {
 	size_t	i;
 
 	i = 0;
 	while (i < cnt)
-		free(s[i++]);
-	free(s);
+		free(res[i++]);
+	free(res);
 }
 
 static size_t	ft_count_words(const char *s, char c)
@@ -94,18 +94,3 @@ char	**ft_split(char const *s, char c)
 	res[words] = 0;
 	return (ft_malloc(res, s, c, 0));
 }
-/*
-int	main()
-{
-	char	**res;
-	size_t	words;
-	res = ft_split("  tripouille   42 ", ' ');
-
-	res = ft_split("chinimala", ' ');
-	words = ft_count_words("chinimala", ' ');
-	for (int i = 0; i <= words; i++)
-		printf("%s ", res[i]);
-	printf("\n\n");
-	return (0);
-}
-*/
