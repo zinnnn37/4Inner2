@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:16:03 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/18 17:12:35 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:40:38 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 	i = 0;
 	if (!dst && !src)
-		return (0);
+		return (NULL);
 	while (i < n)
 	{
 		*(unsigned char *)(dst + i) = *(unsigned char *)(src + i);

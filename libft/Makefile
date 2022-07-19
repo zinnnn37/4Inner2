@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 17:47:48 by minjinki          #+#    #+#              #
-#    Updated: 2022/07/14 13:42:41 by minjinki         ###   ########.fr        #
+#    Updated: 2022/07/19 18:07:00 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,9 +57,9 @@ SRCS_BNS	=\
 			ft_lstnew.c\
 			ft_lstsize.c
 
-HDRS		=	libft.h
+HDRS	= ./libft.h
 
-GCC		=	gcc
+CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror
 
 RM		=	rm -f
@@ -73,15 +73,13 @@ OBJS		=	$(SRCS:.c=.o)
 OBJS_BNS	=	$(SRCS_BNS:.c=.o)
 
 all			:	$(NAME)
+bonus		:	$(NAME)
 
 %.o			:	%.c
-			$(GCC) $(CFLAGS) -c $< -o $@
+			$(CC) $(CFLAGS) -c $^ -o $@
 
-$(NAME)		:	$(OBJS)
+$(NAME)		:	$(OBJS) $(if $(filter bonus,$(MAKECMDGOALS)), $(OBJS_BNS))
 			$(AR) $(ARFLAGS) $@ $^
-
-bonus		:	$(OBJS) $(OBJS_BNS)
-			$(AR) $(ARFLAGS) $(NAME) $^
 
 clean		:
 			$(RM) $(OBJS) $(OBJS_BNS)

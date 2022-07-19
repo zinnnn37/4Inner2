@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:27:02 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/15 19:25:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:40:45 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	unsigned char	*new_src;
 
 	if (!dst && !src)
-		return (0);
+		return (NULL);
 	new_dst = (unsigned char *)dst;
 	new_src = (unsigned char *)src;
 	if (dst <= src)

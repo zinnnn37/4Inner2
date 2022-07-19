@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 14:45:02 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/18 16:31:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:47:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ char	*ft_itoa(int n)
 		len++;
 	res = (char *)malloc(sizeof(char) * (len + 1));
 	if (!res)
-		return (0);
-	res[len--] = 0;
+		return (NULL);
+	res[len--] = '\0';
 	while (new_n)
 	{
 		res[len] = new_n % 10 + '0';

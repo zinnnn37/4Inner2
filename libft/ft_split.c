@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 14:19:02 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/18 17:25:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:42:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	ft_copy(char *res, const char *s, char c)
 		res[i] = s[i];
 		i++;
 	}
-	res[i] = 0;
+	res[i] = '\0';
 }
 
 static char	**ft_malloc(char **res, const char *s, char c, int cnt)
@@ -71,7 +71,7 @@ static char	**ft_malloc(char **res, const char *s, char c, int cnt)
 			if (!res[cnt])
 			{
 				ft_free(res, cnt);
-				return (0);
+				return (NULL);
 			}
 			ft_copy(res[cnt++], s + i, c);
 			i += j;
@@ -86,11 +86,11 @@ char	**ft_split(char const *s, char c)
 	size_t	words;
 
 	if (!s)
-		return (0);
+		return (NULL);
 	words = ft_count_words(s, c);
 	res = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!res)
-		return (0);
-	res[words] = 0;
+		return (NULL);
+	res[words] = NULL;
 	return (ft_malloc(res, s, c, 0));
 }

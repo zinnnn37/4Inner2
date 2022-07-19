@@ -6,33 +6,40 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 16:41:31 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/18 22:21:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:35:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static t_list	*ft_free_node(t_list *head, void *tmp, void (*del)(void *))
+{
+	ft_lstclear(&head, del);
+	free(tmp);
+	return (NULL);
+}
+
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*head;
 	t_list	*cur;
-	t_list	*tmp;
+	void	*tmp;
 
-	if (!lst)
-		return (0);
-	head = ft_lstnew(f(lst->content));
+	if (!lst || !f)
+		return (NULL);
+	tmp = f(lst->content);
+	head = ft_lstnew(tmp);
+	if (!head)
+		return (ft_free_node(head, tmp, del));
 	cur = head;
-	tmp = lst->next;
-	while (tmp)
+	while (lst->next)
 	{
-		cur->next = ft_lstnew(f(tmp->content));
-		if (!(cur->next))
-		{
-			ft_lstclear(&head, del);
-			return (0);
-		}
+		lst = lst->next;
+		tmp = f(lst->content);
+		cur->next = ft_lstnew(tmp);
+		if (!cur->next)
+			return (ft_free_node(head, tmp, del));
 		cur = cur->next;
-		tmp = tmp->next;
 	}
 	return (head);
 }

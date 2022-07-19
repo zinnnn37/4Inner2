@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 18:16:00 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/12 11:56:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:44:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	rear;
 
 	if (!s1 || !set)
-		return (0);
+		return (NULL);
 	front = 0;
 	rear = ft_strlen(s1) - 1;
 	while (s1[front] && ft_strchr(set, s1[front]))
@@ -30,7 +30,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		rear--;
 	res = (char *)malloc(sizeof(char) * (rear - front + 2));
 	if (!res)
-		return (0);
+		return (NULL);
 	ft_strlcpy(res, s1 + front, rear - front + 2);
 	return (res);
 }
