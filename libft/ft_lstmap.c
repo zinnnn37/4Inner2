@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 16:41:31 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/19 18:35:23 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:03:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static t_list	*ft_free_node(t_list *head, void *tmp, void (*del)(void *))
 {
 	ft_lstclear(&head, del);
-	free(tmp);
+	del(tmp);
 	return (NULL);
 }
 

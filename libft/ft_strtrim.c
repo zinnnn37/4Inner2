@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 18:16:00 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/19 18:44:10 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/20 20:20:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	rear = ft_strlen(s1) - 1;
 	while (s1[front] && ft_strchr(set, s1[front]))
 		front++;
-	if (front > rear)
+	if (front > rear || rear == -1)
 		return (ft_strdup(""));
 	while (s1[rear] && ft_strchr(set, s1[rear]))
 		rear--;

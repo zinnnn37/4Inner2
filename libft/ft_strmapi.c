@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 15:04:03 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/19 19:21:23 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:20:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	size_t	len;
 
 	if (!s)
-		return (0);
+		return (NULL);
 	len = ft_strlen(s);
 	res = (char *)malloc(sizeof(char) * (len + 1));
 	if (!res)

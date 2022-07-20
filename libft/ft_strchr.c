@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 13:48:54 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/19 19:15:33 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/07/20 15:26:59 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,11 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	unsigned char	new_c;
-	unsigned char	*new_s;
-
-	new_c = (unsigned char)c;
-	new_s = (unsigned char *)s;
-	while (*new_s != new_c)
+	while (*(unsigned char *)s != (unsigned char)c)
 	{
-		if (*new_s == '\0')
+		if (*(unsigned char *)s == '\0')
 			return (NULL);
-		new_s++;
+		s++;
 	}
-	return ((char *)new_s);
+	return ((char *)s);
 }
