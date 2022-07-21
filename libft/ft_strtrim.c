@@ -24,7 +24,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	rear = ft_strlen(s1) - 1;
 	while (s1[front] && ft_strchr(set, s1[front]))
 		front++;
-	if (front > rear || rear == -1)
+	if (front > rear || ft_strlen(s1) == 0)
 		return (ft_strdup(""));
 	while (s1[rear] && ft_strchr(set, s1[rear]))
 		rear--;
