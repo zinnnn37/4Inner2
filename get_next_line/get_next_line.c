@@ -1,3 +1,4 @@
+/*
 #include "get_next_line.h"
 
 char	*ft_join(char *buf, char *new)
@@ -18,7 +19,7 @@ char	*ft_read(int fd, static char *res) // static char이랑 char로 다르게 �
 		res = ft_calloc(1, sizeof(char)); // join 시 하나라도 null이면 함수 바로 종료라서..
 	buf = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	byte = 1;
-	while (byte > 0)
+	while (byte > 0) // byte가 0인 경우 (eof인 경우) 여기서 빠져나감
 	{
 		byte = read(fd, buf, BUFFER_SIZE);
 		if (byte == -1) // 읽기 실패
@@ -94,5 +95,116 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_get_line(buffer);
 	buffer = ft_next_line(buffer); // 다음에 읽어들일 문장 저장
+	return (line);
+}
+*/
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/22 14:39:46 by minjinki          #+#    #+#             */
+/*   Updated: 2022/07/25 15:54:16 by minjinki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "get_next_line.h"
+
+char	*ft_join(char *buf, char *next)
+{
+	char	*res;
+
+	res = ft_strjoin(buf, next);
+	free(buf);
+	return (res);
+}
+
+// buf = before tmp = next
+char	*ft_read_file(int fd, char *buf)
+{
+	char	*tmp;
+	size_t	byte;
+
+	if (!buf)
+		buf = ft_calloc(1, sizeof(char));
+	tmp = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!tmp)
+		return (NULL);
+	byte = 1;
+	while (byte > 0)
+	{
+		byte = read(fd, tmp, BUFFER_SIZE);
+		if (byte < 0)
+		{
+			free(tmp);
+			return (NULL);
+		}
+		tmp[byte] = '\0';
+		buf = ft_join(buf, tmp);
+		if (ft_strchr(buf, '\n'))
+			break;
+	}
+	free(tmp);
+	return (buf);
+}
+
+char	*ft_get_line(char *buf)
+{
+	char	*res;
+	size_t	i;
+
+	i = 0;
+	if (!buf[i])
+		return (NULL);
+	while (buf[i] && buf[i] != '\n')
+		i++;
+	res = ft_calloc(i + 2, sizeof(char));
+	(!res)
+		return (NULL);
+	i = -1;
+	while (buf[++i] && buf[i] == '\n')
+		res[i] = buf[i];
+	if (buf[i] && buf[i] == '\n')
+		res[i] = '\n';
+	return (res);
+}
+
+char	*ft_next_line(char *buf)
+{
+	char	*res;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (buf[i] && buf[i] != '\n')
+		i++;
+	if (!buf[i])
+	{
+		free(buf);
+		return (NULL);
+	}
+	res = ft_calloc(strlen(buf) - i, sizeof(char));
+	j = 0;
+	while (buf[i])
+		res[j++] = buf[i++];
+	free(buf);
+	return (res);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*buf;
+	char		*line;
+
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+		return (NULL);
+	buf = ft_read_file(fd, buf);
+	if (!buf)
+		return (NULL);
+	line = ft_get_line(buf);
+	buf = ft_next_line(buf);
 	return (line);
 }
