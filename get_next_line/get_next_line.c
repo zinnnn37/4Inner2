@@ -142,7 +142,7 @@ char	*ft_read_file(int fd, char *buf)
 			free(tmp);
 			return (NULL);
 		}
-		tmp[byte] = '\0';
+		tmp[byte] = '\0'; // 길이가 2인데 4만큼 읽으면 값, 값, 쓰레기값, 쓰레기값 이렇게 담김 >> 그래서 '\0'을 넣어주는 것
 		buf = ft_join(buf, tmp);
 		if (ft_strchr(buf, '\n'))
 			break;
@@ -156,9 +156,9 @@ char	*ft_get_line(char *buf)
 	char	*res;
 	size_t	i;
 
+	if (!*buf)
+		return (NULL); // eof 확인용.. 안 넣으면 '\0'만 들어가서 안 끝날 것 같음
 	i = 0;
-	if (!buf[i])
-		return (NULL);
 	while (buf[i] && buf[i] != '\n')
 		i++;
 	res = ft_calloc(i + 2, sizeof(char));
