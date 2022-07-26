@@ -164,9 +164,9 @@ char	*ft_get_line(char *buf)
 	res = ft_calloc(i + 2, sizeof(char));
 	(!res)
 		return (NULL);
-	i = -1;
-	while (buf[++i] && buf[i] == '\n')
-		res[i] = buf[i];
+	i = 0;
+	while (buf[i] && buf[i] == '\n')
+		res[i] = buf[i++];
 	if (buf[i] == '\n')
 		res[i] = '\n';
 	return (res);
