@@ -167,7 +167,7 @@ char	*ft_get_line(char *buf)
 	i = -1;
 	while (buf[++i] && buf[i] == '\n')
 		res[i] = buf[i];
-	if (buf[i] && buf[i] == '\n')
+	if (buf[i] == '\n')
 		res[i] = '\n';
 	return (res);
 }
@@ -181,15 +181,15 @@ char	*ft_next_line(char *buf)
 	i = 0;
 	while (buf[i] && buf[i] != '\n')
 		i++;
-	if (!buf[i])
+	if (!buf[i]) // 다음 줄 없음
 	{
 		free(buf);
 		return (NULL);
 	}
 	res = ft_calloc(strlen(buf) - i, sizeof(char));
 	j = 0;
-	while (buf[i])
-		res[j++] = buf[i++];
+	while (buf[++i])
+		res[j++] = buf[i];
 	free(buf);
 	return (res);
 }
