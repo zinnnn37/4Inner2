@@ -83,12 +83,12 @@ char	*ft_next_line(char *buf)
 
 char	*get_next_line(int fd)
 {
-	static char	*buf;
+	static char	**buf;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	buf = ft_calloc(OPEN_MAX + 1, sizeof(char **));
+	buf = ft_calloc(OPEN_MAX + 1, sizeof(char *));
 	buf[fd] = ft_read_file(fd, buf[fd]);
 	if (!buf[fd])
 		return (NULL);
