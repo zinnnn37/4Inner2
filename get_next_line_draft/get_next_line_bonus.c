@@ -49,11 +49,14 @@ char	*ft_get_line(char *buf)
 	while (buf[i] && buf[i] != '\n')
 		i++;
 	res = ft_calloc(i + 2, sizeof(char));
-	(!res)
+	if (!res)
 		return (NULL);
 	i = 0;
 	while (buf[i] && buf[i] == '\n')
-		res[i] = buf[i++];
+	{
+		res[i] = buf[i];
+		i++;
+	}
 	if (buf[i] == '\n')
 		res[i] = '\n';
 	return (res);
