@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/22 14:39:59 by minjinki          #+#    #+#             */
+/*   Updated: 2022/07/28 16:18:32 by minjinki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 size_t	ft_strlen(const char *s)
@@ -10,10 +22,21 @@ size_t	ft_strlen(const char *s)
 	return (cnt);
 }
 
+void	*ft_memset(void *b, int c, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+		((unsigned char *)b)[i++] = (unsigned char)c;
+	return (b);
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	len1;
-	size_t	len2;
+	int		len1;
+	int		len2;
+	int		i;
 	char	*res;
 
 	if (!s1 || !s2)
@@ -24,8 +47,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!res)
 		return (NULL);
 	ft_memset(res, 0, len1 + len2 + 1);
-	ft_strlcpy(res, s1, len1 + 1);
-	ft_strlcat(res + len1, s2, len2 + 1);
+	i = -1;
+	while (++i < len1)
+		res[i] = s1[i];
+	while (++i < len1 + len2 + 1)
+		res[i - 1] = s2[i - 1 - len1];
 	return (res);
 }
 
@@ -38,16 +64,6 @@ char	*ft_strchr(const char *s, int c)
 		s++;
 	}
 	return ((char *)s);
-}
-
-void	*ft_memset(void *b, int c, size_t len)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < len)
-		((unsigned char *)b)[i++] = (unsigned char)c;
-	return (b);
 }
 
 void	*ft_calloc(size_t count, size_t size)

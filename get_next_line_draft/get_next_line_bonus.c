@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/28 15:36:43 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/28 16:50:10 by minjinki         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line_bonus.h"
 
 char	*ft_join(char *buf, char *next)
@@ -21,6 +9,7 @@ char	*ft_join(char *buf, char *next)
 	return (res);
 }
 
+// buf = before tmp = next
 char	*ft_read_file(int fd, char *buf)
 {
 	char	*tmp;
@@ -40,10 +29,10 @@ char	*ft_read_file(int fd, char *buf)
 			free(tmp);
 			return (NULL);
 		}
-		tmp[byte] = '\0';
+		tmp[byte] = '\0'; // 길이가 2인데 4만큼 읽으면 값, 값, 쓰레기값, 쓰레기값 이렇게 담김 >> 그래서 '\0'을 넣어주는 것
 		buf = ft_join(buf, tmp);
 		if (ft_strchr(buf, '\n'))
-			break ;
+			break;
 	}
 	free(tmp);
 	return (buf);
@@ -52,19 +41,22 @@ char	*ft_read_file(int fd, char *buf)
 char	*ft_get_line(char *buf)
 {
 	char	*res;
-	int		i;
+	size_t	i;
 
 	if (!*buf)
-		return (NULL);
+		return (NULL); // eof 확인용.. 안 넣으면 '\0'만 들어가서 안 끝날 것 같음
 	i = 0;
 	while (buf[i] && buf[i] != '\n')
 		i++;
 	res = ft_calloc(i + 2, sizeof(char));
 	if (!res)
 		return (NULL);
-	i = -1;
-	while (buf[++i] && buf[i] != '\n')
+	i = 0;
+	while (buf[i] && buf[i] == '\n')
+	{
 		res[i] = buf[i];
+		i++;
+	}
 	if (buf[i] == '\n')
 		res[i] = '\n';
 	return (res);
@@ -79,12 +71,12 @@ char	*ft_next_line(char *buf)
 	i = 0;
 	while (buf[i] && buf[i] != '\n')
 		i++;
-	if (!buf[i])
+	if (!buf[i]) // 다음 줄 없음
 	{
 		free(buf);
 		return (NULL);
 	}
-	res = ft_calloc(ft_strlen(buf) - i, sizeof(char));
+	res = ft_calloc(strlen(buf) - i, sizeof(char));
 	j = 0;
 	while (buf[++i])
 		res[j++] = buf[i];
@@ -94,11 +86,12 @@ char	*ft_next_line(char *buf)
 
 char	*get_next_line(int fd)
 {
-	static char	*buf[OPEN_MAX];
+	static char	**buf;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
+	buf = ft_calloc(OPEN_MAX + 1, sizeof(char *));
 	buf[fd] = ft_read_file(fd, buf[fd]);
 	if (!buf[fd])
 		return (NULL);
