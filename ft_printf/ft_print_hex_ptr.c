@@ -37,7 +37,46 @@ size_t	ft_printhex(unsigned int n, char c)
 	return (ft_len_of_hex(n));
 }
 
+size_t	ft_lenptr(unsigned long long n)
+{
+	size_t	len;
+
+	len = 0;
+	if (!n)
+		return (0);
+	while (n != 0)
+	{
+		n /= 16;
+		len++;
+	}
+	return (len);
+}
+
+void	ft_ptr(unsigned long long n)
+{
+	char	*x;
+
+	x = "0123456789abcdef";
+	if (n >= 16)
+	{
+		ft_ptr(n / 16);
+		ft_ptr(n % 16);
+	}
+	else
+		ft_printchar(x[n]);
+}
+
 size_t	ft_printptr(unsigned long long p)
 {
+	size_t	len;
 
+	len = ft_putstr("0x");
+	if (!ptr)
+		len += ft_putchar('0');
+	else
+	{
+		ft_ptr(n);
+		len += ft_lenptr(n);
+	}
+	return (len);
 }
