@@ -25,6 +25,7 @@ size_t	ft_deal_percent(char c, va_list ap)
 		cnt += ft_printunsigned(va_arg(ap, unsigned int));
 	elif (c == 'x' || c == 'X')
 		cnt += ft_printhex(va_arg(ap, unsigned int), c); // c에서 16진수는 리터럴 키워드(i, U, L)를 붙이지 않으면 양수취급
+	return (cnt);
 }
 
 int	ft_printf(const char *format, ...)
