@@ -55,7 +55,11 @@ char	*ft_get_line(char *buf)
 	int		i;
 
 	if (!*buf)
+	{// 여기 에러나면 또 우짜지... eof일 때 빈 문자열 리턴 ?
+		free(buf); // eof면 buf가 빈 문자열 > 이 때 buf(buf[fd])를 해제하고 return null
+		buf = 0x0; // dangling pointer 처리 > 처음에는 없이 해보기
 		return (NULL);
+	}
 	i = 0;
 	while (buf[i] && buf[i] != '\n')
 		i++;
@@ -103,6 +107,8 @@ char	*get_next_line(int fd)
 	if (!buf[fd])
 		return (NULL);
 	line = ft_get_line(buf[fd]);
+	if (!line)
+		return (NULL);
 	buf[fd] = ft_next_line(buf[fd]);
 	return (line);
 }

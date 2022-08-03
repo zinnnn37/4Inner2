@@ -55,7 +55,10 @@ char	*ft_get_line(char *buf)
 	int		i;
 
 	if (!*buf)
+	{
+		free(buf;)
 		return (NULL);
+	}
 	i = 0;
 	while (buf[i] && buf[i] != '\n')
 		i++;
@@ -103,6 +106,8 @@ char	*get_next_line(int fd)
 	if (!buf)
 		return (NULL);
 	line = ft_get_line(buf);
+	if (!line)
+		return (NULL);
 	buf = ft_next_line(buf);
 	return (line);
 }
