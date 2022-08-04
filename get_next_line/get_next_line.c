@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 14:39:46 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/28 16:27:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/08/04 15:23:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,7 @@ char	*ft_get_line(char *buf)
 	int		i;
 
 	if (!*buf)
-	{
-		free(buf;)
 		return (NULL);
-	}
 	i = 0;
 	while (buf[i] && buf[i] != '\n')
 		i++;
