@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -74,5 +74,32 @@ void	*ft_calloc(size_t count, size_t size)
 	if (!res)
 		return (NULL);
 	ft_memset(res, 0, count * size);
+	return (res);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*res;
+	size_t	i;
+	size_t	slen;
+
+	if (!s)
+		return (NULL);
+	slen = ft_strlen(s);
+	if (slen < start)
+		return (ft_strdup(""));
+	slen -= start;
+	if (slen < len)
+		len = slen;
+	res = (char *)malloc(sizeof(char) * (len + 1));
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (s[start + i] && i < len)
+	{
+		res[i] = s[start + i];
+		i++;
+	}
+	res[i] = '\0';
 	return (res);
 }
