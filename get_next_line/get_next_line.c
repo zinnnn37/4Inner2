@@ -39,7 +39,7 @@ char	*ft_join(char *buf, char *line)
 		if (*buf == '\0')
 		{
 			free(buf);
-			buf = 0; // dangling
+			buf = 0; // dangling > 없이 해보기..
 		}
 	}
 	else
