@@ -60,13 +60,12 @@ char	*ft_uitoa(unsigned int n)
 	size_t	len;
 
 	len = ft_numlen(n);
-	res = (char *)malloc(sizeof(char) * (len + 1));
+	res = (char *)calloc(sizeof(char), len + 1);
 	if (!res)
 		return (NULL);
-	res[len] = '\0';
 	while (n != 0)
 	{
-		res[len--] = n % 10 + '0';
+		res[--len] = n % 10 + '0';
 		n /= 10;
 	}
 	return (res);
