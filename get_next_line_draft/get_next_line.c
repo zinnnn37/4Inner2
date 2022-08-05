@@ -27,7 +27,7 @@ char	*ft_read(int fd, static char *res) // static char이랑 char로 다르게 �
 			free(buf);
 			return (NULL);
 		}
-		buf[byte] = 0; // 마지막 널문자
+		buf[byte] = 0; // 마지막 널문자  // 길이가 2인데 4만큼 읽으면 값, 값, 쓰레기값, 쓰레기값 이렇게 담김 >> 그래서 '\0'을 넣어주는 것
 		res = ft_join(res, buf); // 기존 문장(res)와 받은 문장(buf) 합치기
 		if (ft_strchr(buf, '\n')) // 받은 문장에 줄바꿈 문자가 있는 경우 한 문장의 끝 > 문장을 더 받아오지 않고 종료
 			break ;
@@ -107,7 +107,7 @@ char	*get_next_line(int fd)
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 14:39:46 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/25 15:54:16 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/08/04 15:23:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ char	*ft_join(char *buf, char *next)
 	return (res);
 }
 
-// buf = before tmp = next
 char	*ft_read_file(int fd, char *buf)
 {
 	char	*tmp;
@@ -142,10 +141,10 @@ char	*ft_read_file(int fd, char *buf)
 			free(tmp);
 			return (NULL);
 		}
-		tmp[byte] = '\0'; // 길이가 2인데 4만큼 읽으면 값, 값, 쓰레기값, 쓰레기값 이렇게 담김 >> 그래서 '\0'을 넣어주는 것
+		tmp[byte] = '\0';
 		buf = ft_join(buf, tmp);
 		if (ft_strchr(buf, '\n'))
-			break;
+			break ;
 	}
 	free(tmp);
 	return (buf);
@@ -154,19 +153,19 @@ char	*ft_read_file(int fd, char *buf)
 char	*ft_get_line(char *buf)
 {
 	char	*res;
-	size_t	i;
+	int		i;
 
 	if (!*buf)
-		return (NULL); // eof 확인용.. 안 넣으면 '\0'만 들어가서 안 끝날 것 같음
+		return (NULL);
 	i = 0;
 	while (buf[i] && buf[i] != '\n')
 		i++;
 	res = ft_calloc(i + 2, sizeof(char));
-	(!res)
+	if (!res)
 		return (NULL);
-	i = 0;
-	while (buf[i] && buf[i] == '\n')
-		res[i] = buf[i++];
+	i = -1;
+	while (buf[++i] && buf[i] != '\n')
+		res[i] = buf[i];
 	if (buf[i] == '\n')
 		res[i] = '\n';
 	return (res);
@@ -181,12 +180,12 @@ char	*ft_next_line(char *buf)
 	i = 0;
 	while (buf[i] && buf[i] != '\n')
 		i++;
-	if (!buf[i]) // 다음 줄 없음
+	if (!buf[i])
 	{
 		free(buf);
 		return (NULL);
 	}
-	res = ft_calloc(strlen(buf) - i, sizeof(char));
+	res = ft_calloc(ft_strlen(buf) - i, sizeof(char));
 	j = 0;
 	while (buf[++i])
 		res[j++] = buf[i];
@@ -205,6 +204,8 @@ char	*get_next_line(int fd)
 	if (!buf)
 		return (NULL);
 	line = ft_get_line(buf);
+	if (!line)
+		return (NULL);
 	buf = ft_next_line(buf);
 	return (line);
 }
