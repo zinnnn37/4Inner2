@@ -12,76 +12,91 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_save_buf(char *buf)
 {
-	int	cnt;
-
-	cnt = 0;
-	while (s[cnt])
-		cnt++;
-	return (cnt);
-}
-
-char	*ft_join(char *buf, char *line)
-{
-	int		i;
-	char	*tmp;
+	int	i;
+	int	j;
+	char	*res;
 
 	i = 0;
 	while (buf[i] && buf[i] != '\n')
 		i++;
-	if (buf[i] == '\n')
+	if (!buf[i])
 	{
-		line = ft_substr(buf, 0, i+1);
-		tmp = ft_substr(buf, i+1, ft_strlen(buf)-i);
 		free(buf);
-		buf = tmp;
-		if (*buf == '\0')
-		{
-			free(buf);
-			buf = 0; // dangling > 없이 해보기..
-		}
+		return (NULL);
 	}
-	else
-	{
-		line = ft_substr(buf, 0, ft_strlen(buf));
-		free(buf);
-		buf = 0;
-	}
-	return (line);
+	res = (char *)malloc(sizeof(char) * (ft_strlen(buf) - i + 1));
+	if (!res)
+		return (NULL);
+	i++;
+	j = 0;
+	while (buf[i])
+		res[j++] = buf[i++];
+	res[j] = '\0';
+	free(buf);
+	return (res);
 }
 
-char	*ft_get_line(char *buf, char *line, int byte)
+char	*ft_get_line(char *buf)
 {
-	if (byte <= 0 && buf == NULL)
+	int	i;
+	char	*res;
+
+	i = 0;
+	if (!*buf)
 		return (NULL);
-	else
-		return (ft_join(buf, line));
+	while (buf[i] && buf[i] != '\n')
+		i++;
+	res = (char *)malloc(sizeof(char) * (i + 2));
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (buf[i] && buf[i] != '\n')
+	{
+		res[i] = buf[i];
+		i++;
+	}
+	if (res[i] == '\n')
+		res[i++] = '\n';
+	res[i] = '\0';
+	return (res);
+}
+
+char	*ft_read_line(int fd, char *before)
+{
+	char	*next;
+	int	byte;
+
+	if (!before)
+		before = (char *)malloc(sizeof(char));
+	next = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!next)
+		return (NULL);
+	byte = 1;
+	while (byte > 0 && !ft_strchr(before, '\n'))
+	{
+		byte = read(fd, next, BUFFER_SIZE);
+		next[byte] = '\0';
+		before = ft_strjoin(before, next);
+	}
+	free(next);
+	if (byte == -1)
+		return (NULL);
+	return (before);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*buf;
-	char		*line;
-	char		*tmp;
-	char		*join_tmp;
-	int			byte;
+	char 		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
 		return (NULL);
-	byte = read(fd, tmp, BUFFER_SIZE);
-	while (byte > 0)
-	{
-		if (!buf)
-			buf = ft_calloc(1, sizeof(char));
-		tmp[byte] = '\0';
-		join_tmp = ft_strjoin(buf, tmp);
-		buf = join_tmp;
-		free(join_tmp);
-		free(tmp);
-		if (ft_strchr(buf, '\n'))
-			break;
-		byte = read(fd, tmp, BUFFER_SIZE);
-	}
-	return (ft_get_line(buf, line, byte));
+	buf = ft_read_line(fd, buf);
+	if (!buf)
+		return (NULL);
+	line = ft_get_line(buf);
+	buf = ft_save_buf(buf);
+	return (line);
 }
