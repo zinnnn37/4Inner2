@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 15:44:07 by minjinki          #+#    #+#             */
-/*   Updated: 2022/08/04 16:10:31 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/08/08 15:07:35 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ char	*ft_uitoa(unsigned int n)
 	res = (char *)calloc(sizeof(char), len + 1);
 	if (!res)
 		return (NULL);
+	if (n == 0)
+		res[0] = '0';
 	while (n != 0)
 	{
 		res[--len] = n % 10 + '0';
