@@ -12,20 +12,23 @@ size_t	ft_strlen(const char *s)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	len1;
-	size_t	len2;
+	int		len1;
+	int		len2;
+	int		i;
 	char	*res;
 
 	if (!s1 || !s2)
 		return (NULL);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	res = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
+	res = (char *)calloc(len1 + len2 + 1, sizeof(char));
 	if (!res)
 		return (NULL);
-	ft_memset(res, 0, len1 + len2 + 1);
-	ft_strlcpy(res, s1, len1 + 1);
-	ft_strlcat(res + len1, s2, len2 + 1);
+	i = -1;
+	while (++i < len1)
+		res[i] = s1[i];
+	while (++i < len1 + len2 + 1)
+		res[i - 1] = s2[i - 1 - len1];
 	return (res);
 }
 

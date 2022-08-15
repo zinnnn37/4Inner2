@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:36:43 by minjinki          #+#    #+#             */
-/*   Updated: 2022/07/28 16:50:10 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/08/15 17:29:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	*ft_join(char *buf, char *next)
 
 	res = ft_strjoin(buf, next);
 	free(buf);
+	buf = 0;
 	return (res);
 }
 
@@ -55,11 +56,7 @@ char	*ft_get_line(char *buf)
 	int		i;
 
 	if (!*buf)
-	{// 여기 에러나면 또 우짜지... eof일 때 빈 문자열 리턴 ?
-		free(buf); // eof면 buf가 빈 문자열 > 이 때 buf(buf[fd])를 해제하고 return null
-		buf = 0x0; // dangling pointer 처리 > 처음에는 없이 해보기
 		return (NULL);
-	}
 	i = 0;
 	while (buf[i] && buf[i] != '\n')
 		i++;
@@ -86,6 +83,7 @@ char	*ft_next_line(char *buf)
 	if (!buf[i])
 	{
 		free(buf);
+		buf = 0;
 		return (NULL);
 	}
 	res = ft_calloc(ft_strlen(buf) - i, sizeof(char));
@@ -102,7 +100,11 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	{
+		if (buf[fd])
+			free(buf[fd]);
 		return (NULL);
+	}
 	buf[fd] = ft_read_file(fd, buf[fd]);
 	if (!buf[fd])
 		return (NULL);
