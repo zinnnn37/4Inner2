@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 14:40:10 by minjinki          #+#    #+#             */
-/*   Updated: 2022/08/11 15:56:06 by minjinki         ###   ########.fr       */
+/*   Created: 2022/08/15 18:23:01 by minjinki          #+#    #+#             */
+/*   Updated: 2022/08/15 18:23:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 # include <stdlib.h>
 
 char	*get_next_line(int fd);
-char	*ft_get_line(char *buf);
-char	*ft_read_int(int fd, char *before);
-char	*ft_save_buf(char *buf);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
 
 size_t	ft_strlen(const char *s);
+
+void	*ft_calloc(size_t count, size_t size);
+void	*ft_memset(void *b, int c, size_t len);
 
 #endif
