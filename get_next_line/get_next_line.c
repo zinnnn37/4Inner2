@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 14:39:46 by minjinki          #+#    #+#             */
-/*   Updated: 2022/08/15 18:22:27 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/08/17 13:52:41 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ char	*ft_read_file(int fd, char *buf)
 		byte = read(fd, tmp, BUFFER_SIZE);
 		if (byte < 0)
 		{
+			free(buf);
 			free(tmp);
 			return (NULL);
 		}
