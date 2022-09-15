@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/02 15:37:44 by minjinki          #+#    #+#              #
-#    Updated: 2022/08/04 16:38:51 by minjinki         ###   ########.fr        #
+#    Updated: 2022/09/15 12:13:40 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ AR			=	ar
 ARFLAGS		=	src
 
 SRC_DIR		=	src/
-SRC_FILES	=	ft_printf ft_print_hex_ptr ft_print_str_nbr_un
+SRC_FILES	=	ft_printf ft_print_hex ft_print_ptr ft_print_str\
+				ft_print_nbr ft_print_unsigned
 SRCS		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJT		=	$(SRCS:.c=.o)
 
