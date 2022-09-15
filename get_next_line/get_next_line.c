@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 14:39:46 by minjinki          #+#    #+#             */
-/*   Updated: 2022/08/17 13:52:41 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/08/17 14:26:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ char	*ft_get_line(char *buf)
 		i++;
 	res = ft_calloc(i + 2, sizeof(char));
 	if (!res)
+	{
+		free(buf);
 		return (NULL);
+	}
 	i = -1;
 	while (buf[++i] && buf[i] != '\n')
 		res[i] = buf[i];
