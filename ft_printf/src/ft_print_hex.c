@@ -6,13 +6,14 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 15:43:28 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/15 12:09:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/16 13:42:15 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+#include "../include/libft.h"
 
-size_t	ft_len_of_hex(unsigned int n)
+size_t	ft_lenhex(unsigned int n)
 {
 	size_t	len;
 
@@ -46,5 +47,5 @@ size_t	ft_printhex(unsigned int n, int c)
 		else
 			ft_printchar(cap[n]);
 	}
-	return (ft_len_of_hex(n));
+	return (ft_lenhex(n));
 }

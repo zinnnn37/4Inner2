@@ -6,11 +6,12 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 15:41:48 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/15 13:06:41 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/16 13:43:12 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+#include "../include/libft.h"
 
 size_t	ft_printchar(int c)
 {

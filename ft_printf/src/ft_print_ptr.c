@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/15 12:12:02 by minjinki          #+#    #+#             */
+/*   Updated: 2022/09/16 13:42:55 by minjinki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/ft_printf.h"
-#include "../libft/libft.h"
+#include "../include/libft.h"
 
 size_t	ft_lenptr(unsigned long long n)
 {

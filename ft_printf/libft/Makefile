@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 15:30:41 by minjinki          #+#    #+#              #
-#    Updated: 2022/08/04 15:34:35 by minjinki         ###   ########.fr        #
+#    Updated: 2022/09/16 13:01:43 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ SRCS_BNS	=\
 				ft_lstnew.c\
 				ft_lstsize.c
 
-HDRS		=	libft.h
+HDRS		=	../include
 
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror -I

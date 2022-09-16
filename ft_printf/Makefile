@@ -6,12 +6,12 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/02 15:37:44 by minjinki          #+#    #+#              #
-#    Updated: 2022/09/15 12:13:40 by minjinki         ###   ########.fr        #
+#    Updated: 2022/09/16 13:39:08 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	libftprintf.a
-HDRS		=	include/ft_printf.h libft/libft.h
+HDRS		=	include
 LIBFT		=	libft
 
 CC			=	cc
@@ -26,24 +26,23 @@ SRC_FILES	=	ft_printf ft_print_hex ft_print_ptr ft_print_str\
 SRCS		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJT		=	$(SRCS:.c=.o)
 
-
 all			:	$(NAME)
-
-%.o			:	$(SRC_DIR)%.c
-				$(CC) $(CFLAGS) -c $^ -o $@
 
 $(NAME)		:	$(OBJT)
 				$(MAKE) -C $(LIBFT)
 				cp libft/libft.a ./$(NAME)
 				$(AR) $(ARFLAGS) $@ $^
 
+%.o         :   $(SRC_DIR)%.c
+				$(CC) $(CFLAGS) -c $^ -o $@ -I $(HDRS)
+
 clean		:
-				$(RM) $(OBJT)
 				make clean -C $(LIBFT)
+				$(RM) $(OBJT)
 
 fclean		:	clean
+				make fclean -C $(LIBFT)
 				$(RM) $(NAME)
-				$(RM) $(LIBFT)/libft.a
 
 re			:
 				$(MAKE) fclean
