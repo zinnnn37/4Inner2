@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 18:23:01 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/17 14:37:41 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/17 15:57:44 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 typedef struct	s_list
 {
 	int				fd;
-	char			*buf;
+	char			*content;
 	struct s_list	*next;
 } t_list;
 
