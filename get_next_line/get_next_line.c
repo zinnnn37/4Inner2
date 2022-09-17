@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 14:39:46 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/17 17:06:31 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/17 17:47:00 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_list	*get_fd(t_list **head, int fd)
 		new = NULL; // dangling pointer
 		return (NULL);
 	}
-	new->next = *head; // linked list 맨 앞에 붙이기
+	new->next = *head; // linked list 맨 앞에 붙이기, 초기 *head는 0x0
 	*head = new; // 맨 처음 노드 가리키게
 	return (new);
 }
