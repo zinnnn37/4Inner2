@@ -3,7 +3,6 @@
 
 int main()
 {
-
 	char *s;
 	while (1)
 	{

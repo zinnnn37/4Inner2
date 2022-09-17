@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 18:23:01 by minjinki          #+#    #+#             */
-/*   Updated: 2022/08/15 18:23:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/17 14:37:41 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+typedef struct	s_list
+{
+	int				fd;
+	char			*buf;
+	struct s_list	*next;
+} t_list;
+
 char	*get_next_line(int fd);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char const *s1, char const *s2);
 
-size_t	ft_strlen(const char *s);
-
-void	*ft_calloc(size_t count, size_t size);
-void	*ft_memset(void *b, int c, size_t len);
+t_list	*get_fd(t_list **head, int fd);
 
 #endif
