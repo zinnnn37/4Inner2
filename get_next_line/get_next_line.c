@@ -6,13 +6,15 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 14:39:46 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/17 16:14:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/17 17:06:31 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-
+char	*read_files(int fd, char *buf)
+{
+}
 
 t_list	*get_fd(t_list **head, int fd)
 {
@@ -55,11 +57,17 @@ char	*get_next_line(int fd)
 	
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-
 	cur = get_fd(&head, fd);
 	if (!cur)
 		return (NULL);
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
+	line = read_files(fd, buf);
+	if (!line)
+	{
+		lst_del_node(&head, cur); // cur 노드 list에서 삭제 후 함수 종료
+		return (NULL);
+	}
+	return (line);
 }

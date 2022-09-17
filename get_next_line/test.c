@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include "get_next_line_bonus.h"
-
+#include <string.h>
+#include "get_next_line.h"
+/*
 int main()
 {
 	int		fd;
@@ -17,4 +18,13 @@ int main()
 		printf("%s", line);
 		free(line);
 	}
+}
+*/
+
+int main(void)
+{
+	static t_list *head;
+	
+	printf("%p\n", head); // 하.. 0 나오네...
+	return (0);
 }

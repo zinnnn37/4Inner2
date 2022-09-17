@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 18:23:38 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/17 16:17:48 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/17 17:34:06 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,21 @@ size_t	strlen(char *s)
 // strdup
 // strjoin
 // strchr
-// lstdel
+
+void	lst_del_node(t_list **head, t_list *cur)
+{
+	t_list	*tmp;
+
+	if (*head == cur)
+		*head = cur->next;
+	else
+	{
+		tmp = *head;
+		while (tmp->next != cur)
+			tmp = tmp->next;
+		tmp = cur->next;
+	}
+	free(cur->content);
+	free(cur);
+	cur = NULL;
+}
