@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 14:39:46 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/18 14:14:42 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/18 15:13:38 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,39 @@
 
 char	*next_line(t_list *cur, char *next, char **line)
 {
+	char	*tmp;
+
+	*line = ft_strdup(cur->content);
+	if (!*line)
+		return (NULL);
+	if (next)
+		tmp = ft_strdup(next + 1);
+	else
+		tmp = ft_strdup("");
+	
+	if (!tmp)
+	{
+		free(*line);
+		return (NULL);
+	}
+	free(cur->content);
+	cur->content = tmp;
+	return (*line);
 }
 
 char	*cur_line(t_list *cur, char *next, char **line)
 {
-	char	*res;
-
-	res = NULL;
 	if (next)
-		res = next_line(cur, next + 1, line);
+		*line = next_line(cur, next + 1, line);
 	else
 	{
 		if (*(cur->content) == '\0')
-			line = NULL;
+			*line = NULL;
 		else
-			res = next_line(cur, next, line);
+			*line = next_line(cur, next, line);
 		
 	}
-	return (res);
+	return (*line);
 }
 
 char	*read_files(t_list *cur, char *buf, char **line)
@@ -74,7 +89,7 @@ t_list	*get_fd(t_list **head, int fd)
 	if (!new)
 		return (NULL);
 	new->fd = fd;
-	new->content = strdup("", 0); // empty string
+	new->content = ft_strdup(""); // empty string
 	if (!(new->content))
 	{
 		free(new);
@@ -107,7 +122,8 @@ char	*get_next_line(int fd)
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
-	line = read_files(cur, buf, line);
+	line = read_files(cur, buf, &line);
+	free(buf);
 	if (!line)
 	{
 		lst_del_node(&head, cur); // cur 노드 list에서 삭제 후 함수 종료

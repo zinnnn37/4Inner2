@@ -25,6 +25,6 @@ int main(void)
 {
 	static t_list *head;
 	
-	printf("%p\n", head); // 하.. 0 나오네...
+	printf("%p\n", head); // 하.. 0x0 나오네...
 	return (0);
 }

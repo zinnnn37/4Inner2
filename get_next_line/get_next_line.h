@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 18:23:01 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/18 13:56:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/18 14:32:02 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strdup(const char *s);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*get_next_line(int fd);
 
-size_t	strlen(char *s);
+size_t	ft_strlen(const char *s);
 
 void	lst_del_node(t_list **head, t_list *cur);
 
