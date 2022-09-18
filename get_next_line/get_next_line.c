@@ -6,14 +6,40 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 14:39:46 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/17 17:47:00 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/18 14:00:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*read_files(int fd, char *buf)
+char	*get_line(t_list *cur, char *next, char *line)
 {
+}
+
+char	*read_files(t_list *cur, char *buf, char *line)
+{
+	char	*next;
+	size_t	byte;
+	char	*tmp;
+
+	while (1)
+	{
+		next = ft_strchr(cur->content, '\n');
+		if (next)
+			break ;
+		byte = read(cur->fd, buf, BUFFER_SIZE);
+		if (byte < 0)
+			return(NULL);
+		buf[byte] = '\0';
+		tmp = ft_strjoin(cur->content, buf);
+		if (!tmp)
+			return (NULL);
+		free(cur->content); // buf는 주소 안 바뀌고 안에 있는 내용만 계속 바뀜 > 해제 x
+		cur->content = tmp;
+		if (byte < BUFFER_SIZE)
+			break ;
+	}
+	return (get_line(cur, next, line));
 }
 
 t_list	*get_fd(t_list **head, int fd)
@@ -63,7 +89,7 @@ char	*get_next_line(int fd)
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
-	line = read_files(fd, buf);
+	line = read_files(cur, buf, line);
 	if (!line)
 	{
 		lst_del_node(&head, cur); // cur 노드 list에서 삭제 후 함수 종료
