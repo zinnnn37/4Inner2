@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:36:43 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/19 14:30:38 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/19 14:55:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,11 @@ char	*one_line(t_list *cur)
 	i = 0;
 	while (cur->content[i] && cur->content[i] != '\n')
 		i++;
+	// i + 1(\n)까지 res에 저장 > i+1이 \0이면 i까지만
+	// if i + 1 == \n > i+2 malloc
+	// dup에 매개변수로 길이를 주면 내부에서 strlen 안 쓰니까 i+1까지만 복사 될텐데
+	// 그 다음은 content에 저장하기
+	// 없으면 NULL 저장
 }
 
 char	*get_next_line(int fd)
