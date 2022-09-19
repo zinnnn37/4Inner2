@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 18:23:38 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/18 16:20:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/19 11:04:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,11 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	if (!tmp)
 		return (NULL);
 	res = tmp; // 첫 문자의 주소열 res에 저장
-	while (*s1)
-		*(tmp++) = *(s1++);
+	if (s1)
+	{
+		while (*s1)
+			*(tmp++) = *(s1++);
+	}
 	while (*s2)
 		*(tmp++) = *(s2++);
 	*tmp = '\0';

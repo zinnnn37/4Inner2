@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:36:43 by minjinki          #+#    #+#             */
-/*   Updated: 2022/08/15 18:17:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/19 11:06:15 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ char	*get_next_line(int fd)
 	static char	*buf[OPEN_MAX];
 	char		*line;
 
-	if (!buf[fd])
-		buf[fd] = ft_calloc(1, sizeof(char));
+//	if (!buf[fd])
+//		buf[fd] = ft_calloc(1, sizeof(char));
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
 		free(buf[fd]);

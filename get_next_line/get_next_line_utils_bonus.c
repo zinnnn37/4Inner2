@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 18:23:48 by minjinki          #+#    #+#             */
-/*   Updated: 2022/08/15 18:23:50 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/19 11:06:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,31 @@ size_t	ft_strlen(const char *s)
 {
 	int	cnt;
 
+	if (!s)
+		return (0);
 	cnt = 0;
 	while (s[cnt])
 		cnt++;
 	return (cnt);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	int		len1;
-	int		len2;
-	int		i;
 	char	*res;
+	char	*tmp;
 
-	if (!s1 || !s2)
+	tmp = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!tmp)
 		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	res = (char *)calloc(len1 + len2 + 1, sizeof(char));
-	if (!res)
-		return (NULL);
-	i = -1;
-	while (++i < len1)
-		res[i] = s1[i];
-	while (++i < len1 + len2 + 1)
-		res[i - 1] = s2[i - 1 - len1];
+	res = tmp; // 첫 문자의 주소열 res에 저장
+	if (s1)
+	{
+		while (*s1)
+			*(tmp++) = *(s1++);
+	}
+	while (*s2)
+		*(tmp++) = *(s2++);
+	*tmp = '\0';
 	return (res);
 }
 

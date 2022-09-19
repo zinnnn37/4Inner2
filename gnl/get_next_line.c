@@ -6,80 +6,80 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:36:43 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/18 16:41:23 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/19 10:46:33 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	rtn_split(t_list *curr_ptr, char *nlptr, char **res, size_t dup_size)
+void	next_line(t_list *cur)
 {
-	char	*temp;
+	char	*res;
+	int		i;
+	int		j;
 
-	*res = ft_strndup(curr_ptr->content, dup_size);
-	if (!*res)
-		return (-1);
-	if (nlptr)
-		temp = ft_strndup(nlptr + 1, ft_strlen(nlptr + 1));
-	else
-		temp = ft_strndup("", 0);
-	if (!temp)
+	i = 0;
+	while (cur->content[i] && cur->content[i] != '\n')
+		i++;
+	if (!(cur->content[i]))
 	{
-		free(*res);
-		return (-1);
+		free(cur->content);
+		cur->content = NULL;
 	}
-	free(curr_ptr->content);
-	curr_ptr->content = temp;
-	if (nlptr)
-		return (ft_strlen(curr_ptr->content) > 0);
-	return (0);
+	res = (char *)malloc(sizeof(char) * (ft_strlen(cur->content) - i));
+	j = 0;
+	while (cur->content[++i])
+		res[j++] = cur->content[i];
+	free(cur->content);
+	cur->content = res;
 }
 
-int	set_result(t_list *curr_ptr, char *nlptr, char **res)
+char	*get_line(t_list *cur)
 {
-	int		rtn;
+	char	*res;
+	int		i;
 
-	rtn = 0;
-	if (nlptr)
-	{
-		rtn = rtn_split(curr_ptr, nlptr, res, nlptr - (curr_ptr->content) + 1);
-	}
-	else
-	{
-		if (*(curr_ptr->content) == '\0')
-			*res = NULL;
-		else
-			rtn = rtn_split(curr_ptr, nlptr, res, ft_strlen(curr_ptr->content));
-	}
-	return (rtn);
+	if (!*(cur->content))
+		return (NULL);
+	i = 0;
+	while (cur->content[i] && cur->content[i] != '\n')
+		i++;
+	res = (char *)malloc(sizeof(char) * (i + 2));
+	if (!res)
+		return (NULL);
+	i = -1;
+	while (cur->content[++i] && cur->content[i] != '\n')
+		res[i] = cur->content[i];
+	if (cur->content[i] == '\n')
+		res[i] = '\n';
+	return (res);
 }
 
-int	read_file(t_list *curr_ptr, char *buff, char **res)
+int	read_file(t_list *cur)
 {
-	char		*nlptr;
-	char		*temp;
-	ssize_t		len;
-	int			eof;
+	char	*buf;
+	char	*tmp;
+	size_t	byte;
 
-	eof = 0;
-	while (1)
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (0);
+	byte = read(cur->fd, buf, BUFFER_SIZE);
+	while (byte >= 0)
 	{
-		nlptr = ft_strchr(curr_ptr->content, '\n');
-		if (nlptr || eof)
+		buf[byte] = '\0';
+		tmp = ft_strjoin(cur->content, buf);
+		free(cur->content); // 줄 넘어가면 buf는 get_next_line에서 매개변수로 받아오기
+		cur->content = tmp;
+		if (ft_strchr(cur->content, '\n'))
 			break ;
-		len = read(curr_ptr->fd, buff, BUFFER_SIZE);
-		if (len == -1)
-			return (-1);
-		buff[len] = '\0';
-		temp = ft_strjoin(curr_ptr->content, buff);
-		if (!temp)
-			return (-1);
-		free(curr_ptr->content);
-		curr_ptr->content = temp;
-		if (len < BUFFER_SIZE)
-			eof = 1;
+		byte = read(cur->fd, tmp, BUFFER_SIZE);
 	}
-	return (set_result(curr_ptr, nlptr, res));
+	free(buf);
+	buf = NULL;
+	if (byte < 0)
+		return (0);
+	return (1);
 }
 
 t_list	*set_curr_ptr(t_list **head_ptr, int fd)
@@ -111,25 +111,20 @@ char	*get_next_line(int fd)
 {
 	static t_list	*head_ptr;
 	t_list			*curr_ptr;
-	char			*buff;
+	int				state;
 	char			*res;
-	int				status;
 
-	res = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	curr_ptr = set_curr_ptr(&head_ptr, fd);
 	if (!curr_ptr)
 		return (NULL);
-	buff = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buff)
-		return (ft_lstdel(&head_ptr, curr_ptr));
-	status = read_file(curr_ptr, buff, &res);
-	free(buff);
-	buff = NULL;
-	if (status == 0 || status == -1)
-		ft_lstdel(&head_ptr, curr_ptr);
-	if (status == -1)
+	state = read_file(curr_ptr);
+	if (state == 0)
 		return (NULL);
+	res = get_line(curr_ptr);
+	if (!res)
+		return (NULL);
+	next_line(curr_ptr);
 	return (res);
 }
