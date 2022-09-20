@@ -6,11 +6,12 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:36:43 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/19 14:55:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:01:02 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "./get_next_line.h"
+#include <stdio.h>
 
 t_list	*get_fd(t_list **head, int fd)
 {
@@ -24,7 +25,8 @@ t_list	*get_fd(t_list **head, int fd)
 		return (cur);
 	new = (t_list *)malloc(sizeof(t_list));
 	new->fd = fd;
-	new->content = ft_strdup("");
+	printf("1");
+	new->content = ft_strdup("", 0);
 	if (!(new->content))
 	{
 		free(cur);
@@ -42,13 +44,12 @@ int read_file(t_list *cur, char *buf)
 	char	*next;
 	int		byte;
 
-	buf = (char *)malloc(sizeof(char) + (BUFFER_SIZE + 1));
 	if (!buf)
 		return (0);
 	while (1)
 	{
 		next = ft_strchr(cur->content, '\n');
-		if (next) // EOF but remain some sentences > should not exit
+		if (next) // at least one sentence remain
 			return (1);
 		byte = read(cur->fd, buf, BUFFER_SIZE);
 		if (byte < 0) // EOF > exit
@@ -62,7 +63,7 @@ int read_file(t_list *cur, char *buf)
 	}
 }
 
-char	*one_line(t_list *cur)
+char	*get_line(t_list *cur)
 {
 	char	*res;	
 	int		i;
@@ -72,11 +73,10 @@ char	*one_line(t_list *cur)
 	i = 0;
 	while (cur->content[i] && cur->content[i] != '\n')
 		i++;
-	// i + 1(\n)까지 res에 저장 > i+1이 \0이면 i까지만
-	// if i + 1 == \n > i+2 malloc
-	// dup에 매개변수로 길이를 주면 내부에서 strlen 안 쓰니까 i+1까지만 복사 될텐데
-	// 그 다음은 content에 저장하기
-	// 없으면 NULL 저장
+	res = ft_strdup(cur->content, i);
+	free(cur->content);
+	cur->content = ft_strdup(cur->content + i, ft_strlen(cur->content) - i - 1);
+	return (res);
 }
 
 char	*get_next_line(int fd)
@@ -92,11 +92,16 @@ char	*get_next_line(int fd)
 	cur = get_fd(&head, fd);
 	if (!cur)
 		return (NULL);
+	buf = (char *)malloc(sizeof(char) + (BUFFER_SIZE + 1));
     status = read_file(cur, buf);
 	free(buf);
 	if (status == 0)
+	{
+		ft_lstdel(&head, cur);
 		return (NULL);
-	line = one_line(cur);
+	}
+	line = get_line(cur);
 	if (!line)
 		return (NULL);
+	return (line);
 }

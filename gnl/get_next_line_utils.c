@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:36:43 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/18 16:42:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/20 11:57:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "./get_next_line.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -38,22 +38,24 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-char	*ft_strndup(const char *s1, size_t len)
+char	*ft_strdup(const char *s1, size_t len)
 {
+	char	*res;
 	size_t	i;
-	char	*result;
 
+	if (!s1)
+		return (NULL);
 	i = 0;
-	result = (char *)malloc((len + 1) * sizeof(char));
-	if (!result)
+	res = (char *)malloc((len + 1) * sizeof(char));
+	if (!res)
 		return (NULL);
 	while (i < len)
 	{
-		result[i] = s1[i];
+		res[i] = s1[i];
 		i++;
 	}
-	result[i] = '\0';
-	return (result);
+	res[i] = '\0';
+	return (res);
 }
 
 char	*ft_strjoin(const char *s1, const char *s2)
@@ -73,28 +75,20 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	return (result);
 }
 
-char	*ft_lstdel(t_list **head_ptr, t_list *curr_ptr)
+void	ft_lstdel(t_list **head, t_list *cur)
 {
-	t_list	*temp;
+	t_list	*tmp;
 
-	if (*head_ptr == curr_ptr)
-	{
-		*head_ptr = curr_ptr->next;
-		free(curr_ptr->content);
-		curr_ptr->content = NULL;
-		free(curr_ptr);
-		curr_ptr = NULL;
-	}
+	if (*head == cur)
+		*head = cur->next;
 	else
 	{
-		temp = *head_ptr;
-		while (temp->next != curr_ptr)
-			temp = temp->next;
-		temp->next = curr_ptr->next;
-		free(curr_ptr->content);
-		curr_ptr->content = NULL;
-		free(curr_ptr);
-		curr_ptr = NULL;
+		tmp = *head;
+		while (tmp->next != cur)
+			tmp = tmp->next;
+		tmp->next = cur->next;
 	}
-	return (NULL);
+	free(cur->content);
+	free(cur);
+	cur = NULL;
 }
