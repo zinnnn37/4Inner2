@@ -5,23 +5,43 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 18:23:48 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/19 11:06:04 by minjinki         ###   ########.fr       */
+/*   Created: 2022/09/21 14:08:56 by minjinki          #+#    #+#             */
+/*   Updated: 2022/09/21 14:09:55 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {
-	int	cnt;
+	size_t	i;
 
 	if (!s)
 		return (0);
-	cnt = 0;
-	while (s[cnt])
-		cnt++;
-	return (cnt);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strndup(const char *s1, size_t len)
+{
+	char	*res;
+	size_t	i;
+
+	if (!s1)
+		return (NULL);
+	i = 0;
+	res = (char *)malloc((len + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
+	while (i < len)
+	{
+		res[i] = s1[i];
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }
 
 char	*ft_strjoin(const char *s1, const char *s2)
@@ -29,15 +49,12 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	char	*res;
 	char	*tmp;
 
-	tmp = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	tmp = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!tmp)
 		return (NULL);
-	res = tmp; // 첫 문자의 주소열 res에 저장
-	if (s1)
-	{
-		while (*s1)
-			*(tmp++) = *(s1++);
-	}
+	res = tmp;
+	while (*s1)
+		*(tmp++) = *(s1++);
 	while (*s2)
 		*(tmp++) = *(s2++);
 	*tmp = '\0';
@@ -46,6 +63,8 @@ char	*ft_strjoin(const char *s1, const char *s2)
 
 char	*ft_strchr(const char *s, int c)
 {
+	if (!s)
+		return (NULL);
 	while (*(unsigned char *)s != (unsigned char)c)
 	{
 		if (*(unsigned char *)s == '\0')
@@ -55,23 +74,21 @@ char	*ft_strchr(const char *s, int c)
 	return ((char *)s);
 }
 
-void	*ft_memset(void *b, int c, size_t len)
+char	*ft_lst_del_node(t_list **head, t_list *cur)
 {
-	size_t	i;
+	t_list	*tmp;
 
-	i = 0;
-	while (i < len)
-		((unsigned char *)b)[i++] = (unsigned char)c;
-	return (b);
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*res;
-
-	res = (void *)malloc(count * size);
-	if (!res)
-		return (NULL);
-	ft_memset(res, 0, count * size);
-	return (res);
+	if (*head == cur)
+		*head = cur->next;
+	else
+	{
+		tmp = *head;
+		while (tmp->next != cur)
+			tmp = tmp->next;
+		tmp->next = cur->next;
+	}
+	free(cur->buf);
+	free(cur);
+	cur = NULL;
+	return (NULL);
 }

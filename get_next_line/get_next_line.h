@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 18:23:01 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/18 14:32:02 by minjinki         ###   ########.fr       */
+/*   Created: 2022/09/21 10:19:31 by minjinki          #+#    #+#             */
+/*   Updated: 2022/09/21 14:13:42 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h> // remove
 
-typedef struct	s_list
+typedef struct s_list
 {
 	int				fd;
-	char			*content;
+	char			*buf;
 	struct s_list	*next;
-} t_list;
+}	t_list;
 
-char	*ft_strchr(const char *s, int c);
-char	*ft_strdup(const char *s);
-char	*ft_strjoin(const char *s1, const char *s2);
 char	*get_next_line(int fd);
+char	*ft_lst_del_node(t_list **head, t_list *cur);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strndup(const char *s1, size_t len);
 
 size_t	ft_strlen(const char *s);
-
-void	lst_del_node(t_list **head, t_list *cur);
 
 #endif

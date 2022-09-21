@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 18:23:38 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/19 11:04:53 by minjinki         ###   ########.fr       */
+/*   Created: 2022/09/21 10:21:50 by minjinki          #+#    #+#             */
+/*   Updated: 2022/09/21 14:02:59 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,57 @@
 
 size_t	ft_strlen(const char *s)
 {
-	int	len;
+	size_t	i;
 
 	if (!s)
 		return (0);
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strndup(const char *s1, size_t len)
+{
+	char	*res;
+	size_t	i;
+
+	if (!s1)
+		return (NULL);
+	i = 0;
+	res = (char *)malloc((len + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
+	while (i < len)
+	{
+		res[i] = s1[i];
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
+}
+
+char	*ft_strjoin(const char *s1, const char *s2)
+{
+	char	*res;
+	char	*tmp;
+
+	tmp = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!tmp)
+		return (NULL);
+	res = tmp;
+	while (*s1)
+		*(tmp++) = *(s1++);
+	while (*s2)
+		*(tmp++) = *(s2++);
+	*tmp = '\0';
+	return (res);
 }
 
 char	*ft_strchr(const char *s, int c)
 {
+	if (!s)
+		return (NULL);
 	while (*(unsigned char *)s != (unsigned char)c)
 	{
 		if (*(unsigned char *)s == '\0')
@@ -35,46 +74,7 @@ char	*ft_strchr(const char *s, int c)
 	return ((char *)s);
 }
 
-char	*ft_strdup(const char *s)
-{
-	size_t	len;
-	char	*res;
-
-	len = ft_strlen(s);
-	res = (char *)malloc(sizeof(char) * (len + 1));
-	if (!res)
-		return (NULL);
-	res[len] = '\0';
-	len = 0;
-	while (s[len])
-	{
-		res[len] = s[len];
-		len++;
-	}
-	return (res);
-}
-
-char	*ft_strjoin(const char *s1, const char *s2)
-{
-	char	*res;
-	char	*tmp;
-
-	tmp = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (!tmp)
-		return (NULL);
-	res = tmp; // 첫 문자의 주소열 res에 저장
-	if (s1)
-	{
-		while (*s1)
-			*(tmp++) = *(s1++);
-	}
-	while (*s2)
-		*(tmp++) = *(s2++);
-	*tmp = '\0';
-	return (res);
-}
-
-void	lst_del_node(t_list **head, t_list *cur)
+char	*ft_lst_del_node(t_list **head, t_list *cur)
 {
 	t_list	*tmp;
 
@@ -85,10 +85,10 @@ void	lst_del_node(t_list **head, t_list *cur)
 		tmp = *head;
 		while (tmp->next != cur)
 			tmp = tmp->next;
-		tmp->next = cur->next; // tmp->next = cur 에서 tmp->next = cur -> next
+		tmp->next = cur->next;
 	}
-	free(cur->content);
-	// cur에서 dangling pointer처리 해주면 cur에 접근 불가 -> content도 자동적으로 접근 불가
+	free(cur->buf);
 	free(cur);
 	cur = NULL;
+	return (NULL);
 }
