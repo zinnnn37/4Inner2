@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:19:12 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/21 13:30:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:33:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*save_next(t_list **head, t_list *cur, char *next)
 		return (NULL);
 	free(cur->buf);
 	cur->buf = tmp;
-	if (ft_strlen(cur->buf) <= 0)
+	if (ft_strlen(cur->buf) == 0)
 		ft_lst_del_node(&head, cur);
 	return (line);
 }
@@ -116,9 +116,9 @@ char	*get_next_line(int fd)
 	if (!buf)
 		return (ft_lst_del_node(&head, cur));
 	line = read_file(head, cur, buf);
+	free(buf); // 공교롭게도 줄이 넘는다...
 	if (!line)
 		return (ft_lst_del_node(&head, cur));
-	free(buf); // 줄 안 넘을 것 같으면 buf 할당해제 read_file() 안으로 넣기
 	return (line);
 }
 // null일 때 전부 lst del 해야하네....... 그래야 leak이 안나네......
