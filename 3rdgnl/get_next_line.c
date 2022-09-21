@@ -6,18 +6,18 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:19:12 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/21 13:36:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:53:41 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*save_next(t_list **head, t_list *cur, char *next)
+char	*save_next(t_list **head, t_list *cur, char *next, size_t len)
 {
 	char	*tmp;
 	char	*line;
 
-	line = ft_strndup(cur->buf, next - (cur->buf) + 1); // +1 은 \n 때문에
+	line = ft_strndup(cur->buf, len); // +1 은 \n 때문에
 	if (!line || !*line)
 		return (NULL);
 	if (next)
@@ -38,13 +38,13 @@ char	*get_line(t_list **head, t_list *cur, char	*next)
 	char	*line;
 
 	if (next)
-		line = save_next(head, cur, next);
+		line = save_next(head, cur, next, next - (cur->buf) + 1);
 	else
 	{
 		if (!*(cur->buf))
 			return (NULL);
 		else
-			line = save_next(head, cur, next);
+			line = save_next(head, cur, next, ft_strlen(cur->buf));
 	}
 	return (line);
 }
