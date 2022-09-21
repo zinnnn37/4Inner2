@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:19:12 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/21 10:35:23 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/21 10:44:21 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_list	*get_fd(t_list **head, int fd)
 	tmp = (t_list *)malloc(sizeof(t_list));
 	if (!tmp)
 		return (NULL);
-	tmp->buf = ft_strdup("", 0); // empty string
+	tmp->buf = ft_strndup("", 0); // empty string
 	if (!(tmp->buf))
 	{
 		free(tmp);
@@ -35,6 +35,11 @@ t_list	*get_fd(t_list **head, int fd)
 	tmp->next = *head;
 	*head = tmp;
 	return (tmp);
+}
+
+char	*get_line(t_list *cur)
+{
+	
 }
 
 char	*get_next_line(int fd)
@@ -49,6 +54,7 @@ char	*get_next_line(int fd)
 	if (!cur)
 		return (NULL);
 	return (NULL);
+	line = get_lien(cur);
 }
 
 /*
