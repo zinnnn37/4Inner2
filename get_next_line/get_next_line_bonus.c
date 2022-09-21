@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:08:36 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/21 14:13:28 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/21 14:44:02 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*save_next(t_list **head, t_list *cur, char *next, size_t len)
 	char	*tmp;
 	char	*line;
 
-	line = ft_strndup(cur->buf, len);
+	line = ft_strndup(cur->buf, len); // error
 	if (!line || !*line)
 		return (NULL);
 	if (next)
@@ -38,7 +38,7 @@ char	*get_line(t_list **head, t_list *cur, char	*next)
 	char	*line;
 
 	if (next)
-		line = save_next(head, cur, next, next - (cur->buf) + 1);
+		line = save_next(head, cur, next, next - (cur->buf) + 1); // error
 	else
 	{
 		if (!*(cur->buf))
@@ -71,7 +71,7 @@ char	*read_file(t_list **head, t_list *cur, char *buf)
 		free(cur->buf);
 		cur->buf = tmp;
 	}
-	return (get_line(head, cur, next));
+	return (get_line(head, cur, next)); //error
 }
 
 t_list	*get_fd(t_list **head, int fd)
@@ -115,7 +115,7 @@ char	*get_next_line(int fd)
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (ft_lst_del_node(&head, cur));
-	line = read_file(&head, cur, buf);
+	line = read_file(&head, cur, buf); //error
 	free(buf);
 	if (!line)
 		return (ft_lst_del_node(&head, cur));

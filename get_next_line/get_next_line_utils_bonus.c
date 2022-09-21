@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:08:56 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/21 14:36:51 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/21 14:43:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t	ft_strlen(const char *s)
 }
 
 char	*ft_strndup(const char *s1, size_t len)
-{
+{ // error
 	char	*res;
 	size_t	i;
 
