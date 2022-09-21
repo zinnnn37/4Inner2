@@ -6,11 +6,23 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:21:50 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/21 10:41:05 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/21 11:14:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
 char	*ft_strndup(const char *s1, size_t len)
 {
@@ -30,4 +42,37 @@ char	*ft_strndup(const char *s1, size_t len)
 	}
 	res[i] = '\0';
 	return (res);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	if (!s)
+		return (NULL);
+	while (*(unsigned char *)s != (unsigned char)c)
+	{
+		if (*(unsigned char *)s == '\0')
+			return (NULL);
+		s++;
+	}
+	return ((char *)s);
+}
+
+char	*ft_lst_del_node(t_list **head, t_list *cur)
+{
+	t_list	*tmp;
+
+	if (*head == cur)
+		*head = cur->next;
+	else
+	{
+		tmp = *head;
+		while (tmp->next != cur)
+			tmp = tmp->next;
+		tmp->next = cur->next;
+	}
+	free(cur->buf);
+	free(cur);
+	cur = NULL;
+	return (NULL);
+	
 }

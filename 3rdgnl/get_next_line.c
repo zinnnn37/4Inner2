@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:19:12 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/21 10:44:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/21 11:15:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,19 @@ t_list	*get_fd(t_list **head, int fd)
 	*head = tmp;
 	return (tmp);
 }
-
-char	*get_line(t_list *cur)
+/*
+char	*read_file(t_list *cur, char *buf)
 {
-	
-}
+	char	*tmp;
+	int		byte;
 
+}
+*/
 char	*get_next_line(int fd)
 {
-	t_list	*head;
+	static t_list	*head;
 	t_list	*cur;
+	char	*buf;
 	char	*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
@@ -53,11 +56,14 @@ char	*get_next_line(int fd)
 	cur = get_fd(&head, fd);
 	if (!cur)
 		return (NULL);
+	printf("%d\n", cur->fd);
 	return (NULL);
-	line = get_lien(cur);
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (ft_lst_del_node(&head, cur));
 }
 
-/*
+
 int main(void)
 {
 	for (int i = 1; i < 6; i++)
@@ -65,4 +71,3 @@ int main(void)
 		get_next_line(i%2);
 	}
 }
-*/
