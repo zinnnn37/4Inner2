@@ -6,102 +6,130 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:36:43 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/20 12:01:02 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:46:00 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./get_next_line.h"
-#include <stdio.h>
+#include "get_next_line.h"
 
-t_list	*get_fd(t_list **head, int fd)
+int	rtn_split(t_list *curr_ptr, char *nlptr, char **res, size_t dup_size)
 {
-	t_list	*cur;
-	t_list	*new;
+	char	*temp;
 
-	cur = *head;
-	while (cur && (cur->fd != fd))
-		cur = cur->next;
-	if (cur)
-		return (cur);
-	new = (t_list *)malloc(sizeof(t_list));
-	new->fd = fd;
-	printf("1");
-	new->content = ft_strdup("", 0);
-	if (!(new->content))
+	*res = ft_strndup(curr_ptr->content, dup_size);
+	if (!*res)
+		return (-1);
+	if (nlptr)
+		temp = ft_strndup(nlptr + 1, ft_strlen(nlptr + 1));
+	else
+		temp = ft_strndup("", 0);
+	if (!temp)
 	{
-		free(cur);
-		cur = NULL;
-		return (NULL);
+		free(*res);
+		return (-1);
 	}
-	new->next = *head;
-	*head = new;
-	return (new);
+	free(curr_ptr->content);
+	curr_ptr->content = temp;
+	if (nlptr)
+		return (ft_strlen(curr_ptr->content) > 0);
+	return (0);
 }
 
-int read_file(t_list *cur, char *buf)
+int	set_result(t_list *curr_ptr, char *nlptr, char **res)
 {
-	char	*tmp;
-	char	*next;
-	int		byte;
+	int		rtn;
 
-	if (!buf)
-		return (0);
+	rtn = 0;
+	if (nlptr)
+	{
+		rtn = rtn_split(curr_ptr, nlptr, res, nlptr - (curr_ptr->content) + 1);
+	}
+	else
+	{
+		if (*(curr_ptr->content) == '\0')
+			*res = NULL;
+		else
+			rtn = rtn_split(curr_ptr, nlptr, res, ft_strlen(curr_ptr->content));
+	}
+	return (rtn);
+}
+
+int	read_file(t_list *curr_ptr, char *buff, char **res)
+{
+	char		*nlptr;
+	char		*temp;
+	ssize_t		len;
+	int			eof;
+
+	eof = 0;
 	while (1)
 	{
-		next = ft_strchr(cur->content, '\n');
-		if (next) // at least one sentence remain
-			return (1);
-		byte = read(cur->fd, buf, BUFFER_SIZE);
-		if (byte < 0) // EOF > exit
-			return (0);
-		buf[byte] = '\0';
-		tmp = ft_strjoin(cur->content, buf);
-		if (!tmp)
-			return (0);
-		free(cur->content);
-		cur->content = tmp;
+		nlptr = ft_strchr(curr_ptr->content, '\n');
+		if (nlptr || eof)
+			break ;
+		len = read(curr_ptr->fd, buff, BUFFER_SIZE);
+		if (len == -1)
+			return (-1);
+		buff[len] = '\0';
+		temp = ft_strjoin(curr_ptr->content, buff);
+		if (!temp)
+			return (-1);
+		free(curr_ptr->content);
+		curr_ptr->content = temp;
+		if (len < BUFFER_SIZE)
+			eof = 1;
 	}
+	return (set_result(curr_ptr, nlptr, res));
 }
 
-char	*get_line(t_list *cur)
+t_list	*set_curr_ptr(t_list **head_ptr, int fd)
 {
-	char	*res;	
-	int		i;
+	t_list	*curr_ptr;
 
-	if (!(cur->content))
+	curr_ptr = *head_ptr;
+	while (curr_ptr && (curr_ptr->fd != fd))
+		curr_ptr = curr_ptr->next;
+	if (curr_ptr)
+		return (curr_ptr);
+	curr_ptr = (t_list *)malloc(sizeof(t_list));
+	if (!curr_ptr)
 		return (NULL);
-	i = 0;
-	while (cur->content[i] && cur->content[i] != '\n')
-		i++;
-	res = ft_strdup(cur->content, i);
-	free(cur->content);
-	cur->content = ft_strdup(cur->content + i, ft_strlen(cur->content) - i - 1);
-	return (res);
+	curr_ptr->fd = fd;
+	curr_ptr->content = ft_strndup("", 0);
+	if (!(curr_ptr->content))
+	{
+		free(curr_ptr);
+		curr_ptr = NULL;
+		return (NULL);
+	}
+	curr_ptr->next = *head_ptr;
+	*head_ptr = curr_ptr;
+	return (curr_ptr);
 }
 
 char	*get_next_line(int fd)
 {
-	static t_list	*head;
-	t_list			*cur;
-    char            *buf;
-	char			*line;
-    int             status;
+	static t_list	*head_ptr;
+	t_list			*curr_ptr;
+	char			*buff;
+	char			*res;
+	int				status;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	res = NULL;
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	cur = get_fd(&head, fd);
-	if (!cur)
+	curr_ptr = set_curr_ptr(&head_ptr, fd);
+	if (!curr_ptr)
 		return (NULL);
-	buf = (char *)malloc(sizeof(char) + (BUFFER_SIZE + 1));
-    status = read_file(cur, buf);
-	free(buf);
-	if (status == 0)
-	{
-		ft_lstdel(&head, cur);
+	buff = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buff)
+		return (ft_lstdel(&head_ptr, curr_ptr));
+	status = read_file(curr_ptr, buff, &res);
+	free(buff);
+	buff = NULL;
+	if (status == 0 || status == -1) // 0에서 free 안하면 leak 발생
+		ft_lstdel(&head_ptr, curr_ptr);
+	if (status == -1)
 		return (NULL);
-	}
-	line = get_line(cur);
-	if (!line)
-		return (NULL);
-	return (line);
+	return (res);
 }
