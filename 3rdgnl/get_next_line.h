@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:19:31 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/21 11:12:47 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:35:13 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ typedef struct s_list
 
 char	*get_next_line(int fd);
 char	*ft_lst_del_node(t_list **head, t_list *cur);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strndup(const char *s1, size_t len);
+
+size_t	ft_strlen(const char *s);
 
 #endif

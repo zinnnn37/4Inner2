@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:21:50 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/21 12:35:18 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:36:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	tmp = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!tmp)
 		return (NULL);
+	res = tmp;
 	while (*s1)
 		*(tmp++) = *(s1++);
 	while (*s2)

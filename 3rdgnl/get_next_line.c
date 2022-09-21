@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:19:12 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/21 13:33:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:36:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*save_next(t_list **head, t_list *cur, char *next)
 	free(cur->buf);
 	cur->buf = tmp;
 	if (ft_strlen(cur->buf) == 0)
-		ft_lst_del_node(&head, cur);
+		ft_lst_del_node(head, cur);
 	return (line);
 }
 
@@ -115,7 +115,7 @@ char	*get_next_line(int fd)
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (ft_lst_del_node(&head, cur));
-	line = read_file(head, cur, buf);
+	line = read_file(&head, cur, buf);
 	free(buf); // 공교롭게도 줄이 넘는다...
 	if (!line)
 		return (ft_lst_del_node(&head, cur));
