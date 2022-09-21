@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:08:56 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/21 14:09:55 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/21 14:36:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ char	*ft_lst_del_node(t_list **head, t_list *cur)
 		tmp->next = cur->next;
 	}
 	free(cur->buf);
+	cur->buf = NULL;
 	free(cur);
 	cur = NULL;
 	return (NULL);
