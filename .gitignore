@@ -2,3 +2,5 @@
 .swp
 .vscode/*
 .vscode/
+*.out
+test*
