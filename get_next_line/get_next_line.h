@@ -6,16 +6,18 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:19:31 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/21 14:13:42 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/22 12:25:39 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+# define BUFFER_SIZE 1000000
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h> // remove
+# include <fcntl.h>
 
 typedef struct s_list
 {

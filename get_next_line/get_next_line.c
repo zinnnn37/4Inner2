@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:19:12 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/21 14:01:50 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/22 12:26:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,13 +121,31 @@ char	*get_next_line(int fd)
 		return (ft_lst_del_node(&head, cur));
 	return (line);
 }
-// null일 때 전부 lst del 해야하네....... 그래야 leak이 안나네......
+
+
+int main(void)
+{
+	char	*s;
+	while ((s = get_next_line(1)))
+	{
+		printf("res: %s\n", s);
+	}
+}
+
+
 /*
 int main(void)
 {
-	for (int i = 1; i < 6; i++)
+	int 	fd;
+	char	*s;
+
+	fd = open("test", O_RDONLY);
+	while (1)
 	{
-		get_next_line(i%2);
+		s = get_next_line(fd);
+		if (!s)
+			break ;
+		printf("%s\n", s);
 	}
 }
 */

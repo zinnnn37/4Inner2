@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:08:36 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/21 14:44:02 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/22 11:40:31 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	*save_next(t_list **head, t_list *cur, char *next, size_t len)
 	char	*line;
 
 	line = ft_strndup(cur->buf, len); // error
+	// 여기서 next - (cur->buf) + 1을 하면 next가 NULL일 때 에러 발생
 	if (!line || !*line)
 		return (NULL);
 	if (next)
@@ -28,7 +29,7 @@ char	*save_next(t_list **head, t_list *cur, char *next, size_t len)
 		return (NULL);
 	free(cur->buf);
 	cur->buf = tmp;
-	if (ft_strlen(cur->buf) == 0)
+	if (!*(cur->buf))
 		ft_lst_del_node(head, cur);
 	return (line);
 }
@@ -84,7 +85,7 @@ t_list	*get_fd(t_list **head, int fd)
 		tmp = tmp->next;
 	if (tmp)
 		return (tmp);
-	new = (t_list *)malloc(sizeof(t_list));
+	new = (t_list *)malloc(sizeof(t_list)); // error
 	if (!new)
 		return (NULL);
 	new->buf = ft_strndup("", 0);
@@ -120,4 +121,33 @@ char	*get_next_line(int fd)
 	if (!line)
 		return (ft_lst_del_node(&head, cur));
 	return (line);
+}
+
+
+// state로 정수로 받아보기..?
+
+/*
+int main(void)
+{
+	char	*s;
+	while ((s = get_next_line(1)))
+	{
+		printf("res: %s\n", s);
+	}
+}
+*/
+
+int main(void)
+{
+	int 	fd;
+	char	*s;
+
+	fd = open("test", O_RDONLY);
+	while (1)
+	{
+		s = get_next_line(fd);
+		if (!s)
+			break ;
+		printf("%s\n", s);
+	}
 }
