@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:08:36 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/22 11:40:31 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/22 13:54:05 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,13 @@ char	*save_next(t_list **head, t_list *cur, char *next, size_t len)
 char	*get_line(t_list **head, t_list *cur, char	*next)
 {
 	char	*line;
+	size_t	len;
 
 	if (next)
-		line = save_next(head, cur, next, next - (cur->buf) + 1); // error
+	{
+		len = next - (cur->buf) + 1;
+		line = save_next(head, cur, next, len); // error
+	}
 	else
 	{
 		if (!*(cur->buf))
@@ -108,7 +112,7 @@ char	*get_next_line(int fd)
 	char			*buf;
 	char			*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0) // 여기 read(fd, 0, 0) < 0 넣으니까 bonus에서 error 나네...
 		return (NULL);
 	cur = get_fd(&head, fd);
 	if (!cur)
@@ -124,7 +128,8 @@ char	*get_next_line(int fd)
 }
 
 
-// state로 정수로 받아보기..?
+// state로 정수로 받아보기..? > 실패!
+// 개빡친다 보너스 뭐가 문제인거임!!!!!!!!!!!!ㄴ
 
 /*
 int main(void)
@@ -135,19 +140,35 @@ int main(void)
 		printf("res: %s\n", s);
 	}
 }
-*/
 
 int main(void)
 {
-	int 	fd;
-	char	*s;
+	int 	fd1 = open("test", O_RDONLY);
+	int		fd2 = open("test2", O_RDONLY);
+	char	*s1;
+	char	*s2;
 
-	fd = open("test", O_RDONLY);
 	while (1)
 	{
-		s = get_next_line(fd);
-		if (!s)
+		s1 = get_next_line(fd1);
+		printf("%s\n", s1);
+		s2 = get_next_line(fd2);
+		printf("%s\n", s2);
+		if (!s1 || !s2)
 			break ;
-		printf("%s\n", s);
+	}
+	close(fd1);
+	close(fd2);
+	fd1 = open("test2", O_RDONLY);
+	fd2 = open("test", O_RDONLY);
+		while (1)
+	{
+		s1 = get_next_line(fd1);
+		printf("%s\n", s1);
+		s2 = get_next_line(fd2);
+		printf("%s\n", s2);
+		if (!s1 || !s2)
+			break ;
 	}
 }
+*/

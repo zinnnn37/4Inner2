@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:19:12 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/22 12:26:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/22 13:51:19 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ char	*get_next_line(int fd)
 	char			*buf;
 	char			*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	cur = get_fd(&head, fd);
 	if (!cur)
@@ -122,7 +122,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-
+/*
 int main(void)
 {
 	char	*s;
@@ -133,7 +133,7 @@ int main(void)
 }
 
 
-/*
+
 int main(void)
 {
 	int 	fd;
