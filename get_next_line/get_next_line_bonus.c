@@ -6,51 +6,49 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:08:36 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/22 13:54:05 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/23 10:13:55 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*save_next(t_list **head, t_list *cur, char *next, size_t len)
+int	save_next(t_list **head, t_list *cur, char *next)
 {
 	char	*tmp;
-	char	*line;
 
-	line = ft_strndup(cur->buf, len); // error
-	// 여기서 next - (cur->buf) + 1을 하면 next가 NULL일 때 에러 발생
-	if (!line || !*line)
-		return (NULL);
 	if (next)
 		tmp = ft_strndup(next + 1, ft_strlen(next + 1));
 	else
 		tmp = ft_strndup("", 0);
 	if (!tmp)
-		return (NULL);
+		return (0);
 	free(cur->buf);
 	cur->buf = tmp;
-	if (!*(cur->buf))
+	if (ft_strlen(cur->buf) == 0)
 		ft_lst_del_node(head, cur);
-	return (line);
+	return (1);
 }
 
 char	*get_line(t_list **head, t_list *cur, char	*next)
 {
 	char	*line;
-	size_t	len;
+	int		check_null;
 
-	if (next)
-	{
-		len = next - (cur->buf) + 1;
-		line = save_next(head, cur, next, len); // error
-	}
-	else
+	if (!next)
 	{
 		if (!*(cur->buf))
+		// 이거 안 하고 dup 한 다음에 밑에서 !*line Null 반환하면 메모리 릭(cur->buf 문제인가)
 			return (NULL);
 		else
-			line = save_next(head, cur, next, ft_strlen(cur->buf));
+			line = ft_strndup(cur->buf, ft_strlen(cur->buf));
 	}
+	else
+		line = ft_strndup(cur->buf, next - (cur->buf) + 1);
+	if (!line)
+		return (NULL);
+	check_null = save_next(head, cur, next);
+	if (check_null == 0)
+		return (NULL);
 	return (line);
 }
 
@@ -76,7 +74,7 @@ char	*read_file(t_list **head, t_list *cur, char *buf)
 		free(cur->buf);
 		cur->buf = tmp;
 	}
-	return (get_line(head, cur, next)); //error
+	return (get_line(head, cur, next));
 }
 
 t_list	*get_fd(t_list **head, int fd)
@@ -89,7 +87,7 @@ t_list	*get_fd(t_list **head, int fd)
 		tmp = tmp->next;
 	if (tmp)
 		return (tmp);
-	new = (t_list *)malloc(sizeof(t_list)); // error
+	new = (t_list *)malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
 	new->buf = ft_strndup("", 0);
@@ -112,7 +110,7 @@ char	*get_next_line(int fd)
 	char			*buf;
 	char			*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0) // 여기 read(fd, 0, 0) < 0 넣으니까 bonus에서 error 나네...
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	cur = get_fd(&head, fd);
 	if (!cur)
@@ -120,55 +118,9 @@ char	*get_next_line(int fd)
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (ft_lst_del_node(&head, cur));
-	line = read_file(&head, cur, buf); //error
+	line = read_file(&head, cur, buf);
 	free(buf);
 	if (!line)
 		return (ft_lst_del_node(&head, cur));
 	return (line);
 }
-
-
-// state로 정수로 받아보기..? > 실패!
-// 개빡친다 보너스 뭐가 문제인거임!!!!!!!!!!!!ㄴ
-
-/*
-int main(void)
-{
-	char	*s;
-	while ((s = get_next_line(1)))
-	{
-		printf("res: %s\n", s);
-	}
-}
-
-int main(void)
-{
-	int 	fd1 = open("test", O_RDONLY);
-	int		fd2 = open("test2", O_RDONLY);
-	char	*s1;
-	char	*s2;
-
-	while (1)
-	{
-		s1 = get_next_line(fd1);
-		printf("%s\n", s1);
-		s2 = get_next_line(fd2);
-		printf("%s\n", s2);
-		if (!s1 || !s2)
-			break ;
-	}
-	close(fd1);
-	close(fd2);
-	fd1 = open("test2", O_RDONLY);
-	fd2 = open("test", O_RDONLY);
-		while (1)
-	{
-		s1 = get_next_line(fd1);
-		printf("%s\n", s1);
-		s2 = get_next_line(fd2);
-		printf("%s\n", s2);
-		if (!s1 || !s2)
-			break ;
-	}
-}
-*/

@@ -6,46 +6,48 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:19:12 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/22 13:51:19 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/23 10:23:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*save_next(t_list **head, t_list *cur, char *next, size_t len)
+int	save_next(t_list **head, t_list *cur, char *next)
 {
 	char	*tmp;
-	char	*line;
 
-	line = ft_strndup(cur->buf, len); // +1 은 \n 때문에
-	if (!line || !*line)
-		return (NULL);
 	if (next)
-		tmp = ft_strndup(next + 1, ft_strlen(next + 1));
+		tmp = ft_strndup(next + 1, ft_strlen(next + 1)); // +1 cuz should copy after new line > next directs \n
 	else
 		tmp = ft_strndup("", 0);
 	if (!tmp)
-		return (NULL);
+		return (0);
 	free(cur->buf);
 	cur->buf = tmp;
 	if (ft_strlen(cur->buf) == 0)
 		ft_lst_del_node(head, cur);
-	return (line);
+	return (1);
 }
 
 char	*get_line(t_list **head, t_list *cur, char	*next)
 {
 	char	*line;
+	int		check_null;
 
-	if (next)
-		line = save_next(head, cur, next, next - (cur->buf) + 1);
-	else
+	if (!next)
 	{
 		if (!*(cur->buf))
 			return (NULL);
 		else
-			line = save_next(head, cur, next, ft_strlen(cur->buf));
+			line = ft_strndup(cur->buf, ft_strlen(cur->buf));
 	}
+	else
+		line = ft_strndup(cur->buf, next - (cur->buf) + 1);
+	if (!line)
+		return (NULL);
+	check_null = save_next(head, cur, next);
+	if (check_null == 0)
+		return (NULL);
 	return (line);
 }
 
@@ -59,11 +61,11 @@ char	*read_file(t_list **head, t_list *cur, char *buf)
 	while (1)
 	{
 		next = ft_strchr(cur->buf, '\n');
-		if (next || byte < BUFFER_SIZE)
-			break ; // more than 1 sentence remain
+		if (next || byte < BUFFER_SIZE) // more than one sentence remain
+			break ;
 		byte = read(cur->fd, buf, BUFFER_SIZE);
-		if (byte < 0)
-			return (NULL); // eof, no characters remain
+		if (byte < 0)	// eof no character remain
+			return (NULL);
 		buf[byte] = '\0';
 		tmp = ft_strjoin(cur->buf, buf);
 		if (!tmp)
@@ -116,7 +118,7 @@ char	*get_next_line(int fd)
 	if (!buf)
 		return (ft_lst_del_node(&head, cur));
 	line = read_file(&head, cur, buf);
-	free(buf); // 공교롭게도 줄이 넘는다...
+	free(buf);
 	if (!line)
 		return (ft_lst_del_node(&head, cur));
 	return (line);
@@ -131,8 +133,6 @@ int main(void)
 		printf("res: %s\n", s);
 	}
 }
-
-
 
 int main(void)
 {
