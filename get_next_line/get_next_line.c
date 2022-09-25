@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:19:12 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/25 12:04:31 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/25 15:00:06 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	save_next(t_list **head, t_list *cur, char *next)
 		return (0);
 	free(cur->buf);
 	cur->buf = tmp;
-	if (ft_strlen(cur->buf) == 0)
+	if (!*(cur->buf))
 		ft_lst_del_node(head, cur);
 	return (1);
 }
@@ -79,14 +79,10 @@ char	*read_file(t_list **head, t_list *cur, char *buf)
 
 t_list	*get_fd(t_list **head, int fd)
 {
-	t_list	*tmp;
 	t_list	*new;
 
-	tmp = *head;
-	while (tmp && tmp->fd != fd)
-		tmp = tmp->next;
-	if (tmp)
-		return (tmp);
+	if (*head)
+		return (*head);
 	new = (t_list *)malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);

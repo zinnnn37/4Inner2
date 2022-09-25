@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:08:36 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/25 12:05:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/25 15:00:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	save_next(t_list **head, t_list *cur, char *next)
 		return (0);
 	free(cur->buf);
 	cur->buf = tmp;
-	if (ft_strlen(cur->buf) == 0)
+	if (!*(cur->buf))
 		ft_lst_del_node(head, cur);
 	return (1);
 }
@@ -75,6 +75,8 @@ char	*read_file(t_list **head, t_list *cur, char *buf)
 		cur->buf = tmp;
 	}
 	return (get_line(head, cur, next));
+	// get_line 진입은 \n이 있을 때 혹은 BUFFER_SIZE보다 적은 바이트를 읽었을 때 뿐
+	// 뒤에 글이 더 남았는데 \n 없이 line에 저장될 일은 없음!
 }
 
 t_list	*get_fd(t_list **head, int fd)
