@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:19:12 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/23 10:23:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/25 12:04:31 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	save_next(t_list **head, t_list *cur, char *next)
 {
 	char	*tmp;
 
-	if (next)
-		tmp = ft_strndup(next + 1, ft_strlen(next + 1)); // +1 cuz should copy after new line > next directs \n
-	else
+	if (!next)
 		tmp = ft_strndup("", 0);
+	else
+		tmp = ft_strndup(next + 1, ft_strlen(next + 1));
 	if (!tmp)
 		return (0);
 	free(cur->buf);
@@ -32,7 +32,6 @@ int	save_next(t_list **head, t_list *cur, char *next)
 char	*get_line(t_list **head, t_list *cur, char	*next)
 {
 	char	*line;
-	int		check_null;
 
 	if (!next)
 	{
@@ -45,9 +44,11 @@ char	*get_line(t_list **head, t_list *cur, char	*next)
 		line = ft_strndup(cur->buf, next - (cur->buf) + 1);
 	if (!line)
 		return (NULL);
-	check_null = save_next(head, cur, next);
-	if (check_null == 0)
+	if (save_next(head, cur, next) == 0)
+	{
+		free(line);
 		return (NULL);
+	}
 	return (line);
 }
 
@@ -61,10 +62,10 @@ char	*read_file(t_list **head, t_list *cur, char *buf)
 	while (1)
 	{
 		next = ft_strchr(cur->buf, '\n');
-		if (next || byte < BUFFER_SIZE) // more than one sentence remain
+		if (next || byte < BUFFER_SIZE)
 			break ;
 		byte = read(cur->fd, buf, BUFFER_SIZE);
-		if (byte < 0)	// eof no character remain
+		if (byte < 0)
 			return (NULL);
 		buf[byte] = '\0';
 		tmp = ft_strjoin(cur->buf, buf);
@@ -89,7 +90,7 @@ t_list	*get_fd(t_list **head, int fd)
 	new = (t_list *)malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
-	new->buf = ft_strndup("", 0); // empty string
+	new->buf = ft_strndup("", 0);
 	if (!(new->buf))
 	{
 		free(new);

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:08:36 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/24 18:20:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/25 12:05:49 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	save_next(t_list **head, t_list *cur, char *next)
 {
 	char	*tmp;
 
-	if (next)
-		tmp = ft_strndup(next + 1, ft_strlen(next + 1));
-	else
+	if (!next)
 		tmp = ft_strndup("", 0);
+	else
+		tmp = ft_strndup(next + 1, ft_strlen(next + 1));
 	if (!tmp)
 		return (0);
 	free(cur->buf);
@@ -32,12 +32,10 @@ int	save_next(t_list **head, t_list *cur, char *next)
 char	*get_line(t_list **head, t_list *cur, char	*next)
 {
 	char	*line;
-	int		check_null;
 
 	if (!next)
 	{
 		if (!*(cur->buf))
-		// 이거 안 하고 dup 한 다음에 밑에서 !*line Null 반환하면 메모리 릭(cur->buf 문제인가)
 			return (NULL);
 		else
 			line = ft_strndup(cur->buf, ft_strlen(cur->buf));
@@ -46,8 +44,7 @@ char	*get_line(t_list **head, t_list *cur, char	*next)
 		line = ft_strndup(cur->buf, next - (cur->buf) + 1);
 	if (!line)
 		return (NULL);
-	check_null = save_next(head, cur, next);
-	if (check_null == 0)
+	if (save_next(head, cur, next) == 0)
 	{
 		free(line);
 		return (NULL);
@@ -66,11 +63,6 @@ char	*read_file(t_list **head, t_list *cur, char *buf)
 	{
 		next = ft_strchr(cur->buf, '\n');
 		if (next || byte < BUFFER_SIZE)
-		// byte < BUFFER_SIZE 없으면 empty 등에서 timeout.. 외?
-		// 일단 그건 모르겟고 이걸 안 넣으면 buf ~ eof까지 \n이 없을 때
-		// + BUFFER_SIZE보다 적은 값을 읽어들일 때 계속 읽게 되고
-		// 그렇게 되면 밑에서 byte < 0일 때 NULL을 반환하므로
-		// 뒷 꽁다리 부분을 출력할 수 없긴 해서 꼬옥 필요함..
 			break ;
 		byte = read(cur->fd, buf, BUFFER_SIZE);
 		if (byte < 0)
