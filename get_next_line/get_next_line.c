@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:19:12 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/25 15:00:06 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/25 15:55:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,16 +121,15 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*
 int main(void)
 {
 	char	*s;
 	while ((s = get_next_line(1)))
 	{
-		printf("res: %s\n", s);
+		printf("%s\n", s);
 	}
 }
-
+/*
 int main(void)
 {
 	int 	fd;
