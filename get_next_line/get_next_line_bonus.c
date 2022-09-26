@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:08:36 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/25 15:53:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/26 10:44:49 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	save_next(t_list **head, t_list *cur, char *next)
 		return (0);
 	free(cur->buf);
 	cur->buf = tmp;
-	if (!*(cur->buf))
+	if (!*(cur->buf)) // 하필 버퍼 사이즈랑 \n까지의 길이가 같아서 노드 삭제 > 그냥 .. 다음 읽을 때 또 노드 만들면 됨
 		ft_lst_del_node(head, cur);
 	return (1);
 }
@@ -35,7 +35,7 @@ char	*get_line(t_list **head, t_list *cur, char	*next)
 
 	if (!next)
 	{
-		if (!*(cur->buf))
+		if (!*(cur->buf)) // 이거 없으면 NULL 반환해야하는 거 빈 문자열 반환함
 			return (NULL);
 		else
 			line = ft_strndup(cur->buf, ft_strlen(cur->buf));
