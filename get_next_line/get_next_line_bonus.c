@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:08:36 by minjinki          #+#    #+#             */
-/*   Updated: 2022/09/26 10:44:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/09/27 12:40:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*read_file(t_list **head, t_list *cur, char *buf)
 		if (next || byte < BUFFER_SIZE)
 			break ;
 		byte = read(cur->fd, buf, BUFFER_SIZE);
-		if (byte < 0)
+		if (byte < 0) // eof면 0을 반환해서 무한루프를 돌았구나..
 			return (NULL);
 		buf[byte] = '\0';
 		tmp = ft_strjoin(cur->buf, buf);
