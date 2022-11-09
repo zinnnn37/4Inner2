@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 
 	if (argc == 3)
 	{
-		while (i <= 2)
+		while (i > 0)
 		{
 			j = 0;
 			while (argv[i][j])
