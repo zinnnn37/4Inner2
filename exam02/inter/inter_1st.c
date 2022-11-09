@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 			if (visited[argv[1][i]] == 0)
 				visited[argv[1][i]] = 1;
 			
-			j - 0;
+			j = 0;
 			while (argv[2][j])
 			{
 				if (argv[1][i] == argv[2][j] && visited[argv[2][j]] == 1)
