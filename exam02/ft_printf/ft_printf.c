@@ -61,7 +61,7 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	while (format[++i])
 	{
-		if (format[i] != %)
+		if (format[i] != '%')
 			len += write(1, &format[i], 1);
 		else if (format[i] == '%' && format[i+1])
 		{
