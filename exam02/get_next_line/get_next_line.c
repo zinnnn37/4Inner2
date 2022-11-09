@@ -33,9 +33,9 @@ char	*get_next_line(int fd)
 
 	if (fd < 0)
 		return (NULL);
-	res = ft_strjoin(res, '\0');
+	res = ft_strjoin(res, '\0'); // 빈 문자열로 초기화
 	while (read(fd, &c, 1) > 0 && c != '\n')
-		res = ft_strjoin(res, c);
-	res = ft_strjoin(res, '\n');
+		res = ft_strjoin(res, c); // 줄바꿈 앞까지 붙이기
+	res = ft_strjoin(res, '\n'); // 마지막에 줄바꿈 추가
 	return (res);
 }
