@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/08 11:26:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/11 12:33:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct s_data
 	struct t_map	*end;
 }	t_data;
 
-void	check_map(int fd, t_data *map);
-void	print_error(int status);
+void	print_error(char *str);
 
 #endif
