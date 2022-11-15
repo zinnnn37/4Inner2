@@ -6,13 +6,11 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:28:17 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/11 12:48:50 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/15 15:24:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./include/so_long.h"
-#include "./include/get_next_line.h"
-#include "./include/libft.h"
 
 int	main(int argc, char **argv)
 {
