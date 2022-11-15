@@ -1,13 +1,20 @@
 #include "get_next_line.h"
 #include <stdio.h>
+#include <fcntl.h>
+#include <string.h>
 
 int main()
 {
     char *s;
+    int fd;
 
-    while ((s = get_next_line(1)))
+    fd = open("hi", O_RDONLY);
+    while (1)
     {
-        printf("%s\n", s);
+        s = get_next_line(fd);
+        printf("%s", s);
+        if (strcmp(s, "") == 0)
+            break ;
         free(s);
     }
     return 0;
