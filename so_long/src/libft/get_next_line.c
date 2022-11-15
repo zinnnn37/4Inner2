@@ -5,118 +5,53 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 10:19:12 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/15 14:53:38 by minjinki         ###   ########.fr       */
+/*   Created: 2022/11/15 16:10:13 by minjinki          #+#    #+#             */
+/*   Updated: 2022/11/15 16:33:31 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/libft.h"
 
-int	save_next(t_line **head, t_line *cur, char *next)
+char	*ft_join(char *s, char c)
 {
-	char	*tmp;
+	char	*res;
+	int		len;
+	int		i;
 
-	if (!next)
-		tmp = ft_strndup("", 0);
-	else
-		tmp = ft_strndup(next + 1, ft_strlen(next + 1));
-	if (!tmp)
-		return (0);
-	free(cur->buf);
-	cur->buf = tmp;
-	if (!*(cur->buf))
-		ft_lst_del_node(head, cur);
-	return (1);
-}
-
-char	*get_line(t_line **head, t_line *cur, char	*next)
-{
-	char	*line;
-
-	if (!next)
+	if (!s)
 	{
-		if (!*(cur->buf))
-			return (NULL);
-		else
-			line = ft_strndup(cur->buf, ft_strlen(cur->buf));
+		res = (char *)malloc(sizeof(char) * 2);
+		res[0] = c;
+		res[1] = '\0';
 	}
 	else
-		line = ft_strndup(cur->buf, next - (cur->buf) + 1);
-	if (!line)
-		return (NULL);
-	if (save_next(head, cur, next) == 0)
 	{
-		free(line);
-		return (NULL);
+		len = ft_strlen(s);
+		res = (char *)malloc(sizeof(char) * (len + 2));
+		i = -1;
+		while (++i < len)
+			res[i] = s[i];
+		res[i] = c;
+		res[i + 1] = '\0';
+		free(s);
 	}
-	return (line);
-}
-
-char	*read_file(t_line **head, t_line *cur, char *buf)
-{
-	char	*next;
-	char	*tmp;
-	int		byte;
-
-	byte = BUFFER_SIZE;
-	while (1)
-	{
-		next = ft_strchr(cur->buf, '\n');
-		if (next || byte < BUFFER_SIZE)
-			break ;
-		byte = read(cur->fd, buf, BUFFER_SIZE);
-		if (byte < 0)
-			return (NULL);
-		buf[byte] = '\0';
-		tmp = ft_strjoin(cur->buf, buf);
-		if (!tmp)
-			return (NULL);
-		free(cur->buf);
-		cur->buf = tmp;
-	}
-	return (get_line(head, cur, next));
-}
-
-t_line	*get_fd(t_line **head, int fd)
-{
-	t_line	*new;
-
-	if (*head)
-		return (*head);
-	new = (t_line *)malloc(sizeof(t_line));
-	if (!new)
-		return (NULL);
-	new->buf = ft_strndup("", 0);
-	if (!(new->buf))
-	{
-		free(new);
-		new = NULL;
-		return (NULL);
-	}
-	new->fd = fd;
-	new->next = *head;
-	*head = new;
-	return (new);
+	return (res);
 }
 
 char	*get_next_line(int fd)
 {
-	static t_line	*head;
-	t_line			*cur;
-	char			*buf;
-	char			*line;
+	char	*res;
+	char	c;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0)
 		return (NULL);
-	cur = get_fd(&head, fd);
-	if (!cur)
-		return (NULL);
-	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buf)
-		return (ft_lst_del_node(&head, cur));
-	line = read_file(&head, cur, buf);
-	free(buf);
-	if (!line)
-		return (ft_lst_del_node(&head, cur));
-	return (line);
+	res = NULL;
+	res = ft_join(res, '\0');
+	while (read(fd, &c, 1) > 0)
+	{
+		res = ft_join(res, c);
+		if (c == '\n')
+			break ;
+	}
+	return (res);
 }

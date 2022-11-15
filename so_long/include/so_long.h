@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/15 15:24:39 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:15:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <string.h>
-# include "./mlx/mlx.h"
+# include "../mlx/mlx.h"
 # include "./libft.h"
 
 # define SUCCESS 0

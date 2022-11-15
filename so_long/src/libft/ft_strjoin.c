@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 17:52:51 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/15 14:52:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/15 15:42:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,14 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	len2;
 	char	*res;
 
-	if (!s1 || !s2)
+	if (!s2)
 		return (NULL);
+	if (!s1)
+	{
+		s1 = ft_strdup("");
+		if (!s1)
+			return (NULL);
+	}
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	res = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
