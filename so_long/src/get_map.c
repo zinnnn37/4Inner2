@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 12:28:17 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/16 11:45:09 by minjinki         ###   ########.fr       */
+/*   Created: 2022/11/16 13:51:17 by minjinki          #+#    #+#             */
+/*   Updated: 2022/11/16 13:54:08 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/so_long.h"
+#include "../include/so_long.h"
 
-int	main(int argc, char **argv)
+void	get_map(t_map *map)
 {
-	if (argc != 2)
-		print_error("*ERROR* Check the number of input file!\n");
-	if (ft_strcmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber") != 0)
-		print_error("*ERROR* Check if the extension of map file is .ber!\n");
-	get_map();
-	check_map();
-	mlx_things();
-	free_all();
+	int		fd;
+	char	*s;
+	char	*line;
+	char	*tmp;
+
+	fd = open("../maps/no_exit.ber", O_RDONLY);
+	line = NULL;
+	s = get_next_line(fd);
+	while (s)
+	{
+		if (ft_strlen(s) == 0)
+			break ;
+		tmp = ft_strjoin(line, s);
+		free(line);
+		line = tmp;
+		free(s);
+		s = get_next_line(fd);
+	}
+	map->map = ft_split(line, '\n');
+	free(line);
+	close(fd);
 	return (0);
 }

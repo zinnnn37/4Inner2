@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/15 16:15:17 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/16 13:53:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,17 @@
 
 typedef struct s_map
 {
-	char			*line;
-	struct t_map	*next;
+	char	**map;
+	int		height;
+	int		width;
+	int		p_x;
+	int		p_y;
+	int		coin;
+	int		e_x;
+	int		e_y;
 }	t_map;
 
-typedef struct s_data
-{
-	int				height;
-	int				width;
-	int				player;
-	int				coin;
-	int				exit;
-	struct t_map	*start;
-	struct t_map	*end;
-}	t_data;
-
+void	get_map(t_map map);
 void	print_error(char *str);
 
 #endif
