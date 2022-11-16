@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 12:31:14 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/16 15:05:26 by minjinki         ###   ########.fr       */
+/*   Created: 2022/11/16 14:56:57 by minjinki          #+#    #+#             */
+/*   Updated: 2022/11/16 14:57:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	print_error(char *str)
+void	check_map(t_map *map)
 {
-	perror(str);
-	exit(1);
 }
