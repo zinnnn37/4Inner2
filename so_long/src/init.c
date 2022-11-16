@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 12:28:17 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/16 14:11:08 by minjinki         ###   ########.fr       */
+/*   Created: 2022/11/16 13:58:52 by minjinki          #+#    #+#             */
+/*   Updated: 2022/11/16 14:10:02 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	main(int argc, char **argv)
+t_map	*ft_init(int argc, char **argv)
 {
+	int		fd;
 	t_map	*map;
 
-	map = ft_init(argc, argv);
-	for (int i = 0; map->map[i] != NULL; i++)
-		printf("%s\n", map->map[i]);
-//	check_map();
-//	mlx_things();
-//	free_all();
-	return (0);
+	if (argc != 2)
+		print_error("*ERROR* Check the number of input file!\n");
+	if (ft_strcmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber") != 0)
+		print_error("*ERROR* Check if the extension of map file is .ber!\n");
+	fd = open("../maps/no_exit.ber", O_RDONLY);
+	map = ft_calloc(1, sizeof(t_map *));
+	get_map(fd, map);
+	return (map);
 }

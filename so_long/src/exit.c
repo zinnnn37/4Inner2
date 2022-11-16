@@ -6,12 +6,11 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:31:14 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/15 15:30:51 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/16 14:06:08 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/so_long.h"
-#include "./include/libft.h"
+#include "../include/so_long.h"
 
 void	print_error(char *str)
 {
