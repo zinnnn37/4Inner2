@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:58:52 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/16 14:18:16 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/16 14:26:49 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ t_map	*ft_init(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	map = ft_calloc(1, sizeof(t_map));
 	get_map(fd, map);
+	close(fd);
 	return (map);
 }
