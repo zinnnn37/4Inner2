@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:31:14 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/16 15:06:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/16 16:24:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	print_error(char *str)
 {
-	perror(str);
+	write(2, str, ft_strlen(str));
 	exit(1);
 }
