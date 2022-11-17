@@ -6,35 +6,29 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:32:29 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/16 13:50:57 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/17 13:14:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+typedef struct s_pos
+{
+	int	x;
+	int	y;
+}	t_pos;
+
 int	main(int argc, char **argv)
 {
-	int		fd;
-	char	*s;
-	char	*line;
-	char	*tmp;
-	char	**map;
+	t_pos	pos;
+	int		cur[2];
 
-	fd = open("../maps/no_exit.ber", O_RDONLY);
-	line = NULL;
-	s = get_next_line(fd);
-	while (s)
-	{
-		if (ft_strlen(s) == 0)
-			break ;
-		tmp = ft_strjoin(line, s);
-		free(line);
-		line = tmp;
-		free(s);
-		s = get_next_line(fd);
-	}
-	map = ft_split(line, '\n');
-	free(line);
-	close(fd);
-	return (0);
+	pos.x = 1;
+	pos.y = 2;
+	cur[0] = pos.x;
+	cur[1] = pos.y;
+	cur[0]++;
+	cur[1]--;
+	printf("%d %d\n", pos.x, pos.y);
+	printf("%d %d\n", cur[0], cur[1]);
 }

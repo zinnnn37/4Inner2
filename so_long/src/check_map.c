@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:56:57 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/17 11:11:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/17 14:02:55 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,5 @@ void	check_map(t_map *map)
 		|| map->e_x == 0 || map->e_y == 0)
 		print_error("*ERROR* Invalid map!7\n");
 	check_valid(0, map->map[map->height - 1], map);
+	map->height--;
 }

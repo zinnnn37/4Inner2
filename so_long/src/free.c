@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:49:02 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/17 11:50:08 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/17 14:04:22 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,13 @@ void	free_all(t_map *map)
 	int	i;
 
 	i = 0;
-	while (map->map[i])
-		free(map->map[i++]);
+	while (i < map->height)
+	{
+		free(map->map[i]);
+		map->map[i++] = NULL;
+	}
 	free(map->map);
+	map->map = NULL;
 	free(map);
+	map = NULL;
 }
