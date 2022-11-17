@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:56:57 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/16 16:32:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/17 11:11:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	check_elements(char *line, t_map *map)
 	len = ft_strlen(line);
 	if (len != map->width || line[0] != '1' || line[map->width - 1] != '1')
 		print_error("*ERROR* Invalid map!3\n");
-	i = 0;
-	while (i < len)
+	i = -1;
+	while (++i < len)
 	{
 		if (line[i] == '0' || line[i] == '1')
 			continue ;
@@ -56,7 +56,6 @@ void	check_elements(char *line, t_map *map)
 			map->collections++;
 		else
 			print_error("*ERROR* Invalid map!6\n");
-		i++;
 	}
 }
 
