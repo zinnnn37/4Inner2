@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:56:57 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/17 14:02:55 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/17 14:11:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,30 @@ void	check_wall(char *line, t_map *map)
 	}
 }
 
+void	_check_elements(t_map *map, char c, int i)
+{
+	if (c == '0' || c == '1')
+		return ;
+	else if (c == 'P')
+	{
+		if (map->p_x != 0 || map->p_y != 0)
+			print_error("*ERROR* Invalid map!4\n");
+		map->p_x = map->height;
+		map->p_y = i;
+	}
+	else if (c == 'E')
+	{
+		if (map->e_x != 0 || map->e_y != 0)
+			print_error("*ERROR* Invalid map!5\n");
+		map->e_x = map->height;
+		map->e_y = i;
+	}
+	else if (c == 'C')
+		map->collections++;
+	else
+		print_error("*ERROR* Invalid map!6\n");
+}
+
 void	check_elements(char *line, t_map *map)
 {
 	int	len;
@@ -35,28 +59,7 @@ void	check_elements(char *line, t_map *map)
 		print_error("*ERROR* Invalid map!3\n");
 	i = -1;
 	while (++i < len)
-	{
-		if (line[i] == '0' || line[i] == '1')
-			continue ;
-		else if (line[i] == 'P')
-		{
-			if (map->p_x != 0 || map->p_y != 0)
-				print_error("*ERROR* Invalid map!4\n");
-			map->p_x = map->height;
-			map->p_y = i;
-		}
-		else if (line[i] == 'E')
-		{
-			if (map->e_x != 0 || map->e_y != 0)
-				print_error("*ERROR* Invalid map!5\n");
-			map->e_x = map->height;
-			map->e_y = i;
-		}
-		else if (line[i] == 'C')
-			map->collections++;
-		else
-			print_error("*ERROR* Invalid map!6\n");
-	}
+		_check_elements(map, line[i], i);
 }
 
 void	check_valid(int status, char *line, t_map *map)
