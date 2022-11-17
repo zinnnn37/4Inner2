@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:51:17 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/16 13:56:30 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/17 11:47:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,4 @@ void	get_map(int fd, t_map *map)
 	}
 	map->map = ft_split(line, '\n');
 	free(line);
-	close(fd);
 }

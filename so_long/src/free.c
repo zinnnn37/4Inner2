@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_path.c                                        :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/17 11:52:53 by minjinki         ###   ########.fr       */
+/*   Created: 2022/11/17 11:49:02 by minjinki          #+#    #+#             */
+/*   Updated: 2022/11/17 11:50:08 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	find_path(t_map *map)
+void	free_all(t_map *map)
 {
-	return ;
+	int	i;
+
+	i = 0;
+	while (map->map[i])
+		free(map->map[i++]);
+	free(map->map);
+	free(map);
 }
