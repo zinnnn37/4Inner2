@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:28:17 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/17 14:01:51 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/19 13:36:31 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	main(int argc, char **argv)
 
 	map = ft_init(argc, argv);
 	check_map(map);
-	print_map(map);
-//	find_path(map);
+	find_path(map);
+//	print_map(map);
 //	for (int i = 0; map->map[i] != NULL; i++)
 //		printf("%s\n", map->map[i]);
 //	mlx_things();

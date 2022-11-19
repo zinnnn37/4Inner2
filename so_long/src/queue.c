@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map2.c                                       :+:      :+:    :+:   */
+/*   queue.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/19 13:39:08 by minjinki         ###   ########.fr       */
+/*   Created: 2022/11/19 13:01:00 by minjinki          #+#    #+#             */
+/*   Updated: 2022/11/19 13:39:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/queue.h"
 
-void	find_path(t_map *map)
+void	init_queue(t_queue *q, int h, int w)
 {
-	int		pos[2];
-	t_queue	*q;
-	
-	init_queue(q, map->height, map->width);
-/*
-	pos[0] = map->p_x;
-	pos[1] = map->p_y;
-	pos = {map->p_x, map->p_y};
-	while (pos[0] != map->e_x && pos[1] != mpa->e_y)
-	{
-	}*/
+	q = ft_calloc(1, sizeof(t_queue));
+	q->data = ft_calloc(h * w + 1, sizeof(int *));
+	for (int i = 0; i < h * w + 1; i++)
+		printf("%p ", q->data[i]);
 }

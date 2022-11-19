@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map2.c                                       :+:      :+:    :+:   */
+/*   queue.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/19 13:39:08 by minjinki         ###   ########.fr       */
+/*   Created: 2022/11/19 13:28:42 by minjinki          #+#    #+#             */
+/*   Updated: 2022/11/19 13:38:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#ifndef QUEUE_H
+# define QUEUE_H
 
-void	find_path(t_map *map)
+# include <stdio.h>
+
+typedef struct s_queue
 {
-	int		pos[2];
-	t_queue	*q;
-	
-	init_queue(q, map->height, map->width);
-/*
-	pos[0] = map->p_x;
-	pos[1] = map->p_y;
-	pos = {map->p_x, map->p_y};
-	while (pos[0] != map->e_x && pos[1] != mpa->e_y)
-	{
-	}*/
-}
+	int	**data;
+	int	front;
+	int	rear;
+}	t_queue;
+
+void	init_queue(t_queue *q, int h, int w);
+
+#endif

@@ -5,6 +5,7 @@ input = lambda: sys.stdin.readline().rstrip()
 def bfs(x, y):
 	q = deque()
 	q.append((x, y))
+	visited[x][y] = 1
 	while q:
 		x, y = q.popleft()
 		for i in range(4):

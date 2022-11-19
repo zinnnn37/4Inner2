@@ -6,20 +6,19 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/17 14:06:08 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/19 13:30:12 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <unistd.h>
-# include <stdlib.h>
+# include "./libft.h"
+# include "./queue.h"
 # include <fcntl.h>
-# include <stdio.h>
 # include <string.h>
 # include "../mlx/mlx.h"
-# include "./libft.h"
+
 
 # define SUCCESS 0
 # define FAILURE 1
