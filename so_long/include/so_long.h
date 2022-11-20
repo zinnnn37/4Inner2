@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/19 13:30:12 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/19 17:14:44 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@
 # include <string.h>
 # include "../mlx/mlx.h"
 
-
 # define SUCCESS 0
 # define FAILURE 1
+# define TRUE 1
+# define FALSE 0
+
+typedef int	t_bool;
 
 typedef struct s_map
 {

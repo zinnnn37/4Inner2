@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:28:42 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/19 16:15:42 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/19 16:41:13 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ typedef struct s_queue
 	int	size;
 }	t_queue;
 
-int		*popleft(t_queue *q);
+int		*dequeue(t_queue *q);
 
 t_queue	*init_queue(t_queue *q, int h, int w);
 
-void	append(t_queue *q, int i, int j);
+void	enqueue(t_queue *q, int i, int j);
 
 #endif
