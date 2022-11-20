@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:01:00 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/19 17:49:18 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/20 17:04:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@ int	*dequeue(t_queue *q)
 	int	*res;
 
 	res = ft_calloc(3, sizeof(int));
-	if (!res)
-		print_error("*ERROR* Fail to find path!\n");
 	res[0] = q->data[q->front][0];
 	res[1] = q->data[q->front][1];
-	free(q->data[q->front])
+	free(q->data[q->front]);
 	q->data[q->front] = NULL;
 	q->front = (q->front + 1) % q->size;
 	return (res);

@@ -6,12 +6,13 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:28:17 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/19 13:36:31 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/20 16:59:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+/*
 void	print_map(t_map *map)
 {
 	int	i;
@@ -24,6 +25,7 @@ void	print_map(t_map *map)
 	printf("collections: %d\n", map->collections);
 	printf("e_x: %d\ne_y: %d\n", map->e_x, map->e_y);
 }
+*/
 
 int	main(int argc, char **argv)
 {
@@ -32,10 +34,11 @@ int	main(int argc, char **argv)
 	map = ft_init(argc, argv);
 	check_map(map);
 	find_path(map);
+	free_all(map);
+	return (0);
+}
+
 //	print_map(map);
 //	for (int i = 0; map->map[i] != NULL; i++)
 //		printf("%s\n", map->map[i]);
 //	mlx_things();
-	free_all(map);
-	return (0);
-}
