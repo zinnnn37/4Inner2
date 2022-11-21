@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/20 17:05:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/21 15:39:33 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,33 @@ void	bfs_init(t_bool **visited, int h, int w)
 		print_error("*ERROR* Fail to find path!\n");
 }
 
-t_bool	_bfs(t_map *map, t_bool **visited, t_queue *q, int *cur)
+t_bool	_bfs(t_map *map, t_bool **visited, t_queue *q, int *pos)
 {
-	if ((1 < cur[0] && cur[0] < map->height - 1)
-		|| (1 < cur[1] && cur[1] < map->width - 1)
-		|| visited[cur[0]][cur[1]] == FALSE)
+	static int	d[4] = {1, 0, -1, 0};
+	int			i;
+	int			nxt[2];
+
+	i = 0;
+	while (i < 4)
 	{
-		if (ft_strncmp(&map->map[cur[0]][cur[1]], "E", 1))
-			return (TRUE);
-		visited[cur[0]][cur[1]] = TRUE;
-		enqueue(q, cur[0], cur[1]);
+		nxt[0] = pos[0] + d[i];
+		nxt[1] = pos[1] + d[3 - i];
+		if ((1 < nxt[0] && nxt[0] < map->height - 1)
+			|| (1 < nxt[1] && nxt[1] < map->width - 1)
+			|| visited[nxt[0]][nxt[1]] == FALSE)
+		{
+			if (ft_strncmp(&map->map[nxt[0]][nxt[1]], "E", 1))
+				return (TRUE);
+			visited[nxt[0]][nxt[1]] = TRUE;
+			enqueue(q, nxt[0], nxt[1]);
+		}
+		free(nxt);
+		return (FALSE);
 	}
-	return (FALSE);
 }
 
 t_bool	bfs(t_map *map, t_queue *q, int x, int y)
 {
-	static int	dx[4] = {1, 0, -1, 0};
-	static int	dy[4] = {0, 1, 0, -1};
 	t_bool		**visited;
 	int			i;
 	int			*pos;
@@ -65,13 +74,10 @@ t_bool	bfs(t_map *map, t_queue *q, int x, int y)
 	{
 		pos = dequeue(q);
 		i = 0;
-		while (i < 4)
+		if (_bfs(map, visited, q, pos) == 1)
 		{
-			if (_bfs(map, visited, q, [pos[0] + dx[i], pos[2] + dy[i]]) == 1)
-			{
-				free(pos);
-				return (TRUE);
-			}
+			free(pos);
+			return (TRUE);
 		}
 		free(pos);
 	}
