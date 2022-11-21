@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/21 15:39:33 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/21 15:43:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ t_bool	_bfs(t_map *map, t_bool **visited, t_queue *q, int *pos)
 			enqueue(q, nxt[0], nxt[1]);
 		}
 		free(nxt);
-		return (FALSE);
 	}
+	return (FALSE);
 }
 
 t_bool	bfs(t_map *map, t_queue *q, int x, int y)
@@ -98,19 +98,3 @@ void	find_path(t_map *map)
 	free(q);
 	q = NULL;
 }
-
-/*
-	pos[0] = map->p_x;
-	pos[1] = map->p_y;
-	pos = {map->p_x, map->p_y};
-	while (pos[0] != map->e_x && pos[1] != mpa->e_y)
-	{
-	}*/
-/*
-	printf("front: %d\nrear: %d\n", q->front, q->rear);
-	printf("size: %d\n", q->size);
-	enqueue(q, 1, 2);
-	printf("%d, %d\n", q->data[0][0], q->data[0][1]);
-	res = dequeue(q);
-	printf("%d, %d\n", res[0], res[1]);
-*/
