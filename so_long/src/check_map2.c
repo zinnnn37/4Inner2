@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/21 15:43:10 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/21 16:07:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	find_path(t_map *map)
 	int		*res;
 
 	q = init_queue(q, map->height - 2, map->width - 2);
+	if (!q)
+		print_error("*ERROR* Fail to find path!\n");
 	if (!bfs(map, q, map->p_x, map->p_y))
 		print_error("*ERROR* Path doesn't exist!\n");
 	free_matrix(q->data);
