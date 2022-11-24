@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/21 16:07:27 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/24 15:40:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,21 @@ void	free_matrix(int **matrix)
 	matrix = NULL;
 }
 
-void	bfs_init(t_bool **visited, int h, int w)
+int	**bfs_init(t_bool **visited, int h, int w)
 {
-	visited = ft_calloc(h + 1, sizeof(t_bool *));
+	int	i;
+
+	visited = (t_bool **)ft_calloc(h + 1, sizeof(t_bool *));
 	if (!visited)
 		print_error("*ERROR* Fail to find path!\n");
-	visited[h] = ft_calloc(w + 1, sizeof(t_bool));
-	if (!visited[h])
-		print_error("*ERROR* Fail to find path!\n");
+	i = 0;
+	while (i < h)
+	{
+		visited[i] = (t_bool *)ft_calloc(w + 1, sizeof(t_bool));
+		if (!visited[i++])
+			print_error("*ERROR* Fail to find path!\n");
+	}
+	return (visited);
 }
 
 t_bool	_bfs(t_map *map, t_bool **visited, t_queue *q, int *pos)
@@ -42,21 +49,21 @@ t_bool	_bfs(t_map *map, t_bool **visited, t_queue *q, int *pos)
 	int			i;
 	int			nxt[2];
 
-	i = 0;
-	while (i < 4)
+	i = -1;
+	while (++i < 4)
 	{
 		nxt[0] = pos[0] + d[i];
 		nxt[1] = pos[1] + d[3 - i];
-		if ((1 < nxt[0] && nxt[0] < map->height - 1)
-			|| (1 < nxt[1] && nxt[1] < map->width - 1)
-			|| visited[nxt[0]][nxt[1]] == FALSE)
+		if ((0 < nxt[0] && nxt[0] < map->height - 1)
+			&& (0 < nxt[1] && nxt[1] < map->width - 1)
+			&& visited[nxt[0]][nxt[1]] == FALSE
+			&& map->map[nxt[0]][nxt[1]] != '1')
 		{
-			if (ft_strncmp(&map->map[nxt[0]][nxt[1]], "E", 1))
+			if (map->map[nxt[0]][nxt[1]] == 'E')
 				return (TRUE);
 			visited[nxt[0]][nxt[1]] = TRUE;
 			enqueue(q, nxt[0], nxt[1]);
 		}
-		free(nxt);
 	}
 	return (FALSE);
 }
@@ -67,19 +74,22 @@ t_bool	bfs(t_map *map, t_queue *q, int x, int y)
 	int			i;
 	int			*pos;
 
-	bfs_init(visited, map->height, map->width);
+	visited = bfs_init(visited, map->height, map->width);
 	enqueue(q, x, y);
 	visited[x][y] = TRUE;
 	while (q->front < q->rear)
 	{
 		pos = dequeue(q);
-		i = 0;
-		if (_bfs(map, visited, q, pos) == 1)
+		if (pos)
 		{
+			i = 0;
+			if (_bfs(map, visited, q, pos) == TRUE)
+			{
+				free(pos);
+				return (TRUE);
+			}
 			free(pos);
-			return (TRUE);
 		}
-		free(pos);
 	}
 	free_matrix(visited);
 	return (FALSE);

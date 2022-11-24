@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:01:00 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/20 17:04:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/24 15:05:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	*dequeue(t_queue *q)
 {
 	int	*res;
 
+	if (q->front == q->rear)
+		return (NULL);
 	res = ft_calloc(3, sizeof(int));
 	res[0] = q->data[q->front][0];
 	res[1] = q->data[q->front][1];
