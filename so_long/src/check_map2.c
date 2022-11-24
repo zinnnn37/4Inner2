@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/24 15:40:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/24 15:45:39 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,5 @@ void	find_path(t_map *map)
 	free_matrix(q->data);
 	free(q);
 	q = NULL;
+	printf("Path exists!\n");
 }
