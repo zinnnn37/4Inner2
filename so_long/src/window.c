@@ -6,9 +6,8 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:48:45 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/25 11:48:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/25 13:51:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-

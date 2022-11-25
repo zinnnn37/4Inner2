@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:01:00 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/24 15:05:26 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/25 13:54:11 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ t_queue	*init_queue(t_queue *q, int h, int w)
 {
 	q = ft_calloc(1, sizeof(t_queue));
 	if (!q)
-		print_error("*ERROR* Fail to find path!\n");
+		print_error("*ERROR* Fail to allocate memory: fail to init queue\n");
 	q->data = ft_calloc(h * w, sizeof(int *));
 	if (!(q->data))
-		print_error("*ERROR* Fail to find path!\n");
+		print_error("*ERROR* Fail to allocate memory: fail to init queue\n");
 	q->size = h * w;
 	return (q);
 }
@@ -28,7 +28,7 @@ void	enqueue(t_queue *q, int i, int j)
 {
 	q->data[q->rear] = ft_calloc(3, sizeof(int));
 	if (!(q->data[q->rear]))
-		print_error("*ERROR* Fail to find path!\n");
+		print_error("*ERROR* Fail to allocate memory: fail to enqueue\n");
 	q->data[q->rear][0] = i;
 	q->data[q->rear][1] = j;
 	q->rear = (q->rear + 1) % q->size;

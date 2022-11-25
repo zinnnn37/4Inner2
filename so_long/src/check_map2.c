@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/24 15:45:39 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/25 13:54:19 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ int	**bfs_init(t_bool **visited, int h, int w)
 
 	visited = (t_bool **)ft_calloc(h + 1, sizeof(t_bool *));
 	if (!visited)
-		print_error("*ERROR* Fail to find path!\n");
+		print_error("*ERROR* Fail to allocate memory: fail to find path\n");
 	i = 0;
 	while (i < h)
 	{
 		visited[i] = (t_bool *)ft_calloc(w + 1, sizeof(t_bool));
 		if (!visited[i++])
-			print_error("*ERROR* Fail to find path!\n");
+			print_error("*ERROR* Fail to allocate memory: fail to find path\n");
 	}
 	return (visited);
 }
@@ -102,12 +102,9 @@ void	find_path(t_map *map)
 	int		*res;
 
 	q = init_queue(q, map->height - 2, map->width - 2);
-	if (!q)
-		print_error("*ERROR* Fail to find path!\n");
 	if (!bfs(map, q, map->p_x, map->p_y))
 		print_error("*ERROR* Path doesn't exist!\n");
 	free_matrix(q->data);
 	free(q);
 	q = NULL;
-	printf("Path exists!\n");
 }
