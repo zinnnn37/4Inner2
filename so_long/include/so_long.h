@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/19 17:14:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/25 14:25:36 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ void	check_map(t_map *map);
 void	find_path(t_map *map);
 void	free_all(t_map *map);
 void	print_error(char *str);
+void	start_game();
 
 #endif
