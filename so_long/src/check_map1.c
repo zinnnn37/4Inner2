@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:56:57 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/24 14:59:51 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/25 14:55:49 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	_check_elements(t_map *map, char c, int i)
 	{
 		if (map->e_x != 0 || map->e_y != 0)
 			print_error("*ERROR* Invalid map!5\n");
-		map->e_x = map->height;
+		map->e_x = map->height - 1;
 		map->e_y = i;
 	}
 	else if (c == 'C')
@@ -79,8 +79,7 @@ void	check_map(t_map *map)
 	i = 0;
 	while (map->map[++i])
 		check_valid(1, map->map[i], map);
-	if (map->height < 3 || map->width < 3 || map->p_x == 0 || map->p_y == 0
-		|| map->e_x == 0 || map->e_y == 0)
+	if (map->p_x == 0 || map->p_y == 0 || map->e_x == 0 || map->e_y == 0)
 		print_error("*ERROR* Invalid map!7\n");
 	check_valid(0, map->map[map->height - 1], map);
 	map->height--;
