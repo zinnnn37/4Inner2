@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:58:52 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/24 15:47:59 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:08:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_map	*ft_init(int argc, char **argv)
 		print_error("*ERROR* Check if the extension of map file is .ber!\n");
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		print_error("*ERROR* File doesn't exist!\n");
+		print_error("*ERROR* No such file!\n");
 	map = ft_calloc(1, sizeof(t_map));
 	get_map(fd, map);
 	close(fd);
