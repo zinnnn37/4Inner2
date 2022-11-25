@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:58:52 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/25 10:08:47 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/25 14:40:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	get_map(int fd, t_map *map)
 			break ;
 		tmp = ft_strjoin(line, s);
 		if (!tmp)
-			print_error("*ERROR* Fail to save map!\n");
+			print_error("*ERROR* Fail to allocate memory!: Fail to save map!\n");
 		free(line);
 		line = tmp;
 		free(s);
@@ -34,7 +34,7 @@ void	get_map(int fd, t_map *map)
 	}
 	map->map = ft_split(line, '\n');
 	if (!map->map)
-		print_error("*ERROR* Fail to save map!\n");
+		print_error("*ERROR* Fail to allocate memory!: Fail to save map!\n");
 	free(line);
 }
 
@@ -51,6 +51,8 @@ t_map	*ft_init(int argc, char **argv)
 	if (fd < 0)
 		print_error("*ERROR* No such file!\n");
 	map = ft_calloc(1, sizeof(t_map));
+	if (!map)
+		print_error("*ERROR* Fail to allocate memory!: Fail to save map\n");
 	get_map(fd, map);
 	close(fd);
 	return (map);

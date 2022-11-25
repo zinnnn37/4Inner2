@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:10:13 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/15 16:33:31 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/25 14:39:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ char	*get_next_line(int fd)
 	char	*res;
 	char	c;
 
-	if (fd < 0)
-		return (NULL);
 	res = NULL;
 	res = ft_join(res, '\0');
 	while (read(fd, &c, 1) > 0)
