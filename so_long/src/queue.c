@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:01:00 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/25 13:54:11 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:07:19 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ t_queue	*init_queue(t_queue *q, int h, int w)
 
 void	enqueue(t_queue *q, int i, int j)
 {
-	q->data[q->rear] = ft_calloc(3, sizeof(int));
+	if (!(q->data[q->rear]))
+		q->data[q->rear] = ft_calloc(3, sizeof(int));
 	if (!(q->data[q->rear]))
 		print_error("*ERROR* Fail to allocate memory: fail to enqueue\n");
 	q->data[q->rear][0] = i;
@@ -47,4 +48,23 @@ int	*dequeue(t_queue *q)
 	q->data[q->front] = NULL;
 	q->front = (q->front + 1) % q->size;
 	return (res);
+}
+
+void	free_q(t_queue *q)
+{
+	int	i;
+
+	i = -1;
+	while (++i < q->size)
+	{
+		if (q->data[i])
+		{
+			free(q->data[i]);
+			q->data[i] = NULL;
+		}
+	}
+	free(q->data);
+	q->data = NULL;
+	free(q);
+	q = NULL;
 }

@@ -6,33 +6,25 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 17:52:51 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/15 15:42:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/28 12:37:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s, char c)
 {
-	size_t	len1;
-	size_t	len2;
 	char	*res;
+	int		len;
+	int		i;
 
-	if (!s2)
-		return (NULL);
-	if (!s1)
-	{
-		s1 = ft_strdup("");
-		if (!s1)
-			return (NULL);
-	}
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	res = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
-	if (!res)
-		return (NULL);
-	ft_memset(res, 0, len1 + len2 + 1);
-	ft_strlcpy(res, s1, len1 + 1);
-	ft_strlcat(res + len1, s2, len2 + 1);
+	while (s[len])
+		len++;
+	res = (char *)malloc(sizeof(char) * (len + 2));
+	i = -1;
+	while (++i < len)
+		res[i] = s[i];
+	res[i] = c;
+	res[i + 1] = '\0';
 	return (res);
 }

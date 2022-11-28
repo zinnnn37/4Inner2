@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/25 13:54:19 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/28 14:30:13 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	free_matrix(int **matrix)
 	while (matrix[i])
 	{
 		free(matrix[i]);
-		matrix[i] = NULL;
+		matrix[i++] = NULL;
 	}
 	free(matrix);
 	matrix = NULL;
@@ -86,6 +86,7 @@ t_bool	bfs(t_map *map, t_queue *q, int x, int y)
 			if (_bfs(map, visited, q, pos) == TRUE)
 			{
 				free(pos);
+				free_matrix(visited);
 				return (TRUE);
 			}
 			free(pos);
@@ -99,12 +100,9 @@ void	find_path(t_map *map)
 {
 	t_queue	*q;
 	int		*pos;
-	int		*res;
 
 	q = init_queue(q, map->height - 2, map->width - 2);
 	if (!bfs(map, q, map->p_x, map->p_y))
 		print_error("*ERROR* Path doesn't exist!\n");
-	free_matrix(q->data);
-	free(q);
-	q = NULL;
+	free_q(q);
 }

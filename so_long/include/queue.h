@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:28:42 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/19 16:41:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/28 13:39:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int		*dequeue(t_queue *q);
 t_queue	*init_queue(t_queue *q, int h, int w);
 
 void	enqueue(t_queue *q, int i, int j);
+void	free_q(t_queue *q);
 
 #endif
