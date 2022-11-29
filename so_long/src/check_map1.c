@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:56:57 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/25 14:55:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/29 10:36:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	check_wall(char *line, t_map *map)
 {
 	map->width = ft_strlen(line);
 	if (map->width < 3)
-		print_error("*ERROR* Invalid map!1\n");
+		print_error("*ERROR* Invalid map!: one player and at least one exit\n");
 	while (*line)
 	{
 		if (*line != '1')
-			print_error("*ERROR* Invalid map!2\n");
+			print_error("*ERROR* Invalid map!: should be surrounded by wall\n");
 		line++;
 	}
 }
@@ -32,21 +32,16 @@ void	_check_elements(t_map *map, char c, int i)
 	else if (c == 'P')
 	{
 		if (map->p_x != 0 || map->p_y != 0)
-			print_error("*ERROR* Invalid map!4\n");
+			print_error("*ERROR* Invalid map!: should have only one player\n");
 		map->p_x = map->height - 1;
 		map->p_y = i;
 	}
 	else if (c == 'E')
-	{
-		if (map->e_x != 0 || map->e_y != 0)
-			print_error("*ERROR* Invalid map!5\n");
-		map->e_x = map->height - 1;
-		map->e_y = i;
-	}
+		map->exit++;
 	else if (c == 'C')
 		map->collections++;
 	else
-		print_error("*ERROR* Invalid map!6\n");
+		print_error("*ERROR* Invalid map!: should have 1, 0, P, E, C only\n");
 }
 
 void	check_elements(char *line, t_map *map)
@@ -55,8 +50,10 @@ void	check_elements(char *line, t_map *map)
 	int	i;
 
 	len = ft_strlen(line);
-	if (len != map->width || line[0] != '1' || line[map->width - 1] != '1')
-		print_error("*ERROR* Invalid map!3\n");
+	if (len != map->width)
+		print_error("*ERROR* Invalid map!: map should be rectangular\n");
+	if (line[0] != '1' || line[map->width - 1] != '1')
+		print_error("*ERROR* Invalid map!: should be surrounded by wall\n");
 	i = -1;
 	while (++i < len)
 		_check_elements(map, line[i], i);
@@ -79,8 +76,10 @@ void	check_map(t_map *map)
 	i = 0;
 	while (map->map[++i])
 		check_valid(1, map->map[i], map);
-	if (map->p_x == 0 || map->p_y == 0 || map->e_x == 0 || map->e_y == 0)
-		print_error("*ERROR* Invalid map!7\n");
+	if (map->p_x == 0 || map->p_y == 0)
+		print_error("*ERROR* Invalid map!: check the player\n");
+	if (map->exit == 0)
+		print_error("*ERROR* Invalid map!: at least one exit\n");
 	check_valid(0, map->map[map->height - 1], map);
 	map->height--;
 }

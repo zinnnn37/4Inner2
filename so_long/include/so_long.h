@@ -6,18 +6,18 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/25 14:25:36 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/29 10:26:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include <mlx.h>
 # include "./libft.h"
 # include "./queue.h"
 # include <fcntl.h>
 # include <string.h>
-# include "../mlx/mlx.h"
 
 # define SUCCESS 0
 # define FAILURE 1
@@ -34,8 +34,7 @@ typedef struct s_map
 	int		p_x;
 	int		p_y;
 	int		collections;
-	int		e_x;
-	int		e_y;
+	int		exit;
 }	t_map;
 
 t_map	*ft_init(int argc, char **argv);
