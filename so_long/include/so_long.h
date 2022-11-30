@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/29 12:46:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/30 11:58:05 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,26 +46,26 @@ typedef struct s_map
 	int		p_y;
 	int		collections;
 	int		exit;
-	t_img	*img;
+//	t_img	*img;
 }	t_map;
 
-typedef struct s_img
-{
-	void	*back;
-	void	*p_left;
-	void	*p_right;
-	void	*door_closed;
-	void	*door_opend;
-	void	*key;
-}	t_img;
+// typedef struct s_img
+// {
+// 	void	*back;
+// 	void	*p_left;
+// 	void	*p_right;
+// 	void	*door_closed;
+// 	void	*door_opend;
+// 	void	*key;
+// }	t_img;
 
-typedef struct s_win
-{
-	int		height;
-	int		width;
-	t_img	*img;
-	t_map	*map;
-}	t_win;
+// typedef struct s_win
+// {
+// 	int		height;
+// 	int		width;
+// 	t_img	*img;
+// 	t_map	*map;
+// }	t_win;
 
 t_map	*ft_init(int argc, char **argv);
 
