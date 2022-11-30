@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:31:14 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/30 13:34:51 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/30 13:41:56 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	free_map(char **matrix)
 
 void	end_game(t_map *map, int status)
 {
+	//mlx_destroy_window(map->mlx, map->win);
 	free_map(map->map);
 	// img, mlx, win free
 	free(map);

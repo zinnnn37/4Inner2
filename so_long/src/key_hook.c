@@ -6,13 +6,15 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:42:19 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/30 13:28:19 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/30 13:57:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-void	move_player
+void	move_player(t_map *map, int status, int dir)
+{
+}
 
 void	key_hook(int key, t_map *map)
 {
