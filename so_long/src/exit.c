@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:31:14 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/29 10:41:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/30 13:34:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,33 @@ void	free_all(t_map *map)
 	map->map = NULL;
 	free(map);
 	map = NULL;
+}
+
+void	free_map(char **matrix)
+{
+	int	i;
+
+	i = 0;
+	while (matrix[i])
+	{
+		free(matrix[i]);
+		matrix[i++] = NULL;
+	}
+	free(matrix);
+	matrix = NULL;
+}
+
+void	end_game(t_map *map, int status)
+{
+	free_map(map->map);
+	// img, mlx, win free
+	free(map);
+	map = NULL;
+	if (status == 0)
+	{
+		ft_putstr_fd("Congratulations! You suceed!\n", 1);
+		exit(SUCCESS);
+	}
+	else
+		print_error("You failed...\n");
 }

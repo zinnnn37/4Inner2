@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:58:52 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/30 12:03:33 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/30 12:10:35 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	get_map(int fd, t_map *map)
 
 t_map	*ft_init(int argc, char **argv)
 {
-	int		fd;
 	t_map	*map;
+	int		fd;
 
 	if (argc != 2)
 		print_error("*ERROR* Check the number of input file!\n");

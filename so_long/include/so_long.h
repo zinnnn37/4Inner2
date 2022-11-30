@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/30 11:58:05 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/30 13:37:13 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,40 +39,36 @@ typedef int	t_bool;
 
 typedef struct s_map
 {
+	void	*mlx;
+	void	*win;
 	char	**map;
 	int		height;
 	int		width;
 	int		p_x;
 	int		p_y;
-	int		collections;
+	int		c;
 	int		exit;
+	int		count;
 //	t_img	*img;
 }	t_map;
 
-// typedef struct s_img
-// {
-// 	void	*back;
-// 	void	*p_left;
-// 	void	*p_right;
-// 	void	*door_closed;
-// 	void	*door_opend;
-// 	void	*key;
-// }	t_img;
-
-// typedef struct s_win
-// {
-// 	int		height;
-// 	int		width;
-// 	t_img	*img;
-// 	t_map	*map;
-// }	t_win;
+typedef struct s_img
+{
+	void	*back;
+	void	*p_left;
+	void	*p_right;
+	void	*door_closed;
+	void	*door_opend;
+	void	*key;
+}	t_img;
 
 t_map	*ft_init(int argc, char **argv);
 
 void	check_map(t_map *map);
+void	end_game(t_map *map, int status);
 void	find_path(t_map *map);
 void	free_all(t_map *map);
 void	print_error(char *str);
-void	start_game();
+//void	start_game();
 
 #endif

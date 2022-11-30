@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:56:57 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/30 11:51:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/11/30 13:37:22 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	_check_elements(t_map *map, char c, int i)
 	else if (c == 'E')
 		map->exit++;
 	else if (c == 'C')
-		map->collections++;
+		map->c++;
 	else
 		print_error("*ERROR* Invalid map!: should have 1, 0, P, E, C only\n");
 }
