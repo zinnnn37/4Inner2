@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:28:17 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/30 13:38:56 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/01 13:19:19 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	map = ft_init(argc, argv);
 	check_map(map);
 	find_path(map);
-	win_init(map);
+//	win_init(map);
 	end_game(map, 0);
 //	start_game(map);
 	return (0);
