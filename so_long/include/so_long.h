@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/30 13:37:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/01 12:59:13 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@
 # define LEFT -1
 # define RIGHT 1
 
+# define IMG_W 50
+# define IMG_H 50
+
 typedef int	t_bool;
 
 typedef struct s_map
@@ -49,6 +52,8 @@ typedef struct s_map
 	int		c;
 	int		exit;
 	int		count;
+	int		win_x;
+	int		win_y;
 //	t_img	*img;
 }	t_map;
 
