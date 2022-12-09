@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2022/11/30 13:35:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:41:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,3 +106,10 @@ void	find_path(t_map *map)
 		print_error("*ERROR* Path doesn't exist!\n");
 	free_q(q);
 }
+
+/*
+	bfs가 아니라 dfs로 ㅉ야함
+	floodfill 알고리즘
+	재귀로 4방향을 다 돌면서 코인도 ++ 하면서
+	E에 도달하는지, 코인을 다 모을 수 있는지 확인해야 함
+*/
