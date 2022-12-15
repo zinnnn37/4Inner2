@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   4_move.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 12:39:11 by tblaase           #+#    #+#             */
-/*   Updated: 2021/10/08 15:38:37 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/12/15 12:18:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ void	ft_move(t_data *data, char pos, int dir)
 	else if (pos == 'x' && data->map->map[data->p_y][data->p_x + 1 * dir] == 'E'
 		&& data->collected != data->map->diamonds)
 		printf("Collect all diamonds before leaving\n");
-	ft_player_move(data, pos, dir);
+	ft_player_move(data, pos, dir); // above
 	if (data->map->map[data->p_y][data->p_x] == 'C')
-		ft_collect(data, pos, dir);
-	mlx_do_sync(data->mlx);
+		ft_collect(data, pos, dir); // above
+	mlx_do_sync(data->mlx); // mlx
 	printf("You moved %d times.\n", ++data->counter);
 }

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   1_map.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 12:32:53 by tblaase           #+#    #+#             */
-/*   Updated: 2021/12/08 16:18:08 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/12/15 12:21:33 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 void	ft_window_size(t_data *data, char **argv)
-/* will find the window size and check for some errors */
+/* 1. will find the window size and check for some errors */
 {
 	int	fd;
 
@@ -28,12 +28,13 @@ void	ft_window_size(t_data *data, char **argv)
 		printf("Error\nmap has to be .ber\n");
 		exit(EXIT_FAILURE);
 	}
-	data->size_x = (ft_line_length(fd) * IMG_W);
-	data->size_y = (ft_count_lines(fd, data->size_x, IMG_W) * IMG_H);
+	data->size_x = (ft_line_length(fd) * IMG_W); // libft
+	data->size_y = (ft_count_lines(fd, data->size_x, IMG_W) * IMG_H); // libft
 }
 
 void	ft_create_map(t_data *data)
 /* will fill the map with the corresponding images */
+// 배경을 안 깔아둠 > 추가해보자.. 먼저 따로 함수 생성해서 배경부터 좍 깔고
 {
 	data->map->x = 0;
 	data->map->y = 0;

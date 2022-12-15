@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 19:07:33 by tblaase           #+#    #+#             */
-/*   Updated: 2021/10/08 15:11:03 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/12/15 12:05:06 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	ft_init_help(t_data *data)
 }
 
 void	ft_init(t_data *data, t_map *map)
-/* initialises most of my used data inside the structs */
+/* 2. initialises most of my used data inside the structs */
 {
 	char	*relative_path;
 	int		img_width;

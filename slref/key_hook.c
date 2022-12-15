@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:51:04 by tblaase           #+#    #+#             */
-/*   Updated: 2021/10/08 15:12:21 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/12/15 12:19:19 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_key_hook(int keycode, t_data *data)
 	if (keycode == ESC)
 		ft_exit(data);
 	else if (keycode == W)
-		ft_move(data, 'y', UP);
+		ft_move(data, 'y', UP); // 4
 	else if (keycode == A)
 		ft_move(data, 'x', LEFT);
 	else if (keycode == S)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:14:33 by tblaase           #+#    #+#             */
-/*   Updated: 2021/12/08 14:36:05 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/12/15 12:05:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static void	ft_input_error(int	argc)
 }
 
 void	ft_parse_input(t_data *data, char **argv, int argc)
-/* will translate the .ber file into a 2-dimensional array of char * */
+/* 3. will translate the .ber file into a 2-dimensional array of char * */
 {
 	int		fd;
 	int		i;
