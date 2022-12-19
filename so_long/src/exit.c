@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:31:14 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/01 13:19:08 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:12:11 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	print_error(char *str)
 	exit(FAILURE);
 }
 
+/* ? */
 void	free_all(t_map *map)
 {
 	int	i;
@@ -50,16 +51,18 @@ void	free_map(char **matrix)
 
 void	end_game(t_map *map, int status)
 {
-	//mlx_destroy_window(map->mlx, map->win);
+	mlx_destroy_window(map->data->mlx, map->data->win);
 	free_map(map->map);
 	// img, mlx, win free
 	free(map);
 	map = NULL;
-	if (status == 0)
-	{
-		ft_putstr_fd("Congratulations! You suceed!\n", 1);
-		exit(SUCCESS);
-	}
-	else
-		print_error("You failed...\n");
+	ft_putstr_fd("========== YOU WIN! ==========\n", 1);
+	exit(SUCCESS);
+}
+
+int	give_up(int code, t_data *data)
+{
+	mlx_destroy_window(map->data->mlx, map->data->win);
+	printf("========== YOU LOSE ==========\n");
+	exit(FAILURE);
 }

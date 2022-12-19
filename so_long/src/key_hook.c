@@ -6,28 +6,31 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:42:19 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/15 10:49:14 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:10:49 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <so_long.h>
+#include "../include/so_long.h"
 
 void	move_player(t_map *map, int status, int dir)
 {
+	mlx_put_image_to_window(map->mlx, map->win, map->img->background,
+		)
 }
 
-void	key_hook(int key, t_map *map)
+int	key_hook(int key, t_map *map)
 {
 	if (key == ESC)
 		end_game(map, 1);
 	else if (key == W)
-		move_player(map, 'status', UP);
+		move_player(map, UP);
 	else if (key == A)
-		move_player(map, 'status', LEFT);
+		move_player(map, LEFT);
 	else if (key == S)
-		move_player(map, 'status', DOWN);
+		move_player(map, DOWN);
 	else if (key == D)
-		move_player(map, 'status', RIGHT);
+		move_player(map, RIGHT);
 	if (map->map[map->p_x][map->p_y] == 'E')
 		end_game(map, 0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/01 12:59:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:20:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,42 @@
 # define ESC 53
 # define UP -1
 # define DOWN 1
-# define LEFT -1
-# define RIGHT 1
+# define LEFT -2
+# define RIGHT 2
 
 # define IMG_W 50
 # define IMG_H 50
 
 typedef int	t_bool;
 
-typedef struct s_map
+typedef struct s_data
 {
 	void	*mlx;
 	void	*win;
+	int		collect;
+	int		counter;
+	int		win_x;
+	int		win_y;
+	int		x;
+	int		y;
+}	t_data;
+
+typedef struct s_img
+{
+	void	*background;
+	void	*front;
+	void	*back;
+	void	*left;
+	void	*right;
+	void	*closed;
+	void	*opened;
+	void	*key;
+	void	*stump;
+	void	*tmp;
+}	t_img;
+
+typedef struct s_map
+{
 	char	**map;
 	int		height;
 	int		width;
@@ -51,21 +75,9 @@ typedef struct s_map
 	int		p_y;
 	int		c;
 	int		exit;
-	int		count;
-	int		win_x;
-	int		win_y;
-//	t_img	*img;
+	t_img	*img;
+	t_data	*data;
 }	t_map;
-
-typedef struct s_img
-{
-	void	*back;
-	void	*p_left;
-	void	*p_right;
-	void	*door_closed;
-	void	*door_opend;
-	void	*key;
-}	t_img;
 
 t_map	*ft_init(int argc, char **argv);
 
@@ -74,6 +86,6 @@ void	end_game(t_map *map, int status);
 void	find_path(t_map *map);
 void	free_all(t_map *map);
 void	print_error(char *str);
-//void	start_game();
+void	init_game(t_map *map);
 
 #endif
