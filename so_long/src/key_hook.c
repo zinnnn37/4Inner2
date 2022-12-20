@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:42:19 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/19 18:10:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:40:38 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	move_player(t_map *map, int status, int dir)
 int	key_hook(int key, t_map *map)
 {
 	if (key == ESC)
-		end_game(map, 1);
+		give_up(map);
 	else if (key == W)
 		move_player(map, UP);
 	else if (key == A)

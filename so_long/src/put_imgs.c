@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 12:20:05 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/19 18:17:26 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:44:45 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	render_img(t_map *map)
 {
 	put_backround(map);
 	fill_map(map);
-	mlx_hook(map->data->win, 17, 1L << 2, give_up, map);
+	mlx_hook(map->data->win, 2, 0, give_up, map); // ?
 	mlx_key_hook(map->data->win, key_hook, map);
 }
 // 1L << 2 button press mask
