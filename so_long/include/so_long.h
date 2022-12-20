@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/19 16:20:18 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/20 17:51:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@
 # define S 1
 # define D 2
 # define ESC 53
-# define UP -1
+# define UP 13
 # define DOWN 1
-# define LEFT -2
+# define LEFT 0
 # define RIGHT 2
 
 # define IMG_W 50
