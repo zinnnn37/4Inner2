@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 12:17:00 by minjinki          #+#    #+#              #
-#    Updated: 2022/12/21 14:12:22 by minjinki         ###   ########.fr        #
+#    Updated: 2022/12/21 14:27:50 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,15 +16,15 @@ HDRS		=	include
 LIBFT		=	src/libft
 
 SRC_DIR		=	src/
-SRC_FILES	=	check_map1.c\
-				check_map2.c\
-				exit.c\
-				game.c\
-				init.c\
-				key_hook.c\
-				put_imgs.c\
-				queue.c\
-				so_long.c\
+SRC_FILES	=	check_map1\
+				check_map2\
+				exit\
+				game\
+				init\
+				key_hook\
+				put_imgs\
+				queue\
+				so_long\
 
 MLX			=	mlx/
 

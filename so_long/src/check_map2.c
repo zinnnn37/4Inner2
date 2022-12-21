@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zzzzzzzcheck_map2.c                                :+:      :+:    :+:   */
+/*   check_map2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/19 12:39:18 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:29:56 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ t_bool	bfs(t_map *map, t_queue *q, int x, int y)
 	int			i;
 	int			*pos;
 
+	visited = NULL;
 	visited = bfs_init(visited, map->height, map->width);
 	enqueue(q, x, y);
 	visited[x][y] = TRUE;
@@ -99,8 +100,8 @@ t_bool	bfs(t_map *map, t_queue *q, int x, int y)
 void	find_path(t_map *map)
 {
 	t_queue	*q;
-	int		*pos;
 
+	q = NULL;
 	q = init_queue(q, map->height - 2, map->width - 2);
 	if (!bfs(map, q, map->p_x, map->p_y))
 		print_error("*ERROR* Path doesn't exist!\n");

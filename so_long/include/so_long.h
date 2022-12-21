@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/20 17:51:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:46:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,21 @@ typedef struct s_map
 	t_data	*data;
 }	t_map;
 
+int		give_up(t_map *map);
+int		key_hook(int key, t_map *map);
+
 t_map	*ft_init(int argc, char **argv);
 
 void	check_map(t_map *map);
-void	end_game(t_map *map, int status);
+void	end_game(t_map *map);
 void	find_path(t_map *map);
 void	free_all(t_map *map);
 void	print_error(char *str);
 void	init_game(t_map *map);
+void	move_player(t_map *map, int dir);
+void	put_backround(t_map *map);
+void	fill_map(t_map *map);
+void	put_player(t_map *map);
+void	put_obj(t_map *map, char *path);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:42:19 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/21 12:16:47 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:45:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	collect_key(t_map *map)
+void	collect_key(t_map *map, int dir)
 {
 	map->data->collect++;
 	map->map[map->p_x][map->p_y] = '0';
@@ -22,6 +22,30 @@ void	collect_key(t_map *map)
 	{
 		// E 전부 opend로 바꾸기
 	}
+	move_player(map, dir);
+}
+
+void	should_collect_all_keys(t_map *map, int dir)
+{
+	if (dir == UP && map->map[map->p_x - 1][map->p_y] != '1'
+		&& (map->map[map->p_x - 1][map->p_y] != 'E'
+		|| map->c != map->data->collect))
+		ft_putstr_fd("You must collect all keys in the map!\n", 1);
+	else if (dir == DOWN && map->map[map->p_x + 1][map->p_y] != '1'
+		&& (map->map[map->p_x - 1][map->p_y] != 'E'
+		|| map->c != map->data->collect))
+		ft_putstr_fd("You must collect all keys in the map!\n", 1);
+	else if (dir == LEFT && map->map[map->p_x][map->p_y - 1] != '1'
+		&& (map->map[map->p_x][map->p_y - 1] != 'E'
+		|| map->c != map->data->collect))
+		ft_putstr_fd("You must collect all keys in the map!\n", 1);
+	else if (dir == RIGHT && map->map[map->p_x][map->p_y + 1] != '1'
+		&& (map->map[map->p_x][map->p_y + 1] != 'E'
+		|| map->c != map->data->collect))
+		ft_putstr_fd("You must collect all keys in the map!\n", 1);
+	if (map->map[map->p_x][map->p_y] == 'C')
+		collect_key(map, dir);
+	move_player(map, dir);
 }
 
 void	move_player(t_map *map, int dir)
@@ -42,7 +66,7 @@ void	move_player(t_map *map, int dir)
 
 void	move(t_map *map, int dir)
 {
-	mlx_put_image_to_window(map->mlx, map->win, map->img->background,
+	mlx_put_image_to_window(map->data->mlx, map->data->win, map->img->background,
 		map->data->win_x, map->data->win_y);
 	if (dir == UP && map->map[map->p_x - 1][map->p_y] != '1'
 		&& (map->map[map->p_x - 1][map->p_y] != 'E' || map->c == map->data->collect))
@@ -53,7 +77,7 @@ void	move(t_map *map, int dir)
 	else if (dir == LEFT && map->map[map->p_x][map->p_y - 1] != '1'
 		&& (map->map[map->p_x][map->p_y - 1] != 'E' || map->c == map->data->collect))
 		map->p_y--;
-	else if (dir == right && map->map[map->p_x][map->p_y + 1] != '1'
+	else if (dir == RIGHT && map->map[map->p_x][map->p_y + 1] != '1'
 		&& (map->map[map->p_x][map->p_y + 1] != 'E' || map->c == map->data->collect))
 		map->p_y++;
 	else
@@ -61,26 +85,7 @@ void	move(t_map *map, int dir)
 	//mlx_do_sync(map->data->mlx);
 	ft_putstr_fd("You walked ", 1);
 	ft_putnbr_fd(++map->data->counter, 1);
-	ft_putstr_fd(" steps\n");
-}
-
-void	should_collect_all_keys(t_map *map, int dir)
-{
-	if (dir == UP && map->map[map->p_x - 1][map->p_y] != '1'
-		&& (map->map[map->p_x - 1][map->p_y] != 'E' || map->c != map->data->collect))
-		ft_putstr_fd("You must collect all keys in the map!\n");
-	else if (dir == DOWN && map->map[map->p_x + 1][map->p_y] != '1'
-		&& (map->map[map->p_x - 1][map->p_y] != 'E' || map->c != map->data->collect))
-		ft_putstr_fd("You must collect all keys in the map!\n");
-	else if (dir == LEFT && map->map[map->p_x][map->p_y - 1] != '1'
-		&& (map->map[map->p_x][map->p_y - 1] != 'E' || map->c != map->data->collect))
-		ft_putstr_fd("You must collect all keys in the map!\n");
-	else if (dir == right && map->map[map->p_x][map->p_y + 1] != '1'
-		&& (map->map[map->p_x][map->p_y + 1] != 'E' || map->c != map->data->collect))
-		ft_putstr_fd("You must collect all keys in the map!\n");
-	if (map->map[map->p_x][map->p_y] == 'C')
-		collect_key(map, dir);
-	move_player(map, dir);
+	ft_putstr_fd(" steps\n", 1);
 }
 
 int	key_hook(int key, t_map *map)
@@ -97,6 +102,6 @@ int	key_hook(int key, t_map *map)
 		move(map, RIGHT);
 	if (map->map[map->p_x][map->p_y] == 'E')
 		if (map->data->collect == map->c)
-			end_game(map, 0);
+			end_game(map);
 	return (0);
 }
