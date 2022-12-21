@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:42:19 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/20 20:10:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/21 12:16:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ void	collect_key(t_map *map)
 	map->map[map->p_x][map->p_y] = '0';
 	mlx_put_image_to_window(map->data->mlx, map->data->win, map->img->background,
 		map->p_x * IMG_W, map->p_y * IMG_H);
+	if (map->c == map->data->collect)
+	{
+		// E 전부 opend로 바꾸기
+	}
 }
 
 void	move_player(t_map *map, int dir)
