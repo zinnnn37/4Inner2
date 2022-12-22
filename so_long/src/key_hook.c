@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:42:19 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/21 14:45:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/22 10:56:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,23 @@ void	move_player(t_map *map, int dir)
 
 void	move(t_map *map, int dir)
 {
-	mlx_put_image_to_window(map->data->mlx, map->data->win, map->img->background,
-		map->data->win_x, map->data->win_y);
+	mlx_put_image_to_window(map->data->mlx, map->data->win,
+		map->img->background, map->data->win_x, map->data->win_y);
 	if (dir == UP && map->map[map->p_x - 1][map->p_y] != '1'
-		&& (map->map[map->p_x - 1][map->p_y] != 'E' || map->c == map->data->collect))
+		&& (map->map[map->p_x - 1][map->p_y] != 'E'
+		|| map->c == map->data->collect))
 		map->p_x--;
 	else if (dir == DOWN && map->map[map->p_x + 1][map->p_y] != '1'
-		&& (map->map[map->p_x - 1][map->p_y] != 'E' || map->c == map->data->collect))
+		&& (map->map[map->p_x - 1][map->p_y] != 'E'
+		|| map->c == map->data->collect))
 		map->p_x++;
 	else if (dir == LEFT && map->map[map->p_x][map->p_y - 1] != '1'
-		&& (map->map[map->p_x][map->p_y - 1] != 'E' || map->c == map->data->collect))
+		&& (map->map[map->p_x][map->p_y - 1] != 'E'
+		|| map->c == map->data->collect))
 		map->p_y--;
 	else if (dir == RIGHT && map->map[map->p_x][map->p_y + 1] != '1'
-		&& (map->map[map->p_x][map->p_y + 1] != 'E' || map->c == map->data->collect))
+		&& (map->map[map->p_x][map->p_y + 1] != 'E'
+		|| map->c == map->data->collect))
 		map->p_y++;
 	else
 		should_collect_all_keys(map, dir);
