@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/02 15:37:44 by minjinki          #+#    #+#              #
-#    Updated: 2022/09/16 13:39:08 by minjinki         ###   ########.fr        #
+#    Updated: 2022/12/22 18:58:42 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ $(NAME)		:	$(OBJT)
 				cp libft/libft.a ./$(NAME)
 				$(AR) $(ARFLAGS) $@ $^
 
-%.o         :   $(SRC_DIR)%.c
+%.o			:	$(SRC_DIR)%.c
 				$(CC) $(CFLAGS) -c $^ -o $@ -I $(HDRS)
 
 clean		:
