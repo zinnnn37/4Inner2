@@ -6,14 +6,15 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 12:17:00 by minjinki          #+#    #+#              #
-#    Updated: 2022/12/21 14:27:50 by minjinki         ###   ########.fr        #
+#    Updated: 2022/12/22 16:31:17 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	so_long
 
 HDRS		=	include
-LIBFT		=	src/libft
+LIBFT		=	src/libft/
+LIBFT_LIB	=	$(LIBFT)libft.a
 
 SRC_DIR		=	src/
 SRC_FILES	=	check_map1\
@@ -27,13 +28,14 @@ SRC_FILES	=	check_map1\
 				so_long\
 
 MLX			=	mlx/
+MLX_LIB		=	$(MLX)libmlx.dylib
 
 SRCS		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS		=	$(SRCS:%.c=%.o)
 
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
-CLIB		=	-Lmlx -lmlx -framework OpenGL -framework Appkit -Imlx
+CLIB		=	-Lmlx -lmlx -framework OpenGL -framework Appkit
 RM			=	rm -f
 AR			=	ar
 ARFLAGS		=	src
@@ -41,25 +43,22 @@ ARFLAGS		=	src
 all			:	makefile $(NAME)
 
 %.o			:	%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -IHDRS -c $< -o $@
 
-makefile	:
+$(NAME)		:	$(OBJS)
 	make -C $(MLX) all
 	make -C $(LIBFT) all
-
-$(NAME)		:	$(OBJ)
-	$(CC) $(CFLAGS) $(CLIB) $(SRCS) -o $(NAME)
+	$(CC) $(CFLAGS) $(CLIB) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME) -I $(HDRS)
 	install_name_tool -change libmlx.dylib mlx/libmlx.dylib $(NAME)
 
 clean		:
 	$(MAKE) -C $(MLX) clean
 	$(MAKE) -C $(LIBFT) clean
-	RM $(OBJS)
+	$(RM) $(OBJS)
 
 fclean		:	clean
-	$(MAKE) -C $(MLX) fclean
 	$(MAKE) -C $(LIBFT) fclean
-	RM $(NAME)
+	$(RM) $(NAME)
 
 re			:
 	$(MAKE) fclean

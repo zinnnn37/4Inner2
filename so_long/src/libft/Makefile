@@ -6,20 +6,22 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 17:47:48 by minjinki          #+#    #+#              #
-#    Updated: 2022/12/21 14:51:18 by minjinki         ###   ########.fr        #
+#    Updated: 2022/12/22 16:36:08 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		=\
 			ft_calloc.c\
+			ft_memset.c\
 			ft_putchar_fd.c\
-			ft_putendl_fd.c\
 			ft_putnbr_fd.c\
 			ft_putstr_fd.c\
 			ft_split.c\
 			ft_strcmp.c\
 			ft_strdup.c\
 			ft_strjoin.c\
+			ft_strlcat.c\
+			ft_strlcpy.c\
 			ft_strlen.c\
 			get_next_line.c\
 

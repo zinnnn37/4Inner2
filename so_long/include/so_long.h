@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/21 14:46:14 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/22 17:03:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,6 @@ void	put_backround(t_map *map);
 void	fill_map(t_map *map);
 void	put_player(t_map *map);
 void	put_obj(t_map *map, char *path);
+void	render_img(t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 12:20:05 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/21 14:45:19 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/22 17:26:39 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	render_img(t_map *map)
 {
 	put_backround(map);
-	fill_map(map);
-	mlx_hook(map->data->win, 2, 0, give_up, map); // 빼면 안되나
-	mlx_key_hook(map->data->win, key_hook, map);
+//	fill_map(map);
+//	mlx_hook(map->data->win, 2, 0, give_up, map); // 빼면 안되나
+//	mlx_key_hook(map->data->win, key_hook, map);
 }
 // 1L << 2 button press mask
 
@@ -52,16 +52,16 @@ void	put_backround(t_map *map)
 	int	w;
 
 	h = 0;
-	while (h < map->height)
+	while (h < map->data->win_y)
 	{
 		w = 0;
-		while (w < map->width)
+		while (w < map->data->win_x)
 		{
 			mlx_put_image_to_window(map->data->mlx, map->data->win,
 				map->img->background, w, h);
-			w += 1;
+			w += IMG_W;
 		}
-		h += 1;
+		h += IMG_H;
 	}
 }
 

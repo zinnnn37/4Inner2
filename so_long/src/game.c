@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:48:45 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/19 16:20:23 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/22 17:02:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	init_game(t_map *map)
 		print_error("*ERROR* Fail to allocate memory!\n");
 	init_data(map, data);
 	map->img = img;
-	//render_img(map);
+	render_img(map);
 	init_img(map);
 	printf("%d\n", data->win_x);
 }
