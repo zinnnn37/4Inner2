@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 12:20:05 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/22 17:26:39 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/22 18:32:09 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 void	render_img(t_map *map)
 {
 	put_backround(map);
-//	fill_map(map);
-//	mlx_hook(map->data->win, 2, 0, give_up, map); // 빼면 안되나
-//	mlx_key_hook(map->data->win, key_hook, map);
+	fill_map(map);
+	mlx_key_hook(map->data->win, key_hook, map);
 }
 // 1L << 2 button press mask
 
@@ -32,15 +31,15 @@ void	fill_map(t_map *map)
 			if (map->map[map->data->y][map->data->x] == 'P')
 				put_player(map);
 			else if (map->map[map->data->y][map->data->x] == '1')
-				put_obj(map, "../img/stump.xpm");
+				put_obj(map, "./img/stump.xpm");
 			else if (map->map[map->data->y][map->data->x] == 'C')
-				put_obj(map, "../img/key.xpm");
+				put_obj(map, "./img/key.xpm");
 			else if (map->map[map->data->y][map->data->x] == 'E')
 			{
 				if (map->data->collect == map->c)
-					put_obj(map, "../img/opened.xpm");
+					put_obj(map, "./img/opened.xpm");
 				else
-					put_obj(map, "../img/closed.xpm");
+					put_obj(map, "./img/closed.xpm");
 			}
 		}
 	}
@@ -52,6 +51,8 @@ void	put_backround(t_map *map)
 	int	w;
 
 	h = 0;
+	printf("y: %d, %d\n", map->data->win_y, map->height * IMG_H);
+	printf("x: %d, %d\n", map->data->win_x, map->width * IMG_W);
 	while (h < map->data->win_y)
 	{
 		w = 0;

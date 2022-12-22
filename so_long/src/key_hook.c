@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:42:19 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/22 10:56:27 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/22 18:33:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,19 @@ void	move(t_map *map, int dir)
 {
 	mlx_put_image_to_window(map->data->mlx, map->data->win,
 		map->img->background, map->data->win_x, map->data->win_y);
-	if (dir == UP && map->map[map->p_x - 1][map->p_y] != '1'
+	if (dir == UP && map->map[map->p_x][map->p_y - 1] != '1'
 		&& (map->map[map->p_x - 1][map->p_y] != 'E'
 		|| map->c == map->data->collect))
 		map->p_x--;
-	else if (dir == DOWN && map->map[map->p_x + 1][map->p_y] != '1'
+	else if (dir == DOWN && map->map[map->p_x][map->p_y + 1] != '1'
 		&& (map->map[map->p_x - 1][map->p_y] != 'E'
 		|| map->c == map->data->collect))
 		map->p_x++;
-	else if (dir == LEFT && map->map[map->p_x][map->p_y - 1] != '1'
+	else if (dir == LEFT && map->map[map->p_x - 1][map->p_y] != '1'
 		&& (map->map[map->p_x][map->p_y - 1] != 'E'
 		|| map->c == map->data->collect))
 		map->p_y--;
-	else if (dir == RIGHT && map->map[map->p_x][map->p_y + 1] != '1'
+	else if (dir == RIGHT && map->map[map->p_x + 1][map->p_y] != '1'
 		&& (map->map[map->p_x][map->p_y + 1] != 'E'
 		|| map->c == map->data->collect))
 		map->p_y++;
@@ -92,17 +92,17 @@ void	move(t_map *map, int dir)
 	ft_putstr_fd(" steps\n", 1);
 }
 
-int	key_hook(int key, t_map *map)
+int	key_hook(int keycode, t_map *map)
 {
-	if (key == ESC)
+	if (keycode == ESC)
 		give_up(map);
-	else if (key == W)
+	else if (keycode == W)
 		move(map, UP);
-	else if (key == A)
+	else if (keycode == A)
 		move(map, LEFT);
-	else if (key == S)
+	else if (keycode == S)
 		move(map, DOWN);
-	else if (key == D)
+	else if (keycode == D)
 		move(map, RIGHT);
 	if (map->map[map->p_x][map->p_y] == 'E')
 		if (map->data->collect == map->c)
