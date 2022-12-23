@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:42:19 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/22 18:33:48 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/23 13:25:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,12 @@ void	move_player(t_map *map, int dir)
 			map->p_x * IMG_W, map->p_y * IMG_H);
 }
 
-void	move(t_map *map, int dir)
+void	move(t_map *map, int dir, int status)
 {
 	mlx_put_image_to_window(map->data->mlx, map->data->win,
 		map->img->background, map->data->win_x, map->data->win_y);
+	// status == 0 > p_x + dir else p_y + dir
+	// 밑에서는 collect == c일 때랑 아닐 때
 	if (dir == UP && map->map[map->p_x][map->p_y - 1] != '1'
 		&& (map->map[map->p_x - 1][map->p_y] != 'E'
 		|| map->c == map->data->collect))
@@ -97,13 +99,13 @@ int	key_hook(int keycode, t_map *map)
 	if (keycode == ESC)
 		give_up(map);
 	else if (keycode == W)
-		move(map, UP);
+		move(map, UP, 0);
 	else if (keycode == A)
-		move(map, LEFT);
+		move(map, LEFT, 1);
 	else if (keycode == S)
-		move(map, DOWN);
+		move(map, DOWN, 0);
 	else if (keycode == D)
-		move(map, RIGHT);
+		move(map, RIGHT, 1);
 	if (map->map[map->p_x][map->p_y] == 'E')
 		if (map->data->collect == map->c)
 			end_game(map);
