@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/27 18:48:57 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/29 15:57:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@
 # define DOWN 1
 # define LEFT -1
 # define RIGHT 1
+
+# define X 1
+# define Y 0
 
 # define IMG_W 50
 # define IMG_H 50

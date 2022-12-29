@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:42:19 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/27 18:55:55 by minjinki         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:02:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	move_player(t_map *map, int dir, int status)
 
 void	collect_key(t_map *map, int dir, int status)
 {
-	if (map->map[map->p_x][map->p_y] == 'C')
+	if (map->map[map->p_y][map->p_x] == 'C')
 	{
 		map->data->collect++;
-		map->map[map->p_x][map->p_y] = '0';
+		map->map[map->p_y][map->p_x] = '0';
 		move(map, 0, status);
 	}
 	ft_putstr_fd("You walked ", 1);
@@ -46,25 +46,29 @@ void	move(t_map *map, int dir, int status)
 {
 	mlx_put_image_to_window(map->data->mlx, map->data->win,
 		map->img->background, map->p_x * IMG_W, map->p_y * IMG_H);
-	if (status == 0 && map->map[map->p_x][map->p_y + dir] != '1'
-		&& (map->map[map->p_x][map->p_y + dir] != 'E'
+	if (status == Y && map->map[map->p_y + dir][map->p_x] != '1'
+		&& (map->map[map->p_y + dir][map->p_x] != 'E'
 		|| map->c == map->data->collect))
+	{
 		map->p_y += dir;
-	else if (status == 1 && map->map[map->p_x + dir][map->p_y] != '1'
-		&& (map->map[map->p_x + dir][map->p_y] != 'E'
+		collect_key(map, dir, status);
+	}
+	else if (status == X && map->map[map->p_y][map->p_x + dir] != '1'
+		&& (map->map[map->p_y][map->p_x + dir] != 'E'
 		|| map->c == map->data->collect))
+	{
 		map->p_x += dir;
-	else if (status == 0 && map->map[map->p_x][map->p_y + dir] != '1'
-		&& (map->map[map->p_x][map->p_y + dir] == 'E'
+		collect_key(map, dir, status);
+	}
+	else if (status == Y && map->map[map->p_y + dir][map->p_x] != '1'
+		&& (map->map[map->p_y + dir][map->p_x] == 'E'
 		|| map->c != map->data->collect))
 		ft_putstr_fd("You must collect all keys in the map!\n", 1);
-	else if (status == 1 && map->map[map->p_x + dir][map->p_y] != '1'
-		&& (map->map[map->p_x + dir][map->p_y] == 'E'
+	else if (status == X && map->map[map->p_y][map->p_x + dir] != '1'
+		&& (map->map[map->p_y][map->p_x + dir] == 'E'
 		|| map->c != map->data->collect))
 		ft_putstr_fd("You must collect all keys in the map!\n", 1);
 	//mlx_do_sync(map->data->mlx);
-	printf("x: %d, y: %d\n", map->p_x, map->p_y);
-	collect_key(map, dir, status);
 }
 
 int	key_hook(int keycode, t_map *map)
@@ -72,14 +76,14 @@ int	key_hook(int keycode, t_map *map)
 	if (keycode == ESC)
 		give_up(map);
 	else if (keycode == W)
-		move(map, UP, 0);
+		move(map, UP, Y);
 	else if (keycode == A)
-		move(map, LEFT, 1);
+		move(map, LEFT, X);
 	else if (keycode == S)
-		move(map, DOWN, 0);
+		move(map, DOWN, Y);
 	else if (keycode == D)
-		move(map, RIGHT, 1);
-	if (map->map[map->p_x][map->p_y] == 'E')
+		move(map, RIGHT, X);
+	if (map->map[map->p_y][map->p_x] == 'E')
 		if (map->data->collect == map->c)
 			end_game(map);
 	return (0);
