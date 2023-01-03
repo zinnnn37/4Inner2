@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/03 15:33:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:49:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_bool	_bfs(t_map *map, t_bool **visited, t_queue *q, int *pos)
 				map->data->counter++;
 			visited[nxt[0]][nxt[1]] = TRUE;
 			enqueue(q, nxt[0], nxt[1]);
-		}
+		} 
 	}
 	return (FALSE);
 }
