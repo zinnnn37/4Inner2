@@ -43,7 +43,7 @@ int	**bfs_init(t_bool **visited, int h, int w)
 	return (visited);
 }
 
-t_bool	_bfs(t_map *map, t_bool **visited, t_queue *q, int *pos)
+t_bool	_bfs(t_map *map, t_bool **visit, t_queue *q, int *pos)
 {
 	static int	d[4] = {1, 0, -1, 0};
 	int			i;
@@ -56,8 +56,7 @@ t_bool	_bfs(t_map *map, t_bool **visited, t_queue *q, int *pos)
 		nxt[1] = pos[1] + d[3 - i];
 		if ((0 < nxt[0] && nxt[0] < map->height - 1)
 			&& (0 < nxt[1] && nxt[1] < map->width - 1)
-			&& visited[nxt[0]][nxt[1]] == FALSE
-			&& map->map[nxt[0]][nxt[1]] != '1')
+			&& visit[nxt[0]][nxt[1]] == FALSE && map->map[nxt[0]][nxt[1]] != '1')
 		{
 			if (map->map[nxt[0]][nxt[1]] == 'E')
 				map->exit++;
@@ -65,7 +64,7 @@ t_bool	_bfs(t_map *map, t_bool **visited, t_queue *q, int *pos)
 				map->data->counter++;
 			if (map->data->counter == map->c && map->exit > 0)
 				return (TRUE);
-			visited[nxt[0]][nxt[1]] = TRUE;
+			visit[nxt[0]][nxt[1]] = TRUE;
 			enqueue(q, nxt[0], nxt[1]);
 		} 
 	}
