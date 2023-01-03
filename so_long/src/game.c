@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:48:45 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/03 14:46:25 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:33:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	init_img(t_map *map)
 			"./img/opened.xpm", &img_w, &img_h);
 	map->img->key = mlx_xpm_file_to_image(map->data->mlx,
 			"./img/key.xpm", &img_w, &img_h);
-	map->img->stump = mlx_xpm_file_to_image(map->data->mlx,
-			"./img/stump.xpm", &img_w, &img_h);
+	map->img->flower = mlx_xpm_file_to_image(map->data->mlx,
+			"./img/flower.xpm", &img_w, &img_h);
 }
 
 void	init_game(t_map *map)

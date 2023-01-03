@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/03 14:44:41 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:33:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_img
 	void	*closed;
 	void	*opened;
 	void	*key;
-	void	*stump;
+	void	*flower;
 	void	*tmp;
 }	t_img;
 

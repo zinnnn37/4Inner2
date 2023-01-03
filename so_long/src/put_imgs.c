@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 12:20:05 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/03 14:21:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:32:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	fill_map(t_map *map)
 			if (map->map[map->data->y][map->data->x] == 'P')
 				put_player(map);
 			else if (map->map[map->data->y][map->data->x] == '1')
-				put_obj(map, "./img/stump.xpm");
+				put_obj(map, "./img/flower.xpm");
 			else if (map->map[map->data->y][map->data->x] == 'C')
 				put_obj(map, "./img/key.xpm");
 			else if (map->map[map->data->y][map->data->x] == 'E')
