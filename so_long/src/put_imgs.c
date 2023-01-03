@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 12:20:05 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/03 15:32:32 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:06:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ void	put_obj(t_map *map, char *path)
 
 void	put_player(t_map *map)
 {
-	map->p_x = map->data->x;
-	map->p_y = map->data->y;
 	mlx_put_image_to_window(map->data->mlx, map->data->win, map->img->front,
 		map->p_x * IMG_W, map->p_y * IMG_H);
-	map->map[map->p_x][map->p_y] = '0';
+	map->map[map->p_y][map->p_x] = '0';
 }

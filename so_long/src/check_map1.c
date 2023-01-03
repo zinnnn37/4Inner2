@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:56:57 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/29 12:13:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:06:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	_check_elements(t_map *map, char c, int i)
 	{
 		if (map->p_x != 0 || map->p_y != 0)
 			print_error("*ERROR* Invalid map!: should have only one player\n");
-		map->p_x = map->height - 1;
-		map->p_y = i;
+		map->p_y = map->height - 1;
+		map->p_x = i;
 	}
 	else if (c == 'E')
 		map->exit++;
