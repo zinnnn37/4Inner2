@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:42:19 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/29 16:02:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/03 12:02:15 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	collect_key(t_map *map, int dir, int status)
 	{
 		map->data->collect++;
 		map->map[map->p_y][map->p_x] = '0'; // 바꿔야 한번 더 갈 때 collect 값 그대로
-		mlx_put_image_to_window(map->data->mlx->map->data->win,
+		mlx_put_image_to_window(map->data->mlx, map->data->win,
 			map->img->background, map->p_x * IMG_W, map->p_y * IMG_H); // 열쇠 가리기
 	}
 	move_player(map, dir, status);
