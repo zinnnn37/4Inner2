@@ -6,11 +6,33 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:42:19 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/03 12:02:15 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:54:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	open_chest(t_map *map)
+{
+	int	w;
+	int	h;
+
+	h = -1;
+	while (++h < map->height)
+	{
+		w = -1;
+		while (++w < map->width)
+		{
+			if (map->map[h][w] == 'E')
+			{
+				mlx_put_image_to_window(map->data->mlx, map->data->win,
+					map->img->background, w * IMG_W, h * IMG_H);
+				mlx_put_image_to_window(map->data->mlx, map->data->win,
+					map->img->opened, w * IMG_W, h * IMG_H);
+			}
+		}
+	}
+}
 
 void	move_player(t_map *map, int dir, int status)
 {
@@ -35,6 +57,8 @@ void	collect_key(t_map *map, int dir, int status)
 	if (map->map[map->p_y][map->p_x] == 'C')
 	{
 		map->data->collect++;
+		if (map->c == map->data->collect)
+			open_chest(map);
 		map->map[map->p_y][map->p_x] = '0'; // 바꿔야 한번 더 갈 때 collect 값 그대로
 		mlx_put_image_to_window(map->data->mlx, map->data->win,
 			map->img->background, map->p_x * IMG_W, map->p_y * IMG_H); // 열쇠 가리기
