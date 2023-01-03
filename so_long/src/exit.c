@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:31:14 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/03 15:33:36 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:09:01 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,6 @@ void	print_error(char *str)
 {
 	ft_putstr_fd(str, 2);
 	exit(FAILURE);
-}
-
-/* ? */
-void	free_all(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	while (i < map->height)
-	{
-		free(map->map[i]);
-		map->map[i++] = NULL;
-	}
-	free(map->map);
-	map->map = NULL;
-	free(map);
-	map = NULL;
 }
 
 void	free_map(char **matrix)
