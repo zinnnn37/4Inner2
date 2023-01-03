@@ -14,6 +14,8 @@
 
 void	move_player(t_map *map, int dir, int status)
 {
+	mlx_put_image_to_window(map->data->mlx, map->data->win,
+		map->img->background, map->data->x * IMG_W, map->data->y * IMG_H); // 기존 위치 background로
 	if (dir == -1 && status == 0)
 		mlx_put_image_to_window(map->data->mlx, map->data->win, map->img->back,
 			map->p_x * IMG_W, map->p_y * IMG_H);
@@ -33,19 +35,22 @@ void	collect_key(t_map *map, int dir, int status)
 	if (map->map[map->p_y][map->p_x] == 'C')
 	{
 		map->data->collect++;
-		map->map[map->p_y][map->p_x] = '0';
-		move(map, 0, status);
+		map->map[map->p_y][map->p_x] = '0'; // 바꿔야 한번 더 갈 때 collect 값 그대로
+		mlx_put_image_to_window(map->data->mlx->map->data->win,
+			map->img->background, map->p_x * IMG_W, map->p_y * IMG_H); // 열쇠 가리기
 	}
+	move_player(map, dir, status);
 	ft_putstr_fd("You walked ", 1);
 	ft_putnbr_fd(++map->data->counter, 1);
 	ft_putstr_fd(" steps\n", 1);
-	move_player(map, dir, status);
 }
 
 void	move(t_map *map, int dir, int status)
 {
-	mlx_put_image_to_window(map->data->mlx, map->data->win,
-		map->img->background, map->p_x * IMG_W, map->p_y * IMG_H);
+	//mlx_put_image_to_window(map->data->mlx, map->data->win,
+	//	map->img->background, map->p_x * IMG_W, map->p_y * IMG_H);
+	map->data->x = map->p_x; // current character (x, y) save
+	map->data->y = map->p_y;
 	if (status == Y && map->map[map->p_y + dir][map->p_x] != '1'
 		&& (map->map[map->p_y + dir][map->p_x] != 'E'
 		|| map->c == map->data->collect))
