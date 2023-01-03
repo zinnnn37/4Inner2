@@ -49,6 +49,7 @@ typedef struct s_data
 	void	*win;
 	int		collect;
 	int		counter;
+	int		exit;
 	int		win_x;
 	int		win_y;
 	int		x;

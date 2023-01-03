@@ -59,9 +59,11 @@ t_bool	_bfs(t_map *map, t_bool **visited, t_queue *q, int *pos)
 			&& visited[nxt[0]][nxt[1]] == FALSE
 			&& map->map[nxt[0]][nxt[1]] != '1')
 		{
-			if (map->map[nxt[0]][nxt[1]] == 'C' || map->map[nxt[0]][nxt[1]] == 'E')	
+			if (map->map[nxt[0]][nxt[1]] == 'E')
+				map->exit++;
+			if (map->map[nxt[0]][nxt[1]] == 'C')	
 				map->data->counter++;
-			if (map->data->counter >= map->c + 1)
+			if (map->data->counter == map->c && map->exit > 0)
 				return (TRUE);
 			visited[nxt[0]][nxt[1]] = TRUE;
 			enqueue(q, nxt[0], nxt[1]);
