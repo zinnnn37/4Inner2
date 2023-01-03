@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/21 14:29:56 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:43:42 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ t_bool	_bfs(t_map *map, t_bool **visited, t_queue *q, int *pos)
 			&& visited[nxt[0]][nxt[1]] == FALSE
 			&& map->map[nxt[0]][nxt[1]] != '1')
 		{
-			if (map->map[nxt[0]][nxt[1]] == 'E')
+			if (map->map[nxt[0]][nxt[1]] == 'E' && map->c == map->data->counter)
 				return (TRUE);
+			if (map->map[nxt[0]][nxt[1]] == 'C')
+				map->data->counter++;
 			visited[nxt[0]][nxt[1]] = TRUE;
 			enqueue(q, nxt[0], nxt[1]);
 		}
@@ -105,6 +107,7 @@ void	find_path(t_map *map)
 	q = init_queue(q, map->height - 2, map->width - 2);
 	if (!bfs(map, q, map->p_x, map->p_y))
 		print_error("*ERROR* Path doesn't exist!\n");
+	map->data->counter = 0;
 	free_q(q);
 }
 

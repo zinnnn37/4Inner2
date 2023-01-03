@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:48:45 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/22 18:16:14 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:46:25 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,11 @@ void	init_img(t_map *map)
 void	init_game(t_map *map)
 {
 	t_img	*img;
-	t_data	*data;
 
 	img = ft_calloc(1, sizeof(t_img));
-	data = ft_calloc(1, sizeof(t_data));
-	if (!img || !data)
+	if (!img)
 		print_error("*ERROR* Fail to allocate memory!\n");
-	init_data(map, data);
+	init_data(map, map->data);
 	map->img = img;
 	init_img(map);
 	render_img(map);
