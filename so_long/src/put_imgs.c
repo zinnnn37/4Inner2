@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 12:20:05 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/27 18:53:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:21:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ void	put_backround(t_map *map)
 	int	w;
 
 	h = 0;
-	printf("y: %d, %d\n", map->data->win_y, map->height * IMG_H);
-	printf("x: %d, %d\n", map->data->win_x, map->width * IMG_W);
 	while (h < map->data->win_y)
 	{
 		w = 0;

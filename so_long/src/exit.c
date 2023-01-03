@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:31:14 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/21 14:33:10 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:21:28 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ void	end_game(t_map *map)
 int	give_up(t_map *map)
 {
 	mlx_destroy_window(map->data->mlx, map->data->win);
-	printf("========== YOU LOSE ==========\n");
+	ft_putstr_fd("========== YOU LOSE ==========\n", 2);
 	exit(FAILURE);
 }

@@ -6,14 +6,14 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2022/12/29 15:57:48 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:18:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <mlx.h>
+# include "../mlx/mlx.h"
 # include "./libft.h"
 # include "./queue.h"
 /* queue 없애고 stdio.h 여기 넣기 */
