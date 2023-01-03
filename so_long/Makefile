@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 12:17:00 by minjinki          #+#    #+#              #
-#    Updated: 2022/12/22 16:31:17 by minjinki         ###   ########.fr        #
+#    Updated: 2023/01/03 14:25:12 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC_FILES	=	check_map1\
 				so_long\
 
 MLX			=	mlx/
-MLX_LIB		=	$(MLX)libmlx.dylib
+MLX_LIB		=	$(MLX)libmlx.a
 
 SRCS		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS		=	$(SRCS:%.c=%.o)
