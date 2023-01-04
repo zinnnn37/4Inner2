@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:56:57 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/03 17:06:17 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/04 13:03:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ void	check_wall(char *line, t_map *map)
 {
 	map->width = ft_strlen(line);
 	if (map->width < 3)
-		print_error("*ERROR* Invalid map!: one player and at least one exit\n");
+		print_error("*ERROR* Invalid map!: size too small\n");
 	while (*line)
 	{
+		if (*line == ' ')
+			print_error("*ERROR* Invalid map!: should be rectangular\n");
 		if (*line != '1')
 			print_error("*ERROR* Invalid map!: should be surrounded by wall\n");
 		line++;
@@ -76,6 +78,8 @@ void	check_map(t_map *map)
 	i = 0;
 	while (map->map[++i])
 		check_valid(1, map->map[i], map);
+	if (map->height < 3)
+		print_error("*ERROR* Invalid map!: size too small\n");
 	if (map->p_x == 0 || map->p_y == 0)
 		print_error("*ERROR* Invalid map!: check the player\n");
 	if (map->exit == 0)
