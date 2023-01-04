@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:42:19 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/03 14:54:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/04 10:17:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	open_chest(t_map *map)
 void	move_player(t_map *map, int dir, int status)
 {
 	mlx_put_image_to_window(map->data->mlx, map->data->win,
-		map->img->background, map->data->x * IMG_W, map->data->y * IMG_H); // 기존 위치 background로
+		map->img->background, map->data->x * IMG_W, map->data->y * IMG_H);
 	if (dir == -1 && status == 0)
 		mlx_put_image_to_window(map->data->mlx, map->data->win, map->img->back,
 			map->p_x * IMG_W, map->p_y * IMG_H);
@@ -71,9 +71,7 @@ void	collect_key(t_map *map, int dir, int status)
 
 void	move(t_map *map, int dir, int status)
 {
-	//mlx_put_image_to_window(map->data->mlx, map->data->win,
-	//	map->img->background, map->p_x * IMG_W, map->p_y * IMG_H);
-	map->data->x = map->p_x; // current character (x, y) save
+	map->data->x = map->p_x;
 	map->data->y = map->p_y;
 	if (status == Y && map->map[map->p_y + dir][map->p_x] != '1'
 		&& (map->map[map->p_y + dir][map->p_x] != 'E'
@@ -97,7 +95,6 @@ void	move(t_map *map, int dir, int status)
 		&& (map->map[map->p_y][map->p_x + dir] == 'E'
 		|| map->c != map->data->collect))
 		ft_putstr_fd("You must collect all keys in the map!\n", 1);
-	//mlx_do_sync(map->data->mlx);
 }
 
 int	key_hook(int keycode, t_map *map)

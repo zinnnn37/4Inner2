@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/03 16:20:41 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/04 10:16:11 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	**bfs_init(t_bool **visited, int h, int w)
 	return (visited);
 }
 
-t_bool	_bfs(t_map *map, t_bool **visit, t_queue *q, int *pos)
+t_bool	_bfs(t_map *map, t_bool **v, t_queue *q, int *pos)
 {
 	static int	d[4] = {1, 0, -1, 0};
 	int			i;
@@ -56,17 +56,17 @@ t_bool	_bfs(t_map *map, t_bool **visit, t_queue *q, int *pos)
 		nxt[1] = pos[1] + d[3 - i];
 		if ((0 < nxt[0] && nxt[0] < map->height - 1)
 			&& (0 < nxt[1] && nxt[1] < map->width - 1)
-			&& visit[nxt[0]][nxt[1]] == FALSE && map->map[nxt[0]][nxt[1]] != '1')
+			&& v[nxt[0]][nxt[1]] == FALSE && map->map[nxt[0]][nxt[1]] != '1')
 		{
 			if (map->map[nxt[0]][nxt[1]] == 'E')
 				map->exit++;
-			if (map->map[nxt[0]][nxt[1]] == 'C')	
+			if (map->map[nxt[0]][nxt[1]] == 'C')
 				map->data->counter++;
 			if (map->data->counter == map->c && map->exit > 0)
 				return (TRUE);
-			visit[nxt[0]][nxt[1]] = TRUE;
+			v[nxt[0]][nxt[1]] = TRUE;
 			enqueue(q, nxt[0], nxt[1]);
-		} 
+		}
 	}
 	return (FALSE);
 }
