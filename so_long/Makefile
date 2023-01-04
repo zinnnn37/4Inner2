@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 12:17:00 by minjinki          #+#    #+#              #
-#    Updated: 2023/01/03 15:57:09 by minjinki         ###   ########.fr        #
+#    Updated: 2023/01/04 11:48:34 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ MLX_LIB		=	$(MLX)libmlx.a
 SRCS		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS		=	$(SRCS:%.c=%.o)
 
-CC			=	cc
+CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
 CLIB		=	-Lmlx -lmlx -framework OpenGL -framework Appkit
 RM			=	rm -f
@@ -49,7 +49,6 @@ $(NAME)		:	$(OBJS)
 	make -C $(MLX) all
 	make -C $(LIBFT) all
 	$(CC) $(CFLAGS) $(CLIB) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME) -I $(HDRS)
-	install_name_tool -change libmlx.dylib mlx/libmlx.dylib $(NAME)
 
 clean		:
 	$(MAKE) -C $(MLX) clean
@@ -58,6 +57,7 @@ clean		:
 
 fclean		:	clean
 	$(MAKE) -C $(LIBFT) fclean
+	$(MAKE) -C $(MLX) fclean
 	$(RM) $(NAME)
 
 re			:

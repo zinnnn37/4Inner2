@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/03 15:33:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/04 10:54:39 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../mlx/mlx.h"
 # include "./libft.h"
 # include "./queue.h"
-/* queue 없애고 stdio.h 여기 넣기 */
+# include <stdio.h>
 # include <fcntl.h>
 # include <string.h>
 

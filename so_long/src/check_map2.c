@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/04 10:16:11 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/04 11:14:45 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	**bfs_init(t_bool **visited, int h, int w)
 	return (visited);
 }
 
-t_bool	_bfs(t_map *map, t_bool **v, t_queue *q, int *pos)
+t_bool	_bfs(t_map *map, t_bool **visited, t_queue *q, int *pos)
 {
 	static int	d[4] = {1, 0, -1, 0};
 	int			i;
@@ -54,17 +54,17 @@ t_bool	_bfs(t_map *map, t_bool **v, t_queue *q, int *pos)
 	{
 		nxt[0] = pos[0] + d[i];
 		nxt[1] = pos[1] + d[3 - i];
-		if ((0 < nxt[0] && nxt[0] < map->height - 1)
-			&& (0 < nxt[1] && nxt[1] < map->width - 1)
-			&& v[nxt[0]][nxt[1]] == FALSE && map->map[nxt[0]][nxt[1]] != '1')
+		if ((0 < nxt[0] && nxt[0] < map->width - 1)
+			&& (0 < nxt[1] && nxt[1] < map->height - 1)
+			&& !visited[nxt[1]][nxt[0]] && map->map[nxt[1]][nxt[0]] != '1')
 		{
-			if (map->map[nxt[0]][nxt[1]] == 'E')
-				map->exit++;
-			if (map->map[nxt[0]][nxt[1]] == 'C')
+			if (map->map[nxt[1]][nxt[0]] == 'E')
+				map->data->exit++;
+			if (map->map[nxt[1]][nxt[0]] == 'C')
 				map->data->counter++;
-			if (map->data->counter == map->c && map->exit > 0)
+			if (map->data->counter == map->c && map->data->exit > 0)
 				return (TRUE);
-			v[nxt[0]][nxt[1]] = TRUE;
+			visited[nxt[1]][nxt[0]] = TRUE;
 			enqueue(q, nxt[0], nxt[1]);
 		}
 	}
@@ -80,14 +80,14 @@ t_bool	bfs(t_map *map, t_queue *q, int x, int y)
 	visited = NULL;
 	visited = bfs_init(visited, map->height, map->width);
 	enqueue(q, x, y);
-	visited[x][y] = TRUE;
+	visited[y][x] = TRUE;
 	while (q->front < q->rear)
 	{
 		pos = dequeue(q);
 		if (pos)
 		{
 			i = 0;
-			if (_bfs(map, visited, q, pos) == TRUE)
+			if (_bfs(map, visited, q, pos))
 			{
 				free(pos);
 				free_matrix(visited);
@@ -111,10 +111,3 @@ void	find_path(t_map *map)
 	map->data->counter = 0;
 	free_q(q);
 }
-
-/*
-	bfs가 아니라 dfs로 ㅉ야함
-	floodfill 알고리즘
-	재귀로 4방향을 다 돌면서 코인도 ++ 하면서
-	E에 도달하는지, 코인을 다 모을 수 있는지 확인해야 함
-*/
