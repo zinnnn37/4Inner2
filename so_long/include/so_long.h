@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/04 10:54:39 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/04 13:27:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ t_map	*ft_init(int argc, char **argv);
 void	check_map(t_map *map);
 void	end_game(t_map *map);
 void	find_path(t_map *map);
-void	free_all(t_map *map);
 void	print_error(char *str);
 void	init_game(t_map *map);
 void	move_player(t_map *map, int dir, int status);
