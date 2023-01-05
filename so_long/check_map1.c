@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:56:57 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/05 18:16:56 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/05 19:26:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	check_elements(char *line, t_map *map)
 
 	len = ft_strlen(line);
 	if (len != map->width)
+		print_error("Invalid map!: map should be rectangular\n");
+	if (line[0] == ' ' || line[map->width - 1] == ' ')
 		print_error("Invalid map!: map should be rectangular\n");
 	if (line[0] != '1' || line[map->width - 1] != '1')
 		print_error("Invalid map!: should be surrounded by wall\n");
