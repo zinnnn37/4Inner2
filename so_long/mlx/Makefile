@@ -20,6 +20,7 @@ $(NOM):	$(OBJ)
 clean:
 	rm -f $(OBJ) *~
 	rm -f mlx_app
+
 fclean: clean
 	rm -f $(NOM)
 

@@ -6,19 +6,18 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 12:17:00 by minjinki          #+#    #+#              #
-#    Updated: 2023/01/04 11:48:34 by minjinki         ###   ########.fr        #
+#    Updated: 2023/01/05 19:14:46 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	so_long
 
-HDRS		=	include
-LIBFT		=	src/libft/
+LIBFT		=	libft/
 LIBFT_LIB	=	$(LIBFT)libft.a
 
-SRC_DIR		=	src/
 SRC_FILES	=	check_map1\
 				check_map2\
+				check_map3\
 				exit\
 				game\
 				init\
@@ -30,10 +29,10 @@ SRC_FILES	=	check_map1\
 MLX			=	mlx/
 MLX_LIB		=	$(MLX)libmlx.a
 
-SRCS		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+SRCS		=	$(addsuffix .c, $(SRC_FILES))
 OBJS		=	$(SRCS:%.c=%.o)
 
-CC			=	gcc
+CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
 CLIB		=	-Lmlx -lmlx -framework OpenGL -framework Appkit
 RM			=	rm -f
@@ -48,7 +47,7 @@ all			:	makefile $(NAME)
 $(NAME)		:	$(OBJS)
 	make -C $(MLX) all
 	make -C $(LIBFT) all
-	$(CC) $(CFLAGS) $(CLIB) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME) -I $(HDRS)
+	$(CC) $(CFLAGS) $(CLIB) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME) -I .
 
 clean		:
 	$(MAKE) -C $(MLX) clean
