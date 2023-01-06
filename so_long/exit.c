@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:31:14 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/05 14:13:10 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/06 15:57:33 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	print_error(char *str)
 {
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(str, 2);
+	//system("leaks so_long");
 	exit(FAILURE);
 }
 
@@ -55,6 +56,7 @@ void	end_game(t_map *map)
 	free(map);
 	map = NULL;
 	ft_putstr_fd("========== YOU WIN! ==========\n", 1);
+	//system("leaks so_long");
 	exit(SUCCESS);
 }
 
@@ -62,5 +64,6 @@ int	give_up(t_map *map)
 {
 	mlx_destroy_window(map->data->mlx, map->data->win);
 	ft_putstr_fd("========== YOU LOSE ==========\n", 2);
+	//system("leaks so_long");
 	exit(FAILURE);
 }
