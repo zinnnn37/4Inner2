@@ -6,25 +6,11 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:15:22 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/05 19:15:11 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/06 12:52:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	free_matrix(int **matrix)
-{
-	int	i;
-
-	i = 0;
-	while (matrix[i])
-	{
-		free(matrix[i]);
-		matrix[i++] = NULL;
-	}
-	free(matrix);
-	matrix = NULL;
-}
 
 int	**bfs_init(t_bool **visited, int h, int w)
 {
@@ -43,7 +29,23 @@ int	**bfs_init(t_bool **visited, int h, int w)
 	return (visited);
 }
 
-t_bool	_bfs(t_map *map, t_bool **visited, t_queue *q, int *pos)
+t_bool	bfs3(t_map *map, t_bool **visited, t_queue *q, int *nxt)
+{
+	if (map->map[nxt[1]][nxt[0]] != 'E')
+	{
+		if (map->map[nxt[1]][nxt[0]] == 'C')
+			map->data->counter++;
+		enqueue(q, nxt[0], nxt[1]);
+	}
+	else
+		map->data->exit++;
+	if (map->data->counter == map->c && map->data->exit == 1)
+		return (TRUE);
+	visited[nxt[1]][nxt[0]] = TRUE;
+	return (FALSE);
+}
+
+t_bool	bfs2(t_map *map, t_bool **visited, t_queue *q, int *pos)
 {
 	static int	d[4] = {1, 0, -1, 0};
 	int			i;
@@ -58,7 +60,7 @@ t_bool	_bfs(t_map *map, t_bool **visited, t_queue *q, int *pos)
 			&& (0 < nxt[1] && nxt[1] < map->height - 1)
 			&& !visited[nxt[1]][nxt[0]] && map->map[nxt[1]][nxt[0]] != '1')
 		{
-			if (find_path2(map, visited, q, nxt))
+			if (bfs3(map, visited, q, nxt))
 				return (TRUE);
 		}
 	}
@@ -81,7 +83,7 @@ t_bool	bfs(t_map *map, t_queue *q, int x, int y)
 		if (pos)
 		{
 			i = 0;
-			if (_bfs(map, visited, q, pos))
+			if (bfs2(map, visited, q, pos))
 			{
 				free(pos);
 				free_matrix(visited);
