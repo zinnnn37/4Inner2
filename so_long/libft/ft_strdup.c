@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 17:24:28 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/05 14:14:14 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:32:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 char	*ft_strdup(const char *s)
 {

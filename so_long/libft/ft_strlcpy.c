@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:42:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/05 14:14:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:33:02 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t destsize)
 {

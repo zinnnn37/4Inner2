@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:07:37 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/06 12:52:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:32:19 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include "mlx/mlx.h"
-# include "libft.h"
+# include "libft/libft.h"
 # include "queue.h"
 # include <fcntl.h>
 

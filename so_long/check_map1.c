@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:56:57 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/06 12:56:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:27:28 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	check_wall(char *line, t_map *map)
 {
 	map->width = ft_strlen(line);
+	if (map->width > 51)
+		print_error("map too big!\n");
 	if (map->width < 3)
 		print_error("Invalid map!: size too small\n");
 	while (*line)
@@ -71,6 +73,8 @@ void	check_elements(char *line, t_map *map)
 void	check_valid(int status, char *line, t_map *map)
 {
 	map->height++;
+	if (map->height > 29)
+		print_error("Map too big!\n");
 	if (status == 0)
 		check_wall(line, map);
 	else

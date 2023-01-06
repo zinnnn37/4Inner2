@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 17:47:48 by minjinki          #+#    #+#              #
-#    Updated: 2023/01/05 15:26:35 by minjinki         ###   ########.fr        #
+#    Updated: 2023/01/06 17:25:07 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS		=\
 			ft_strlen.c\
 			get_next_line.c\
 
-HDRS	= ../libft.h\
+HDRS	= libft.h\
 		  ../so_long.h
 
 CC		=	cc

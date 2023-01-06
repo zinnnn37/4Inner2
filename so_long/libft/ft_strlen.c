@@ -6,15 +6,15 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:02:35 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/05 14:14:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:33:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	size_t	cnt;
+	int	cnt;
 
 	cnt = 0;
 	while (s[cnt])

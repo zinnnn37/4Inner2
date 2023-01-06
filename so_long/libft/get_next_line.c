@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:10:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/05 14:14:26 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:33:06 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 char	*ft_join(char *s, char c)
 {

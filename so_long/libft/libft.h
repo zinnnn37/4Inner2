@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:25:24 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/05 11:58:42 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:26:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*get_next_line(int fd);
 
 int		ft_strcmp(const char *s1, const char *s2);
+int		ft_strlen(const char *s);
 
 size_t	ft_strlcat(char *dst, const char *src, size_t destsize);
 size_t	ft_strlcpy(char *dst, const char *src, size_t destsize);
-size_t	ft_strlen(const char *s);
 
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);

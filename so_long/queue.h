@@ -6,14 +6,14 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:28:42 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/05 12:23:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:32:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef QUEUE_H
 # define QUEUE_H
 
-# include "./libft.h"
+# include "libft/libft.h"
 
 typedef struct s_queue
 {

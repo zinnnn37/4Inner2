@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 12:17:00 by minjinki          #+#    #+#              #
-#    Updated: 2023/01/05 19:14:46 by minjinki         ###   ########.fr        #
+#    Updated: 2023/01/06 17:31:04 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ all			:	makefile $(NAME)
 $(NAME)		:	$(OBJS)
 	make -C $(MLX) all
 	make -C $(LIBFT) all
-	$(CC) $(CFLAGS) $(CLIB) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME) -I .
+	$(CC) $(CFLAGS) $(CLIB) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME) -I. -I$(LIBFT) -I$(MLX)
 
 clean		:
 	$(MAKE) -C $(MLX) clean

@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 17:28:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/05 14:13:55 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:25:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {
