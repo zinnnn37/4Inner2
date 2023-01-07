@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:56:57 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/06 17:27:28 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:36:02 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	check_wall(char *line, t_map *map)
 {
 	map->width = ft_strlen(line);
 	if (map->width > 51)
-		print_error("map too big!\n");
+		print_error("Invalid map!: check map size\n");
 	if (map->width < 3)
-		print_error("Invalid map!: size too small\n");
+		print_error("Invalid map!: check map size\n");
 	while (*line)
 	{
 		if (*line == ' ')
@@ -74,7 +74,7 @@ void	check_valid(int status, char *line, t_map *map)
 {
 	map->height++;
 	if (map->height > 29)
-		print_error("Map too big!\n");
+		print_error("Invalid map!: check map size\n");
 	if (status == 0)
 		check_wall(line, map);
 	else
@@ -90,7 +90,7 @@ void	check_map(t_map *map)
 	while (map->map[++i])
 		check_valid(1, map->map[i], map);
 	if (map->height < 3)
-		print_error("Invalid map!: size too small\n");
+		print_error("Invalid map!: check map size\n");
 	if (map->p_x == 0 || map->p_y == 0)
 		print_error("Invalid map!: check the player\n");
 	if (map->e_x == 0 || map->e_y == 0)
