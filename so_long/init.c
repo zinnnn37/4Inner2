@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:58:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/05 15:59:36 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/07 15:11:31 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ t_map	*ft_init(int argc, char **argv)
 
 	if (argc != 2)
 		print_error("Check the number of input file!\n");
-	if ((ft_strlen(argv[1]) > 4
+	if (ft_strlen(argv[1]) < 0)
+		print_error("File name too long!\n");
+	else if ((ft_strlen(argv[1]) > 4
 			&& ft_strcmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber") != 0)
 		|| ft_strlen(argv[1]) <= 4)
 		print_error("Check if the extension of map file is .ber!\n");

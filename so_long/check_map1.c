@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:56:57 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/07 14:36:02 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/07 15:21:56 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 void	check_wall(char *line, t_map *map)
 {
 	map->width = ft_strlen(line);
-	if (map->width > 51)
-		print_error("Invalid map!: check map size\n");
-	if (map->width < 3)
+	if (map->width < 3 || map->width > 51)
 		print_error("Invalid map!: check map size\n");
 	while (*line)
 	{
@@ -59,9 +57,7 @@ void	check_elements(char *line, t_map *map)
 	int	i;
 
 	len = ft_strlen(line);
-	if (len != map->width)
-		print_error("Invalid map!: map should be rectangular\n");
-	if (line[0] == ' ' || line[map->width - 1] == ' ')
+	if (len != map->width || line[0] == ' ' || line[map->width - 1] == ' ')
 		print_error("Invalid map!: map should be rectangular\n");
 	if (line[0] != '1' || line[map->width - 1] != '1')
 		print_error("Invalid map!: should be surrounded by wall\n");

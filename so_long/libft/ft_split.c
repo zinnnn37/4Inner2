@@ -6,11 +6,10 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 14:19:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/06 17:32:55 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/07 15:14:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "../so_long.h"
 
 static char	**ft_free(char **res, size_t cnt)
