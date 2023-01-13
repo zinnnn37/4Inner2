@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   client.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 15:15:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/12 15:24:58 by minjinki         ###   ########.fr       */
+/*   Created: 2023/01/12 14:13:47 by minjinki          #+#    #+#             */
+/*   Updated: 2023/01/12 15:23:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#ifndef MINITALK_H
+# define MINITALK_H
 
-void	print_pid()
-{
-	pid_t	pid;
+# include <signal.h>
+# include "../libft/libft.h"
 
-	pid = getpid();
-	ft_putstr_fd("server pid : ", 1);
-	ft_putnbr_fd(pid, 1);
-	ft_putchar_fd('\n', 1);
-}
+# define SUCCESS 0
+# define FAILURE 1
 
-void	print_message()
-{
-}
+struct sigaction	g_server;
+struct sigaction	g_client;
 
-int	main()
-{
-	print_pid();
-	print_message();
-}
+void	print_error(char *str);
+
+#endif
