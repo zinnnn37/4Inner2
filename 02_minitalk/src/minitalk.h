@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:13:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/16 16:44:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/16 19:49:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ typedef struct s_data
 }	t_data;
 
 void	print_error(char *str);
+void	s_hdr_msg(int signo, siginfo_t *info, void *content)
 
 #endif
