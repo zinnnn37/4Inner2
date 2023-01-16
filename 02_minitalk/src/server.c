@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:15:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/16 19:56:17 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/16 19:58:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	main(int argc, char **argv)
 	g_server.sa_flags = SA_SIGINFO;
 	g_server.__sigaction_u.__sa_sigaction = s_hdr_connect;
 	sigemptyset(&g_server.sa_mask);
-	sigaction(SIGUSR1, g_server, NULL);
+	sigaction(SIGUSR1, &g_server, NULL);
+	sigaction(SIGUSR2, &g_server, NULL);
 	print_pid();
 	while (TRUE)
 		pause();
