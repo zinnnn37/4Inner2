@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:13:18 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/12 14:13:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:39:09 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "minitalk.h"
 
 void	print_error(char *str)
 {
