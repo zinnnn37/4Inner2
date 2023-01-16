@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_hander.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 14:12:22 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/16 19:53:26 by minjinki         ###   ########.fr       */
+/*   Created: 2023/01/16 19:55:04 by minjinki          #+#    #+#             */
+/*   Updated: 2023/01/16 19:55:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-t_data	g_cdata;
-
-int	main(int argc, char **argv)
+void	c_hdr_msg(int signo, siginfo_t *info, void *content)
 {
-	int	pid;
+}
 
-	if (argc != 3)
-		print_error("Check input format: ./client server_PID message\n");
-	pid = ft_atoi(argv[1]);
-	if (pid == -1)
-		print_error("Check if PID is number: ./client server_PID message\n");
-	g_client.sa_flags = SA_SIGINFO;
+void	c_hdr_connect(int signo, siginfo_t *info, void *content)
+{
 }
