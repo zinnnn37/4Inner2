@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:12:22 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/16 20:04:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:28:41 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	c_hdr_connect(int signo)
 
 int	main(int argc, char **argv)
 {
+	struct sigaction	g_client;
+
 	if (argc != 3)
 		print_error("Check input format: ./client server_PID message\n");
 	g_client.sa_flags = SA_SIGINFO;
