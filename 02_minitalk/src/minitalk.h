@@ -29,4 +29,6 @@ typedef struct s_data
 	struct sigaction	act;
 }	t_data;
 
+void	print_error(char *str);
+
 #endif

@@ -25,7 +25,15 @@ void	print_pid(void)
 	ft_putchar('\n');
 }
 
-void	s_hdr_msg(int signo, siginfo_t *info, void *content)
+void	ft_kill(pid_t pid, int signo)
+{
+	if (kill(pid, signo) != 0)
+		print_error("Kill failed");
+	else
+		usleep(100);
+}
+
+void	hdr_msg(int signo, siginfo_t *info, void *content)
 {
 	static unsigned char	c;
 	static int				bit = 8;
@@ -37,9 +45,19 @@ void	s_hdr_msg(int signo, siginfo_t *info, void *content)
 		bit--;
 	if (bit == 0)
 	{
-		write(1, &c, 1);
-		c = '\0';
+		if (c != '\0')
+			g_data.msg = ft_join(g_data.msg, c);
+		else
+		{
+			ft_putstr(g_data.msg);
+			free(g_data.msg);
+			g_data.act.sa_sigaction = hdr_connection;
+			sigaction(SIGUSR1, &(g_data.act), NULL);
+			sigaction(SIGUSR2, &(g_data.act), NULL);
+			ft_kill(g_data.si_pid, signo);
+		}
 		bit = 8;
+		c = '\0';
 	}
 }
 
@@ -51,13 +69,12 @@ void	hdr_connection(int signo, siginfo_t *info, void *content)
 		ft_putstr("Client PID : ")
 		ft_putnbr(siginfo->si_pid);
 		ft_putchar('\n');
+		g_data.pid = info.si_pid;
+		g_data.pid = ft_strdup("");
 		g_data.act.sa_sigaction = hdr_msg;
-		sigaction(SIGUSR1, &act, NULL);
-		sigaction(SIGUSR2, &act, NULL);
-		if (kill(info.si_pid, signo) != 0)
-			print_error("Connection failed\n");
-		else
-			usleep(100);
+		sigaction(SIGUSR1, &(g_data.act), NULL);
+		sigaction(SIGUSR2, &(g_data.act), NULL);
+		ft_kill(info.si_pid, signo);
 	}
 	else
 		print_error("Connection failed\n");
@@ -70,8 +87,8 @@ int	main(int argc, char **argv)
 	g_data.act.sa_flags = SA_SIGINFO;
 	g_data.act.sa_sigaction = hdr_connection;
 	sigemptyset(&act.sa_mask);
-	sigaction(SIGUSR1, &act, NULL);
-	sigaction(SIGUSR2, &act, NULL);
+	sigaction(SIGUSR1, &(g_data.act), NULL);
+	sigaction(SIGUSR2, &(g_data.act), NULL);
 	print_pid();
 	while (TRUE)
 		pause();

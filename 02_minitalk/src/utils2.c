@@ -64,3 +64,44 @@ int	ft_atoi(const char *str, int *res)
 	return (1);
 }
 
+char	*ft_strdup(const char *s)
+{
+	int		len;
+	char	*res;
+
+	len = ft_strlen(s);
+	res = (char *)malloc(sizeof(char) * (len + 1));
+	if (!res)
+		return (NULL);
+	res[len] = '\0';
+	len = 0;
+	while (s[len])
+	{
+		res[len] = s[len];
+		len++;
+	}
+	return (res);
+}
+
+char	*ft_strjoin(char *s, char c)
+{
+	char	*res;
+	int		len;
+
+	if (!s)
+		return (NULL);
+	len = ft_strlen(s);
+	res = (char *)malloc(sizeof(char) * (len + 2));
+	if (!res)
+		print_error("Memory allocation failed: ft_join()\n");
+	len = 0;
+	while (s[len])
+	{
+		res[len] = s[len];
+		len++;
+	}
+	res[len] = c;
+	res[len + 1] = '\0';
+	free(s);
+	return (res);
+}
