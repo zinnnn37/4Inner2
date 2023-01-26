@@ -18,9 +18,9 @@ void	ft_putstr(char *str);
 
 void	print_pid(void)
 {
-	ft_putstr_fd("Client PID : ", 1);
-	ft_putnbr_fd(getpid(), 1);
-	ft_putchar_fd('\n', 1);
+	ft_putstr("Client PID : ");
+	ft_putnbr(getpid());
+	ft_putchar('\n');
 }
 
 void	send_bits(int pid, char c)

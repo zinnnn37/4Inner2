@@ -12,13 +12,17 @@
 
 #include "minitalk.h"
 
-t_data	g_sdata;
+t_data	g_data;
+
+void	ft_putchar(char c);
+void	ft_putstr(char *str);
+void	ft_putnbr(int n);
 
 void	print_pid(void)
 {
-	ft_putstr_fd("Server PID : ", 1);
-	ft_putnbr_fd(getpid(), 1);
-	ft_putchar_fd('\n', 1);
+	ft_putstr("Server PID : ");
+	ft_putnbr(getpid());
+	ft_putchar('\n');
 }
 
 void	s_hdr_msg(int signo, siginfo_t *info, void *content)
@@ -28,7 +32,7 @@ void	s_hdr_msg(int signo, siginfo_t *info, void *content)
 
 	(void)content;
 	if (signo == SIGUSR1)
-		c += 1 << --bit;
+		c += (1 << --bit);
 	else if (signo == SIGUSR2)
 		bit--;
 	if (bit == 0)
@@ -39,23 +43,32 @@ void	s_hdr_msg(int signo, siginfo_t *info, void *content)
 	}
 }
 
-void	handler(int signo, siginfo_t *info, void *content)
+void	hdr_connection(int signo, siginfo_t *info, void *content)
 {
 	(void)content;
-	if (signo == SIGUSR1)
-		get_bits(1, info->si_pid);
+	if (signo == SIGUSR1 || signo == SIGUSR2)
+	{
+		ft_putstr("Client PID : ")
+		ft_putnbr(siginfo->si_pid);
+		ft_putchar('\n');
+		g_data.act.sa_sigaction = hdr_msg;
+		sigaction(SIGUSR1, &act, NULL);
+		sigaction(SIGUSR2, &act, NULL);
+		if (kill(info.si_pid, signo) != 0)
+			print_error("Connection failed\n");
+		else
+			usleep(100);
+	}
 	else
-		get_bits(0, info->si_pid);
+		print_error("Connection failed\n");
 }
 
 int	main(int argc, char **argv)
 {
-	struct sigaction	act;
-
 	if (argc != 1)
 		print_error("Check input format: ./server\n");
-	act.sa_flags = SA_SIGINFO;
-	act.sa_sigaction = handler;
+	g_data.act.sa_flags = SA_SIGINFO;
+	g_data.act.sa_sigaction = hdr_connection;
 	sigemptyset(&act.sa_mask);
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);

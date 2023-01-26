@@ -22,4 +22,11 @@
 # define TRUE 1
 # define FALSE 0
 
+typedef struct s_data
+{
+	int					pid;
+	char				*msg;
+	struct sigaction	act;
+}	t_data;
+
 #endif
