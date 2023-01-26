@@ -39,22 +39,28 @@ void	s_hdr_msg(int signo, siginfo_t *info, void *content)
 	}
 }
 
-void	s_hdr_connect(int signo)
+void	handler(int signo, siginfo_t *info, void *content)
 {
+	(void)content;
+	if (signo == SIGUSR1)
+		get_bits(1, info->si_pid);
+	else
+		get_bits(0, info->si_pid);
 }
 
 int	main(int argc, char **argv)
 {
-	struct sigaction	g_server;
+	struct sigaction	act;
 
 	if (argc != 1)
 		print_error("Check input format: ./server\n");
-	g_server.sa_flags = SA_SIGINFO;
-	g_server.__sigaction_u.__sa_sigaction = s_hdr_connect;
-	sigemptyset(&g_server.sa_mask);
-	sigaction(SIGUSR1, &g_server, NULL);
-	sigaction(SIGUSR2, &g_server, NULL);
+	act.sa_flags = SA_SIGINFO;
+	act.sa_sigaction = handler;
+	sigemptyset(&act.sa_mask);
+	sigaction(SIGUSR1, &act, NULL);
+	sigaction(SIGUSR2, &act, NULL);
 	print_pid();
 	while (TRUE)
 		pause();
+	return (0);
 }

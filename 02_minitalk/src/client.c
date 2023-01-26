@@ -12,7 +12,9 @@
 
 #include "minitalk.h"
 
-t_data	g_cdata;
+int		ft_atoi(char *str, int *res);
+void	ft_putchar(char c);
+void	ft_putstr(char *str);
 
 void	print_pid(void)
 {
@@ -21,31 +23,50 @@ void	print_pid(void)
 	ft_putchar_fd('\n', 1);
 }
 
-void	c_hdr_msg(int signo, siginfo_t *info, void *content)
+void	send_bits(int pid, char c)
 {
+	int	bit;
+	int	check;
+
+	bit = 7;
+	while (bit >= 0)
+	{
+		check = 1 << bit;
+		if (c & check)
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		usleep(100);
+		i--;
+	}
 }
 
-void	c_hdr_connect(int signo)
+void	send_msg(int pid, char *str)
 {
-	kill(g_cdata.pid, signo);
-	pause();
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		send_bits(pid, str[i]);
+		i++;
+	}
+	send_bits(pid, '\n');
 }
 
 int	main(int argc, char **argv)
 {
-	struct sigaction	g_client;
+	int	pid;
+	int	i;
 
 	if (argc != 3)
 		print_error("Check input format: ./client server_PID message\n");
-	g_client.sa_flags = SA_SIGINFO;
-	g_client.__sigaction_u.__sa_sigaction = c_hdr_connect;
-	sigemptyset(&g_client.sa_mask);
-	sigaction(SIGUSR1, &g_client, NULL);
-	sigaction(SIGUSR2, &g_client, NULL);
-	g_cdata.pid = ft_atoi(argv[1]);
-	if (g_cdata.pid == -1)
-		print_error("Check if PID is number: ./client server_PID message\n");
-	g_cdata.msg = argv[2];
+	if (ft_atoi(argv[1], &pid) == 0)
+		print_error("Check if PID is number\n");
 	print_pid();
-	c_hdr_connect(SIGUSR1);
+	i = 0;
+	if (kill(pid, 0) == -1 || pid == 0)
+		print_error("Invalid PID\n");
+	send_msg(pid, argv[2]);
+	return (0);
 }

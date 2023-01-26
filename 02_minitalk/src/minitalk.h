@@ -14,23 +14,12 @@
 # define MINITALK_H
 
 # include <signal.h>
-# include "../libft/libft.h"
+# include <unistd.h>
+# include <stdlib.h>
 
 # define SUCCESS 0
 # define FAILURE 1
 # define TRUE 1
 # define FALSE 0
-
-typedef struct s_data
-{
-	pid_t	pid;
-	char	*msg;
-}	t_data;
-
-void	c_hdr_connect(int signo);
-void	c_hdr_msg(int signo, siginfo_t *info, void *content);
-void	print_error(char *str);
-void	s_hdr_connect(int signo, siginfo_t *info, void *content);
-void	s_hdr_msg(int signo, siginfo_t *info, void *content)
 
 #endif
