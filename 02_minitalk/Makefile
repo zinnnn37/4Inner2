@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 10:22:47 by minjinki          #+#    #+#              #
-#    Updated: 2023/01/27 13:13:58 by minjinki         ###   ########.fr        #
+#    Updated: 2023/01/27 13:23:22 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ $(SERVER)	:	$(SRC_SERVER)
 	$(CC) $(CFLAGS) $(SRC_SERVER) $(SRC_UTILS) -o $@
 
 clean		:
+	@echo clean
 
 fclean		:
 	$(RM) $(CLIENT) $(SERVER)
