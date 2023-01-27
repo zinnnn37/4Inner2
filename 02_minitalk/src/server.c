@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:15:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/27 14:01:17 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:04:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_pid(void)
 {
 	ft_putstr("Server PID : ");
 	ft_putnbr(getpid());
-	write(1, "\n", 1);
+	write(1, "\n\n", 2);
 }
 
 void	hdr_connection(int signo, siginfo_t *info, void *content)
@@ -28,7 +28,8 @@ void	hdr_connection(int signo, siginfo_t *info, void *content)
 	{
 		ft_putstr("Client PID : ");
 		ft_putnbr(info->si_pid);
-		write(1, "\n", 1);
+		write(1, "\n\n", 2);
+		ft_putstr("Messgae : ");
 		g_sdata.pid = info->si_pid;
 		g_sdata.msg = ft_strdup("");
 		g_sdata.act.sa_sigaction = hdr_msg;
