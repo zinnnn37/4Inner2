@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 10:22:47 by minjinki          #+#    #+#              #
-#    Updated: 2023/01/27 14:22:13 by minjinki         ###   ########.fr        #
+#    Updated: 2023/01/27 16:11:26 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,17 @@ SRC_CLIENT	=	src/client.c\
 				src/client_hdr.c
 
 SRC_SERVER	=	src/server.c
+
+BNS_INCLUDE	=	include_bonus\minitalk_bonus.h
+
+BNS_UTILS	=	src_bonus/utils_bonus.c\
+				src_bonus/utils2_bonus.c\
+				src_bonus/utils3_bonus.c
+
+BNS_CLIENT	=	src_bonus/client_bonus.c\
+				src_bonus/client_hdr_bonus.c
+
+BNS_SERVER	=	src_bonus/server_bonus.c
 
 all			:	$(CLIENT) $(SERVER)
 
