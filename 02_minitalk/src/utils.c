@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:59:13 by MJKim             #+#    #+#             */
-/*   Updated: 2023/01/27 10:54:50 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:02:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_putstr(char *str)
 void	ft_putnbr(int n)
 {
 	char	c;
-	
+
 	if (n < 10)
 	{
 		c = n + '0';

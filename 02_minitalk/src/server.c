@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:15:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/27 13:00:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:01:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	hdr_msg(int signo, siginfo_t *info, void *content)
 		{
 			ft_putstr(g_sdata.msg);
 			free(g_sdata.msg);
-			ft_putstr("====================================\n");
+			ft_putstr("\n================================================\n\n");
 			g_sdata.act.sa_sigaction = hdr_connection;
 			sigaction(SIGUSR1, &(g_sdata.act), NULL);
 			sigaction(SIGUSR2, &(g_sdata.act), NULL);

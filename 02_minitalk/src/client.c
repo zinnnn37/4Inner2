@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:12:22 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/27 12:31:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:02:16 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	main(int argc, char **argv)
 		print_error("Check input format: ./client server_PID message\n");
 	if (ft_atoi(argv[1], &pid) == 0)
 		print_error("Check if PID is number\n");
-	g_cdata.pid = pid; 
+	g_cdata.pid = pid;
 	g_cdata.msg = argv[2];
 	g_cdata.act.sa_flags = SA_SIGINFO;
 	g_cdata.act.sa_sigaction = c_hdr_connection;
