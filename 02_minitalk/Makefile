@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 10:22:47 by minjinki          #+#    #+#              #
-#    Updated: 2023/01/27 16:26:44 by minjinki         ###   ########.fr        #
+#    Updated: 2023/01/27 16:31:34 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ ifdef BONUS
 endif
 
 bonus		:
-	$(make) BONUS=1 all
+	$(MAKE) BONUS=1 all
 
 all			:	$(CLIENT) $(SERVER)
 
