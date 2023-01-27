@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:13:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/27 12:12:51 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/27 12:55:19 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ void	print_error(char *str);
 void	ft_kill(pid_t pid, int signo);
 void	ft_putstr(char *str);
 void	ft_putnbr(int n);
+void	send_msg(void);
 
 #endif
