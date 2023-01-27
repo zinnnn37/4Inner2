@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:14:46 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/27 14:01:45 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/27 15:28:00 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	c_hdr_bits(int signo, siginfo_t *info, void *content)
 	if (signo == SIGUSR2)
 	{
 		ft_putstr("Message sent successfully\n");
+//		system("leaks client");
 		exit(0);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:21:00 by MJKim             #+#    #+#             */
-/*   Updated: 2023/01/27 10:52:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:20:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,17 @@ int	ft_atoi(char *str, int *res)
 {
 	int		i;
 	char	*trim;
+	int		status;
 
 	trim = ft_strtrim(str);
+	status = 1;
 	if (!trim)
 		print_error("Memory allocation failed!: ft_strtrim()\n");
 	i = 0;
 	while (trim[i])
 	{
 		if (trim[i] < '0' || trim[i] > '9')
-			return (0);
+			status = 0;
 		i++;
 	}
 	i = 0;
@@ -108,5 +110,6 @@ int	ft_atoi(char *str, int *res)
 		*res += trim[i] - '0';
 		i++;
 	}
-	return (1);
+	free(trim);
+	return (status);
 }
