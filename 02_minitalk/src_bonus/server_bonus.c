@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:15:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/27 14:04:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:21:13 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	hdr_msg(int signo, siginfo_t *info, void *content);
 
 void	print_pid(void)
 {
-	ft_putstr("Server PID : ");
+	ft_putstr("Server b PID : ");
 	ft_putnbr(getpid());
 	write(1, "\n\n", 2);
 }
