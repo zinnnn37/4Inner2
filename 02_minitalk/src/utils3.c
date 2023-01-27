@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 14:13:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/17 11:54:58 by minjinki         ###   ########.fr       */
+/*   Created: 2023/01/27 12:12:24 by minjinki          #+#    #+#             */
+/*   Updated: 2023/01/27 12:12:42 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "../include/minitalk.h"
 
-# include <signal.h>
-# include <unistd.h>
-# include <stdlib.h>
-
-# define SUCCESS 0
-# define FAILURE 1
-# define TRUE 1
-# define FALSE 0
-
-typedef struct s_data
+void	ft_kill(pid_t pid, int signo)
 {
-	int					pid;
-	char				*msg;
-	struct sigaction	act;
-}	t_data;
-
-void	print_error(char *str);
-
-#endif
+	if (kill(pid, signo) != 0)
+		print_error("Kill failed");
+	else
+		usleep(100);
+}

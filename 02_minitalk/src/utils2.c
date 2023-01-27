@@ -3,65 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MJKim <zinnnn37@gmail.com>                 +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:21:00 by MJKim             #+#    #+#             */
-/*   Updated: 2023/01/26 15:21:00 by MJKim            ###   ########.fr       */
+/*   Updated: 2023/01/27 10:52:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../include/minitalk.h"
 
-int	ft_strlen(const char *s);
-
-char	*ft_strtrim(char const *s1)
+size_t	ft_strlcpy(char *dst, const char *src, size_t destsize)
 {
-	const char	set[] = {'\t', '\n', '\v', '\f', '\r', ' '};
-	char	*res;
-	int		front;
-	int		rear;
+	size_t	srclen;
+	size_t	i;
 
-	if (!s1 || !set)
-		return (NULL);
-	front = 0;
-	rear = ft_strlen(s1) - 1;
-	while (s1[front] && ft_strchr(set, s1[front]))
-		front++;
-	if (front > rear || rear == -1)
-		return (ft_strdup(""));
-	while (s1[rear] && ft_strchr(set, s1[rear]))
-		rear--;
-	res = (char *)malloc(sizeof(char) * (rear - front + 2));
-	if (!res)
-		return (NULL);
-	ft_strlcpy(res, s1 + front, rear - front + 2);
-	return (res);
+	i = 0;
+	srclen = ft_strlen(src);
+	while (i < srclen && i + 1 < destsize)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	if (destsize != 0)
+		dst[i] = '\0';
+	return (srclen);
 }
 
-int	ft_atoi(const char *str, int *res)
+char	*ft_strchr(const char *s, int c)
 {
-	int 	i;
-	char	*trim;
-
-	trim = ft_strtrim(str);
-	if (!trim)
-		print_error("Memory allocation failed!: ft_strtrim()\n");
-	i = 0;
-	while (trim[i])
+	if (!s)
+		return (NULL);
+	while (*(unsigned char *)s != (unsigned char)c)
 	{
-		if (trim[i] < '0' || trim[i] > '9')
-			return (0);
-		i++;
+		if (*(unsigned char *)s == '\0')
+			return (NULL);
+		s++;
 	}
-	i = 0;
-	*res = 0;
-	while ('0' <= trim[i] && trim[i] <= '9')
-	{
-		*res *= 10;
-		*res += trim[i] - '0';
-		i++;
-	}
-	return (1);
+	return ((char *)s);
 }
 
 char	*ft_strdup(const char *s)
@@ -83,25 +61,52 @@ char	*ft_strdup(const char *s)
 	return (res);
 }
 
-char	*ft_strjoin(char *s, char c)
+char	*ft_strtrim(char const *s1)
 {
-	char	*res;
-	int		len;
+	const char	set[] = {'\t', '\n', '\v', '\f', '\r', ' '};
+	char		*res;
+	int			front;
+	int			rear;
 
-	if (!s)
+	if (!s1)
 		return (NULL);
-	len = ft_strlen(s);
-	res = (char *)malloc(sizeof(char) * (len + 2));
+	front = 0;
+	rear = ft_strlen(s1) - 1;
+	while (s1[front] && ft_strchr(set, s1[front]))
+		front++;
+	if (front > rear || rear == -1)
+		return (ft_strdup(""));
+	while (s1[rear] && ft_strchr(set, s1[rear]))
+		rear--;
+	res = (char *)malloc(sizeof(char) * (rear - front + 2));
 	if (!res)
-		print_error("Memory allocation failed: ft_join()\n");
-	len = 0;
-	while (s[len])
-	{
-		res[len] = s[len];
-		len++;
-	}
-	res[len] = c;
-	res[len + 1] = '\0';
-	free(s);
+		return (NULL);
+	ft_strlcpy(res, s1 + front, rear - front + 2);
 	return (res);
+}
+
+int	ft_atoi(char *str, int *res)
+{
+	int		i;
+	char	*trim;
+
+	trim = ft_strtrim(str);
+	if (!trim)
+		print_error("Memory allocation failed!: ft_strtrim()\n");
+	i = 0;
+	while (trim[i])
+	{
+		if (trim[i] < '0' || trim[i] > '9')
+			return (0);
+		i++;
+	}
+	i = 0;
+	*res = 0;
+	while ('0' <= trim[i] && trim[i] <= '9')
+	{
+		*res *= 10;
+		*res += trim[i] - '0';
+		i++;
+	}
+	return (1);
 }

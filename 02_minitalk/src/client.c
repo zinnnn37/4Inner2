@@ -6,24 +6,20 @@
 /*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:12:22 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/17 11:28:41 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/27 12:31:29 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
-
-int		ft_atoi(char *str, int *res);
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
+#include "../include/minitalk.h"
 
 void	print_pid(void)
 {
 	ft_putstr("Client PID : ");
 	ft_putnbr(getpid());
-	ft_putchar('\n');
+	write(1, "\n", 1);
 }
 
-void	send_bits(int pid, char c)
+void	send_bits(char c)
 {
 	int	bit;
 	int	check;
@@ -33,40 +29,50 @@ void	send_bits(int pid, char c)
 	{
 		check = 1 << bit;
 		if (c & check)
-			kill(pid, SIGUSR1);
+			ft_kill(g_cdata.pid, SIGUSR1);
 		else
-			kill(pid, SIGUSR2);
+			ft_kill(g_cdata.pid, SIGUSR2);
 		usleep(100);
-		i--;
+		bit--;
 	}
 }
 
-void	send_msg(int pid, char *str)
+void	send_msg(void)
 {
-	int	i;
+	static int	i = 0;
+	static int	bits = 8;
 
-	i = 0;
-	while (str[i])
+	while (g_cdata.msg[i])
 	{
-		send_bits(pid, str[i]);
+		send_bits(g_cdata.msg[i]);
 		i++;
 	}
-	send_bits(pid, '\n');
+	if (g_cdata.msg[i] == '\0')
+	{
+		send_bits('\n');
+		while (bits-- > 0)
+			ft_kill(g_cdata.pid, SIGUSR2);
+		pause();
+	}
 }
 
 int	main(int argc, char **argv)
 {
 	int	pid;
-	int	i;
 
 	if (argc != 3)
 		print_error("Check input format: ./client server_PID message\n");
 	if (ft_atoi(argv[1], &pid) == 0)
 		print_error("Check if PID is number\n");
+	g_cdata.pid = pid; 
+	g_cdata.msg = argv[2];
+	g_cdata.act.sa_flags = SA_SIGINFO;
+	g_cdata.act.sa_sigaction = c_hdr_connection;
+	sigemptyset(&(g_cdata.act.sa_mask));
+	sigaction(SIGUSR1, &(g_cdata.act), NULL);
+	sigaction(SIGUSR2, &(g_cdata.act), NULL);
 	print_pid();
-	i = 0;
-	if (kill(pid, 0) == -1 || pid == 0)
-		print_error("Invalid PID\n");
-	send_msg(pid, argv[2]);
+	ft_kill(g_cdata.pid, SIGUSR1);
+	pause();
 	return (0);
 }
