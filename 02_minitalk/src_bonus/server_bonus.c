@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:15:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/27 16:21:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 13:49:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	hdr_connection(int signo, siginfo_t *info, void *content)
 		ft_putnbr(info->si_pid);
 		write(1, "\n\n", 2);
 		ft_putstr("Messgae : ");
-		g_sdata.pid = info->si_pid;
-		g_sdata.msg = ft_strdup("");
-		g_sdata.act.sa_sigaction = hdr_msg;
-		sigaction(SIGUSR1, &(g_sdata.act), NULL);
-		sigaction(SIGUSR2, &(g_sdata.act), NULL);
+		g_server.pid = info->si_pid;
+		g_server.msg = ft_strdup("");
+		g_server.act.sa_sigaction = hdr_msg;
+		sigaction(SIGUSR1, &(g_server.act), NULL);
+		sigaction(SIGUSR2, &(g_server.act), NULL);
 		ft_kill(info->si_pid, signo);
 	}
 	else
@@ -51,18 +51,19 @@ void	hdr_msg(int signo, siginfo_t *info, void *content)
 		c += (1 << --bit);
 	else if (signo == SIGUSR2)
 		bit--;
+	//ft_kill(g_server.pid, signo);
 	if (bit == 0)
 	{
 		if (c != '\0')
-			g_sdata.msg = ft_join(g_sdata.msg, c);
+			g_server.msg = ft_join(g_server.msg, c);
 		else
 		{
-			ft_putstr(g_sdata.msg);
-			free(g_sdata.msg);
+			ft_putstr(g_server.msg);
+			free(g_server.msg);
 			ft_putstr("\n================================================\n\n");
-			g_sdata.act.sa_sigaction = hdr_connection;
-			sigaction(SIGUSR1, &(g_sdata.act), NULL);
-			sigaction(SIGUSR2, &(g_sdata.act), NULL);
+			g_server.act.sa_sigaction = hdr_connection;
+			sigaction(SIGUSR1, &(g_server.act), NULL);
+			sigaction(SIGUSR2, &(g_server.act), NULL);
 			ft_kill(info->si_pid, signo);
 		}
 		bit = 8;
@@ -75,11 +76,11 @@ int	main(int argc, char **argv)
 	(void)argv;
 	if (argc != 1)
 		print_error("Check input format: ./server\n");
-	g_sdata.act.sa_flags = SA_SIGINFO;
-	g_sdata.act.sa_sigaction = hdr_connection;
-	sigemptyset(&(g_sdata.act.sa_mask));
-	sigaction(SIGUSR1, &(g_sdata.act), NULL);
-	sigaction(SIGUSR2, &(g_sdata.act), NULL);
+	g_server.act.sa_flags = SA_SIGINFO;
+	g_server.act.sa_sigaction = hdr_connection;
+	sigemptyset(&(g_server.act.sa_mask));
+	sigaction(SIGUSR1, &(g_server.act), NULL);
+	sigaction(SIGUSR2, &(g_server.act), NULL);
 	print_pid();
 	while (TRUE)
 		pause();

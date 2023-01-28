@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:13:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/27 16:11:33 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 13:50:35 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,23 @@
 # define TRUE 1
 # define FALSE 0
 
-typedef struct s_data
+typedef struct s_client
+{
+	pid_t				pid;
+	int					bit;
+	char				*msg;
+	struct sigaction	act;
+}	t_client;
+
+typedef struct s_server
 {
 	pid_t				pid;
 	char				*msg;
 	struct sigaction	act;
-}	t_data;
+}	t_server;
 
-t_data	g_cdata;
-t_data	g_sdata;
+t_client	g_client;
+t_server	g_server;
 
 char	*ft_join(char *s, char c);
 char	*ft_strdup(const char *s);
