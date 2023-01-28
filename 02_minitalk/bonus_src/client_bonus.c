@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:12:22 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 18:42:06 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:45:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	print_pid(void)
 {
+	ft_putstr("===============  BONUS  ===============\n\n");
 	ft_putstr("Client PID : ");
 	ft_putnbr(getpid());
 	write(1, "\n", 1);

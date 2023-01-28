@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:15:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 18:42:12 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:45:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	hdr_msg(int signo, siginfo_t *info, void *content);
 
 void	print_pid(void)
 {
+	ft_putstr("===============  BONUS  ===============\n\n");
 	ft_putstr("Server PID : ");
 	ft_putnbr(getpid());
 	write(1, "\n\n", 2);

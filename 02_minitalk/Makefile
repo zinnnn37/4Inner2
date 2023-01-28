@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 10:22:47 by minjinki          #+#    #+#              #
-#    Updated: 2023/01/27 16:31:34 by minjinki         ###   ########.fr        #
+#    Updated: 2023/01/28 18:45:05 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,13 @@ SRC_CLIENT	=	src/client.c\
 SRC_SERVER	=	src/server.c
 
 ifdef BONUS
-	INCLUDE		=	include_bonus/minitalk_bonus.h
-	SRC_UTILS	=	src_bonus/utils_bonus.c\
-					src_bonus/utils2_bonus.c\
-					src_bonus/utils3_bonus.c
-	SRC_CLIENT	=	src_bonus/client_bonus.c\
-					src_bonus/client_hdr_bonus.c
-	SRC_SERVER	=	src_bonus/server_bonus.c
+	INCLUDE		=	bonus_include/minitalk_bonus.h
+	SRC_UTILS	=	bonus_src/utils_bonus.c\
+					bonus_src/utils2_bonus.c\
+					bonus_src/utils3_bonus.c
+	SRC_CLIENT	=	bonus_src/client_bonus.c\
+					bonus_src/client_hdr_bonus.c
+	SRC_SERVER	=	bonus_src/server_bonus.c
 endif
 
 bonus		:
