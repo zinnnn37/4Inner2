@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:15:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/27 14:04:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 14:07:00 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_pid(void)
 void	hdr_connection(int signo, siginfo_t *info, void *content)
 {
 	(void)content;
-	if (signo == SIGUSR1 || signo == SIGUSR2)
+	if (signo == SIGUSR1)
 	{
 		ft_putstr("Client PID : ");
 		ft_putnbr(info->si_pid);

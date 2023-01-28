@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:12:22 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 13:51:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 14:03:39 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,13 @@ void	send_bits(char c)
 		if (c & check)
 		{
 			ft_kill(g_client.pid, SIGUSR1);
+			g_client.bit = SIGUSR1;
 		}
 		else
+		{
 			ft_kill(g_client.pid, SIGUSR2);
+			g_client.bit = SIGUSR2;
+		}
 		usleep(100);
 		bit--;
 	}
@@ -51,6 +55,7 @@ void	send_msg(void)
 	}
 	if (g_client.msg[i] == '\0')
 	{
+		g_client.bit = 0;
 		send_bits('\n');
 		while (bits-- > 0)
 			ft_kill(g_client.pid, SIGUSR2);

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:15:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 13:52:06 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 14:02:09 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	hdr_msg(int signo, siginfo_t *info, void *content)
 		c += (1 << --bit);
 	else if (signo == SIGUSR2)
 		bit--;
-	//ft_kill(g_server.pid, signo);
+	ft_kill(g_server.pid, SIGUSR1);
 	if (bit == 0)
 	{
 		if (c != '\0')
@@ -60,11 +60,10 @@ void	hdr_msg(int signo, siginfo_t *info, void *content)
 		{
 			ft_putstr(g_server.msg);
 			free(g_server.msg);
-			ft_putstr("\n================================================\n\n");
 			g_server.act.sa_sigaction = hdr_connection;
 			sigaction(SIGUSR1, &(g_server.act), NULL);
 			sigaction(SIGUSR2, &(g_server.act), NULL);
-			ft_kill(info->si_pid, signo);
+			ft_kill(info->si_pid, SIGUSR2);
 		}
 		bit = 8;
 		c = '\0';
