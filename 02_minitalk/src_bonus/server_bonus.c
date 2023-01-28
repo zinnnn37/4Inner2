@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:15:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 14:02:09 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:46:35 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_pid(void)
 void	hdr_connection(int signo, siginfo_t *info, void *content)
 {
 	(void)content;
-	if (signo == SIGUSR1 || signo == SIGUSR2)
+	if (signo == SIGUSR1)
 	{
 		ft_putstr("Client PID : ");
 		ft_putnbr(info->si_pid);
@@ -41,6 +41,12 @@ void	hdr_connection(int signo, siginfo_t *info, void *content)
 		print_error("Connection failed\n");
 }
 
+void	print_msg(char *msg)
+{
+	ft_putstr(msg);
+	free(msg);
+}
+
 void	hdr_msg(int signo, siginfo_t *info, void *content)
 {
 	static unsigned char	c;
@@ -51,15 +57,15 @@ void	hdr_msg(int signo, siginfo_t *info, void *content)
 		c += (1 << --bit);
 	else if (signo == SIGUSR2)
 		bit--;
-	ft_kill(g_server.pid, SIGUSR1);
-	if (bit == 0)
+	if (bit != 0)
+		ft_kill(g_server.pid, SIGUSR1);
+	else if (bit == 0)
 	{
 		if (c != '\0')
 			g_server.msg = ft_join(g_server.msg, c);
 		else
 		{
-			ft_putstr(g_server.msg);
-			free(g_server.msg);
+			print_msg(g_server.msg);
 			g_server.act.sa_sigaction = hdr_connection;
 			sigaction(SIGUSR1, &(g_server.act), NULL);
 			sigaction(SIGUSR2, &(g_server.act), NULL);

@@ -6,12 +6,12 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:13:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 13:50:35 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:59:45 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#ifndef MINITALK_BONUS_H
+# define MINITALK_BONUS_H
 
 # include <signal.h>
 # include <unistd.h>
