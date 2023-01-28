@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:13:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 16:46:30 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:41:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,15 @@
 # define TRUE 1
 # define FALSE 0
 
-typedef struct s_client
-{
-	pid_t				pid;
-	char				*msg;
-	int					flag;
-	int					bit;
-	struct sigaction	act;
-}	t_client;
-
-typedef struct s_server
+typedef struct s_data
 {
 	pid_t				pid;
 	char				*msg;
 	struct sigaction	act;
-}	t_server;
+}	t_data;
 
-t_client	g_client;
-t_server	g_server;
+t_data	g_cdata;
+t_data	g_sdata;
 
 char	*ft_join(char *s, char c);
 char	*ft_strdup(const char *s);

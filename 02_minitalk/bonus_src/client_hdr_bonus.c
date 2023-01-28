@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:14:46 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 17:05:26 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:42:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/minitalk_bonus.h"
+#include "../bonus_include/minitalk_bonus.h"
 
 void	c_hdr_bits(int signo, siginfo_t *info, void *content);
 
@@ -21,9 +21,9 @@ void	c_hdr_connection(int signo, siginfo_t *info, void *content)
 	if (signo == SIGUSR1)
 	{
 		ft_putstr("Connection succeed\n");
-		g_client.act.sa_sigaction = c_hdr_bits;
-		sigaction(SIGUSR1, &(g_client.act), NULL);
-		sigaction(SIGUSR2, &(g_client.act), NULL);
+		g_cdata.act.sa_sigaction = c_hdr_bits;
+		sigaction(SIGUSR1, &(g_cdata.act), NULL);
+		sigaction(SIGUSR2, &(g_cdata.act), NULL);
 		send_msg();
 	}
 	else if (signo == SIGUSR2)

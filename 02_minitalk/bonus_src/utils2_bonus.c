@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:21:00 by MJKim             #+#    #+#             */
-/*   Updated: 2023/01/28 17:04:11 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:42:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/minitalk_bonus.h"
+#include "../bonus_include/minitalk_bonus.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t destsize)
 {
