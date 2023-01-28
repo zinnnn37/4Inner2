@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:12:22 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 16:07:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 17:03:25 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_pid(void)
 {
-	ft_putstr("Client b PID : ");
+	ft_putstr("Client PID : ");
 	ft_putnbr(getpid());
 	write(1, "\n", 1);
 }
@@ -29,9 +29,9 @@ void	send_bits(char c)
 	{
 		check = 1 << bit;
 		if (c & check)
-			ft_kill(g_client.pid, SIGUSR1);
+			ft_kill(g_cdata.pid, SIGUSR1);
 		else
-			ft_kill(g_client.pid, SIGUSR2);
+			ft_kill(g_cdata.pid, SIGUSR2);
 		usleep(100);
 		bit--;
 	}
@@ -42,17 +42,17 @@ void	send_msg(void)
 	static int	i = 0;
 	static int	bits = 8;
 
-	while (g_client.msg[i])
+	while (g_cdata.msg[i])
 	{
-		send_bits(g_client.msg[i]);
+		send_bits(g_cdata.msg[i]);
 		i++;
 	}
-	if (g_client.msg[i] == '\0')
+	if (g_cdata.msg[i] == '\0')
 	{
 		send_bits('\n');
-		g_client.bit = 0;
 		while (bits-- > 0)
-			ft_kill(g_client.pid, SIGUSR2);
+			ft_kill(g_cdata.pid, SIGUSR2);
+		pause();
 	}
 }
 
@@ -64,17 +64,15 @@ int	main(int argc, char **argv)
 		print_error("Check input format: ./client server_PID message\n");
 	if (ft_atoi(argv[1], &pid) == 0)
 		print_error("Check if PID is number\n");
-	g_client.pid = pid;
-	g_client.msg = argv[2];
-	g_client.bit = -1;
-	g_client.act.sa_flags = SA_SIGINFO;
-	g_client.act.sa_sigaction = c_hdr_connection;
-	sigemptyset(&(g_client.act.sa_mask));
-	sigaction(SIGUSR1, &(g_client.act), NULL);
-	sigaction(SIGUSR2, &(g_client.act), NULL);
+	g_cdata.pid = pid;
+	g_cdata.msg = argv[2];
+	g_cdata.act.sa_flags = SA_SIGINFO;
+	g_cdata.act.sa_sigaction = c_hdr_connection;
+	sigemptyset(&(g_cdata.act.sa_mask));
+	sigaction(SIGUSR1, &(g_cdata.act), NULL);
+	sigaction(SIGUSR2, &(g_cdata.act), NULL);
 	print_pid();
-	ft_kill(g_client.pid, SIGUSR1);
-	while (TRUE)
-		pause();
+	ft_kill(g_cdata.pid, SIGUSR1);
+	pause();
 	return (0);
 }

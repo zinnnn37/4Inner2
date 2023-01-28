@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:13:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 15:59:45 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 16:46:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@
 typedef struct s_client
 {
 	pid_t				pid;
-	int					bit;
 	char				*msg;
+	int					flag;
+	int					bit;
 	struct sigaction	act;
 }	t_client;
 
