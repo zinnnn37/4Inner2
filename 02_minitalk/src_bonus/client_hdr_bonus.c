@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:14:46 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 17:03:36 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 17:05:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	c_hdr_connection(int signo, siginfo_t *info, void *content)
 	if (signo == SIGUSR1)
 	{
 		ft_putstr("Connection succeed\n");
-		g_cdata.act.sa_sigaction = c_hdr_bits;
-		sigaction(SIGUSR1, &(g_cdata.act), NULL);
-		sigaction(SIGUSR2, &(g_cdata.act), NULL);
+		g_client.act.sa_sigaction = c_hdr_bits;
+		sigaction(SIGUSR1, &(g_client.act), NULL);
+		sigaction(SIGUSR2, &(g_client.act), NULL);
 		send_msg();
 	}
 	else if (signo == SIGUSR2)
