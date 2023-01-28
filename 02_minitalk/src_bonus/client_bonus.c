@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:12:22 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 13:50:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 13:51:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "../include_bonus/minitalk_bonus.h"
 
 void	print_pid(void)
 {

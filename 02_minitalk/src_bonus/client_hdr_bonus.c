@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:14:46 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 13:49:06 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 13:52:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "../include_bonus/minitalk_bonus.h"
 
 void	c_hdr_bits(int signo, siginfo_t *info, void *content);
 
@@ -36,7 +36,7 @@ void	c_hdr_msg(int signo, siginfo_t *info, void *content)
 {
 	(void)info;
 	(void)content;
-	if 
+	if ()
 	g_client.act.sa_sigaction = c_hdr_end;
 	sigaction(SIGUSR1, &(g_client.act), NULL);
 	sigaction(SIGUSR2, &(g_client.act), NULL);

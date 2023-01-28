@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:15:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 13:49:48 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/28 13:52:06 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "../include_bonus/minitalk_bonus.h"
 
 void	hdr_msg(int signo, siginfo_t *info, void *content);
 
