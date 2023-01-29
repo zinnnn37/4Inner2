@@ -31,6 +31,8 @@ SRC_CLIENT	=	src/client.c\
 SRC_SERVER	=	src/server.c
 
 ifdef BONUS
+	CLIENT		=	client_bonus
+	SERVER		=	server_bonus
 	INCLUDE		=	bonus_include/minitalk_bonus.h
 	SRC_UTILS	=	bonus_src/utils_bonus.c\
 					bonus_src/utils2_bonus.c\
