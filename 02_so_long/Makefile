@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 12:17:00 by minjinki          #+#    #+#              #
-#    Updated: 2023/01/06 17:31:04 by minjinki         ###   ########.fr        #
+#    Updated: 2023/01/30 11:45:12 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ RM			=	rm -f
 AR			=	ar
 ARFLAGS		=	src
 
-all			:	makefile $(NAME)
+all			:	$(NAME)
 
 %.o			:	%.c
 	$(CC) $(CFLAGS) -IHDRS -c $< -o $@
