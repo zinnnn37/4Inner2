@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:56:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/30 15:18:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/30 16:09:36 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	sort_two(t_stack a)
 
 void	sort_three(t_stack a)
 {
+	// min max 찾아서
+	// min max 값이 s.top.data , s.top.next.data, s.bottom.data 인지 확인해서 6개 경우의 수
 }
 
 void	sort_four(void)
