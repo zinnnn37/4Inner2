@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 10:46:45 by minjinki          #+#    #+#              #
-#    Updated: 2023/01/30 11:50:56 by minjinki         ###   ########.fr        #
+#    Updated: 2023/01/30 15:37:09 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,14 @@ NAME		=	push_swap
 
 INCLUDE		=	push_swap.h
 
+SRCS_DIR	=	src/
 SRC_FILES	=	push_swap\
+				stack\
+				command1\
+				command2\
 				utils
 
-SRCS		=	$(addsuffix .c, $(SRC_FILES))
+SRCS		=	$(addprefix $(SRCS_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS		=	$(SRCS:%.c=%.o)
 
 LIBFT		=	libft/
