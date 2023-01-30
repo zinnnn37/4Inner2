@@ -6,12 +6,14 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 10:22:47 by minjinki          #+#    #+#              #
-#    Updated: 2023/01/28 18:45:05 by minjinki         ###   ########.fr        #
+#    Updated: 2023/01/30 10:18:21 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CLIENT		=	client
 SERVER		=	server
+CLIENT_B	=	client_bonus
+SERVER_B	=	server_bonus
 
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
@@ -31,8 +33,6 @@ SRC_CLIENT	=	src/client.c\
 SRC_SERVER	=	src/server.c
 
 ifdef BONUS
-	CLIENT		=	client_bonus
-	SERVER		=	server_bonus
 	INCLUDE		=	bonus_include/minitalk_bonus.h
 	SRC_UTILS	=	bonus_src/utils_bonus.c\
 					bonus_src/utils2_bonus.c\
@@ -43,7 +43,7 @@ ifdef BONUS
 endif
 
 bonus		:
-	$(MAKE) BONUS=1 all
+	$(MAKE) BONUS=1 $(CLIENT_B) $(SERVER_B)
 
 all			:	$(CLIENT) $(SERVER)
 
@@ -58,6 +58,7 @@ clean		:
 
 fclean		:
 	$(RM) $(CLIENT) $(SERVER)
+	$(RM) $(CLIENT_B) $(SERVER_B)
 
 re			:
 	$(MAKE) fclean
