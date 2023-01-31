@@ -6,13 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:01:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/30 12:02:08 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:34:15 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
-
-
 
 #endif

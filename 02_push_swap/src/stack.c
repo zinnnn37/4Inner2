@@ -6,13 +6,13 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:23:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 13:16:42 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:32:55 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
 #include <stdio.h>
+
 void	print_nodes(t_stack *s)
 {
 	t_data	*tmp;

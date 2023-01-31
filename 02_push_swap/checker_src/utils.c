@@ -6,14 +6,14 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:06:21 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/30 12:06:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:34:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker_include/checker.h"
 
-void	print_error()
+void	print_error(void)
 {
-	ft_putstr("ERROR\n");
+	ft_putstr("ERROR");
 	exit(1);
 }
