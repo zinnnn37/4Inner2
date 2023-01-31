@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:23:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 14:32:55 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:45:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	print_nodes(t_stack *s)
 	t_data	*tmp;
 
 	tmp = s->top;
+	printf("\n\n\nsize: %d\n\n", s->size);
 	while (tmp)
 	{
 		printf("%d\n", tmp->data);
@@ -47,4 +48,5 @@ void	create_and_add_node(t_stack *s, int data)
 		s->bottom = node;
 	}
 	s->size++;
+	//print_nodes(s);
 }
