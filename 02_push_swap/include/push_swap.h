@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:35:53 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 14:32:32 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:56:56 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,13 @@ void	get_numbers(int ac, char **av, t_stack *s);
 
 /*************** command ***************/
 int		sn(t_stack *s, char *str);
+int		rn(t_stack *s, char *str);
+int		rrn(t_stack *s, char *str);
+void	pn(t_stack *from, t_stack *to, char *str);
 
 /************* hard coding *************/
-void	sort_two(t_stack a);
+void	sort_small_numbers(t_stack *a, t_stack *b);
+void	sort_two(t_stack *a);
 
 /**************** utils ****************/
 void	print_error(void);
