@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 17:16:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/30 12:29:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 11:39:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	ft_atoi(const char *str)
 	size_t		i;
 
 	i = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+	while (is_space(str[i]) == TRUE)
 		i++;
 	minus = 1;
 	if (str[i] == '-' || str[i] == '+')

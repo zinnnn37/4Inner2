@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 11:38:29 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 11:44:55 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/07 16:02:35 by minjinki          #+#    #+#             */
+/*   Updated: 2022/07/15 18:55:29 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	print_error()
+size_t	ft_strlen(const char *s)
 {
-	ft_putstr("ERROR\n");
-	exit(1);
+	int	cnt;
+
+	cnt = 0;
+	while (s[cnt])
+		cnt++;
+	return (cnt);
 }

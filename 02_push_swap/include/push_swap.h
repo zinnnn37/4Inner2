@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:35:53 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 10:29:17 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 11:50:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	sn(t_stack s, char *str);
 /************* hard coding *************/
 void	sort_two(t_stack a);
 
-void	ft_putstr(char *str);
-void	print_error(char *str);
+void	print_error();
 
 #endif

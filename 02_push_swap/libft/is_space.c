@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:29:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/30 12:31:06 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 11:59:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int	is_space(char c)
 {
 	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r' || c == ' ')
-		return (1);
-	return (0);
+		return (TRUE);
+	return (FALSE);
 }
