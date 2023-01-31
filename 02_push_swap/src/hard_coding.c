@@ -6,18 +6,16 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:56:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/30 16:09:36 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:35:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	sort_two(t_stack a)
+void	sort_two(t_stack *a)
 {
-	int	tmp;
-
-	if (a.top.data > a.bottom.data)
-		s(a, "sa\n");
+	if (a->top->data > a->bottom->data)
+		sn(a, "sa\n");
 }
 
 void	sort_three(t_stack a)

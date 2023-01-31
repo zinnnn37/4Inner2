@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:19:57 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 13:07:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:37:44 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	pn(t_stack *from, t_stack *to, char *str)
 int	rrn(t_stack *s, char *str)
 {
 	if (s->size <= 1)
-		return (FAILURE);
+		return ;
 	if (str)
 		ft_putstr(str);
 	s->bottom->next = s->top;

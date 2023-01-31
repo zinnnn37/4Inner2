@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:44:46 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 13:06:45 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:37:11 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	sn(t_stack *s, char *str)
 	int	tmp;
 
 	if (s->size < 2)
-		return (FAILURE);
+		return ;
 	if (str)
 		ft_putstr(str);
 	tmp = s->top->data;
@@ -44,7 +44,7 @@ void	ss(t_stack *a, t_stack *b)
 int	rn(t_stack *s, char *str)
 {
 	if (s->size <= 1)
-		return (FAILURE);
+		return ;
 	if (str)
 		ft_putstr(str);
 	s->bottom->next = s->top;
