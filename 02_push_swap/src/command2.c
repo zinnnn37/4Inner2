@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:19:57 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/30 15:31:57 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 10:33:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	pn(t_stack from, t_stack to, char *str)
 {
+	if (from.size == 0)
+		return ;
 	if (str)
 		ft_putstr(str);
 	to.top.prev = from.top;
@@ -24,8 +26,10 @@ void	pn(t_stack from, t_stack to, char *str)
 	to.top.next = NULL;
 }
 
-void	rrn(t_stack s, char *str)
+int	rrn(t_stack s, char *str)
 {
+	if (s->size <= 1)
+		return (FAILURE);
 	if (str)
 		ft_putstr(str);
 	s.bottom.next = a.top;
@@ -34,11 +38,20 @@ void	rrn(t_stack s, char *str)
 	s.top = a.top.prev;
 	s.bottom.next = NULL;
 	s.top.prev = NULL;
+	return (SUCCESS);
 }
 
 void	rrr(t_stack a, t_stack b)
 {
-	ft_putstr("rrr\n");
-	rrn(a, NULL);
-	rrn(b, NULL);
+	int	a;
+	int	b;
+
+	a = rrn(a, NULL);
+	b = rrn(b, NULL);
+	if (a == SUCCESS && b == SUCCESS)
+		ft_putstr("rrr\n");
+	else if (a == SUCCESS)
+		ft_putstr("rra\n");
+	else if (b == SUCCESS)
+		ft_putstr("rrb\n");
 }
