@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 17:16:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 13:22:50 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 13:28:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	ft_atoi(const char *str, int *data)
 	{
 		ans = ans * 10 + (str[i] - '0');
 		i++;
+		if (ans * minus > MAX_INT || ans * minus < MIN_INT)
+			return (FALSE);
 	}
 	if (str[i] && (str[i] < '0' || '9' < str[i]))
 		return (FALSE);

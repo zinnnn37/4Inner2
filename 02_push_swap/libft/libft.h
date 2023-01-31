@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:25:24 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 13:21:09 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 13:29:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 # define TRUE 1
 # define FALSE 0
+# define MAX_INT 2147483647
+# define MIN_INT -2147483648
 
 typedef struct s_list
 {
