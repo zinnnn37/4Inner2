@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 17:47:48 by minjinki          #+#    #+#              #
-#    Updated: 2022/07/20 14:26:32 by minjinki         ###   ########.fr        #
+#    Updated: 2023/01/31 13:10:35 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS		=\
 			ft_isascii.c\
 			ft_isdigit.c\
 			ft_isprint.c\
+			ft_is_space.c\
 			ft_itoa.c\
 			ft_memchr.c\
 			ft_memcmp.c\
