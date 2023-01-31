@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 10:59:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 13:17:09 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,18 @@ void	init_stack(t_stack s)
 
 int	main(int ac, char **av)
 {
-	struct t_stack	a;
-	struct t_stack	b;
+	t_stack	a;
+	t_stack	b;
 
 	if (ac == 1)
 		print_error("Usage: ./push_swap [ args,... ]\n");
-	init_stack(a);
-	init_stack(b);
-	get_numbers(ac, av, a);
+	a.top = NULL;
+	a.bottom = NULL;
+	a.size = 0;
+	b.top = NULL;
+	b.bottom = NULL;
+	b.size = 0;
+	get_numbers(ac, av, &a);
+	print_nodes(&a);
 	return (0);
 }

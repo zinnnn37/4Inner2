@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:35:53 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 11:50:34 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 13:17:01 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,34 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "../libft/libft.h"
 
 # define FAILURE 1
 # define SUCCESS 0
 
 typedef struct s_data
 {
-	int				data;
-	struct t_data	*prev;
-	struct t_data	*next;
+	int		data;
+	struct	s_data	*prev;
+	struct	s_data	*next;
 }	t_data;
 
 typedef struct s_stack
 {
-	struct t_data	*top;
-	struct t_data	*bottom;
-	int				size;
+	t_data	*top;
+	t_data	*bottom;
+	int		size;
 }	t_stack;
 
+/**************** stack ****************/
+void	create_and_add_node(t_stack *s, int data);
+void	print_nodes(t_stack *s);
+
+/**************** parse ****************/
+void 	get_numbers(int ac, char **av, t_stack *s);
+
 /*************** command ***************/
-void	sn(t_stack s, char *str);
+int		sn(t_stack *s, char *str);
 
 /************* hard coding *************/
 void	sort_two(t_stack a);

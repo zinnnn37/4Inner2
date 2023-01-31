@@ -6,21 +6,19 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 17:16:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 11:39:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 13:22:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str, int *data)
 {
 	int			minus;
 	long long	ans;
 	size_t		i;
 
 	i = 0;
-	while (is_space(str[i]) == TRUE)
-		i++;
 	minus = 1;
 	if (str[i] == '-' || str[i] == '+')
 		if (str[i++] == '-')
@@ -31,5 +29,8 @@ int	ft_atoi(const char *str)
 		ans = ans * 10 + (str[i] - '0');
 		i++;
 	}
-	return (minus * ans);
+	if (str[i] && (str[i] < '0' || '9' < str[i]))
+		return (FALSE);
+	*data = (int)(minus * ans);
+	return (TRUE);
 }

@@ -6,52 +6,52 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:19:57 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 10:33:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/01/31 13:07:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	pn(t_stack from, t_stack to, char *str)
+void	pn(t_stack *from, t_stack *to, char *str)
 {
-	if (from.size == 0)
+	if (from->size == 0)
 		return ;
 	if (str)
 		ft_putstr(str);
-	to.top.prev = from.top;
-	from.top.next = to.top;
-	from.top = from.top.next;
-	from.top.prev = NULL;
-	to.top = to.top.prev;
-	to.top.next = NULL;
+	to->top->prev = from->top;
+	from->top->next = to->top;
+	from->top = from->top->next;
+	from->top->prev = NULL;
+	to->top = to->top->prev;
+	to->top->next = NULL;
 }
 
-int	rrn(t_stack s, char *str)
+int	rrn(t_stack *s, char *str)
 {
 	if (s->size <= 1)
 		return (FAILURE);
 	if (str)
 		ft_putstr(str);
-	s.bottom.next = a.top;
-	s.top.prev = a.bottom;
-	s.bottom = a.bottom.prev;
-	s.top = a.top.prev;
-	s.bottom.next = NULL;
-	s.top.prev = NULL;
+	s->bottom->next = s->top;
+	s->top->prev = s->bottom;
+	s->bottom = s->bottom->prev;
+	s->top = s->top->prev;
+	s->bottom->next = NULL;
+	s->top->prev = NULL;
 	return (SUCCESS);
 }
 
-void	rrr(t_stack a, t_stack b)
+void	rrr(t_stack *a, t_stack *b)
 {
-	int	a;
-	int	b;
+	int	x;
+	int	y;
 
-	a = rrn(a, NULL);
-	b = rrn(b, NULL);
-	if (a == SUCCESS && b == SUCCESS)
+	x = rrn(a, NULL);
+	y = rrn(b, NULL);
+	if (x == SUCCESS && y == SUCCESS)
 		ft_putstr("rrr\n");
-	else if (a == SUCCESS)
+	else if (x == SUCCESS)
 		ft_putstr("rra\n");
-	else if (b == SUCCESS)
+	else if (y == SUCCESS)
 		ft_putstr("rrb\n");
 }
