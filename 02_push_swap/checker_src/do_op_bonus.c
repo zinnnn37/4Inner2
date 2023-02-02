@@ -6,12 +6,12 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:33:00 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 12:50:31 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:13:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker_include/checker.h"
-#include <stdio.h>
+#include <stdio.h> // remove
 
 void	do_op2(t_stack *a, t_stack *b, char *s)
 {
@@ -31,7 +31,7 @@ void	do_op(t_stack *a, t_stack *b)
 {
 	char	*s;
 
-	print_nodes(a, b);
+	print_nodes(a, b); // remove
 	s = get_next_line(1);
 	while (s)
 	{

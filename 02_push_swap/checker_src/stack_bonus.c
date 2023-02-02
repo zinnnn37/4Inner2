@@ -6,14 +6,14 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:23:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 13:00:34 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:15:21 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker_include/checker.h"
+#include <stdio.h> // remove
 
-#include <stdio.h>
-void	print_nodes(t_stack *a, t_stack *b)
+void	print_nodes(t_stack *a, t_stack *b) // remove
 {
 	t_data	*tmp;
 
@@ -60,7 +60,6 @@ void	create_and_add_node(t_stack *s, int data)
 		s->bottom = node;
 	}
 	s->size++;
-	//print_nodes(s);
 }
 
 t_bool	is_sorted(t_stack *a)

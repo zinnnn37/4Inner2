@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:01:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 12:50:08 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:12:42 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define FAILURE 1
 # define SUCCESS 0
 
-typedef int t_bool;
+typedef int	t_bool;
 
 typedef struct s_data
 {

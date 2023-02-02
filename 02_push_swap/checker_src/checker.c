@@ -6,13 +6,13 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:01:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 12:02:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:15:33 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker_include/checker.h"
 
-int push_swap(int ac, char **av, t_stack *a, t_stack *b)
+int	push_swap(int ac, char **av, t_stack *a, t_stack *b)
 {
 	get_numbers(ac, av, a);
 	do_op(a, b);
