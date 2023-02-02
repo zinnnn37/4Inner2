@@ -6,19 +6,19 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:23:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 14:45:32 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/02 11:04:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include <stdio.h>
 
-void	print_nodes(t_stack *s)
+void	print_nodes(t_stack *a, t_stack *b)
 {
 	t_data	*tmp;
 
-	tmp = s->top;
-	printf("\n\n\nsize: %d\n\n", s->size);
+	tmp = a->top;
+	printf("\n\n\nsize: %d, %d\n\n", a->size, b->size);
 	while (tmp)
 	{
 		printf("%d\n", tmp->data);

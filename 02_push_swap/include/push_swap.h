@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:35:53 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 14:56:56 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/02 11:05:57 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_stack
 
 /**************** stack ****************/
 void	create_and_add_node(t_stack *s, int data);
-void	print_nodes(t_stack *s);
+void	print_nodes(t_stack *a, t_stack *b);
 
 /**************** parse ****************/
 void	get_numbers(int ac, char **av, t_stack *s);

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:19:57 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 14:43:18 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/02 11:03:16 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	pn(t_stack *from, t_stack *to, char *str)
 	from->top->prev = NULL;
 	to->top = to->top->prev;
 	to->top->next = NULL;
+	from->size--;
+	to->size++;
 }
 
 int	rrn(t_stack *s, char *str)

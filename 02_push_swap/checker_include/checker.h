@@ -6,19 +6,23 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:01:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 15:05:55 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:02:49 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
+# include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "../gnl/get_next_line.h"
 # include "../libft/libft.h"
 
 # define FAILURE 1
 # define SUCCESS 0
+
+typedef int t_bool;
 
 typedef struct s_data
 {
@@ -34,10 +38,29 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
+/**************** do_op ****************/
+void	do_op(t_stack *a, t_stack *b);
+
 /*************** command ***************/
-int		sn(t_stack *s, char *str);
-int		rn(t_stack *s, char *str);
-int		rrn(t_stack *s, char *str);
-void	pn(t_stack *from, t_stack *to, char *str);
+void	sn(t_stack *s);
+void	ss(t_stack *a, t_stack *b);
+void	rn(t_stack *s);
+void	rr(t_stack *a, t_stack *b);
+void	rrn(t_stack *s);
+void	rrr(t_stack *a, t_stack *b);
+void	pn(t_stack *from, t_stack *to);
+
+/**************** parse ****************/
+void	get_numbers(int ac, char **av, t_stack *s);
+
+/**************** stack ****************/
+void	create_and_add_node(t_stack *s, int data);
+t_bool	is_empty(t_stack *b);
+t_bool	is_sorted(t_stack *a);
+void	print_nodes(t_stack *s);
+
+/**************** utils ****************/
+void	ft_exit(void);
+void	print_error(void);
 
 #endif

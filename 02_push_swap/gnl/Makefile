@@ -5,31 +5,25 @@
 #                                                     +:+ +:+         +:+      #
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/13 17:47:48 by minjinki          #+#    #+#              #
-#    Updated: 2023/02/02 11:27:54 by minjinki         ###   ########.fr        #
+#    Created: 2023/02/02 11:26:25 by minjinki          #+#    #+#              #
+#    Updated: 2023/02/02 11:36:37 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=\
-			ft_atoi.c\
-			ft_calloc.c\
-			ft_memset.c\
-			ft_putstr.c\
-			ft_split.c\
-			ft_strcmp.c\
-			ft_strlen.c
+SRCS		=	get_next_line.c\
+				get_next_line_utils.c
 
-HDRS	= ./libft.h
+HDRS		=	./get_next_line.h
 
-CC		=	cc
-CFLAGS	=	-Wall -Wextra -Werror
+CC			=	cc
+CFLAGS		=	-Wall -Wextra -Werror
 
-RM		=	rm -f
+RM			=	rm -f
 
-AR		=	ar
-ARFLAGS	= 	rcs
+AR			=	ar
+ARFLAGS		= 	rcs
 
-NAME	=	libft.a
+NAME		=	libgnl.a
 
 OBJS		=	$(SRCS:.c=.o)
 

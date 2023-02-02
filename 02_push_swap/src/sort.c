@@ -1,36 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_bonus.c                                      :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 10:57:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 10:29:44 by minjinki         ###   ########.fr       */
+/*   Created: 2023/02/02 10:28:29 by minjinki          #+#    #+#             */
+/*   Updated: 2023/02/02 10:28:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../checker_include/checker.h"
-
-void	get_numbers(int ac, char **av, t_stack *s)
-{
-	int		i;
-	int		j;
-	int		data;
-	char	**res;
-
-	i = 0;
-	while (++i < ac)
-	{
-		res = ft_split(av[i]);
-		if (!res)
-			print_error();
-		j = -1;
-		while (res[++j])
-		{
-			if (ft_atoi(res[j], &data) == FALSE)
-				print_error();
-			create_and_add_node(s, data);
-		}
-	}
-}
+#include "../include/push_swap.h"

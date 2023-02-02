@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 14:59:45 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/02 11:05:02 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	push_swap(int ac, char **av, t_stack *a, t_stack *b)
 {
 	get_numbers(ac, av, a);
 	sort_small_numbers(a, b);
-	print_nodes(a);
+	print_nodes(a, b);
 }
 
 int	main(int ac, char **av)

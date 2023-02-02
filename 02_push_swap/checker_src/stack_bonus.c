@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   stack_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:23:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 10:22:36 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/02 11:44:05 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../checker_include/checker.h"
 #include <stdio.h>
 
 void	print_nodes(t_stack *s)
@@ -18,7 +18,7 @@ void	print_nodes(t_stack *s)
 	t_data	*tmp;
 
 	tmp = s->top;
-	printf("\n\n\nsize: %d\n\n", s->size);
+	printf("\n\nsize: %d\n", s->size);
 	while (tmp)
 	{
 		printf("%d\n", tmp->data);
@@ -49,4 +49,25 @@ void	create_and_add_node(t_stack *s, int data)
 	}
 	s->size++;
 	//print_nodes(s);
+}
+
+t_bool	is_sorted(t_stack *a)
+{
+	t_data	*tmp;
+
+	tmp = a->top;
+	while (tmp->next)
+	{
+		if (tmp->data > tmp->next->data)
+			return (FALSE);
+		tmp = tmp->next;
+	}
+	return (TRUE);
+}
+
+t_bool	is_empty(t_stack *b)
+{
+	if (b->size != 0)
+		return (FALSE);
+	return (TRUE);
 }
