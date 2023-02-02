@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 15:10:41 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 12:56:01 by minjinki         ###   ########.fr       */
+/*   Created: 2023/02/02 12:44:10 by minjinki          #+#    #+#             */
+/*   Updated: 2023/02/02 12:44:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *s)
+void	ft_putnbr(int n)
 {
-	size_t	len;
-	size_t	i;
+	char	c;
 
-	if (!s)
+	if (n < 10)
+	{
+		c = n + '0';
+		write(1, &c, 1);
 		return ;
-	len = ft_strlen(s);
-	i = 0;
-	while (i < len)
-		write(1, &s[i++], 1);
-	write(1, "\n", 1);
+	}
+	ft_putnbr(n / 10);
+	c = n % 10 + '0';
+	write(1, &c, 1);
 }

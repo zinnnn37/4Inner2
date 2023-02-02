@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:25:24 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 11:24:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:44:33 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ size_t	ft_strlen(const char *s);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
 
+void	ft_putnbr(int n);
 void	ft_putstr(char *s);
 
 #endif

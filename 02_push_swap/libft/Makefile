@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 17:47:48 by minjinki          #+#    #+#              #
-#    Updated: 2023/02/02 11:27:54 by minjinki         ###   ########.fr        #
+#    Updated: 2023/02/02 12:44:42 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRCS		=\
 			ft_atoi.c\
 			ft_calloc.c\
 			ft_memset.c\
+			ft_putnbr.c\
 			ft_putstr.c\
 			ft_split.c\
 			ft_strcmp.c\

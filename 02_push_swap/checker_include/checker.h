@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:01:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 12:02:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:50:08 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	get_numbers(int ac, char **av, t_stack *s);
 void	create_and_add_node(t_stack *s, int data);
 t_bool	is_empty(t_stack *b);
 t_bool	is_sorted(t_stack *a);
-void	print_nodes(t_stack *s);
+void	print_nodes(t_stack *a, t_stack *b);
 
 /**************** utils ****************/
 void	ft_exit(void);

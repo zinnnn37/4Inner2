@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:33:00 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 12:32:30 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:50:31 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ void	do_op(t_stack *a, t_stack *b)
 {
 	char	*s;
 
-	print_nodes(a);
-	print_nodes(b);
+	print_nodes(a, b);
 	s = get_next_line(1);
 	while (s)
 	{
@@ -52,9 +51,8 @@ void	do_op(t_stack *a, t_stack *b)
 			rn(b);
 		else
 			do_op2(a, b, s);
+		print_nodes(a, b);
 		free(s);
-		print_nodes(a);
-		print_nodes(b);
 		s = get_next_line(1);
 	}
 }
