@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 10:46:45 by minjinki          #+#    #+#              #
-#    Updated: 2023/02/02 10:14:45 by minjinki         ###   ########.fr        #
+#    Updated: 2023/02/02 10:27:22 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,8 +50,7 @@ ARFLAGS		=	src
 
 all			:	$(NAME)
 
-bonus		:	$(CHECKER)
-	$(MAKE) all
+bonus		:	$(NAME) $(CHECKER)
 
 %.o			:	%c
 	$(CC) $(CFLAGS) -IHDRS -c $< -o $@
@@ -61,15 +60,15 @@ $(NAME)		:	$(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) -o $(NAME) -I$(INCLUDE) -I$(LIBFT)
 
 $(CHECKER)	:	$(OBJS_BNS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) -o $(CHECKER) -I$(INCLUDE_BNS) -I$(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS_BNS) $(LIBFT_LIB) -o $(CHECKER) -I$(INCLUDE_BNS) -I$(LIBFT)
 
 clean		:
 	$(MAKE) -C $(LIBFT) clean
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(OBJS_BNS)
 
 fclean		:	clean
 	$(MAKE) -C $(LIBFT) fclean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(CHECKER)
 
 re			:
 	$(MAKE) fclean
