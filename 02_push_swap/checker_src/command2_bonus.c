@@ -6,17 +6,33 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:19:57 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 12:01:10 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:32:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker_include/checker.h"
+#include <stdio.h>
 
-void	pn(t_stack *from, t_stack *to) // segfault
+void	pn2(t_stack *from, t_stack *to)
+{
+	to->top->prev = from->top;
+	from->top = from->top->next;
+	from->top->prev = NULL;
+	to->top->prev->next = to->top;
+	to->top = to->top->prev;
+	to->top->prev = NULL;
+}
+
+void	pn(t_stack *from, t_stack *to)
 {
 	if (from->size == 0)
 		return ;
-	if (to->size == 0)
+	else if (from->size == 1 && to->size == 0)
+	{
+		to->top = from->top;
+		from->top = NULL;
+	}
+	else if (to->size == 0)
 	{
 		to->top = from->top;
 		from->top = from->top->next;
@@ -31,20 +47,7 @@ void	pn(t_stack *from, t_stack *to) // segfault
 		from->top = NULL;
 	}
 	else
-	{
-		to->top->prev = from->top;
-		write(1, "1\n", 2);
-		from->top->next = to->top;
-		write(1, "2\n", 2);
-		from->top = from->top->next;
-		write(1, "3\n", 2);
-		from->top->prev = NULL;
-		write(1, "4\n", 2);
-		to->top = to->top->prev;
-		write(1, "5\n", 2);
-		to->top->next = NULL;
-		write(1, "6\n", 2);
-	}
+		pn2(from, to);
 	from->size--;
 	to->size++;
 }
