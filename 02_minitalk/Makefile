@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 10:22:47 by minjinki          #+#    #+#              #
-#    Updated: 2023/01/30 10:18:21 by minjinki         ###   ########.fr        #
+#    Updated: 2023/02/04 12:01:27 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,42 +21,71 @@ RM			=	rm -f
 AR			=	ar
 ARFLAGS		=	src
 
-INCLUDE		=	include/minitalk.h
+INCLUDE		=	include
+INCLUDE_BNS	=	bonus_include
 
-SRC_UTILS	=	src/utils.c\
-				src/utils2.c\
-				src/utils3.c
+SRC_DIR		=	src/
+SRC_CLIENT	=	client\
+				client_hdr\
 
-SRC_CLIENT	=	src/client.c\
-				src/client_hdr.c
+SRC_SERVER	=	server
 
-SRC_SERVER	=	src/server.c
+SRC_UTILS	=	utils\
+				utils2\
+				utils3
 
-ifdef BONUS
-	INCLUDE		=	bonus_include/minitalk_bonus.h
-	SRC_UTILS	=	bonus_src/utils_bonus.c\
-					bonus_src/utils2_bonus.c\
-					bonus_src/utils3_bonus.c
-	SRC_CLIENT	=	bonus_src/client_bonus.c\
-					bonus_src/client_hdr_bonus.c
-	SRC_SERVER	=	bonus_src/server_bonus.c
-endif
+BNS_DIR		=	bonus_src/
+BNS_CLIENT	=	client_bonus\
+				client_hdr_bonus\
 
-bonus		:
-	$(MAKE) BONUS=1 $(CLIENT_B) $(SERVER_B)
+BNS_UTILS	=	utils_bonus\
+				utils2_bonus\
+				utils3_bonus
+
+BNS_SERVER	=	server_bonus
+
+SRCS_C		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_CLIENT)))\
+				$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_UTILS)))
+
+SRCS_S		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_UTILS)))\
+				$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_SERVER)))
+
+SRCS_C_BNS	=	$(addprefix $(BNS_DIR), $(addsuffix .c, $(BNS_CLIENT)))\
+				$(addprefix $(BNS_DIR), $(addsuffix .c, $(BNS_UTILS)))
+
+SRCS_S_BNS	=	$(addprefix $(BNS_DIR), $(addsuffix .c, $(BNS_UTILS)))\
+				$(addprefix $(BNS_DIR), $(addsuffix .c, $(BNS_SERVER)))
+
+OBJS_C		=	$(SRCS_C:%.c=%.o)
+OBJS_S		=	$(SRCS_S:%.c=%.o)
+OBJS_C_BNS	=	$(SRCS_C_BNS:%.c=%.o)
+OBJS_S_BNS	=	$(SRCS_S_BNS:%.c=%.o)
 
 all			:	$(CLIENT) $(SERVER)
 
-$(CLIENT)	:	$(SRC_CLIENT)
-	$(CC) $(CFLAGS) $(SRC_CLIENT) $(SRC_UTILS) -o $@
+bonus		:	$(CLIENT) $(SERVER) $(CLIENT_B) $(SERVER_B)
 
-$(SERVER)	:	$(SRC_SERVER)
-	$(CC) $(CFLAGS) $(SRC_SERVER) $(SRC_UTILS) -o $@
+%.o			:	%c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(CLIENT)	:	$(OBJS_C)
+	$(CC) $(CFLAGS) $(OBJS_C) -o $@ -I$(INCLUDE)
+
+$(SERVER)	:	$(OBJS_S)
+	$(CC) $(CFLAGS) $(OBJS_S) -o $@ -I$(INCLUDE)
+
+$(CLIENT_B)	:	$(OBJS_C_BNS)
+	$(CC) $(CFLAGS) $(OBJS_C_BNS) -o $@ -I$(INCLUDE_BNS)
+
+$(SERVER_B)	:	$(OBJS_S_BNS)
+	$(CC) $(CFLAGS) $(OBJS_S_BNS) -o $@ -I$(INCLUDE_BNS)
 
 clean		:
-	@echo clean
+	$(RM) $(OBJS_C) $(OBJS_S)
+	$(RM) $(OBJS_C_BNS) $(OBJS_S_BNS)
 
 fclean		:
+	$(MAKE) clean
 	$(RM) $(CLIENT) $(SERVER)
 	$(RM) $(CLIENT_B) $(SERVER_B)
 

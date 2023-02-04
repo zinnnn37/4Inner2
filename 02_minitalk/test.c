@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 18:55:54 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 19:01:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/04 12:59:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 	while (str[++i])
 	{
 		write(1, str + i, 1);
-		write(1, "\n", 1);
+//		write(1, "\n", 1);
 	}
 	return (0);
 }

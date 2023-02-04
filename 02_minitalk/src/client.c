@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:12:22 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 15:54:28 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/04 12:06:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	send_bits(char c)
 			ft_kill(g_cdata.pid, SIGUSR1);
 		else
 			ft_kill(g_cdata.pid, SIGUSR2);
-		usleep(100);
 		bit--;
 	}
 }

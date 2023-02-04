@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:12:22 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/28 18:45:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/04 12:07:01 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	send_bits(char c)
 			ft_kill(g_cdata.pid, SIGUSR1);
 		else
 			ft_kill(g_cdata.pid, SIGUSR2);
-		usleep(100);
 		bit--;
 	}
 }
@@ -53,7 +52,6 @@ void	send_msg(void)
 		send_bits('\n');
 		while (bits-- > 0)
 			ft_kill(g_cdata.pid, SIGUSR2);
-		pause();
 	}
 }
 
@@ -74,6 +72,7 @@ int	main(int argc, char **argv)
 	sigaction(SIGUSR2, &(g_cdata.act), NULL);
 	print_pid();
 	ft_kill(g_cdata.pid, SIGUSR1);
-	pause();
+	while (TRUE)
+		pause();
 	return (0);
 }
