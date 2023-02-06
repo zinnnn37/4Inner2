@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:33:00 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 13:13:30 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/06 11:50:29 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 
 void	do_op2(t_stack *a, t_stack *b, char *s)
 {
-	if (ft_strcmp(s, "rr\n") == 0)
+	if (ft_strcmp(s, "ra\n") == 0)
+		rn(a);
+	else if (ft_strcmp(s, "rb\n") == 0)
+		rn(b);
+	else if (ft_strcmp(s, "rr\n") == 0)
 		rr(a, b);
 	else if (ft_strcmp(s, "rra\n") == 0)
 		rrn(a);
@@ -45,14 +49,14 @@ void	do_op(t_stack *a, t_stack *b)
 			pn(b, a);
 		else if (ft_strcmp(s, "pb\n") == 0)
 			pn(a, b);
-		else if (ft_strcmp(s, "ra\n") == 0)
-			rn(a);
-		else if (ft_strcmp(s, "rb\n") == 0)
-			rn(b);
 		else
 			do_op2(a, b, s);
 		print_nodes(a, b);
 		free(s);
 		s = get_next_line(1);
 	}
+	if (is_ordered(a) == TRUE && is_empty(b) == TRUE)
+		ft_putstr("OK");
+	else
+		ft_exit();
 }

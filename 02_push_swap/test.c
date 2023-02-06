@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:31:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 14:31:35 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/06 11:39:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 
 int	main(int argc, char **argv)
 {
-	printf("%d\n\n", argc);
-	for (int i = 1; i < argc; i++)
-		printf("%s\n", argv[i]);
+	char *s;
+
+	s = -1;
+	printf("%s\n", s);
 	return (0);
 }
