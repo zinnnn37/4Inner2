@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:57:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 10:29:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/06 10:03:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	get_numbers(int ac, char **av, t_stack *s)
 	while (++i < ac)
 	{
 		res = ft_split(av[i]);
-		if (!res)
+		if (!res || !*res)
 			print_error();
 		j = -1;
 		while (res[++j])
