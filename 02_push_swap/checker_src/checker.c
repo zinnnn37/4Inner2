@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:01:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/06 11:51:01 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/06 13:30:09 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	push_swap(int ac, char **av, t_stack *a, t_stack *b)
 {
 	init_stack(a, b);
 	get_numbers(ac, av, a);
-	if (is_ordered(a) == -1)
+	if (is_ordered_not_dup(a) == -1)
 		print_error();
-	else if (is_ordered(a) == TRUE)
+	else if (is_ordered_not_dup(a) == TRUE)
 		return (SUCCESS);
 	if (is_empty(b) == FALSE)
 		print_error();

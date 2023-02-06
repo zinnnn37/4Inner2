@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:23:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/06 11:52:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/06 13:31:16 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,26 @@ void	create_and_add_node(t_stack *s, int data)
 		s->bottom = node;
 	}
 	s->size++;
+}
+
+t_bool	is_ordered_not_dup(t_stack *a)
+{
+	t_data	*tmp;
+	t_data	*check;
+
+	tmp = a->top;
+	while (tmp->next)
+	{
+		if (tmp->data > tmp->next->data)
+			return (FALSE);
+		check = tmp->next;
+		while (check)
+		{
+			if (tmp->data == check->data)
+				return (-1);
+			check = check->next;
+		}
+		tmp = tmp->next;
+	}
+	return (TRUE);
 }

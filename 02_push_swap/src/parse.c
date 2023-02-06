@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:57:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/06 10:23:42 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/06 13:30:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	get_numbers(int ac, char **av, t_stack *s)
 	}
 }
 
-t_bool	is_ordered(t_stack *a)
+t_bool	is_ordered_not_dup(t_stack *a)
 {
 	t_data	*tmp;
 	t_data	*check;
