@@ -6,24 +6,36 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:23:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 11:04:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/06 10:53:57 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include <stdio.h>
 
-void	print_nodes(t_stack *a, t_stack *b)
+void	print_nodes(t_stack *a, t_stack *b) // remove
 {
 	t_data	*tmp;
 
+	printf("========\n");
 	tmp = a->top;
-	printf("\n\n\nsize: %d, %d\n\n", a->size, b->size);
+	printf("  a: %d\n--------\n", a->size);
 	while (tmp)
 	{
-		printf("%d\n", tmp->data);
+		printf("  %d\n", tmp->data);
 		tmp = tmp->next;
 	}
+	printf("========\n\n");
+	printf("========\n");
+	tmp = b->top;
+	printf("  b: %d\n--------\n", b->size);
+	while (tmp)
+	{
+		printf("  %d\n", tmp->data);
+		tmp = tmp->next;
+	}
+	printf("========\n\n");
+	write(1, "cmd: ", 5);
 }
 
 void	create_and_add_node(t_stack *s, int data)
@@ -48,5 +60,4 @@ void	create_and_add_node(t_stack *s, int data)
 		s->bottom = node;
 	}
 	s->size++;
-	//print_nodes(s);
 }

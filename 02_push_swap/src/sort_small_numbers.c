@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:56:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 14:59:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/06 11:09:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,23 @@ void	sort_three(t_stack *a)
 	}
 }
 
-void	sort_four(void)
+void	sort_four(t_stack *a, t_stack *b)
 {
+	rotate_till_min(a);
+	pn(a, b, "pb");
+	sort_three(a);
+	pn(b, a, "pa");
 }
 
-void	sort_five(void)
+void	sort_five(t_stack *a, t_stack *b)
 {
+	rotate_till_min(a);
+	pn(a, b, "pb");
+	rotate_till_min(a);
+	pn(a, b, "pb");
+	sort_three(a);
+	pn(b, a, "pa");
+	pn(b, a, "pa");
 }
 
 void	sort_small_numbers(t_stack *a, t_stack *b)
@@ -58,4 +69,8 @@ void	sort_small_numbers(t_stack *a, t_stack *b)
 		sort_two(a);
 	else if (a->size == 3)
 		sort_three(a);
+	else if (a->size == 4)
+		sort_four(a, b);
+	else if (a->size == 5)
+		sort_five(a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:35:53 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/06 10:24:14 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/06 10:47:05 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ void	pn(t_stack *from, t_stack *to, char *str);
 /************* hard coding *************/
 void	sort_small_numbers(t_stack *a, t_stack *b);
 void	sort_two(t_stack *a);
+
+/************** sort utils *************/
+void	rotate_till_min(t_stack *s);
 
 /**************** utils ****************/
 void	print_error(void);

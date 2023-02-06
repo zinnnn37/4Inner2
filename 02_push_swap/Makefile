@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 10:46:45 by minjinki          #+#    #+#              #
-#    Updated: 2023/02/02 11:39:51 by minjinki         ###   ########.fr        #
+#    Updated: 2023/02/06 10:47:26 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC_FILES	=	push_swap\
 				command2\
 				parse\
 				sort_small_numbers\
+				sort_utils\
 				stack\
 				utils
 
