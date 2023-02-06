@@ -6,24 +6,33 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 11:05:02 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/06 10:25:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	init_stack(t_stack s)
+void	init_stack(t_stack *a, t_stack *b)
 {
-	s.top = NULL;
-	s.bottom = NULL;
-	s.size = 0;
+	a->top = NULL;
+	a->bottom = NULL;
+	a->size = 0;
+	b->top = NULL;
+	b->bottom = NULL;
+	b->size = 0;
 }
 
-void	push_swap(int ac, char **av, t_stack *a, t_stack *b)
+int	push_swap(int ac, char **av, t_stack *a, t_stack *b)
 {
+	init_stack(a, b);
 	get_numbers(ac, av, a);
+	if (is_ordered(a) == -1)
+		print_error();
+	else if (is_ordered(a) == TRUE)
+		return (SUCCESS);
 	sort_small_numbers(a, b);
 	print_nodes(a, b);
+	return (SUCCESS);
 }
 
 int	main(int ac, char **av)
@@ -33,12 +42,5 @@ int	main(int ac, char **av)
 
 	if (ac == 1)
 		ft_exit("Usage: ./push_swap [ args,... ]");
-	a.top = NULL;
-	a.bottom = NULL;
-	a.size = 0;
-	b.top = NULL;
-	b.bottom = NULL;
-	b.size = 0;
-	push_swap(ac, av, &a, &b);
-	return (0);
+	return (push_swap(ac, av, &a, &b));
 }

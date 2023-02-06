@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:57:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/06 10:03:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/06 10:23:13 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,26 @@ void	get_numbers(int ac, char **av, t_stack *s)
 			create_and_add_node(s, data);
 		}
 	}
+}
+
+t_bool	is_ordered(t_stack *a)
+{
+	t_data	*tmp;
+	t_data	*check;
+
+	tmp = a->top;
+	while (tmp->next)
+	{
+		if (tmp->data > tmp->next->data)
+			return (FALSE);
+		check = tmp->next;
+		while (check)
+		{
+			if (tmp->data == check->data)
+				return (-1);
+			check = check->next;
+		}
+		tmp = tmp->next;
+	}
+	return (TRUE);
 }

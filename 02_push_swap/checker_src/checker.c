@@ -6,22 +6,35 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:01:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 13:15:33 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/06 10:25:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker_include/checker.h"
 
+void	init_stack(t_stack *a, t_stack *b)
+{
+	a->top = NULL;
+	a->bottom = NULL;
+	a->size = 0;
+	b->top = NULL;
+	b->bottom = NULL;
+	b->size = 0;
+}
+
 int	push_swap(int ac, char **av, t_stack *a, t_stack *b)
 {
+	init_stack(a, b);
 	get_numbers(ac, av, a);
+	if (is_ordered(a) == -1)
+		print_error();
 	do_op(a, b);
 	if (is_empty(b) == FALSE)
 		print_error();
 	if (is_sorted(a) == FALSE)
 		ft_exit();
 	ft_putstr("OK\n");
-	return (0);
+	return (SUCCESS);
 }
 
 int	main(int ac, char **av)
@@ -31,11 +44,5 @@ int	main(int ac, char **av)
 
 	if (ac == 1)
 		return (0);
-	a.top = NULL;
-	a.bottom = NULL;
-	a.size = 0;
-	b.top = NULL;
-	b.bottom = NULL;
-	b.size = 0;
 	return (push_swap(ac, av, &a, &b));
 }

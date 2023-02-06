@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:35:53 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 11:05:57 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/06 10:24:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 # define FAILURE 1
 # define SUCCESS 0
+
+typedef int	t_bool;
 
 typedef struct s_data
 {
@@ -40,6 +42,7 @@ void	print_nodes(t_stack *a, t_stack *b);
 
 /**************** parse ****************/
 void	get_numbers(int ac, char **av, t_stack *s);
+t_bool	is_ordered(t_stack *a);
 
 /*************** command ***************/
 int		sn(t_stack *s, char *str);
