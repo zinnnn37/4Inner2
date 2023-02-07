@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:56:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/06 11:09:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/07 11:43:00 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	sort_two(t_stack *a)
 {
 	if (a->top->data > a->bottom->data)
-		sn(a, "sa\n");
+		sn(a, "sa");
 }
 
 void	sort_three(t_stack *a)
