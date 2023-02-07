@@ -7,9 +7,8 @@ char	*ft_strjoin(char *s, char c)
 
 	if (!s)
 	{
-		res = (char *)malloc(sizeof(char) * 2);
-		res[0] = c;
-		res[1] = '\0';
+		res = (char *)malloc(sizeof(char));
+		res[0] = '\0';
 	}
 	else
 	{
