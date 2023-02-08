@@ -6,12 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:23:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/06 13:37:34 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:09:45 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include <stdio.h>
 
 void	print_nodes(t_stack *a, t_stack *b) // remove
 {
@@ -38,6 +37,21 @@ void	print_nodes(t_stack *a, t_stack *b) // remove
 	write(1, "cmd: ", 5);
 }
 
+void	print_ranks(t_stack *a) // remove
+{
+	t_data	*tmp;
+
+	printf("========\n");
+	tmp = a->top;
+	printf("  a: %d\n--------\n", a->size);
+	while (tmp)
+	{
+		printf("  %d\n", tmp->rank);
+		tmp = tmp->next;
+	}
+	printf("========\n\n");
+}
+
 void	create_and_add_node(t_stack *s, int data)
 {
 	t_data	*node;
@@ -47,6 +61,7 @@ void	create_and_add_node(t_stack *s, int data)
 		print_error();
 	node->prev = NULL;
 	node->data = data;
+	node->rank = 0;
 	node->next = NULL;
 	if (s->size == 0)
 	{
@@ -66,12 +81,14 @@ t_bool	is_ordered_not_dup(t_stack *a)
 {
 	t_data	*tmp;
 	t_data	*check;
+	int		sorted;
 
 	tmp = a->top;
+	sorted = TRUE;
 	while (tmp->next)
 	{
 		if (tmp->data > tmp->next->data)
-			return (FALSE);
+			sorted = FALSE;
 		check = tmp->next;
 		while (check)
 		{
@@ -81,5 +98,19 @@ t_bool	is_ordered_not_dup(t_stack *a)
 		}
 		tmp = tmp->next;
 	}
-	return (TRUE);
+	return (sorted);
+}
+
+void	set_rank(t_stack *a)
+{
+	int		i;
+	t_data	*tmp;
+
+	i = 1;
+	tmp = min(a);
+	while (tmp)
+	{
+		tmp->rank = i++;
+		tmp = min(a);
+	}
 }

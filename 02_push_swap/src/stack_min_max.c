@@ -1,48 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_utils.c                                       :+:      :+:    :+:   */
+/*   stack_min_max.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 10:30:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/08 13:14:36 by minjinki         ###   ########.fr       */
+/*   Created: 2023/02/08 12:59:08 by minjinki          #+#    #+#             */
+/*   Updated: 2023/02/08 13:06:28 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	rotate_print(t_stack *s, int i)
-{
-	if (i > (s->size / 2) + 1)
-	{
-		if (s->size == 5 && i == 3)
-			ft_putstr("rra");
-		ft_putstr("rra");
-	}
-	else
-	{
-		while (--i)
-			ft_putstr("ra");
-	}
-}
-
-void	rotate_till_min(t_stack *s)
+t_data	*find_not_ranked(t_stack *s)
 {
 	t_data	*tmp;
-	int		min;
-	int		i;
 
-	tmp = s->top->next;
-	min = s->top->data;
+	tmp = s->top;
 	while (tmp)
 	{
-		if (min > tmp->data)
-			min = tmp->data;
+		if (tmp->rank == 0)
+			return (tmp);
 		tmp = tmp->next;
 	}
-	i = 0;
-	while (++i && s->top->data != min)
-		rn(s, NULL);
-	rotate_print(s, i);
+	return (NULL);
+}
+
+t_data	*min(t_stack *s)
+{
+	t_data	*min;
+	t_data	*tmp;
+
+	tmp = find_not_ranked(s);
+	if (!tmp)
+		return (NULL);
+	min = tmp;
+	while (tmp)
+	{
+		if (tmp->data < min->data && tmp->rank == 0)
+			min = tmp;
+		tmp = tmp->next;
+	}
+	return (min);
 }

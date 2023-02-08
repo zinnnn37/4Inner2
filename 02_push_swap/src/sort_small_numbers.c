@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:56:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/07 11:43:00 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:43:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,7 @@ void	sort_five(t_stack *a, t_stack *b)
 {
 	rotate_till_min(a);
 	pn(a, b, "pb");
-	rotate_till_min(a);
-	pn(a, b, "pb");
-	sort_three(a);
-	pn(b, a, "pa");
+	sort_four(a, b);
 	pn(b, a, "pa");
 }
 

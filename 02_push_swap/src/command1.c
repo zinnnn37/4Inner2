@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:44:46 by minjinki          #+#    #+#             */
-/*   Updated: 2023/01/31 14:42:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:14:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 
 int	sn(t_stack *s, char *str)
 {
-	int	tmp;
+	int	data;
+	int	rank;
 
 	if (s->size <= 1)
 		return (FAILURE);
 	if (str)
 		ft_putstr(str);
-	tmp = s->top->data;
+	data = s->top->data;
+	rank = s->top->rank;
 	s->top->data = s->top->next->data;
-	s->top->next->data = tmp;
+	s->top->rank = s->top->next->rank;
+	s->top->next->data = data;
+	s->top->next->rank = rank;
 	return (SUCCESS);
 }
 
