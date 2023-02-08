@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:23:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/08 13:09:45 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:18:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,18 +99,4 @@ t_bool	is_ordered_not_dup(t_stack *a)
 		tmp = tmp->next;
 	}
 	return (sorted);
-}
-
-void	set_rank(t_stack *a)
-{
-	int		i;
-	t_data	*tmp;
-
-	i = 1;
-	tmp = min(a);
-	while (tmp)
-	{
-		tmp->rank = i++;
-		tmp = min(a);
-	}
 }

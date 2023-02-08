@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/08 13:09:31 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:19:09 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	push_swap(int ac, char **av, t_info *info)
 		return (SUCCESS);
 	info->len = info->a->size;
 	set_rank(info->a);
+	print_ranks(info->a);
 	if (info->len <= 5)
 		sort_small_numbers(info->a, info->b);
 	else
@@ -37,11 +38,10 @@ int	push_swap(int ac, char **av, t_info *info)
 		if (info->len <= 100)
 			info->chunk = 5;
 		else
-			info->chunk = 8; // 해보고 고치기
+			info->chunk = 8; // 해보고 고치기                             
 		//sort(info->a, info->b);
 	}
 	print_nodes(info->a, info->b);
-	print_ranks(info->a);
 	printf("\n%d\n", info->len);
 	printf("%d\n", info->chunk);
 	return (SUCCESS);

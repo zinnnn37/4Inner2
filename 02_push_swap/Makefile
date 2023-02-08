@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 10:46:45 by minjinki          #+#    #+#              #
-#    Updated: 2023/02/08 13:08:17 by minjinki         ###   ########.fr        #
+#    Updated: 2023/02/08 13:18:33 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,10 @@ SRC_FILES	=	push_swap\
 				command1\
 				command2\
 				parse\
+				ranking\
 				sort_small_numbers\
 				sort_utils\
 				stack\
-				stack_min_max\
 				utils
 
 BNS_DIR		=	checker_src/

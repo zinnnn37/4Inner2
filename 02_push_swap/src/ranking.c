@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_min_max.c                                    :+:      :+:    :+:   */
+/*   ranking.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 12:59:08 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/08 13:06:28 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:18:11 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,18 @@ t_data	*min(t_stack *s)
 		tmp = tmp->next;
 	}
 	return (min);
+}
+
+void	set_rank(t_stack *a)
+{
+	int		i;
+	t_data	*tmp;
+
+	i = 1;
+	tmp = min(a);
+	while (tmp)
+	{
+		tmp->rank = i++;
+		tmp = min(a);
+	}
 }
