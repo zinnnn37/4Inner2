@@ -6,13 +6,13 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:28:29 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/08 16:14:14 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/08 16:21:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	a_to_b(t_info *info, int min, int max, int mid)
+void	a_to_b(t_info *info, int min, int max, int mid) // optimize
 {
 	int	cnt;
 
