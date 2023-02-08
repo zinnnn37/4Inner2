@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:19:57 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 12:49:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/08 15:46:19 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	pn(t_stack *from, t_stack *to, char *str)
 	else if (to->size == 0)
 	{
 		to->top = from->top;
+		to->bottom = from->top;
 		from->top = from->top->next;
 		to->top->next = NULL;
 		from->top->prev = NULL;
