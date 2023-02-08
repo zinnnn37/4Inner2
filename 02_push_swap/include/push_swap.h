@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:35:53 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/08 13:09:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:20:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ typedef struct s_info
 /**************** stack ****************/
 void	create_and_add_node(t_stack *s, int data);
 t_bool	is_ordered_not_dup(t_stack *a);
-void	set_rank(t_stack *a);
-
-t_data	*min(t_stack *s);
 
 void	print_nodes(t_stack *a, t_stack *b);
 void	print_ranks(t_stack *a);
+
+/*************** ranking ***************/
+void	set_rank(t_stack *a);
 
 /**************** parse ****************/
 void	get_numbers(int ac, char **av, t_stack *s);
