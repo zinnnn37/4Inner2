@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:28:29 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/08 15:56:41 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/08 16:14:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,24 @@ void	a_to_b(t_info *info, int min, int max, int mid)
 
 void	b_to_a(t_info *info)
 {
-	max_from_top(info->b);
-	max_from_bottom(info->b);
-	// 두 개 비교해서 top이면 rb pa, bottom이면 rrb pa
+	int	top;
+	int	bottom;
+
+	top = max_from_top(info->b);
+	bottom = max_from_bottom(info->b) + 1;
+	//print_nodes(info->a, info->b);
+	if (top <= bottom)
+	{
+		while (top-- > 0)
+			rn(info->b, "rb");
+		pn(info->b, info->a, "pa");
+	}
+	else
+	{
+		while (bottom-- > 0)
+			rrn(info->b, "rrb");
+		pn(info->b, info->a, "pa");
+	}
 }
 
 void	sort(t_info *info)
@@ -55,5 +70,6 @@ void	sort(t_info *info)
 	max = info->len / info->chunk;
 	mid = max / 2;
 	a_to_b(info, 0, max, mid);
-	b_to_a(info);
+	while (info->b->top)
+		b_to_a(info);
 }

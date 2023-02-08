@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:30:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/08 15:57:45 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/08 16:04:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,34 @@ void	rotate_till_min(t_stack *s)
 
 int	max_from_top(t_stack *b)
 {
-	int	cnt;
+	int		cnt;
+	t_data	*tmp;
 
 	cnt = 0;
+	tmp = b->top;
+	while (tmp)
+	{
+		if (tmp->rank == b->size)
+			return (cnt);
+		cnt++;
+		tmp = tmp->next;
+	}
+	return (cnt);
 }
 
 int	max_from_bottom(t_stack *b)
 {
-	int	cnt;
+	int		cnt;
+	t_data	*tmp;
 
 	cnt = 0;
+	tmp = b->bottom;
+	while (tmp)
+	{
+		if (tmp->rank == b->size)
+			return (cnt);
+		cnt++;
+		tmp = tmp->prev;
+	}
+	return (cnt);
 }
