@@ -46,37 +46,3 @@ void	rotate_till_min(t_stack *s)
 		rn(s, NULL);
 	rotate_print(s, i);
 }
-
-int	max_from_top(t_stack *b)
-{
-	int		cnt;
-	t_data	*tmp;
-
-	cnt = 0;
-	tmp = b->top;
-	while (tmp)
-	{
-		if (tmp->rank == b->size)
-			return (cnt);
-		cnt++;
-		tmp = tmp->next;
-	}
-	return (cnt);
-}
-
-int	max_from_bottom(t_stack *b)
-{
-	int		cnt;
-	t_data	*tmp;
-
-	cnt = 0;
-	tmp = b->bottom;
-	while (tmp)
-	{
-		if (tmp->rank == b->size)
-			return (cnt);
-		cnt++;
-		tmp = tmp->prev;
-	}
-	return (cnt);
-}

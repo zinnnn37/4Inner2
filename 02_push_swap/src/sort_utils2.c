@@ -1,47 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_utils2.c                                      :+:      :+:    :+:   */
+/*   sort_utils3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: MJKim <zinnnn37@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 10:46:45 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/09 11:30:51 by minjinki         ###   ########.fr       */
+/*   Created: 2023/02/09 23:19:13 by MJKim             #+#    #+#             */
+/*   Updated: 2023/02/09 23:19:13 by MJKim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	range_from_top(t_stack *a, int min, int max)
+void	sort_b(t_stack *b, int len)
 {
-	int		cnt;
+	int		i;
 	t_data	*tmp;
 
-	cnt = 0;
-	tmp = a->top;
-	while (tmp)
-	{
-		if (min < tmp->rank && tmp->rank <= max)
-			return (cnt);
-		cnt++;
+	i = -1;
+	tmp = b->top;
+	while (++i < b->size && tmp->rank != len)
 		tmp = tmp->next;
-	}
-	return (cnt);
-}
-
-int	range_from_bottom(t_stack *a, int min, int max)
-{
-	int		cnt;
-	t_data	*tmp;
-
-	cnt = 0;
-	tmp = a->bottom;
-	while (tmp)
+	if (i < b->size / 2)
 	{
-		if (min < tmp->rank && tmp->rank <= max)
-			return (cnt);
-		cnt++;
-		tmp = tmp->prev;
+		while (i >= 0)
+		{
+			rn(b, "rb");
+			i--;
+		}
 	}
-	return (cnt);
+	else
+	{
+		while (i < b->size)
+		{
+			rrn(b, "rrb");
+			i++;
+		}
+
+	}
 }
