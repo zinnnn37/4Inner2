@@ -23,3 +23,11 @@ void	ft_exit(char *str)
 	ft_putstr(str);
 	exit(FAILURE);
 }
+
+void	free_all(t_info *info)
+{
+	free_nodes(info->a);
+	free(info->a);
+	free(info->b);
+	free(info);
+}

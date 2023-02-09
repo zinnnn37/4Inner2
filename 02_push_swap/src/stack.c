@@ -93,10 +93,28 @@ t_bool	is_ordered_not_dup(t_stack *a)
 		while (check)
 		{
 			if (tmp->data == check->data)
-				return (-1);
+				return (DUP);
 			check = check->next;
 		}
 		tmp = tmp->next;
 	}
 	return (sorted);
+}
+
+void	free_nodes(t_stack *a)
+{
+	t_data	*tmp;
+
+	tmp = a->top->next;
+	while (TRUE)
+	{
+		free(tmp->prev);
+		if (!(tmp->next))
+		{
+			free(tmp);
+			return ;
+		}
+		else
+			tmp = tmp->next;
+	}
 }

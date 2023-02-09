@@ -22,27 +22,22 @@ void	init_info(t_info *info)
 
 int	push_swap(int ac, char **av, t_info *info)
 {
+	int	valid;
+
 	init_info(info);
 	get_numbers(ac, av, info->a);
-	if (is_ordered_not_dup(info->a) == -1)
+	valid = is_ordered_not_dup(info->a);
+	if (valid == DUP)
 		print_error();
-	else if (is_ordered_not_dup(info->a) == TRUE)
+	else if (valid == TRUE)
 		return (SUCCESS);
 	info->len = info->a->size;
 	set_rank(info->a);
-	if (info->len <= 5)
-		sort_small_numbers(info->a, info->b);
-	else
-	{
-		if (info->len <= 100)
-			info->chunk = 15;
-		else
-			info->chunk = 30; // 해보고 고치기                             
-		sort(info);
-	}
+	sort(info);
 	//print_nodes(info->a, info->b);
 	//printf("\n%d\n", info->len);
 	//printf("%d\n", info->chunk);
+	free_all(info);
 	return (SUCCESS);
 }
 
@@ -51,6 +46,6 @@ int	main(int ac, char **av)
 	t_info	info;
 
 	if (ac == 1)
-		ft_exit("Usage: ./push_swap [ args,... ]");
+		ft_exit(NULL);
 	return (push_swap(ac, av, &info));
 }

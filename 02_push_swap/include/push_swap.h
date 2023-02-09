@@ -21,6 +21,7 @@
 
 # define FAILURE 1
 # define SUCCESS 0
+# define DUP 2
 
 typedef int	t_bool;
 
