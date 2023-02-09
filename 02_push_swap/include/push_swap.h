@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:35:53 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/08 15:58:23 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/09 11:13:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	sort(t_info *info);
 void	rotate_till_min(t_stack *s);
 int		max_from_bottom(t_stack *b);
 int		max_from_top(t_stack *b);
+int		range_from_bottom(t_stack *a, int min, int max);
+int		range_from_top(t_stack *a, int min, int max);
 
 /**************** utils ****************/
 void	print_error(void);
