@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/09 11:11:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/09 12:23:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int	push_swap(int ac, char **av, t_info *info)
 	else
 	{
 		if (info->len <= 100)
-			info->chunk = 5;
+			info->chunk = 15;
 		else
-			info->chunk = 8; // 해보고 고치기                             
+			info->chunk = 30; // 해보고 고치기                             
 		sort(info);
 	}
 	//print_nodes(info->a, info->b);
