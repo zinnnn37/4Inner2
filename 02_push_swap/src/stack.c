@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:23:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/08 13:18:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:47:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,16 +105,16 @@ void	free_nodes(t_stack *a)
 {
 	t_data	*tmp;
 
+	if (!(a->top))
+		return ;
 	tmp = a->top->next;
-	while (TRUE)
+	while (tmp)
 	{
 		free(tmp->prev);
 		if (!(tmp->next))
 		{
 			free(tmp);
-			return ;
 		}
-		else
-			tmp = tmp->next;
+		tmp = tmp->next;
 	}
 }

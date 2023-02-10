@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:35:53 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/10 13:59:17 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:52:05 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void	sort_b(t_stack *b);
 void	print_error(void);
 void	ft_exit(char *str);
 void	free_all(t_info *info);
+void	free_matrix(char **matrix);
 
 #endif

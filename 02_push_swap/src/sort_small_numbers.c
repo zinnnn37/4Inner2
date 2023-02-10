@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:56:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/10 11:47:00 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:36:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	sort_two(t_stack *a)
 {
 	if (a->top->data > a->bottom->data)
-		sn(a, "sa"); // sa
+		sn(a, "sa");
 }
 
 void	sort_three(t_stack *a)
@@ -27,36 +27,36 @@ void	sort_three(t_stack *a)
 	tmp[2] = a->bottom->data;
 	if (tmp[0] < tmp[1] && tmp[0] < tmp[2] && tmp[1] > tmp[2])
 	{
-		rrn(a, "rra"); // rra
-		sn(a, "sa"); // sa
+		rrn(a, "rra");
+		sn(a, "sa");
 	}
 	else if (tmp[0] > tmp[1] && tmp[0] < tmp[2] && tmp[1] < tmp[2])
-		sn(a, "sa"); // sa
+		sn(a, "sa");
 	else if (tmp[0] < tmp[1] && tmp[0] > tmp[2] && tmp[1] > tmp[2])
-		rrn(a, "rra"); // rra
+		rrn(a, "rra");
 	else if (tmp[0] > tmp[1] && tmp[0] > tmp[2] && tmp[1] < tmp[2])
-		rn(a, "ra"); // ra
+		rn(a, "ra");
 	else if (tmp[0] > tmp[1] && tmp[0] > tmp[2] && tmp[1] > tmp[2])
 	{
-		rn(a, "ra"); // ra
-		sn(a, "sa"); // sa
+		rn(a, "ra");
+		sn(a, "sa");
 	}
 }
 
 void	sort_four(t_stack *a, t_stack *b)
 {
 	rotate_till_min(a);
-	pn(a, b, "pb"); // pb
+	pn(a, b, "pb");
 	sort_three(a);
-	pn(b, a, "pa"); // pa
+	pn(b, a, "pa");
 }
 
 void	sort_five(t_stack *a, t_stack *b)
 {
 	rotate_till_min(a);
-	pn(a, b, "pb"); // pb
+	pn(a, b, "pb");
 	sort_four(a, b);
-	pn(b, a, "pa"); // pa
+	pn(b, a, "pa");
 }
 
 void	sort_small_numbers(t_stack *a, t_stack *b)

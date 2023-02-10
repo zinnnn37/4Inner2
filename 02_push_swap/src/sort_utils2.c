@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 23:19:13 by MJKim             #+#    #+#             */
-/*   Updated: 2023/02/10 12:12:00 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:35:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ void	sort_b(t_stack *b)
 	tmp = b->top;
 	while (tmp->rank && tmp->rank != b->size && ++i < b->size)
 		tmp = tmp->next;
-	//printf("rank: %d, i: %d\n", tmp->rank, i);
 	if (i < b->size / 2)
 	{
 		while (i > 0)
 		{
-			rn(b, "rb"); // rb
+			rn(b, "rb");
 			i--;
 		}
 	}
@@ -34,9 +33,8 @@ void	sort_b(t_stack *b)
 	{
 		while (i < b->size)
 		{
-			rrn(b, "rrb"); // rrb
+			rrn(b, "rrb");
 			i++;
 		}
 	}
-	//printf("top: %d\n", b->top->rank);
 }

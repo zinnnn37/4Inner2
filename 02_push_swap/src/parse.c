@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:57:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/06 13:37:30 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:57:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void	get_numbers(int ac, char **av, t_stack *s)
 				print_error();
 			create_and_add_node(s, data);
 		}
+		free_matrix(res);
 	}
 }

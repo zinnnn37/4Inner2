@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 23:04:26 by MJKim             #+#    #+#             */
-/*   Updated: 2023/02/10 14:31:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:35:45 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ void	a_to_b(t_info *info)
 	{
 		if (info->a->top->rank <= i)
 		{
-			pn(info->a, info->b, "pb"); // pb
+			pn(info->a, info->b, "pb");
 			i++;
 		}
-		else if (info->a->top->rank > i && info->a->top->rank <= i + info->chunk)
+		else if (info->a->top->rank > i
+			&& info->a->top->rank <= i + info->chunk)
 		{
-			pn(info->a, info->b, "pb"); // pb
-			rn(info->b, "rb"); // rb
+			pn(info->a, info->b, "pb");
+			rn(info->b, "rb");
 			i++;
 		}
 		else if (info->a->top->rank > i + info->chunk)
@@ -40,7 +41,7 @@ void	b_to_a(t_info *info)
 	while (info->b->size != 0)
 	{
 		sort_b(info->b);
-		pn(info->b, info->a, "pa"); // pa
+		pn(info->b, info->a, "pa");
 	}
 }
 

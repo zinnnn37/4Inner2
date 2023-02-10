@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:38:29 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/06 10:19:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:57:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,23 @@ void	ft_exit(char *str)
 	exit(FAILURE);
 }
 
+void	free_matrix(char **matrix)
+{
+	int	i;
+
+	i = -1;
+	while (matrix[++i])
+	{
+		free(matrix[i]);
+		matrix[i] = NULL;
+	}
+	free(matrix);
+	matrix = NULL;
+}
+
 void	free_all(t_info *info)
 {
 	free_nodes(info->a);
 	free(info->a);
 	free(info->b);
-	free(info);
 }
