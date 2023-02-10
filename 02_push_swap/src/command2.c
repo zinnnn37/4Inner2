@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:19:57 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/08 15:46:19 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/10 13:46:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,6 @@ void	rrr(t_stack *a, t_stack *b)
 
 	x = rrn(a, NULL);
 	y = rrn(b, NULL);
-	if (x == SUCCESS && y == SUCCESS)
+	if (x == SUCCESS || y == SUCCESS)
 		ft_putstr("rrr\n");
-	else if (x == SUCCESS)
-		ft_putstr("rra\n");
-	else if (y == SUCCESS)
-		ft_putstr("rrb\n");
 }

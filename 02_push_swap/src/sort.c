@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 23:04:26 by MJKim             #+#    #+#             */
-/*   Updated: 2023/02/10 12:10:23 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:31:21 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,7 @@ void	a_to_b(t_info *info)
 			i++;
 		}
 		else if (info->a->top->rank > i + info->chunk)
-		{
-			if (i < info->a->size / 2 && i >= 0)
-				rn(info->a, "ra"); // ra
-			else
-				rrn(info->a, "rra"); // rra
-		}
+			rn(info->a, "ra");
 	}
 }
 
@@ -54,7 +49,7 @@ void	sort_large_numbers(t_info *info)
 	if (info->len <= 100)
 		info->chunk = 10;
 	else
-		info->chunk = 28;
+		info->chunk = 30;
 	a_to_b(info);
 	b_to_a(info);
 }

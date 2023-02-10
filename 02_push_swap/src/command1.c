@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:44:46 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/08 15:48:30 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/10 13:45:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,8 @@ void	ss(t_stack *a, t_stack *b)
 
 	x = sn(a, NULL);
 	y = sn(b, NULL);
-	if (x == SUCCESS && y == SUCCESS)
+	if (x == SUCCESS || y == SUCCESS)
 		ft_putstr("ss\n");
-	else if (x == SUCCESS)
-		ft_putstr("sa\n");
-	else if (y == SUCCESS)
-		ft_putstr("sb\n");
 }
 
 int	rn(t_stack *s, char *str)
@@ -67,10 +63,6 @@ void	rr(t_stack *a, t_stack *b)
 
 	x = rn(a, NULL);
 	y = rn(b, NULL);
-	if (x == SUCCESS && y == SUCCESS)
+	if (x == SUCCESS || y == SUCCESS)
 		ft_putstr("rr\n");
-	else if (a == SUCCESS)
-		ft_putstr("ra\n");
-	else if (b == SUCCESS)
-		ft_putstr("rb\n");
 }
