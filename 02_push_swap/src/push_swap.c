@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/09 12:23:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/10 09:54:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	push_swap(int ac, char **av, t_info *info)
 	//print_nodes(info->a, info->b);
 	//printf("\n%d\n", info->len);
 	//printf("%d\n", info->chunk);
-	free_all(info);
+	//free_all(info);
 	return (SUCCESS);
 }
 

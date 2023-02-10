@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_home.c                                        :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MJKim <zinnnn37@gmail.com>                 +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 23:04:26 by MJKim             #+#    #+#             */
-/*   Updated: 2023/02/09 23:04:26 by MJKim            ###   ########.fr       */
+/*   Updated: 2023/02/10 09:52:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	a_to_b(t_info *info)
 	{
 		if (info->a->top->rank <= i)
 		{
-			pn(a, b, "pb");
+			pn(info->a, info->b, "pb");
 			i++;
 		}
 		else if (info->a->top->rank > i && info->a->top->rank <= i + info->chunk)
 		{
-			pn(a, b, "pb");
+			pn(info->a, info->b, "pb");
 			rn(info->b, "rb");
 			i++;
 		}

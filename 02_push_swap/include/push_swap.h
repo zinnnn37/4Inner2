@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:35:53 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/09 11:13:30 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/10 09:53:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_info
 
 /**************** stack ****************/
 void	create_and_add_node(t_stack *s, int data);
+void	free_nodes(t_stack *a);
 t_bool	is_ordered_not_dup(t_stack *a);
 
 void	print_nodes(t_stack *a, t_stack *b);
@@ -77,13 +78,11 @@ void	sort(t_info *info);
 
 /************** sort utils *************/
 void	rotate_till_min(t_stack *s);
-int		max_from_bottom(t_stack *b);
-int		max_from_top(t_stack *b);
-int		range_from_bottom(t_stack *a, int min, int max);
-int		range_from_top(t_stack *a, int min, int max);
+void	sort_b(t_stack *b, int len);
 
 /**************** utils ****************/
 void	print_error(void);
 void	ft_exit(char *str);
+void	free_all(t_info *info);
 
 #endif
