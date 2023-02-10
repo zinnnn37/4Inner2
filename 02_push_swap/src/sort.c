@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 23:04:26 by MJKim             #+#    #+#             */
-/*   Updated: 2023/02/10 09:52:30 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/10 12:10:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,44 +21,40 @@ void	a_to_b(t_info *info)
 	{
 		if (info->a->top->rank <= i)
 		{
-			pn(info->a, info->b, "pb");
+			pn(info->a, info->b, "pb"); // pb
 			i++;
 		}
 		else if (info->a->top->rank > i && info->a->top->rank <= i + info->chunk)
 		{
-			pn(info->a, info->b, "pb");
-			rn(info->b, "rb");
+			pn(info->a, info->b, "pb"); // pb
+			rn(info->b, "rb"); // rb
 			i++;
 		}
 		else if (info->a->top->rank > i + info->chunk)
 		{
-			if (i < info->a->size / 2 && i >= 0) // ?
-				rrn(info->a, "rra");
+			if (i < info->a->size / 2 && i >= 0)
+				rn(info->a, "ra"); // ra
 			else
-				rn(info->a, "ra");
+				rrn(info->a, "rra"); // rra
 		}
 	}
 }
 
 void	b_to_a(t_info *info)
 {
-	int	len;
-
-	len = info->b->size;
 	while (info->b->size != 0)
 	{
-		sort_b(info->b, len);
-		pn(info->b, info->a, "pa");
-		len--;
+		sort_b(info->b);
+		pn(info->b, info->a, "pa"); // pa
 	}
 }
 
 void	sort_large_numbers(t_info *info)
 {
-	int	len;
-
-	len = info->a->size;
-	info->chunk = 0.000000053 * len * len + 0.03 * len + 14.5;
+	if (info->len <= 100)
+		info->chunk = 10;
+	else
+		info->chunk = 28;
 	a_to_b(info);
 	b_to_a(info);
 }
