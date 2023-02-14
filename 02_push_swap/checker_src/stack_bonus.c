@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:23:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/14 11:01:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:00:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,20 +62,6 @@ void	create_and_add_node(t_stack *s, int data)
 	s->size++;
 }
 
-// t_bool	is_sorted(t_stack *a)
-// {
-// 	t_data	*tmp;
-
-// 	tmp = a->top;
-// 	while (tmp->next)
-// 	{
-// 		if (tmp->data > tmp->next->data)
-// 			return (FALSE);
-// 		tmp = tmp->next;
-// 	}
-// 	return (TRUE);
-// }
-
 t_bool	is_ordered_not_dup(t_stack *a)
 {
 	t_data	*tmp;
@@ -105,4 +91,22 @@ t_bool	is_empty(t_stack *b)
 	if (b->size != 0)
 		return (FALSE);
 	return (TRUE);
+}
+
+void	free_nodes(t_stack *a)
+{
+	t_data	*tmp;
+
+	if (!(a->top))
+		return ;
+	tmp = a->top->next;
+	while (tmp)
+	{
+		free(tmp->prev);
+		if (!(tmp->next))
+		{
+			free(tmp);
+		}
+		tmp = tmp->next;
+	}
 }

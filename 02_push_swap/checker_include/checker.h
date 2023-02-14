@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:01:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/14 11:01:26 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:00:39 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <unistd.h>
 # include "../gnl/get_next_line.h"
 # include "../libft/libft.h"
+
+#include <stdio.h> ///////////////////////////remove!!!!!!!!!!!!!
 
 # define FAILURE 1
 # define SUCCESS 0
@@ -56,11 +58,13 @@ void	get_numbers(int ac, char **av, t_stack *s);
 
 /**************** stack ****************/
 void	create_and_add_node(t_stack *s, int data);
+void	free_nodes(t_stack *a);
 t_bool	is_empty(t_stack *b);
 t_bool	is_ordered_not_dup(t_stack *a);
 void	print_nodes(t_stack *a, t_stack *b);
 
 /**************** utils ****************/
+void	free_matrix(char **matrix);
 void	ft_exit(void);
 void	print_error(void);
 
