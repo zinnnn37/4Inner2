@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:23:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/08 13:13:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/14 11:01:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_bool	is_ordered_not_dup(t_stack *a)
 		while (check)
 		{
 			if (tmp->data == check->data)
-				return (-1);
+				return (DUP);
 			check = check->next;
 		}
 		tmp = tmp->next;

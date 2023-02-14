@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:01:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/06 13:30:00 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/14 11:01:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define FAILURE 1
 # define SUCCESS 0
-# define DUP -1
+# define DUP 2
 
 typedef int	t_bool;
 
