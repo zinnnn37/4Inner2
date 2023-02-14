@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:33:00 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/09 11:52:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/14 11:32:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
 
 void	do_op2(t_stack *a, t_stack *b, char *s)
 {
-	if (ft_strcmp(s, "ra\n") == 0)
+	if (ft_strcmp(s, "ra") == 0)
 		rn(a);
-	else if (ft_strcmp(s, "rb\n") == 0)
+	else if (ft_strcmp(s, "rb") == 0)
 		rn(b);
-	else if (ft_strcmp(s, "rr\n") == 0)
+	else if (ft_strcmp(s, "rr") == 0)
 		rr(a, b);
-	else if (ft_strcmp(s, "rra\n") == 0)
+	else if (ft_strcmp(s, "rra") == 0)
 		rrn(a);
-	else if (ft_strcmp(s, "rrb\n") == 0)
+	else if (ft_strcmp(s, "rrb") == 0)
 		rrn(b);
-	else if (ft_strcmp(s, "rrr\n") == 0)
+	else if (ft_strcmp(s, "rrr") == 0)
 		rrr(a, b);
 	else
 		print_error();
@@ -40,15 +40,15 @@ void	do_op(t_stack *a, t_stack *b)
 	s = get_next_line(1);
 	while (s)
 	{
-		if (ft_strcmp(s, "sa\n") == 0)
+		if (ft_strcmp(s, "sa") == 0)
 			sn(a);
-		else if (ft_strcmp(s, "sb\n") == 0)
+		else if (ft_strcmp(s, "sb") == 0)
 			sn(b);
-		else if (ft_strcmp(s, "ss\n") == 0)
+		else if (ft_strcmp(s, "ss") == 0)
 			ss(a, b);
-		else if (ft_strcmp(s, "pa\n") == 0)
+		else if (ft_strcmp(s, "pa") == 0)
 			pn(b, a);
-		else if (ft_strcmp(s, "pb\n") == 0)
+		else if (ft_strcmp(s, "pb") == 0)
 			pn(a, b);
 		else
 			do_op2(a, b, s);

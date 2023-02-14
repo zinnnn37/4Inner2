@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:25:24 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 12:44:33 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/14 11:33:36 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # define MIN_INT -2147483648
 
 char	**ft_split(char const *s);
+
+char	*ft_strtrim(char const *s1, char const *set);
 
 int		ft_atoi(const char *str, int *data);
 int		ft_strcmp(const char *s1, const char *s2);
