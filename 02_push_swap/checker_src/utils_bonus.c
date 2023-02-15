@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:06:21 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/14 12:59:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/15 11:59:00 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 void	print_error(void)
 {
 	ft_putstr("ERROR");
-	exit(FAILURE);
-}
-
-void	ft_exit(void)
-{
-	ft_putstr("KO");
 	exit(FAILURE);
 }
 

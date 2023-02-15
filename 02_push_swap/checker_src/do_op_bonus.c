@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:33:00 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/15 10:42:00 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/15 11:59:22 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,5 @@ void	do_op(t_stack *a, t_stack *b)
 	if (is_ordered_not_dup(a) == TRUE && is_empty(b) == TRUE)
 		ft_putstr("OK");
 	else
-		ft_exit();
+		ft_putstr("KO");
 }

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:19:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/02 11:29:00 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/15 12:00:41 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h> // remove
 # include <fcntl.h>
 
 typedef struct s_list

@@ -6,20 +6,15 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:01:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/14 13:00:39 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/15 12:00:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
 # include "../gnl/get_next_line.h"
 # include "../libft/libft.h"
-
-#include <stdio.h> ///////////////////////////remove!!!!!!!!!!!!!
 
 # define FAILURE 1
 # define SUCCESS 0

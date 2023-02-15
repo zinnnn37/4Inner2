@@ -6,17 +6,13 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:35:53 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/15 11:03:59 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/15 12:00:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdio.h> ////////// remove!!! ************************
-
-# include <stdlib.h>
-# include <unistd.h>
 # include "../libft/libft.h"
 
 # define FAILURE 1

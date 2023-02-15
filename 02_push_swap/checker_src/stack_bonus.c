@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:23:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/14 13:00:27 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/15 11:59:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,19 +93,25 @@ t_bool	is_empty(t_stack *b)
 	return (TRUE);
 }
 
-void	free_nodes(t_stack *a)
+void	free_nodes(t_stack *s)
 {
 	t_data	*tmp;
 
-	if (!(a->top))
+	if (!(s->top))
 		return ;
-	tmp = a->top->next;
+	if (s->size == 1)
+	{
+		free(s->top);
+		return ;
+	}
+	tmp = s->top->next;
 	while (tmp)
 	{
 		free(tmp->prev);
 		if (!(tmp->next))
 		{
 			free(tmp);
+			return ;
 		}
 		tmp = tmp->next;
 	}

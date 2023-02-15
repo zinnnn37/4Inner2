@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:25:24 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/14 11:37:11 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/15 12:00:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+
+#include <stdio.h> ///////////////////////////remove!!!!!!!!!!!!!
 
 # define TRUE 1
 # define FALSE 0

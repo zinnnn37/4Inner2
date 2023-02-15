@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:23:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/15 11:03:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/15 11:56:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,11 @@ void	free_nodes(t_stack *a)
 
 	if (!(a->top))
 		return ;
+	if (a->size == 1)
+	{
+		free(a->top);
+		return ;
+	}
 	tmp = a->top->next;
 	while (tmp)
 	{

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:01:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/14 13:00:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/15 11:59:55 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,15 @@ void	init_stack(t_stack *a, t_stack *b)
 	b->size = 0;
 }
 
-int	push_swap(int ac, char **av, t_stack *a, t_stack *b)
+void	push_swap(int ac, char **av, t_stack *a, t_stack *b)
 {
 	init_stack(a, b);
 	get_numbers(ac, av, a);
 	if (is_ordered_not_dup(a) == DUP)
 		print_error();
-	else if (is_ordered_not_dup(a) == TRUE)
-		return (SUCCESS);
-	if (is_empty(b) == FALSE)
-		print_error();
 	do_op(a, b);
 	free_nodes(a);
-	return (SUCCESS);
+	free_nodes(b);
 }
 
 int	main(int ac, char **av)
@@ -42,7 +38,7 @@ int	main(int ac, char **av)
 	t_stack	a;
 	t_stack	b;
 
-	if (ac == 1)
-		return (0);
-	return (push_swap(ac, av, &a, &b));
+	if (ac != 1)
+		push_swap(ac, av, &a, &b);
+	return (SUCCESS);
 }
