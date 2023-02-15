@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:33:00 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/14 15:04:30 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/15 10:42:00 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ void	do_op(t_stack *a, t_stack *b)
 	char	*s;
 
 	//print_nodes(a, b); // remove
-	s = get_next_line(0);
+	s = get_next_line(STDIN_FILENO);
 	while (s)
 	{
 		do_op2(a, b, s);
 		free(s);
-		s = get_next_line(0);
+		s = get_next_line(STDIN_FILENO);
 	}
 	if (is_ordered_not_dup(a) == TRUE && is_empty(b) == TRUE)
 		ft_putstr("OK");

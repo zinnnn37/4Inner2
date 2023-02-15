@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/14 13:52:18 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/15 10:57:33 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ void	init_info(t_info *info)
 {
 	info->a = ft_calloc(1, sizeof(t_stack));
 	info->b = ft_calloc(1, sizeof(t_stack));
+	info->chk_b = ft_calloc(1, sizeof(t_data));
+	info->chk_t = ft_calloc(1, sizeof(t_data));
+	info->len_b = 0;
+	info->len_t = 0;
 	info->len = 0;
 	info->chunk = 0;
 }
