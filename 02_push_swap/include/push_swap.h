@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:35:53 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/15 12:00:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/16 12:09:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	rotate_till_min(t_stack *s);
 
 /**************** utils ****************/
 void	print_error(void);
-void	ft_exit(char *str);
 void	free_all(t_info *info);
 void	free_matrix(char **matrix);
 

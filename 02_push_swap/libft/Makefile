@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 17:47:48 by minjinki          #+#    #+#              #
-#    Updated: 2023/02/14 11:36:15 by minjinki         ###   ########.fr        #
+#    Updated: 2023/02/14 15:26:05 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,8 @@ SRCS		=\
 			ft_putnbr.c\
 			ft_putstr.c\
 			ft_split.c\
-			ft_strchr.c\
 			ft_strcmp.c\
-			ft_strdup.c\
-			ft_strlcpy.c\
-			ft_strlen.c\
-			ft_strtrim.c
+			ft_strlen.c
 
 HDRS	= ./libft.h
 

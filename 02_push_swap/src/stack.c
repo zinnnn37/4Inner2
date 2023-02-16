@@ -6,13 +6,14 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:23:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/15 11:56:23 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/16 12:07:56 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	print_nodes(t_stack *a, t_stack *b) // remove
+/*********************** print ***********************/
+void	print_nodes(t_stack *a, t_stack *b)
 {
 	t_data	*tmp;
 
@@ -37,7 +38,7 @@ void	print_nodes(t_stack *a, t_stack *b) // remove
 	write(1, "cmd: ", 5);
 }
 
-void	print_ranks(t_stack *a) // remove
+void	print_ranks(t_stack *a)
 {
 	t_data	*tmp;
 
@@ -51,6 +52,7 @@ void	print_ranks(t_stack *a) // remove
 	}
 	printf("========\n\n");
 }
+/*****************************************************/
 
 void	create_and_add_node(t_stack *s, int data)
 {

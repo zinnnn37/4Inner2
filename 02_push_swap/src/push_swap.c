@@ -6,17 +6,19 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/15 11:58:18 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/16 12:09:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-/*
+
+/*********************** leaks ***********************/
 void	check_leaks(void)
 {
 	system("leaks push_swap");
 }
-*/
+/*****************************************************/
+
 void	init_info(t_info *info)
 {
 	info->a = ft_calloc(1, sizeof(t_stack));
@@ -42,10 +44,7 @@ void	push_swap(int ac, char **av, t_info *info)
 	info->len = info->a->size;
 	set_rank(info->a);
 	sort(info);
-	//print_nodes(info->a, info->b);
 	free_all(info);
-	//atexit(check_leaks);
-	return ;
 }
 
 int	main(int ac, char **av)
@@ -54,5 +53,6 @@ int	main(int ac, char **av)
 
 	if (ac != 1)
 		push_swap(ac, av, &info);
+	//atexit(check_leaks);
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 10:46:45 by minjinki          #+#    #+#              #
-#    Updated: 2023/02/14 10:38:47 by minjinki         ###   ########.fr        #
+#    Updated: 2023/02/15 11:41:07 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ GNL			=	gnl/
 GNL_LIB		=	$(GNL)libgnl.a
 
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror -g
+CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 AR			=	ar
 ARFLAGS		=	src

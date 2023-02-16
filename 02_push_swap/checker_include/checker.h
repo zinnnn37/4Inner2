@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:01:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/15 12:00:27 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/15 11:13:31 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,9 @@ void	create_and_add_node(t_stack *s, int data);
 void	free_nodes(t_stack *a);
 t_bool	is_empty(t_stack *b);
 t_bool	is_ordered_not_dup(t_stack *a);
-void	print_nodes(t_stack *a, t_stack *b);
 
 /**************** utils ****************/
 void	free_matrix(char **matrix);
-void	ft_exit(void);
 void	print_error(void);
 
 #endif
