@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 15:05:30 by minjinki          #+#    #+#              #
-#    Updated: 2023/02/20 11:27:32 by minjinki         ###   ########.fr        #
+#    Updated: 2023/02/20 14:25:48 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ SRCS		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS		=	$(SRCS:%.c=%.o)
 
 RL			=	readline
-RL_LIB		=	/Users/minjinki/.brew/Cellar/readline/8.2.1/lib
-RL_INC		=	/Users/minjinki/.brew/Cellar/readline/8.2.1/include
+RL_LIB		=	/Users/minjinki/.brew/opt/readline/lib
+RL_INC		=	/Users/minjinki/.brew/opt/readline/include
 
 # LIBFT		=	src/libft/
 # LIBFT_LIB	=	$(LIBFT)libft.a
