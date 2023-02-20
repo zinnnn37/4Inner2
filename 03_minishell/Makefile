@@ -6,24 +6,28 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 15:05:30 by minjinki          #+#    #+#              #
-#    Updated: 2023/02/20 14:25:48 by minjinki         ###   ########.fr        #
+#    Updated: 2023/02/20 15:03:36 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+CC			=	gcc
+CFLAGS		=	-Wall -Wextra -Werror
+RM			=	rm -f
+AR			=	ar
+ARFLAGS		=	src
 
 NAME		=	minishell
 
 INCLUDE		=	include
 
+RL_LIB		=	-lreadline -L${HOME}/.brew/opt/readline/lib
+RL_INC		=	-I${HOME}/.brew/opt/readline/include
+
 SRC_DIR		=	src/
 SRC_FILES	=	minishell
 
 SRCS		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-
 OBJS		=	$(SRCS:%.c=%.o)
-
-RL			=	readline
-RL_LIB		=	/Users/minjinki/.brew/opt/readline/lib
-RL_INC		=	/Users/minjinki/.brew/opt/readline/include
 
 # LIBFT		=	src/libft/
 # LIBFT_LIB	=	$(LIBFT)libft.a
@@ -31,19 +35,13 @@ RL_INC		=	/Users/minjinki/.brew/opt/readline/include
 # GNL			=	src/gnl/
 # GNL_LIB		=	$(GNL)libgnl.a
 
-CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror
-RM			=	rm -f
-AR			=	ar
-ARFLAGS		=	src
-
 all			:	$(NAME)
 
-%.o			:	%c
-	$(CC) $(CFLAGS) -IHDRS -c $< -o $@
-
 $(NAME)		:	$(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I$(INCLUDE) -l$(RL) -L$(RL_LIB) -I$(RL_INC)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(RL_LIB)
+
+%.o			:	%c
+	$(CC) $(CFLAGS) -I$(INCLUDE) $(RL_INC) -c $< -o $@
 
 clean		:
 	$(RM) $(OBJS) $(OBJS_BNS)

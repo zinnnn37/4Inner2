@@ -6,32 +6,30 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/20 14:12:14 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:19:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-int	main(int ac, char **av)
+int	main(void)
 {
-	char	*cmd;
+	pid_t	pid;
+	int		status;
+	int		ret;
 
-	(void)av;
-	if (ac != 1)
-		return (FAILURE);
-	while (TRUE)
+	pid = fork();
+	if (pid > 0)
 	{
-		cmd = readline("minishell_$ ");
-		if (!cmd)
-			break ;
-		//parse(cmd);
-		printf("%s\n", cmd);
-		add_history(cmd);
-		write(1, "a", 1);
-		rl_on_new_line();
-		rl_replace_line();
-		rl_redisplay();
-		free(cmd);
+		printf("Parent ID : %d\n", getpid());
+		ret = waitpid(pid, &status, WNOHANG);
+		printf("Parent killed\n");
+	}
+	else if (pid == 0)
+	{
+		printf("Child ID : %d\n", getpid());
+		usleep(100);
+		printf("Child killed\n");
 	}
 	return (SUCCESS);
 }
