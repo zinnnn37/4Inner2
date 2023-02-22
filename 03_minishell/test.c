@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 15:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/22 14:34:29 by minjinki         ###   ########.fr       */
+/*   Created: 2023/02/22 11:03:12 by minjinki          #+#    #+#             */
+/*   Updated: 2023/02/22 12:03:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <readline/readline.h>
 
-int	main(int ac, char **av)
+int main(void)
 {
-	if (ac > 1)
-		printf("%s\n", av[1]);
-	return (0);
+	printf("%s\n", getenv(readline("env: ")));
 }
