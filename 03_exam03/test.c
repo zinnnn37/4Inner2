@@ -2,11 +2,7 @@
 
 int main(void)
 {
-	int ret;
+	char	*drawing;
 
-	if ((ret = printf("%d\n", 1)) == 2)
-		printf("if : %d\n", ret);
-	else
-		printf("else : %d\n", ret);
-	return (0);
+	printf("%lu\n", sizeof(*drawing));
 }
