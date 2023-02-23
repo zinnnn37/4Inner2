@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:03:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/23 11:46:59 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/11 15:10:41 by minjinki          #+#    #+#             */
+/*   Updated: 2023/02/23 12:06:06 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <readline/readline.h>
+#include "../../include/libft.h"
 
-int main(int ac, char **av, char **env)
+void	ft_putstr(const char *s, int fd)
 {
-	
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
 }

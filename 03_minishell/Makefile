@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 15:05:30 by minjinki          #+#    #+#              #
-#    Updated: 2023/02/20 15:03:36 by minjinki         ###   ########.fr        #
+#    Updated: 2023/02/23 12:02:24 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,11 @@ SRC_FILES	=	minishell
 SRCS		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS		=	$(SRCS:%.c=%.o)
 
-# LIBFT		=	src/libft/
-# LIBFT_LIB	=	$(LIBFT)libft.a
+ERROR		=	src/error/
+ERROR_LIB	=	$(ERROR)liberr.a
+
+LIBFT		=	src/libft/
+LIBFT_LIB	=	$(LIBFT)libft.a
 
 # GNL			=	src/gnl/
 # GNL_LIB		=	$(GNL)libgnl.a
@@ -38,15 +41,21 @@ OBJS		=	$(SRCS:%.c=%.o)
 all			:	$(NAME)
 
 $(NAME)		:	$(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(RL_LIB)
+	$(MAKE) -C $(LIBFT)
+	$(MAKE) -C $(ERROR)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(RL_LIB) $(ERROR_LIB) $(LIBFT_LIB)
 
 %.o			:	%c
 	$(CC) $(CFLAGS) -I$(INCLUDE) $(RL_INC) -c $< -o $@
 
 clean		:
+	$(MAKE) -C $(LIBFT) clean
+	$(MAKE) -C $(ERROR) clean
 	$(RM) $(OBJS) $(OBJS_BNS)
 
 fclean		:	clean
+	$(MAKE) -C $(LIBFT) fclean
+	$(MAKE) -C $(ERROR) fclean
 	$(RM) $(NAME)
 
 re			:

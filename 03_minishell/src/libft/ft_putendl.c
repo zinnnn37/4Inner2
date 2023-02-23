@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:03:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/23 11:46:59 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/11 15:11:31 by minjinki          #+#    #+#             */
+/*   Updated: 2023/02/23 12:05:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <readline/readline.h>
+#include "../../include/libft.h"
 
-int main(int ac, char **av, char **env)
+void	ft_putendl(const char *s, int fd)
 {
-	
+	if (!s)
+		return ;
+	ft_putstr(s, fd);
+	ft_putchar('\n', fd);
 }

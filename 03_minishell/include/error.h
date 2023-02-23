@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:03:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/23 11:46:59 by minjinki         ###   ########.fr       */
+/*   Created: 2023/02/23 11:34:01 by minjinki          #+#    #+#             */
+/*   Updated: 2023/02/23 11:54:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <readline/readline.h>
+#ifndef ERROR_H
+# define ERROR_H
 
-int main(int ac, char **av, char **env)
-{
-	
-}
+void	exit_with_code(const char *s, int error);
+
+#endif

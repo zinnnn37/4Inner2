@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:03:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/23 11:46:59 by minjinki         ###   ########.fr       */
+/*   Created: 2023/02/23 11:03:27 by minjinki          #+#    #+#             */
+/*   Updated: 2023/02/23 11:03:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <readline/readline.h>
+#ifndef PARSE_H
+# define PARSE_H
 
-int main(int ac, char **av, char **env)
-{
-	
-}
+
+
+#endif
