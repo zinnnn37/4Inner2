@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   remove_signal_output.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 15:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/23 15:20:18 by minjinki         ###   ########.fr       */
+/*   Created: 2023/02/23 15:21:01 by minjinki          #+#    #+#             */
+/*   Updated: 2023/02/23 15:23:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
-int	minishell(void)
+void	remove_sig_output(void)
 {
-	char			*cmd;
+	struct termios	ter;
 
-	while (TRUE)
-	{
-		cmd = readline("minishell_$> ");
-		add_history(cmd);
-		free(cmd);
-	}
-	return (SUCCESS);
+	if (tcgetattr(0, &ter))
+		exit_with_code("minishell: tcgetattr\n", 2);
+	ter.c_lflag &= ~ECHOCTL;
+	if (tcsetattr(0, 0, &ter))
+		exit_with_code("minishell: tcsetattr\n", 2);
 }
 
-int	main(int ac, char **av, char **env)
+void	remove_sig2(void)
 {
-	(void)av;
-	if (ac != 1)
-		exit_with_code("Usage: ./minishell\n", 126);
-	g_data.env = env;
-	minishell();
-	return (FAILURE);
+	extern int	rl_catch_signals;
+
+	rl_catch_signals = 0;
 }

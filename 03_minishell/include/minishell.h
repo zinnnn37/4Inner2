@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:02:08 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/23 12:35:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/23 15:05:06 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <readline/history.h>
 # include <sys/wait.h>
 # include <signal.h>
+# include <termios.h>
 # include "error.h"
 # include "libft.h"
 
@@ -26,12 +27,12 @@
 # define TRUE 1
 # define FALSE 0
 
-typedef struct s_global
+typedef struct s_data
 {
 	char	**env;
-}	t_global;
+}	t_data;
 
-t_global	g_global;
+t_data	g_data;
 
 /******************	minishell.c	******************/
 int	minishell(void);
