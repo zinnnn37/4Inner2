@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/02 11:26:25 by minjinki          #+#    #+#              #
-#    Updated: 2023/02/23 11:53:19 by minjinki         ###   ########.fr        #
+#    Updated: 2023/02/23 15:26:52 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,4 +45,4 @@ re		:
 			$(MAKE) fclean
 			$(MAKE) all
 
-.PHONY		:	all clean fclean re bonus
+.PHONY		:	all clean fclean re
