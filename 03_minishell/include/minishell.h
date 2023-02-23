@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:02:08 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/23 11:57:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:35:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,12 @@
 # define TRUE 1
 # define FALSE 0
 
-// global
+typedef struct s_global
+{
+	char	**env;
+}	t_global;
+
+t_global	g_global;
 
 /******************	minishell.c	******************/
 int	minishell(void);
