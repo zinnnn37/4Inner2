@@ -6,8 +6,15 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/16 15:03:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:45:59 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
+
+int	main(int ac, char **av)
+{
+	(void)av;
+	if (ac != 5 && ac != 6)
+		return (print_error("Argument error"));
+}
