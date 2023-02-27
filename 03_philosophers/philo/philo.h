@@ -6,11 +6,15 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:26 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/16 15:03:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/02/27 10:43:59 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
+
+typedef struct s_philo
+{
+}	t_philo;
 
 #endif
