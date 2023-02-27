@@ -1,20 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 15:03:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/27 15:49:05 by minjinki         ###   ########.fr       */
+/*   Created: 2023/02/27 15:49:11 by minjinki          #+#    #+#             */
+/*   Updated: 2023/02/27 15:50:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int ac, char **av)
+t_bool	init_philo()
 {
-	if (ac != 5 && ac != 6)
-		return (print_error("Argument error"));
-	init_philo(av);
 }
