@@ -15,7 +15,10 @@
 
 # include <unistd.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include <pthread.h>
+# include <memory.h>
+# include <time.h>
 
 # define SUCCESS 0
 # define FAILURE 1
@@ -23,15 +26,33 @@
 # define FALSE 0
 
 typedef int	t_bool;
+typedef pthread_mutex_t	mutex;
 
-typedef struct s_philo
+typedef struct	s_philo
 {
-	// philo mutex array
-	// time to die
-	// time to eat
-	// time to sleep
-	// count eat(0 default)
+	int	pos;		// index of philo
+	int	lfork;		// left fork
+	int	rfork;		// right fork
+	int	meals;		// flag
+	int	eating;		// flag
+	int	last_meal;	// time of last meal
+	int	limit;		// limit counter
 }	t_philo;
+
+typedef struct	s_data
+{
+	int		num;	// number of philo
+	int		die;	// time to die
+	int		eat;	// time for eating
+	int		sleep;	// time for sleeping
+	int		meals;	// number of times philo must eat
+	int		end;	// end flag
+	int		fork;	// fork not fork()
+	t_philo	*philo;	// philo struct
+	mutex	mprint;	// print mutex
+	mutex	*mfork;	// fork mutex
+	mutex	mdie;	// die mutex
+}	t_data;
 
 /**************** init.c ***************/
 // init philo
