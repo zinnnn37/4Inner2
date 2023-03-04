@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:26 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/27 15:52:01 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/04 18:08:44 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <memory.h>
-# include <time.h>
+# include <sys/time.h>
 
 # define SUCCESS 0
 # define FAILURE 1
