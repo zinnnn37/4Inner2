@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:26 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/04 18:08:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:08:55 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,18 @@
 # define TRUE 1
 # define FALSE 0
 
+# define MAX_INT 2147483647
+# define MIN_INT -2147483648
+
 typedef int	t_bool;
-typedef pthread_mutex_t	mutex;
+typedef pthread_mutex_t	t_mutex;
+
+typedef enum	e_status
+{
+	THINKING,
+	EATING,
+	HUNGRY
+}	t_stat;
 
 typedef struct	s_philo
 {
@@ -45,13 +55,13 @@ typedef struct	s_data
 	int		die;	// time to die
 	int		eat;	// time for eating
 	int		sleep;	// time for sleeping
-	int		meals;	// number of times philo must eat
+	int		limit;	// number of times philo must eat
 	int		end;	// end flag
 	int		fork;	// fork not fork()
 	t_philo	*philo;	// philo struct
-	mutex	mprint;	// print mutex
-	mutex	*mfork;	// fork mutex
-	mutex	mdie;	// die mutex
+	t_mutex	mprint;	// print mutex
+	t_mutex	*mfork;	// fork mutex
+	t_mutex	mdie;	// die mutex
 }	t_data;
 
 /**************** init.c ***************/
@@ -62,5 +72,7 @@ void	ft_putnbr(int n);
 void	ft_putstr(const char *s);
 int		ft_strlen(const char *s);
 t_bool	print_error(char *s);
+
+int	ft_atoi(const char *str, int *data);
 
 #endif
