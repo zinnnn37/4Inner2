@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 10:46:45 by minjinki          #+#    #+#              #
-#    Updated: 2023/03/06 16:06:43 by minjinki         ###   ########.fr        #
+#    Updated: 2023/03/06 16:16:10 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME		=	philo
 INCLUDE		=	philo.h
 
 SRC_FILES	=	philo\
-				atoi\
-				utils
+				utils\
+				utils2
 
 SRCS		=	$(addsuffix .c, $(SRC_FILES))
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atoi.c                                             :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:41:29 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/06 16:08:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:16:00 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,25 @@ int	ft_atoi(const char *str, int *data)
 		return (FALSE);
 	*data = (int)(minus * ans);
 	return (TRUE);
+}
+
+void	*ft_memset(void *b, int c, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+		((unsigned char *)b)[i++] = (unsigned char)c;
+	return (b);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*res;
+
+	res = (void *)malloc(count * size);
+	if (!res)
+		return (NULL);
+	ft_memset(res, 0, count * size);
+	return (res);
 }

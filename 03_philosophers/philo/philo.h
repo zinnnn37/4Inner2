@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:26 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/06 16:08:55 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:16:42 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	ft_putstr(const char *s);
 int		ft_strlen(const char *s);
 t_bool	print_error(char *s);
 
-int	ft_atoi(const char *str, int *data);
+/************** utils2.c ***************/
+int		ft_atoi(const char *str, int *data);
+void	*ft_calloc(size_t count, size_t size);
 
 #endif
