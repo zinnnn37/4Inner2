@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:26 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/06 16:16:42 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:27:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct	s_data
 	int		fork;	// fork not fork()
 	t_philo	*philo;	// philo struct
 	t_mutex	mprint;	// print mutex
-	t_mutex	*mfork;	// fork mutex
+	t_mutex	mfork;	// fork mutex
 	t_mutex	mdie;	// die mutex
 }	t_data;
 
