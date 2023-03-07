@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:26 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/06 17:27:30 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/07 12:48:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@
 # define MAX_INT 2147483647
 # define MIN_INT -2147483648
 
+/*********** status of philos  **********/
+# define ALIVE 0
+# define DEAD 1
+# define FORK_MSG "has taken a fork"
+# define EAT_MSG "is eating"
+# define SLEEP_MSG "is sleeping"
+# define THINK_MSG "is thinking"
+# define DEAD_MSG "died"
+
 typedef int	t_bool;
 typedef pthread_mutex_t	t_mutex;
 
@@ -40,38 +49,42 @@ typedef enum	e_status
 
 typedef struct	s_philo
 {
-	int	pos;		// index of philo
-	int	lfork;		// left fork
-	int	rfork;		// right fork
-	int	meals;		// flag
-	int	eating;		// flag
-	int	last_meal;	// time of last meal
-	int	limit;		// limit counter
+	pthread_t		tid;
+	int				philo_id;	// index of philo
+	t_mutex			*lfork;		// left fork
+	t_mutex			*rfork;		// right fork
+	int				eat_cnt;
+	size_t			begin;
+	size_t			last_eat;
+	size_t			cur_time;
+	struct s_data	*data;
+	struct s_philo	*next;
 }	t_philo;
 
 typedef struct	s_data
 {
-	int		num;	// number of philo
-	int		die;	// time to die
-	int		eat;	// time for eating
-	int		sleep;	// time for sleeping
+	int		nums;	// number of philo
+	int		ttdie;	// time to die
+	int		tteat;	// time for eating
+	int		ttsleep;// time for sleeping
 	int		limit;	// number of times philo must eat
-	int		end;	// end flag
-	int		fork;	// fork not fork()
+	size_t	status;	// philo alive or dead
+	size_t	full;
+	t_mutex	*mutex;
+	t_mutex	*mprint;// print mutex
+	t_mutex	*mfork;	// fork mutex
+	t_mutex	*mdie;	// die mutex
 	t_philo	*philo;	// philo struct
-	t_mutex	mprint;	// print mutex
-	t_mutex	mfork;	// fork mutex
-	t_mutex	mdie;	// die mutex
 }	t_data;
 
 /**************** init.c ***************/
-// init philo
+int	init_philo(int ac, char **av, t_data *data);
 
 /*************** utils.c ***************/
 void	ft_putnbr(int n);
 void	ft_putstr(const char *s);
 int		ft_strlen(const char *s);
-t_bool	print_error(char *s);
+int		print_error(char *s);
 
 /************** utils2.c ***************/
 int		ft_atoi(const char *str, int *data);

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:33:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/27 15:50:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/07 12:48:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_putnbr(int n)
 	ft_putchar(n % 10 + '0');
 }
 
-t_bool	print_error(char *s)
+int	print_error(char *s)
 {
 	ft_putstr("*ERROR* ");
 	ft_putstr(s);
