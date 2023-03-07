@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:26 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/07 13:27:30 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:11:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,17 @@
 # define THINK_MSG "is thinking"
 # define DEAD_MSG "died"
 
-typedef int	t_bool;
+typedef int				t_bool;
 typedef pthread_mutex_t	t_mutex;
 
-typedef enum	e_status
+typedef enum e_status
 {
 	THINKING,
 	EATING,
 	HUNGRY
 }	t_stat;
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	pthread_t		tid;
 	int				philo_id;	// index of philo
@@ -61,7 +61,7 @@ typedef struct	s_philo
 	struct s_philo	*next;
 }	t_philo;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	int		nums;	// number of philo
 	int		ttdie;	// time to die
@@ -81,7 +81,13 @@ typedef struct	s_data
 void	free_all(t_data *data);
 
 /**************** init.c ***************/
-int	init_philo(int ac, char **av, t_data *data);
+int		init_philo(int ac, char **av, t_data *data);
+
+/**************** loop.c ***************/
+int		philosophers(t_data *data);
+
+/************* loop_utils.c ************/
+size_t	get_time(void);
 
 /*************** utils.c ***************/
 void	ft_putnbr(int n);

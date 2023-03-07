@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/07 13:31:09 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:54:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int ac, char **av)
 
 	if (init_philo(ac, av, &data))
 		return (FAILURE);
+	philosophers(&data);
 	free_all(&data);
 	return (SUCCESS);
 }
