@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:49:11 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/07 12:53:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:35:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ int	init_philo(int ac, char **av, t_data *data)
 	data->full = 0;
 	if (create_mutex(data) || create_thread(data))
 		return (FAILURE);
-	if (data->nums <= 1)
-		return (FAILURE);
+	if (data->nums <= 1 || data->ttdie < 0 || data->tteat < 0
+		|| data->ttsleep < 0)
+		return (print_error("Check the range of args"));
 	return (SUCCESS);
 }

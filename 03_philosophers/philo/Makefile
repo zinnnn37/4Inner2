@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 10:46:45 by minjinki          #+#    #+#              #
-#    Updated: 2023/03/07 12:47:39 by minjinki         ###   ########.fr        #
+#    Updated: 2023/03/07 13:27:39 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME		=	philo
 INCLUDE		=	philo.h
 
 SRC_FILES	=	main\
+				free\
 				init\
 				utils\
 				utils2

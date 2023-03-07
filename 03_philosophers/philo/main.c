@@ -6,11 +6,16 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/07 12:47:22 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:31:09 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+// void	leaks(void)
+// {
+// 	system("leaks philo");
+// }
 
 int	main(int ac, char **av)
 {
@@ -18,6 +23,7 @@ int	main(int ac, char **av)
 
 	if (init_philo(ac, av, &data))
 		return (FAILURE);
+	free_all(&data);
 	return (SUCCESS);
 }
 

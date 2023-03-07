@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:26 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/07 12:48:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:27:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,9 @@ typedef struct	s_data
 	t_mutex	*mdie;	// die mutex
 	t_philo	*philo;	// philo struct
 }	t_data;
+
+/**************** free.c ***************/
+void	free_all(t_data *data);
 
 /**************** init.c ***************/
 int	init_philo(int ac, char **av, t_data *data);
