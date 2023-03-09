@@ -90,5 +90,6 @@ int	init_philo(int ac, char **av, t_data *data)
 	if (data->nums <= 1 || data->ttdie < 0 || data->tteat < 0
 		|| data->ttsleep < 0)
 		return (print_error("Check the range of args"));
+	// philo 1일 때 dead 출력? > 서브젝트 보고 판단하기
 	return (SUCCESS);
 }
