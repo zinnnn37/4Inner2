@@ -21,7 +21,10 @@ int	philosophers(t_data *data)
 	{
 		philo->begin = get_time();
 		printf("%zu\n", philo->begin);
+		pthread_create(&(philo->philo_id), NULL, &pros, philo);
 		philo = philo->next;
 	}
+	// check if died
+	
 	return (TRUE);
 }
