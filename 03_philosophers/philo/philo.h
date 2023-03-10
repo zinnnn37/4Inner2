@@ -63,18 +63,18 @@ typedef struct s_philo
 
 typedef struct s_data
 {
-	int		nums;	// number of philo
-	int		ttdie;	// time to die
-	int		tteat;	// time for eating
-	int		ttsleep;// time for sleeping
-	int		limit;	// number of times philo must eat
-	size_t	status;	// philo alive or dead
+	int		nums;		// number of philo
+	int		ttdie;		// time to die
+	int		tteat;		// time for eating
+	int		ttsleep;	// time for sleeping
+	int		limit;		// number of times philo must eat
+	size_t	status;		// philo alive or dead
 	size_t	full;
-	t_mutex	*mutex;
-	t_mutex	*mprint;// print mutex
-	t_mutex	*mfork;	// fork mutex
-	t_mutex	*mdie;	// die mutex
-	t_philo	*philo;	// philo struct
+	t_mutex	*mphilo;	// philo mutex
+	t_mutex	*mprint;	// print mutex
+	t_mutex	*mfork;		// fork mutex
+	t_mutex	*mdie;		// die mutex
+	t_philo	*philo;		// philo struct
 }	t_data;
 
 /**************** free.c ***************/

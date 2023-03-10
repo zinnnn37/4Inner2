@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
-	if (init_philo(ac, av, &data))
+	if (!init(ac, av, &data))
 		return (FAILURE);
 	philosophers(&data);
 	free_all(&data);

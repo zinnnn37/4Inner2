@@ -55,10 +55,10 @@ void	ft_putnbr(int n)
 	ft_putchar(n % 10 + '0');
 }
 
-int	print_error(char *s)
+t_bool	print_error(char *s)
 {
 	ft_putstr("*ERROR* ");
 	ft_putstr(s);
 	ft_putchar('\n');
-	return (FAILURE);
+	return (FALSE);
 }
