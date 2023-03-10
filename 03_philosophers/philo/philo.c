@@ -13,16 +13,17 @@
 #include "philo.h"
 
 /* init philo struct */
-void	philo_init(t_philo *philo, int id, t_data *data)
+void	init_philo(t_philo *philo, int id, t_data *data)
 {
-	// get_cur_time();
-	// philo->last_eat = get_cur_time();
-	// philo->id = id
-	// philo->state = SLEEPING;
+	philo->philo_id = id;
+	philo->state = SLEEPING;
+	philo->is_dead = FALSE;
+	philo->start_time = get_cur_time(); // create func
+	philo->last_eat = philo->start_time;
+	philo->eat_cnt = 0;
+	philo->data = data;
+	// fork
 	// if (id == odd)	philo->state = EATING;
-	// philo->data = data;
-	// philo->eat_count = 0;
-	// philo->is_dead = FALSE;
 	// if (id == data->nums - 1)
 //	{
 		//philo->lfork = &data->fork[id];
@@ -36,5 +37,5 @@ void	philo_create(t_data *data)
 
 	i = -1;
 	while (++i < data->philos)
-		philo_init(&data->philo[i], i, data);
+		init_philo(&data->philo[i], i, data);
 }
