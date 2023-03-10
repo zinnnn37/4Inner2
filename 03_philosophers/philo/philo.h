@@ -58,7 +58,7 @@ typedef struct s_philo
 {
 	int				philo_id;	// index of philo
 	t_state			state;
-	t_bool			is_alive;
+	t_bool			is_dead;
 	t_fork			*lfork;		// left fork
 	t_fork			*rfork;		// right fork
 	size_t			start_time;
@@ -83,10 +83,20 @@ typedef struct s_data
 	t_philo	*philos;	// philo struct
 }	t_data;
 
-/**************** free.c ***************/
+/*********************************************
+ ** fork.c ***********************************
+ *********************************************/
+void	pick_fork(t_fork *fork);
+void	put_fork(t_fokr *fork);
+
+/*********************************************
+ ** free.c ***********************************
+ *********************************************/
 void	free_all(t_data *data);
 
-/**************** init.c ***************/
+/*********************************************
+ ** init.c ***********************************
+ *********************************************/
 int		init_philo(int ac, char **av, t_data *data);
 
 /**************** loop.c ***************/
@@ -95,13 +105,17 @@ int		philosophers(t_data *data);
 /************* loop_utils.c ************/
 size_t	get_time(void);
 
-/*************** utils.c ***************/
+/*********************************************
+ ** utils.c **********************************
+ *********************************************/
 void	ft_putnbr(int n);
 void	ft_putstr(const char *s);
 int		ft_strlen(const char *s);
 int		print_error(char *s);
 
-/************** utils2.c ***************/
+/*********************************************
+ ** utils2.c *********************************
+ *********************************************/
 int		ft_atoi(const char *str, int *data);
 void	*ft_calloc(size_t count, size_t size);
 

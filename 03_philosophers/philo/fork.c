@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop_utils.c                                       :+:      :+:    :+:   */
+/*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: MJKim <zinnnn37@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 15:08:03 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/07 15:09:36 by minjinki         ###   ########.fr       */
+/*   Created: 2023/03/10 14:10:26 by MJKim             #+#    #+#             */
+/*   Updated: 2023/03/10 14:10:26 by MJKim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-size_t	get_time(void)
+void	pick_fork(t_fork *fork)
 {
-	struct timeval	tv;
+	pthread_mutex_lock(&fork->mtx);
+}
 
-	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * 1000) + (tv.tv_usec * 0.001));
-	// check the res of return value
+void	put_fork(t_fork *fork)
+{
+	pthread_mutex_unlock(&fork->mtx);
 }

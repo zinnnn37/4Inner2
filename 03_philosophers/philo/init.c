@@ -13,7 +13,7 @@
 #include "philo.h"
 
 // 0도 들어올 수 있나요..?
-static t_bool	parsing_nums(int ac, char **av, t_data *data)
+t_bool	parsing_nums(int ac, char **av, t_data *data)
 {
 	if (!ft_atoi(av[1], &data->nums) || data->nums < 1)
 		return (print_error("Check if the arguments are valid: av[1]"));
@@ -57,5 +57,6 @@ t_bool	init(int ac, char **av, t_data *data)
 		return (print_error("Fail to allocate memory: data->philos"));
 	if (!init_fork(data))
 		return (FALSE);
+	philo_create(data);
 	return (TRUE);
 }

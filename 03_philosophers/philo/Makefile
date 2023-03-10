@@ -15,6 +15,7 @@ NAME		=	philo
 INCLUDE		=	philo.h
 
 SRC_FILES	=	main\
+				fork\
 				free\
 				init\
 				loop\
