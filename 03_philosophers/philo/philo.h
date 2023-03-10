@@ -40,25 +40,34 @@
 typedef int				t_bool;
 typedef pthread_mutex_t	t_mutex;
 
-typedef enum e_status
+typedef enum e_state
 {
-	THINKING,
+	HUNGRY,
 	EATING,
-	HUNGRY
-}	t_stat;
+	SLEEPING,
+	THINKING
+}	t_state;
+
+typedef struct s_fork
+{
+	t_mutex	mtx;
+}	t_fork;
+
 
 typedef struct s_philo
 {
-	pthread_t		tid;
 	int				philo_id;	// index of philo
-	t_mutex			*lfork;		// left fork
-	t_mutex			*rfork;		// right fork
-	int				eat_cnt;
-	size_t			begin;
+	t_state			state;
+	t_bool			is_alive;
+	t_fork			*lfork;		// left fork
+	t_fork			*rfork;		// right fork
+	size_t			start_time;
+	size_t			cur_time;	// current time*
 	size_t			last_eat;
-	size_t			cur_time;
+	int				eat_cnt;
+	t_mutex			*mtx;
 	struct s_data	*data;
-	struct s_philo	*next;
+	pthread_t		thread;
 }	t_philo;
 
 typedef struct s_data
@@ -68,13 +77,10 @@ typedef struct s_data
 	int		tteat;		// time for eating
 	int		ttsleep;	// time for sleeping
 	int		limit;		// number of times philo must eat
-	size_t	status;		// philo alive or dead
-	size_t	full;
-	t_mutex	*mphilo;	// philo mutex
 	t_mutex	*mprint;	// print mutex
-	t_mutex	*mfork;		// fork mutex
 	t_mutex	*mdie;		// die mutex
-	t_philo	*philo;		// philo struct
+	t_fork	*mfork;		// fork mutex
+	t_philo	*philos;	// philo struct
 }	t_data;
 
 /**************** free.c ***************/

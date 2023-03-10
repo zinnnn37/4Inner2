@@ -30,12 +30,32 @@ static t_bool	parsing_nums(int ac, char **av, t_data *data)
 	return (TRUE);
 }
 
+t_bool	init_fork(t_data *data)
+{
+	int	i;
+
+	data->forks = calloc(data->nums * sizeof(t_fork));
+	if (!(data->forks))
+		return (print_error("Fail to allocate memory: data->forks"));
+	i = -1;
+	while (++i < data->nums)
+	{
+		if (pthread_mutex_init(&data->forks[i].mtx, NULL))
+			return (print_error("Fail to initialize mutex: data->forks[i].mtx"));
+	}
+	return (TRUE);
+}
+
 t_bool	init(int ac, char **av, t_data *data)
 {
 	if (ac != 5 && ac != 6)
 		return (print_error("Check the number of args"));
 	if (!parsing_nums(ac, av, data))
 		return (FALSE);
-	data->
+	data->philos = calloc(data->nums, sizeof(t_philo));
+	if (!(data->philos))
+		return (print_error("Fail to allocate memory: data->philos"));
+	if (!init_fork(data))
+		return (FALSE);
 	return (TRUE);
 }
