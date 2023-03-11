@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 17:47:48 by minjinki          #+#    #+#              #
-#    Updated: 2023/01/31 13:10:35 by minjinki         ###   ########.fr        #
+#    Updated: 2023/03/11 15:41:43 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,9 +45,7 @@ SRCS		=\
 			ft_strtrim.c\
 			ft_substr.c\
 			ft_tolower.c\
-			ft_toupper.c
-
-SRCS_BNS	=\
+			ft_toupper.c\
 			ft_lstadd_back.c\
 			ft_lstadd_front.c\
 			ft_lstclear.c\
@@ -58,38 +56,36 @@ SRCS_BNS	=\
 			ft_lstnew.c\
 			ft_lstsize.c
 
-HDRS	= ./libft.h
+HDRS		= ../../include/libft.h
 
-CC		=	cc
-CFLAGS	=	-Wall -Wextra -Werror
+CC			=	cc
+CFLAGS		=	-Wall -Wextra -Werror
 
-RM		=	rm -f
+RM			=	rm -f
 
-AR		=	ar
-ARFLAGS	= 	rcs
+AR			=	ar
+ARFLAGS		= 	rcs
 
-NAME	=	libft.a
+NAME		=	libft.a
 
 OBJS		=	$(SRCS:.c=.o)
-OBJS_BNS	=	$(SRCS_BNS:.c=.o)
 
 all			:	$(NAME)
-bonus		:	$(NAME)
 
 %.o			:	%.c
-			$(CC) $(CFLAGS) -c $^ -o $@
+	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(NAME)		:	$(OBJS) $(if $(filter bonus,$(MAKECMDGOALS)), $(OBJS_BNS))
-			$(AR) $(ARFLAGS) $@ $^
+$(NAME)		:	$(OBJS)
+	$(AR) $(ARFLAGS) $@ $^
 
 clean		:
-			$(RM) $(OBJS) $(OBJS_BNS)
+	$(RM) $(OBJS) $(OBJS_BNS)
 
 fclean		:	clean
-			$(RM) $(NAME)
+	$(RM) $(NAME)
 
-re		:
-			$(MAKE) fclean
-			$(MAKE) all
+re			:
+	$(MAKE) fclean
+	$(MAKE) all
 
 .PHONY		:	all clean fclean re bonus
