@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 11:25:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:36:56 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/07 14:56:04 by minjinki          #+#    #+#             */
+/*   Updated: 2022/07/12 15:13:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "libft.h"
 
-void	exit_with_code(const char *s, int error)
+int	ft_isalnum(int c)
 {
-	ft_putstr(s, 2);
-	exit(error); // exit.. 말고 return으로 구현하기 ?
+	return (ft_isalpha(c) || ft_isdigit(c));
 }

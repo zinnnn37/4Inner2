@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 11:25:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:36:56 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/11 16:15:38 by minjinki          #+#    #+#             */
+/*   Updated: 2022/07/19 18:47:56 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "libft.h"
 
-void	exit_with_code(const char *s, int error)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	ft_putstr(s, 2);
-	exit(error); // exit.. 말고 return으로 구현하기 ?
+	if (!lst)
+		return ;
+	del(lst->content);
+	free(lst);
 }

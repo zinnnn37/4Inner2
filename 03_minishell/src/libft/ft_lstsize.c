@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 11:25:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:36:56 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/11 16:07:54 by minjinki          #+#    #+#             */
+/*   Updated: 2022/07/12 14:38:59 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "libft.h"
 
-void	exit_with_code(const char *s, int error)
+int	ft_lstsize(t_list *lst)
 {
-	ft_putstr(s, 2);
-	exit(error); // exit.. 말고 return으로 구현하기 ?
+	size_t	size;
+
+	size = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		size++;
+	}
+	return (size);
 }

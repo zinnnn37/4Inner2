@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 11:25:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:36:56 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/08 15:16:03 by minjinki          #+#    #+#             */
+/*   Updated: 2022/07/20 20:20:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "libft.h"
 
-void	exit_with_code(const char *s, int error)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	ft_putstr(s, 2);
-	exit(error); // exit.. 말고 return으로 구현하기 ?
+	size_t	i;
+
+	i = 0;
+	if (!dst && !src)
+		return (NULL);
+	while (i < n)
+	{
+		*(unsigned char *)(dst + i) = *(unsigned char *)(src + i);
+		i++;
+	}
+	return (dst);
 }

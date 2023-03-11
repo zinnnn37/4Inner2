@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 11:25:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:36:56 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/11 16:13:18 by minjinki          #+#    #+#             */
+/*   Updated: 2022/07/12 13:25:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "libft.h"
 
-void	exit_with_code(const char *s, int error)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	ft_putstr(s, 2);
-	exit(error); // exit.. 말고 return으로 구현하기 ?
+	if (!lst || !new)
+		return ;
+	else if (!*lst)
+		*lst = new;
+	else
+		ft_lstlast(*lst)->next = new;
 }
