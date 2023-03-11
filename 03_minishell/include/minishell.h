@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:02:08 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:57:05 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 16:14:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@
 # define FAILURE 1
 # define TRUE 1
 # define FALSE 0
-
-typedef struct s_data
-{
-	char	**env;
-}	t_data;
 
 t_data	g_data;
 
