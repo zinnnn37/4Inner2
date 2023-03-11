@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 11:34:01 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/23 11:54:40 by minjinki         ###   ########.fr       */
+/*   Created: 2023/03/11 17:57:53 by minjinki          #+#    #+#             */
+/*   Updated: 2023/03/11 18:03:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#include "../../include/minishell.h"
 
-void	exit_with_code(const char *s, int error);
-
-#endif
+void	init(void)
+{
+	sig_hander();
+	parse_env();
+}

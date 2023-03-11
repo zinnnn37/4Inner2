@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:02:08 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 16:14:32 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:01:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@
 # include <sys/wait.h>
 # include <signal.h>
 # include <termios.h>
-# include "error.h"
 # include "libft.h"
+# include "parse.h"
+# include "struct.h"
+# include "utils.h"
 
 # define SUCCESS 0
 # define FAILURE 1
