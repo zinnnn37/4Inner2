@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 17:16:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:38:27 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:57:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 int	ft_atoi(const char *str)
 {

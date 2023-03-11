@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 15:11:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:44:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:58:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 void	ft_putendl_fd(const char *s, int fd)
 {

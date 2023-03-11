@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 17:31:16 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:40:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:59:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

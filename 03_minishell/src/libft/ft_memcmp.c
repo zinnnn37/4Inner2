@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:43:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:39:26 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:58:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:53:07 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:40:10 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:59:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {

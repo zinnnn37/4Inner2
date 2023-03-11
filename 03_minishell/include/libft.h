@@ -6,18 +6,12 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:25:24 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:44:36 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:57:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
-# include <unistd.h>
-# include <stdlib.h>
-
-# define TRUE 1
-# define FALSE 0
 
 typedef struct s_list
 {

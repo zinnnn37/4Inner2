@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:39:03 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:39:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:58:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

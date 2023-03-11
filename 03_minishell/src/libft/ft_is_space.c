@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:29:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:38:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:57:29 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 int	ft_is_space(char c)
 {

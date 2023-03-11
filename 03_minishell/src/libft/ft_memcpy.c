@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:16:03 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:39:28 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:58:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {

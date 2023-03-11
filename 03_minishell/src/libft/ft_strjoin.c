@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 17:52:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:39:55 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:58:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 15:48:15 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:39:19 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:58:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 t_list	*ft_lstnew(void *content)
 {

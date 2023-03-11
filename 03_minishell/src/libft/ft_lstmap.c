@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 16:41:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:39:16 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:58:06 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 static t_list	*ft_free_node(t_list *head, void *tmp, void (*del)(void *))
 {

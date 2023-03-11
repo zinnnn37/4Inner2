@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 14:43:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:40:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:59:00 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

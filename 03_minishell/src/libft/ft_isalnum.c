@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 14:56:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:38:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:57:31 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 int	ft_isalnum(int c)
 {

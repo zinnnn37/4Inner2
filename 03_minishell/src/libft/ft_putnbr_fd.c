@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 15:15:33 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:39:41 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:58:29 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {

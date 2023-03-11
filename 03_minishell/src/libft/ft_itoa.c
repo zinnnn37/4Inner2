@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 14:45:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:38:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:57:44 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 static long	ft_convert(int n)
 {

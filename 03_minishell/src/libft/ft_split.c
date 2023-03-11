@@ -6,11 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 14:19:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/11 15:39:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:58:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 static void	ft_free(char **res, size_t cnt)
 {
