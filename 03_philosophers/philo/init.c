@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:49:11 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/07 13:35:48 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 14:52:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_bool	init_fork(t_data *data)
 {
 	int	i;
 
-	data->forks = calloc(data->nums * sizeof(t_fork));
+	data->forks = calloc(data->nums, sizeof(t_fork));
 	if (!(data->forks))
 		return (print_error("Fail to allocate memory: data->forks"));
 	i = -1;

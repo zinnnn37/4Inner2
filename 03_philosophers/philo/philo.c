@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MJKim <zinnnn37@gmail.com>                 +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:29:59 by MJKim             #+#    #+#             */
-/*   Updated: 2023/03/10 14:29:59 by MJKim            ###   ########.fr       */
+/*   Updated: 2023/03/11 14:53:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_philo(t_philo *philo, int id, t_data *data)
 	philo->philo_id = id;
 	philo->state = SLEEPING;
 	philo->is_dead = FALSE;
-	philo->start_time = get_cur_time(); // create func
+	//philo->start_time = get_cur_time(); // create func
 	philo->last_eat = philo->start_time;
 	philo->eat_cnt = 0;
 	philo->data = data;
@@ -36,6 +36,6 @@ void	philo_create(t_data *data)
 	int	i;
 
 	i = -1;
-	while (++i < data->philos)
-		init_philo(&data->philo[i], i, data);
+	while (++i < data->nums)
+		init_philo(&data->philos[i], i, data);
 }

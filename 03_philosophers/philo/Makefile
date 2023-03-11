@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 10:46:45 by minjinki          #+#    #+#              #
-#    Updated: 2023/03/07 15:10:17 by minjinki         ###   ########.fr        #
+#    Updated: 2023/03/11 14:53:23 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,8 @@ INCLUDE		=	philo.h
 
 SRC_FILES	=	main\
 				fork\
-				free\
 				init\
-				loop\
-				loop_utils\
+				philo\
 				utils\
 				utils2
 

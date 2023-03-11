@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:26 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/07 15:11:32 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 14:52:36 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_data
 	int		limit;		// number of times philo must eat
 	t_mutex	*mprint;	// print mutex
 	t_mutex	*mdie;		// die mutex
-	t_fork	*mfork;		// fork mutex
+	t_fork	*forks;		// fork mutex
 	t_philo	*philos;	// philo struct
 }	t_data;
 
@@ -87,17 +87,16 @@ typedef struct s_data
  ** fork.c ***********************************
  *********************************************/
 void	pick_fork(t_fork *fork);
-void	put_fork(t_fokr *fork);
+void	put_fork(t_fork *fork);
 
 /*********************************************
  ** free.c ***********************************
  *********************************************/
-void	free_all(t_data *data);
 
 /*********************************************
  ** init.c ***********************************
  *********************************************/
-int		init_philo(int ac, char **av, t_data *data);
+t_bool	init(int ac, char **av, t_data *data);
 
 /*********************************************
  ** philo.c **********************************
