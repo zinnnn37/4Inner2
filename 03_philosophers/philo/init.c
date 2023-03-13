@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:49:11 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/13 16:52:16 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/13 16:59:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_bool	parsing_nums(int ac, char **av, t_data *data)
 	return (TRUE);
 }
 
-t_bool	init_fork(t_data *data)
+t_bool	init_forks(t_data *data)
 {
 	int	i;
 
@@ -41,7 +41,7 @@ t_bool	init_fork(t_data *data)
 	while (++i < data->nums)
 	{
 		if (pthread_mutex_init(&data->forks[i].mtx, NULL))
-			return (print_error("Fail to initialize mutex: data->forks[i].mtx"));
+			return (print_error("Fail to initialize mutex: data->forks.mtx"));
 	}
 	return (TRUE);
 }
@@ -55,7 +55,7 @@ t_bool	init(int ac, char **av, t_data *data)
 	data->philos = calloc(data->nums, sizeof(t_philo));
 	if (!(data->philos))
 		return (print_error("Fail to allocate memory: data->philos"));
-	if (!init_fork(data))
+	if (!init_forks(data))
 		return (FALSE);
 	philo_create(data);
 	return (TRUE);
