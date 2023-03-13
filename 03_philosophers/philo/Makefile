@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 10:46:45 by minjinki          #+#    #+#              #
-#    Updated: 2023/03/11 14:53:23 by minjinki         ###   ########.fr        #
+#    Updated: 2023/03/13 16:54:25 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC_FILES	=	main\
 				fork\
 				init\
 				philo\
+				philo_utils\
 				utils\
 				utils2
 

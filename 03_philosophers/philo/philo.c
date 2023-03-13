@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:29:59 by MJKim             #+#    #+#             */
-/*   Updated: 2023/03/11 14:53:51 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/13 16:54:09 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	init_philo(t_philo *philo, int id, t_data *data)
 	philo->philo_id = id;
 	philo->state = SLEEPING;
 	philo->is_dead = FALSE;
-	//philo->start_time = get_cur_time(); // create func
+	philo->start_time = get_cur_time();
+	printf("%zu\n", philo->start_time);
 	philo->last_eat = philo->start_time;
 	philo->eat_cnt = 0;
 	philo->data = data;
