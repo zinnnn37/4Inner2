@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:26 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/13 16:53:57 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:57:19 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_fork
 
 typedef struct s_philo
 {
-	int				philo_id;	// index of philo
+	int				id;	// index of philo
 	t_state			state;
 	t_bool			is_dead;
 	t_fork			*lfork;		// left fork
