@@ -51,10 +51,10 @@ typedef enum e_state
 	THINKING
 }	t_state;
 
-typedef struct s_fork
+typedef struct s_forks
 {
 	t_mutex	mtx;
-}	t_fork;
+}	t_forks;
 
 
 typedef struct s_philo
@@ -62,8 +62,8 @@ typedef struct s_philo
 	int				id;	// index of philo
 	t_state			state;
 	t_bool			is_dead;
-	t_fork			*lfork;		// left fork
-	t_fork			*rfork;		// right fork
+	t_forks			*lfork;		// left fork
+	t_forks			*rfork;		// right fork
 	size_t			start_time;
 	//size_t			cur_time;	// current time*
 	size_t			last_eat;
@@ -82,7 +82,7 @@ typedef struct s_data
 	int		limit;		// number of times philo must eat
 	t_mutex	*mprint;	// print mutex
 	t_mutex	*mdie;		// die mutex
-	t_fork	*forks;		// fork mutex
+	t_forks	*forks;		// fork mutex
 	t_philo	*philos;	// philo struct
 }	t_data;
 
@@ -90,8 +90,8 @@ typedef struct s_data
 ** fork.c
 */
 t_bool	init_forks(t_data *data);
-void	pick_fork(t_fork *fork);
-void	put_fork(t_fork *fork);
+void	pick_fork(t_forks *fork);
+void	put_fork(t_forks *fork);
 
 /*
 ** free.c
@@ -116,9 +116,9 @@ size_t	get_cur_time(void);
 /*
 ** utils.c
 */
-void	ft_putnbr(int n);
-void	ft_putstr(const char *s);
-int		ft_strlen(const char *s);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putstr_fd(const char *s, int fd);
+int		ft_strlen(char *s);
 int		print_error(char *s);
 
 /*

@@ -22,38 +22,38 @@ int	ft_strlen(const char *s)
 	return (cnt);
 }
 
-void	ft_putchar(char c)
+void	ft_putchar_fd(const char c, int fd)
 {
-	write(1, &c, 1);
+	write(fd, &c, 1);
 }
 
-void	ft_putstr(const char *s)
+void	ft_putstr_fd(const char *s, int fd)
 {
 	if (!s)
 		return ;
-	write(1, s, ft_strlen(s));
+	write(fd, s, ft_strlen(s));
 }
 
-void	ft_putnbr(int n)
+void	ft_putnbr_fd(int n, int fd)
 {
 	if (n == -2147483648)
 	{
-		ft_putstr("-2147483648");
+		ft_putstr_fd("-2147483648", fd);
 		return ;
 	}
 	if (n < 0)
 	{
 		n *= -1;
-		write(1, "-", 1);
+		ft_putchar_fd('-', fd);
 	}
 	if (n < 10)
 	{
-		ft_putchar(n + '0');
+		ft_putchar_fd(n + '0', fd);
 		return ;
 	}
-	ft_putnbr(n / 10);
-	ft_putchar(n % 10 + '0');
-}
+	ft_putnbr_fd(n / 10, fd);
+	ft_putchar_fd(n % 10 + '0', fd);
+}s
 
 t_bool	print_error(char *s)
 {
