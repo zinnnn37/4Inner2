@@ -12,10 +12,16 @@
 
 #include "philo.h"
 
+/*
+** get current time: gap from start time
+*/
 size_t	get_cur_time(void)
 {
+	static time_t	start = 0;
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * 1000000) + (tv.tv_usec));	// 함 해보고 수정하든가..
+	if (start == 0)
+		start = tv.tv_sec * 1000000 + tv.tv_usec;
+	return ((tv.tv_sec * 1000000) + (tv.tv_usec) - start);
 }

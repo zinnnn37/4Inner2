@@ -12,7 +12,6 @@
 
 #include "philo.h"
 
-// 0도 들어올 수 있나요..?
 t_bool	parsing_nums(int ac, char **av, t_data *data)
 {
 	if (!ft_atoi(av[1], &data->nums) || data->nums < 1)
