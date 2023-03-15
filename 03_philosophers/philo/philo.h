@@ -96,6 +96,7 @@ void	put_fork(t_forks *fork);
 ** free.c
 */
 void	free_all(t_data *data);
+void	destroy_philo(t_philo *philo);
 
 /*
 ** init.c
@@ -106,6 +107,8 @@ t_bool	init(int ac, char **av, t_data *data);
 ** philo.c
 */
 void	create_philo(t_data *data);
+void	lock_philo(t_philo *philo);
+void	unlock_philo(t_philo *philo);
 
 /*
 ** philo_utils.c

@@ -48,3 +48,13 @@ void	create_philo(t_data *data)
 	while (++i < data->nums)
 		init_philo(&data->philos[i], i, data);
 }
+
+void	lock_philo(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->mtx);
+}
+
+void	unlock_philo(t_philo *philo)
+{
+	pthread_mutex_unlock(&philo->mtx);
+}

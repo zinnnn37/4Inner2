@@ -12,7 +12,17 @@
 
 #include "philo.h"
 
+void	destroy_philo(t_philo *philos)
+{
+	int	i;
+
+	i = -1;
+	while (++i < philos->data->nums)	// 이거 반복문 안 해도 되나 ?!
+		pthread_mutex_destroy(&philos[i].mtx);
+	free(philos);
+}
+
 void	free_all(t_data *data)
 {
-	
+	destroy_philo(data->philos);
 }
