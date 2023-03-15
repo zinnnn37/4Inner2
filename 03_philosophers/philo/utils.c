@@ -57,8 +57,8 @@ void	ft_putnbr_fd(int n, int fd)
 
 t_bool	print_error(char *s)
 {
-	ft_putstr("*ERROR* ");
-	ft_putstr(s);
-	ft_putchar('\n');
+	ft_putstr("*ERROR* ", 2);
+	ft_putstr(s, 2);
+	ft_putchar('\n', 2);
 	return (FALSE);
 }
