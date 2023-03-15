@@ -24,7 +24,6 @@ void	init_philo(t_philo *philo, int id, t_data *data)
 	philo->eat_cnt = 0;
 	philo->data = data;
 	// fork
-<<<<<<< HEAD
 	// if (id == odd)	philo->state = EATING;
 	// if (id == data->nums - 1)
 //	{
@@ -33,7 +32,6 @@ void	init_philo(t_philo *philo, int id, t_data *data)
 //	}
 	// thread
 	// mtx
-=======
 	if (philo->id & 1)
 		philo->state = EATING;
 	if (philo->id == data->nums - 1)
@@ -41,7 +39,6 @@ void	init_philo(t_philo *philo, int id, t_data *data)
 		philo->lfork = &data->fork[id];
 		philo->rfork = &data->fork[0];
 	}
->>>>>>> 4aec2e04c608a228e5a3f8cd9a91abd0111bbf11
 }
 
 void	philo_create(t_data *data)

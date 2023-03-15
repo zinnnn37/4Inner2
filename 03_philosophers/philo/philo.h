@@ -29,7 +29,9 @@
 # define MAX_INT 2147483647
 # define MIN_INT -2147483648
 
-/*********** status of philos  **********/
+/*
+**status of philos
+*/
 # define ALIVE 0
 # define DEAD 1
 # define FORK_MSG "has taken a fork"
@@ -84,39 +86,40 @@ typedef struct s_data
 	t_philo	*philos;	// philo struct
 }	t_data;
 
-/*****************************************************************
-** fork.c														**
-*****************************************************************/
+/*
+** fork.c
+*/
+t_bool	init_forks(t_data *data)
 void	pick_fork(t_fork *fork);
 void	put_fork(t_fork *fork);
 
-/*****************************************************************
-** free.c														**
-*****************************************************************/
+/*
+** free.c
+*/
 
-/*****************************************************************
-** init.c														**
-*****************************************************************/
+/*
+** init.c
+*/
 t_bool	init(int ac, char **av, t_data *data);
 
-/*****************************************************************
-** philo.c														**
-*****************************************************************/
+/*
+** philo.c
+*/
 void	philo_create(t_data *data);
 
 size_t	get_cur_time(void);
 
-/*****************************************************************
-** utils.c														**
-*****************************************************************/
+/*
+** utils.c
+*/
 void	ft_putnbr(int n);
 void	ft_putstr(const char *s);
 int		ft_strlen(const char *s);
 int		print_error(char *s);
 
-/*****************************************************************
-** utils2.c														**
-*****************************************************************/
+/*
+** utils2.c
+*/
 int		ft_atoi(const char *str, int *data);
 void	*ft_calloc(size_t count, size_t size);
 
