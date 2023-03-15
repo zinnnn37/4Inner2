@@ -72,8 +72,12 @@ void	eating(t_philo *philo)
 	philo->last_eat = get_cur_time();
 	unlock_philo(philo);
 }
+// 길어지면 pick, put fork랑 display는 따로 빼기
 
 void	thinking(t_philo *philo)
 {
-
+	if (!(philo->is_dead))
+		printf("%zu %u %s\n", get_cur_time() / 1000, philo->id + 1, THINK_MSG);
+	philo->state = EATING;
 }
+// ref에 그 기묘한.. 코드 뭔지 확인 ?!
