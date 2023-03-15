@@ -16,7 +16,7 @@ t_bool	init_forks(t_data *data)
 {
 	int	i;
 
-	data->forks = calloc(data->nums, sizeof(t_fork));
+	data->forks = calloc(data->nums, sizeof(t_forks));
 	if (!(data->forks))
 		return (print_error("Fail to allocate memory: data->forks"));
 	i = -1;
@@ -28,12 +28,12 @@ t_bool	init_forks(t_data *data)
 	return (TRUE);
 }
 
-void	pick_fork(t_fork *fork)
+void	pick_fork(t_forks *fork)
 {
 	pthread_mutex_lock(&fork->mtx);
 }
 
-void	put_fork(t_fork *fork)
+void	put_fork(t_forks *fork)
 {
 	pthread_mutex_unlock(&fork->mtx);
 }

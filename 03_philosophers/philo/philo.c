@@ -24,20 +24,18 @@ void	init_philo(t_philo *philo, int id, t_data *data)
 	philo->last_eat = philo->start_time;
 	philo->eat_cnt = 0;
 	philo->data = data;
-	// fork
-	// if (id == odd)	philo->state = EATING;
-	// if (id == data->nums - 1)
-//	{
-		//philo->lfork = &data->fork[id];
-		//philo->rfork = &data->fork[0];
-//	}
-	// thread
-	// mtx
-	if (philo->id == data->nums - 1)
+	if (id == data->nums - 1)
 	{
-		philo->lfork = &data->fork[id];
-		philo->rfork = &data->fork[0];
+		philo->lfork = &data->forks[id];
+		philo->rfork = &data->forks[0];
 	}
+	else
+	{
+		philo->lfork = &data->forks[id];
+		philo->rfork = &data->forks[id + 1];
+	}
+	if (pthread_mutex_init(&philo->mtx, NULL))
+		print_error("Fail to initialize mutex: philo->mtx");
 }
 
 void	create_philo(t_data *data)
