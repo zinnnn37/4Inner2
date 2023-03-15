@@ -29,6 +29,8 @@ void	init_philo(t_philo *philo, int id, t_data *data)
 		//philo->lfork = &data->fork[id];
 		//philo->rfork = &data->fork[0];
 //	}
+	// thread
+	// mtx
 }
 
 void	philo_create(t_data *data)

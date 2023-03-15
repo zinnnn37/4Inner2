@@ -62,7 +62,7 @@ typedef struct s_philo
 	t_fork			*lfork;		// left fork
 	t_fork			*rfork;		// right fork
 	size_t			start_time;
-	size_t			cur_time;	// current time*
+	//size_t			cur_time;	// current time*
 	size_t			last_eat;
 	int				eat_cnt;
 	t_mutex			*mtx;
