@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 
 	if (!init(ac, av, &data))
 	{
-		//free_all();
+		free_all();
 		return (FAILURE);
 	}
 	//free_all();

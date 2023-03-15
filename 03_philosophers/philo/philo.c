@@ -12,7 +12,9 @@
 
 #include "philo.h"
 
-/* init philo struct */
+/*
+**init philo struct
+*/
 void	init_philo(t_philo *philo, int id, t_data *data)
 {
 	philo->id = id;
