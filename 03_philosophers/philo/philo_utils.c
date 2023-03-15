@@ -25,3 +25,12 @@ size_t	get_cur_time(void)
 		start = tv.tv_sec * 1000000 + tv.tv_usec;
 	return ((tv.tv_sec * 1000000) + (tv.tv_usec) - start);
 }
+
+void	do_usleep(size_t time)
+{
+	size_t	start;
+
+	start = get_cur_time();
+	while (get_cur_time() - start < time)
+		usleep(50);
+}
