@@ -231,14 +231,14 @@ readline() 함수는 메모리 누수를 유발할 수 있습니다. 그것을 �
 
 <br>
 
--   ##### _If the Mandatory part is not perfect don’t even think about bonuses_
+-   ##### _Your program has to implement:_
 
-    필수 파트가 완벽하지 않으면 보너스는 생각하지도 마세요.
+    당신의 프로그램은 다음을 실행할 수 있어야 합니다:
 
--   ##### _`&&, ||` with parenthesis for priorities._
+-   ##### _`&&` and `||` with parenthesis for priorities._
 
-    괄호를 이용해 우선순위를 표현한 `&&, ||`
+    괄호를 이용해 우선순위를 표현한 `&&`, `||`
 
--   ##### _the wilcard `*` should work for the current working directory._
+-   ##### _sWilcard `*` should work for the current working directory._
 
     와일드카드 `*`가 현재 작업 디렉토리에 대해 동작하여야 합니다.
