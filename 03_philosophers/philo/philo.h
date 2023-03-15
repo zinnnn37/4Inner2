@@ -89,13 +89,14 @@ typedef struct s_data
 /*
 ** fork.c
 */
-t_bool	init_forks(t_data *data)
+t_bool	init_forks(t_data *data);
 void	pick_fork(t_fork *fork);
 void	put_fork(t_fork *fork);
 
 /*
 ** free.c
 */
+void	free_all(t_data *data);
 
 /*
 ** init.c
@@ -105,8 +106,11 @@ t_bool	init(int ac, char **av, t_data *data);
 /*
 ** philo.c
 */
-void	philo_create(t_data *data);
+void	create_philo(t_data *data);
 
+/*
+** philo_utils.c
+*/
 size_t	get_cur_time(void);
 
 /*

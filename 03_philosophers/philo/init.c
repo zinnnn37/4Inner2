@@ -44,7 +44,7 @@ t_bool	init(int ac, char **av, t_data *data)
 	if (!(data->philos))
 		return (print_error("Fail to allocate memory: data->philos"));
 	if (!init_forks(data))
-		return (FALSE);
-	philo_create(data);
+		return (FALSE);	// print_error in init_forks()
+	create_philo(data);
 	return (TRUE);
 }

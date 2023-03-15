@@ -22,8 +22,11 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	if (!init(ac, av, &data))
+	{
+		//free_all();
 		return (FAILURE);
-	//free_all(&data);
+	}
+	//free_all();
 	return (SUCCESS);
 }
 

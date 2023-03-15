@@ -17,9 +17,10 @@ void	init_philo(t_philo *philo, int id, t_data *data)
 {
 	philo->id = id;
 	philo->state = SLEEPING;
+	if (id % 2 == 1)
+		philo->state = EATING;
 	philo->is_dead = FALSE;
 	philo->start_time = get_cur_time();
-	printf("%zu\n", philo->start_time);
 	philo->last_eat = philo->start_time;
 	philo->eat_cnt = 0;
 	philo->data = data;
@@ -32,8 +33,6 @@ void	init_philo(t_philo *philo, int id, t_data *data)
 //	}
 	// thread
 	// mtx
-	if (philo->id & 1)
-		philo->state = EATING;
 	if (philo->id == data->nums - 1)
 	{
 		philo->lfork = &data->fork[id];
@@ -41,7 +40,7 @@ void	init_philo(t_philo *philo, int id, t_data *data)
 	}
 }
 
-void	philo_create(t_data *data)
+void	create_philo(t_data *data)
 {
 	int	i;
 
