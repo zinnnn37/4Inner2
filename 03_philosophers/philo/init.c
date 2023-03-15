@@ -48,3 +48,4 @@ t_bool	init(int ac, char **av, t_data *data)
 	create_philo(data);
 	return (TRUE);
 }
+// > mprint, mdie mutex init
