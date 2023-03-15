@@ -104,6 +104,11 @@ void	destroy_philo(t_philo *philo);
 t_bool	init(int ac, char **av, t_data *data);
 
 /*
+** lifecircle.c
+*/
+void	lifecircle(t_philo *philo);
+
+/*
 ** philo.c
 */
 void	create_philo(t_data *data);
