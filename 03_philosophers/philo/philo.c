@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MJKim <zinnnn37@gmail.com>                 +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:29:59 by MJKim             #+#    #+#             */
-/*   Updated: 2023/03/10 14:29:59 by MJKim            ###   ########.fr       */
+/*   Updated: 2023/03/13 17:58:35 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 /* init philo struct */
 void	init_philo(t_philo *philo, int id, t_data *data)
 {
-	philo->philo_id = id;
+	philo->id = id;
 	philo->state = SLEEPING;
 	philo->is_dead = FALSE;
-	philo->start_time = get_cur_time(); // create func
+	philo->start_time = get_cur_time();
+	printf("%zu\n", philo->start_time);
 	philo->last_eat = philo->start_time;
 	philo->eat_cnt = 0;
 	philo->data = data;
 	// fork
+<<<<<<< HEAD
 	// if (id == odd)	philo->state = EATING;
 	// if (id == data->nums - 1)
 //	{
@@ -31,6 +33,15 @@ void	init_philo(t_philo *philo, int id, t_data *data)
 //	}
 	// thread
 	// mtx
+=======
+	if (philo->id & 1)
+		philo->state = EATING;
+	if (philo->id == data->nums - 1)
+	{
+		philo->lfork = &data->fork[id];
+		philo->rfork = &data->fork[0];
+	}
+>>>>>>> 4aec2e04c608a228e5a3f8cd9a91abd0111bbf11
 }
 
 void	philo_create(t_data *data)
@@ -38,6 +49,6 @@ void	philo_create(t_data *data)
 	int	i;
 
 	i = -1;
-	while (++i < data->philos)
-		init_philo(&data->philo[i], i, data);
+	while (++i < data->nums)
+		init_philo(&data->philos[i], i, data);
 }

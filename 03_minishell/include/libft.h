@@ -6,15 +6,12 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:25:24 by minjinki          #+#    #+#             */
-/*   Updated: 2023/02/23 12:06:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:57:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
-# include <unistd.h>
-# include <stdlib.h>
 
 typedef struct s_list
 {
@@ -66,10 +63,10 @@ void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memset(void *b, int c, size_t len);
-void	ft_putchar(char c, int fd);
-void	ft_putendl(const char *s, int fd);
-void	ft_putnbr(int n, int fd);
-void	ft_putstr(const char *s, int fd);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putendl_fd(const char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putstr_fd(const char *s, int fd);
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 
 #endif
