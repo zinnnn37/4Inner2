@@ -15,6 +15,24 @@
 int	main(int ac, char **av)
 {
 	int		i;
-	int		av_nums[6];
+	int		av_nums[5];
 	t_data	data;
+
+	if (ac < 5 || ac > 6)
+		return (print_error("Check the number of arguments"));
+	i = 0;
+	while (++i < ac)
+	{
+		av_nums[i - 1] = philo_atoi(av[i]);
+		if ((i == 1 && av_nums[i - 1] == 0) || av_nums[i - 1] == ERROR)
+			return (print_error("Check if arguments are valid"));
+	}
+	if (!init_data(&data, ac, av_nums))
+		return (print_error("Fail to initialize data"));
+	if (!run_thread(&data))
+		return (print_error("Fail to run thread"));
+	if (pthread_mutex_lock(&(data.mmain)) == SUCCESS)
+		if (pthread_mutex_unlock(&(data.mmain)) == SUCCESS)
+			destroy_mutex(&data);
+	return (SUCCESS);
 }

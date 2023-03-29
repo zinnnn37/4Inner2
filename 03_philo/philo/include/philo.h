@@ -28,6 +28,9 @@
 
 # define MAX_INT 2147483647
 
+# define ODD 1
+# define EVEN 0
+
 # define THINKING 0
 # define EATING 1
 # define SLEEPING 2
@@ -40,13 +43,15 @@
 # define THINK_MSG "is thinking"
 # define DEAD_MSG "died"
 
+typedef int	t_bool;
+
 typedef struct	s_philo
 {
 	int				id;
 	int				status;
-	int				is_full;
+	t_bool			is_full;
 	int				eat_cnt;
-	uint64_t		is_dead;
+	uint64_t		die_cnt;
 	struct s_data	*data;
 	pthread_mutex_t	*lfork;
 	pthread_mutex_t	*rfork;
@@ -60,7 +65,7 @@ typedef struct	s_data
 	uintptr_t		ttsleep;
 	int				must_eat;
 	int				full;
-	int				is_dead;
+	t_bool			end;
 	uint64_t		start_time;
 	pthread_mutex_t	mmain;
 	pthread_mutex_t	mprint;
@@ -68,5 +73,10 @@ typedef struct	s_data
 	pthread_mutex_t	*mforks;
 	t_philo			*philo;
 }	t_data;
+
+/*
+** utils.c
+*/
+int	philo_atoi(char *s);
 
 #endif
