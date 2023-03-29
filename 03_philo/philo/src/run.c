@@ -40,7 +40,7 @@ t_bool	run_philo(t_data *data, int n)
 		pthread_detach(tid);
 		i += 2;
 	}
-	if (n % 2 == 0)
+	if (n % 2 == 0) // ?
 		usleep(500 * data->tteat);
 	return (TRUE);
 }
@@ -50,7 +50,7 @@ t_bool	run_thread(t_data *data)
 	pthread_t	tid;
 
 	data->start_time = get_time();
-	if (!run_philo(data, EVEN) || !run_philo(data, ODD))
+	if (!run_philo(data, ODD) || !run_philo(data, EVEN))
 		return (FALSE);
 	if (pthread_create(&tid, NULL, &monitoring, data) != SUCCESS)
 		return (FALSE);

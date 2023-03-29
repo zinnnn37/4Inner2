@@ -12,6 +12,21 @@
 
 #include "../include/philo.h"
 
+void	destroy_mutexes(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	pthread_mutex_unlock(&(data->mdead));
+	while (i < data->philo_nums)
+		pthread_mutex_destroy(&(data->mfork[i++]));
+	pthread_mutex_destroy(&(data->mmain));
+	pthread_mutex_destroy(&(data->mprint));
+	pthread_mutex_destroy(&(data->mdead));
+	free(data->mforks);
+	free(data->philo);
+}
+
 int	main(int ac, char **av)
 {
 	int		i;

@@ -42,7 +42,7 @@ void	print_msg(t_philo *p, char *s)
 		return ;
 	if (pthread_mutex_lock(&(p->data->mprint)) == SUCCESS)
 	{
-		printf("%llums\t%d\t%s\t[%d]\n",
+		printf("%llums\t%d\t%s\t| cnt: %d\n",
 			get_time() - p->data->start_time, p->id, s, p->eat_cnt);
 		if (p->status != DEAD)
 			pthread_mutex_unlock(&(p->data->mprint));
