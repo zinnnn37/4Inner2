@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MJKim <zinnnn37@gmail.com>                 +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 09:46:35 by MJKim             #+#    #+#             */
-/*   Updated: 2023/03/29 09:46:35 by MJKim            ###   ########.fr       */
+/*   Updated: 2023/03/30 13:49:16 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 t_bool	init_philo_n_forks(t_data *data)
 {
@@ -41,9 +41,9 @@ t_bool	malloc_philo_n_forks(t_data *data)
 	if (!(data->philo))
 		return (FALSE);
 	data->mforks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * data->philo_nums);
-	if (!(data->forks))
+	if (!(data->mforks))
 	{
-		free(info->philo);
+		free(data->philo);
 		return (FALSE);
 	}
 	return (init_philo_n_forks(data));

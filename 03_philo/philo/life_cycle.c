@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   life_cycle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MJKim <zinnnn37@gmail.com>                 +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:06:16 by MJKim             #+#    #+#             */
-/*   Updated: 2023/03/29 11:06:16 by MJKim            ###   ########.fr       */
+/*   Updated: 2023/03/30 14:03:42 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 void	take_forks(t_philo *p)
 {
 	if (pthread_mutex_lock(p->lfork) == SUCCESS)
-		print_msg(p, FORK_MSG);
+		print_msg(p, LFORK_MSG);
 	else
 		pthread_mutex_lock(&(p->data->mmain));
-	if (pthread_mutex_lock(p->lfork) == SUCCESS)
-		print_msg(p, FORK_MSG);
+	if (pthread_mutex_lock(p->rfork) == SUCCESS)
+		print_msg(p, RFORK_MSG);
 	else
 		pthread_mutex_lock(&(p->data->mmain));
 }
@@ -35,7 +35,7 @@ void	eating(t_philo *p)
 	if (p->eat_cnt == p->data->must_eat && !(p->is_full))
 	{
 		p->is_full = TRUE;
-		p->data->full_cnt++;
+		p->data->full++;
 	}
 	pthread_mutex_unlock(p->lfork);
 	pthread_mutex_unlock(p->rfork);

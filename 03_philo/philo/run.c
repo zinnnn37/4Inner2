@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_thread.c                                       :+:      :+:    :+:   */
+/*   run.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MJKim <zinnnn37@gmail.com>                 +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 10:01:59 by MJKim             #+#    #+#             */
-/*   Updated: 2023/03/29 10:01:59 by MJKim            ###   ########.fr       */
+/*   Updated: 2023/03/30 14:06:08 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
-void	*life_cycle(void *p)
+void	*life_cycle(void *philo)
 {
-	(t_philo *)p;
+	t_philo	*p;
+
+	p = (t_philo *)philo;
 	p->die_cnt = p->data->start_time;
 	while (!(p->data->end))
 	{
@@ -38,9 +40,9 @@ t_bool	run_philo(t_data *data, int n)
 		if (pthread_create(&tid, NULL, &life_cycle, p) != SUCCESS)
 			return (FALSE);
 		pthread_detach(tid);
-		i += 2;
+		n += 2;
 	}
-	if (n % 2 == 0) // ?
+	if (n % 2 == 0)
 		usleep(500 * data->tteat);
 	return (TRUE);
 }
@@ -50,9 +52,11 @@ t_bool	run_thread(t_data *data)
 	pthread_t	tid;
 
 	data->start_time = get_time();
-	if (!run_philo(data, ODD) || !run_philo(data, EVEN))
+	if (!run_philo(data, ODD))
+		return (FALSE);
+	if (!run_philo(data, EVEN))
 		return (FALSE);
 	if (pthread_create(&tid, NULL, &monitoring, data) != SUCCESS)
 		return (FALSE);
-	return (SUCCESS);
+	return (TRUE);
 }

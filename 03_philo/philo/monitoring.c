@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   monitoring.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MJKim <zinnnn37@gmail.com>                 +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:17:30 by MJKim             #+#    #+#             */
-/*   Updated: 2023/03/29 11:17:30 by MJKim            ###   ########.fr       */
+/*   Updated: 2023/03/30 13:53:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 t_bool	monitor_eating(t_data *data)
 {
@@ -44,11 +44,12 @@ t_bool	monitor_dead(t_data *data, int i)
 	return (FALSE);
 }
 
-void	*monitoring(void *data)
+void	*monitoring(void *d)
 {
-	int	i;
+	int		i;
+	t_data	*data;
 
-	(t_data *)data;
+	data = (t_data *)d;
 	i = 0;
 	while (TRUE)
 	{

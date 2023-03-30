@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MJKim <zinnnn37@gmail.com>                 +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 09:08:55 by MJKim             #+#    #+#             */
-/*   Updated: 2023/03/29 09:08:55 by MJKim            ###   ########.fr       */
+/*   Updated: 2023/03/30 14:05:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,16 @@
 # define FORKS 3
 # define DEAD 4
 
-# define FORK_MSG "has taken a fork"
-# define EAT_MSG "is eating"
-# define SLEEP_MSG "is sleeping"
-# define THINK_MSG "is thinking"
+# define LFORK_MSG "has taken a left fork"
+# define RFORK_MSG "has taken a right fork"
+# define EAT_MSG "is eating\t"
+# define SLEEP_MSG "is sleeping\t"
+# define THINK_MSG "is thinking\t"
 # define DEAD_MSG "died"
 
 typedef int	t_bool;
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	int				id;
 	int				status;
@@ -57,7 +58,7 @@ typedef struct	s_philo
 	pthread_mutex_t	*rfork;
 }	t_philo;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	int				philo_nums;
 	uint64_t		ttdie;
@@ -75,8 +76,34 @@ typedef struct	s_data
 }	t_data;
 
 /*
+** init.c
+*/
+t_bool		init_data(t_data *data, int ac, int *av_nums);
+
+/*
+** run.c
+*/
+t_bool		run_thread(t_data *data);
+
+/*
+** life_cycle.c
+*/
+void		take_forks(t_philo *p);
+void		eating(t_philo *p);
+void		sleeping(t_philo *p);
+void		thinking(t_philo *p);
+
+/*
+** monitoring.c
+*/
+void		*monitoring(void *data);
+
+/*
 ** utils.c
 */
-int	philo_atoi(char *s);
+int			philo_atoi(char *s);
+t_bool		print_error(char *s);
+void		print_msg(t_philo *p, char *s);
+uint64_t	get_time(void);
 
 #endif

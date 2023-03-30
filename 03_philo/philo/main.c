@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MJKim <zinnnn37@gmail.com>                 +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 09:08:45 by MJKim             #+#    #+#             */
-/*   Updated: 2023/03/29 09:08:45 by MJKim            ###   ########.fr       */
+/*   Updated: 2023/03/30 13:48:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 void	destroy_mutexes(t_data *data)
 {
@@ -19,7 +19,7 @@ void	destroy_mutexes(t_data *data)
 	i = 0;
 	pthread_mutex_unlock(&(data->mdead));
 	while (i < data->philo_nums)
-		pthread_mutex_destroy(&(data->mfork[i++]));
+		pthread_mutex_destroy(&(data->mforks[i++]));
 	pthread_mutex_destroy(&(data->mmain));
 	pthread_mutex_destroy(&(data->mprint));
 	pthread_mutex_destroy(&(data->mdead));
@@ -48,6 +48,6 @@ int	main(int ac, char **av)
 		return (print_error("Fail to run thread"));
 	if (pthread_mutex_lock(&(data.mmain)) == SUCCESS)
 		if (pthread_mutex_unlock(&(data.mmain)) == SUCCESS)
-			destroy_mutex(&data);
+			destroy_mutexes(&data);
 	return (SUCCESS);
 }

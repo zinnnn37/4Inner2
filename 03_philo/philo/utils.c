@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MJKim <zinnnn37@gmail.com>                 +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 09:21:20 by MJKim             #+#    #+#             */
-/*   Updated: 2023/03/29 09:21:20 by MJKim            ###   ########.fr       */
+/*   Updated: 2023/03/30 13:57:00 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 t_bool	print_error(char *s)
 {
@@ -25,10 +25,10 @@ int	philo_atoi(char *s)
 
 	i = -1;
 	n = 0;
-	while (s[++i] && str[i] >= '0' && str[i] <= '9')
+	while (s[++i] && s[i] >= '0' && s[i] <= '9')
 	{
 		n = n * 10 + (s[i] - '0');
-		if (res > MAX_INT)
+		if (n > MAX_INT)
 			return (ERROR);
 	}
 	if (s[i] != '\0')
@@ -38,11 +38,11 @@ int	philo_atoi(char *s)
 
 void	print_msg(t_philo *p, char *s)
 {
-	if (p->data->is_dead == TRUE)
+	if (p->data->end == TRUE)
 		return ;
 	if (pthread_mutex_lock(&(p->data->mprint)) == SUCCESS)
 	{
-		printf("%llums\t%d\t%s\t| cnt: %d\n",
+		printf("%llu\t%d\t%s\t| cnt: %d\n",
 			get_time() - p->data->start_time, p->id, s, p->eat_cnt);
 		if (p->status != DEAD)
 			pthread_mutex_unlock(&(p->data->mprint));
