@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:33:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/07 12:48:51 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/08 13:49:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ void	ft_putnbr_fd(int n, int fd)
 
 t_bool	print_error(char *s)
 {
-	ft_putstr("*ERROR* ", 2);
-	ft_putstr(s, 2);
-	ft_putchar('\n', 2);
+	printf("*ERROR* %s\n", s);
 	return (FALSE);
 }
