@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:12:06 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/10 15:59:57 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:14:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,14 @@ void	eating(t_philo *philo)
 	if (philo->id % 2 == 1)
 	{
 		pick_fork(philo->lfork);
-		display_msg(philo, FORK_MSG);
 		pick_fork(philo->rfork);
-		display_msg(philo, FORK_MSG);
 	}
 	else
 	{
 		pick_fork(philo->rfork);
-		display_msg(philo, FORK_MSG);
 		if (is_one_philo(philo))
 			return ;
 		pick_fork(philo->lfork);
-		display_msg(philo, FORK_MSG);
 	}
 	display_msg(philo, EAT_MSG);
 	do_usleep(philo->data->time_to_eat);

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:29:59 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/08 14:01:26 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:33:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	create_philo(t_data *data)
 	i = -1;
 	while (++i < data->nums)
 		init_philo(&data->philos[i], i, data);
+	// ..
 }
 
 void	lock_philo(t_philo *philo)

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 16:36:21 by minjinki          #+#    #+#             */
-/*   Updated: 2023/04/10 16:00:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:33:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,12 @@ void	do_usleep(size_t time)
 	while (get_cur_time() - start < time)
 		usleep(50);
 }
+
+void	display_msg(t_philo *philo, char *msg)
+{
+	lock_philo(philo);
+	if (!(philo->is_dead))
+		printf("%zu %u %s\n", get_cur_time(), philo->id + 1, msg);
+	unlock_philo(philo);
+}
+// philo가 아니라 mprint로 mutex 바꿀지 말지 실행해보고 결정

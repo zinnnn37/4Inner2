@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:49:11 by minjinki          #+#    #+#             */
-/*   Updated: 2023/04/08 13:50:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:38:09 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,14 @@
 
 t_bool	parsing_nums(int ac, char **av, t_data *data)
 {
-	int	n;
-
 	if (!ft_atoi(av[1], &data->nums) || data->nums < 1)
 		return (print_error("Check if the arguments are valid: av[1]"));
-	if (!ft_atoi(av[2], &n) || n < 0)
+	if (!ft_atoi(av[2], &data->ttdie) || data->ttdie < 0)
 		return (print_error("Check if the arguments are valid: av[2]"));
-	data->ttdie = n;
-	if (!ft_atoi(av[3], &n) || n < 0)
+	if (!ft_atoi(av[3], &data->tteat) || data->tteat < 0)
 		return (print_error("Check if the arguments are valid: av[3]"));
-	data->tteat = n;
-	if (!ft_atoi(av[4], &n) || n < 0)
+	if (!ft_atoi(av[4], &data->ttsleep) || data->ttsleep < 0)
 		return (print_error("Check if the arguments are valid: av[4]"));
-	data->ttsleep = n;
 	if (ac == 6 && (!ft_atoi(av[5], &data->limit) || data->limit < 0))
 		return (print_error("Check if the arguments are valid: av[5]"));
 	else if (ac == 5 || av[5] == 0)

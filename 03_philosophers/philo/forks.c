@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:10:26 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/10 16:05:17 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:14:16 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_bool	init_forks(t_data *data)
 void	pick_fork(t_mutex *fork)
 {
 	pthread_mutex_lock(&fork);
+	display_msg(philo, FORK_MSG);
 }
 
 void	put_fork(t_mutex *fork)
