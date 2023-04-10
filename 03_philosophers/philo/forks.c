@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:10:26 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/08 12:13:47 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/10 16:05:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ t_bool	init_forks(t_data *data)
 	while (++i < data->nums)
 	{
 		if (pthread_mutex_init(&data->forks[i], NULL))
-			return (print_error("Fail to initialize mutex: data->forks.mtx"));
+			return (print_error("Fail to initialize mutex: data->forks"));
 	}
 	return (TRUE);
 }
 
-void	pick_fork(t_forks *fork)
+void	pick_fork(t_mutex *fork)
 {
-	pthread_mutex_lock(&fork->mtx);
+	pthread_mutex_lock(&fork);
 }
 
-void	put_fork(t_forks *fork)
+void	put_fork(t_mutex *fork)
 {
-	pthread_mutex_unlock(&fork->mtx);
+	pthread_mutex_unlock(&fork);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_actions.c                                    :+:      :+:    :+:   */
+/*   lifecircle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MJKim <zinnnn37@gmail.com>                 +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:12:06 by MJKim             #+#    #+#             */
-/*   Updated: 2023/03/15 11:12:06 by MJKim            ###   ########.fr       */
+/*   Updated: 2023/04/10 15:59:57 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	eating(t_philo *philo)
 void	thinking(t_philo *philo)
 {
 	if (!(philo->is_dead))
-		printf("%zu %u %s\n", get_cur_time() / 1000, philo->id + 1, THINK_MSG);
+		printf("%zu %u %s\n", get_cur_time(), philo->id + 1, THINK_MSG);
 	philo->state = EATING;
 }
 // ref에 그 기묘한.. 코드 뭔지 확인 ?!

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 16:36:21 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/13 16:56:36 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/10 16:00:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ size_t	get_cur_time(void)
 
 	gettimeofday(&tv, NULL);
 	if (start == 0)
-		start = tv.tv_sec * 1000000 + tv.tv_usec;
-	return ((tv.tv_sec * 1000000) + (tv.tv_usec) - start);
+		start = tv.tv_sec * 1000 + tv.tv_usec;
+	return ((tv.tv_sec * 1000) + (tv.tv_usec) - start);
 }
 
 void	do_usleep(size_t time)

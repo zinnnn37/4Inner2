@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:26 by minjinki          #+#    #+#             */
-/*   Updated: 2023/04/08 13:55:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/10 15:57:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ typedef struct s_philo
 	int				id;	// index of philo
 	t_state			state;
 	t_bool			is_dead;
-	t_forks			*lfork;		// left fork
-	t_forks			*rfork;		// right fork
+	t_mutex			*lfork;		// left fork
+	t_mutex			*rfork;		// right fork
 	size_t			last_eat;
 	int				eat_cnt;
 	t_mutex			*mtx;
