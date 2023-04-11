@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 18:55:06 by marousta          #+#    #+#             */
-/*   Updated: 2023/04/11 14:36:55 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:00:19 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	simulation_destroy(t_simulation *sim)
 		philo_destroy(&sim->philosophers[i]);
 	}
 	free(sim->philosophers);
-	free(sim->fpool);
+	free(sim->fpool); //
 }
 
 void	simulation_begin(t_simulation *sim)
@@ -55,3 +55,5 @@ void	simulation_join(t_simulation *sim)
 		pthread_join(sim->philosophers[i].thread, NULL);
 	}
 }
+
+//

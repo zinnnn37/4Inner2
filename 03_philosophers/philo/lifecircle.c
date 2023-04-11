@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:12:06 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/11 15:29:09 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:56:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*lifecircle(void *p)
 	t_philo	*philo;
 
 	philo = (t_philo *)p;
-	while (!(philo->is_dead))
+	while (philo->is_alive)
 	{
 		if (philo->state == SLEEPING)
 			sleeping(philo);
@@ -34,7 +34,7 @@ t_bool	is_one_philo(t_philo *philo)
 	if (philo->data->nums == 1)
 	{
 		put_fork(philo->rfork);
-		while (!(philo->is_dead))
+		while (philo->is_alive)
 			usleep(10);
 		return (TRUE);
 	}
@@ -76,7 +76,7 @@ void	eating(t_philo *philo)
 
 void	thinking(t_philo *philo)
 {
-	if (!(philo->is_dead))
+	if (philo->is_alive)
 		display_msg(philo, THINK_MSG);
 	philo->state = EATING;
 }

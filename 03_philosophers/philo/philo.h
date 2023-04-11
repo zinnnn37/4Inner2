@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:26 by minjinki          #+#    #+#             */
-/*   Updated: 2023/04/11 15:29:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:49:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ typedef struct s_philo
 {
 	int				id;	// index of philo
 	int				state;
-	t_bool			is_dead;
+	t_bool			is_alive;
 	t_mutex			*lfork;		// left fork
 	t_mutex			*rfork;		// right fork
 	size_t			last_eat;
 	int				eat_cnt;
-	t_mutex			*mtx;
+	t_mutex			mtx;
 	pthread_t		thread;
 	struct s_data	*data;
 }	t_philo;
@@ -70,7 +70,7 @@ typedef struct s_data
 	int		ttsleep;	// time for sleeping
 	int		limit;		// number of times philo must eat
 	size_t	start_time;
-	t_mutex	*mprint;	// print mutex
+	t_mutex	mprint;		// print mutex
 	t_mutex	*forks;		// fork mutex
 	t_philo	*philos;	// philo struct
 }	t_data;

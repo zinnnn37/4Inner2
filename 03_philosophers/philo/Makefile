@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 10:46:45 by minjinki          #+#    #+#              #
-#    Updated: 2023/04/11 15:12:43 by minjinki         ###   ########.fr        #
+#    Updated: 2023/04/11 15:34:52 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRCS		=	$(addsuffix .c, $(SRC_FILES))
 OBJS		=	$(SRCS:%.c=%.o)
 
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-g -Wall -Wextra -Werror
 RM			=	rm -f
 AR			=	ar
 ARFLAGS		=	src

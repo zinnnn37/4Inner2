@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 16:36:21 by minjinki          #+#    #+#             */
-/*   Updated: 2023/04/11 15:18:16 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:50:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	do_usleep(size_t time)
 void	display_msg(t_philo *philo, char *msg)
 {
 	lock_print(philo);
-	if (!(philo->is_dead))
+	if (philo->is_alive)
 		printf("%zu %u %s\n", get_cur_time(), philo->id + 1, msg);
 	unlock_print(philo);
 }
