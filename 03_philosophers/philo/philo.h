@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:26 by minjinki          #+#    #+#             */
-/*   Updated: 2023/04/11 14:25:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:29:44 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef pthread_mutex_t	t_mutex;
 typedef struct s_philo
 {
 	int				id;	// index of philo
-	t_state			state;
+	int				state;
 	t_bool			is_dead;
 	t_mutex			*lfork;		// left fork
 	t_mutex			*rfork;		// right fork
@@ -79,8 +79,8 @@ typedef struct s_data
 ** fork.c
 */
 t_bool	init_forks(t_data *data);
-void	pick_fork(t_forks *fork);
-void	put_fork(t_forks *fork);
+void	pick_fork(t_mutex *fork, t_philo *p);
+void	put_fork(t_mutex *fork);
 
 /*
 ** free.c
@@ -96,7 +96,10 @@ t_bool	init(int ac, char **av, t_data *data);
 /*
 ** lifecircle.c
 */
-void	lifecircle(t_philo *philo);
+void	*lifecircle(void *p);
+void	sleeping(t_philo *philo);
+void	eating(t_philo *philo);
+void	thinking(t_philo *philo);
 
 /*
 ** philo.c
@@ -109,13 +112,20 @@ void	unlock_philo(t_philo *philo);
 ** philo_utils.c
 */
 size_t	get_cur_time(void);
+void	do_usleep(size_t time);
+void	display_msg(t_philo *philo, char *msg);
+
+/*
+** simul.c
+*/
+void	start_simul(t_data *data);
 
 /*
 ** utils.c
 */
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(const char *s, int fd);
-int		ft_strlen(char *s);
+int		ft_strlen(const char *s);
 int		print_error(char *s);
 
 /*
@@ -123,5 +133,7 @@ int		print_error(char *s);
 */
 int		ft_atoi(const char *str, int *data);
 void	*ft_calloc(size_t count, size_t size);
+void	lock_print(t_philo *p);
+void	unlock_print(t_philo *p);
 
 #endif

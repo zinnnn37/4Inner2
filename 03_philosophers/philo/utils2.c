@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:41:29 by minjinki          #+#    #+#             */
-/*   Updated: 2023/04/11 14:47:10 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:18:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ void	*ft_calloc(size_t count, size_t size)
 	return (res);
 }
 
-void	lock_print(t_data *data)
+void	lock_print(t_philo *p)
 {
-	pthread_mutex_lock(data->mprint);
+	pthread_mutex_lock(p->data->mprint);
 }
 
-void	unlock_print(t_data *data)
+void	unlock_print(t_philo *p)
 {
-	pthread_mutex_unlock(data->mprint);
+	pthread_mutex_unlock(p->data->mprint);
 }

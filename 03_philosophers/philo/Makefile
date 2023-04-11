@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 10:46:45 by minjinki          #+#    #+#              #
-#    Updated: 2023/04/10 18:34:07 by minjinki         ###   ########.fr        #
+#    Updated: 2023/04/11 15:12:43 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,15 @@ NAME		=	philo
 INCLUDE		=	philo.h
 
 SRC_FILES	=	main\
-				fork\
+				forks\
 				init\
 				philo\
 				philo_utils\
+				simul\
+				lifecircle\
 				utils\
-				utils2
+				utils2\
+				free
 
 SRCS		=	$(addsuffix .c, $(SRC_FILES))
 

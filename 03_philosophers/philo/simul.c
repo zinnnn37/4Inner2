@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:23:24 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/11 14:06:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:27:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	start_simul(t_data *data)
 	i = -1;
 	while (++i < data->nums)
 		pthread_create(&data->philos[i].thread, NULL,
-			&lifesircle, &data->philos[i]);
+			&lifecircle, &data->philos[i]);
 }
 
 void	thread_join(t_data *data)
@@ -31,4 +31,12 @@ void	thread_join(t_data *data)
 		pthread_join(data->philos[i].thread, NULL);
 }
 
-t_bool	is_dead(t_data *data, t_philo *philo)
+void	destroy_things(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	while (++i < data->nums)
+		pthread_mutex_destroy(data->philos[i].mtx);
+	free(data->philos);
+}

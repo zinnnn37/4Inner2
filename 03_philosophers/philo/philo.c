@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:29:59 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/11 14:03:16 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:16:44 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_philo(t_philo *philo, int id, t_data *data)
 		philo->lfork = &data->forks[id];
 		philo->rfork = &data->forks[id + 1];
 	}
-	if (pthread_mutex_init(&philo->mtx, NULL))
+	if (pthread_mutex_init(philo->mtx, NULL))
 		print_error("Fail to initialize mutex: philo->mtx");
 }
 
@@ -50,10 +50,10 @@ void	create_philo(t_data *data)
 
 void	lock_philo(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->mtx);
+	pthread_mutex_lock(philo->mtx);
 }
 
 void	unlock_philo(t_philo *philo)
 {
-	pthread_mutex_unlock(&philo->mtx);
+	pthread_mutex_unlock(philo->mtx);
 }
