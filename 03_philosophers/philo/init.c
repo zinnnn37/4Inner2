@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:49:11 by minjinki          #+#    #+#             */
-/*   Updated: 2023/04/10 18:38:09 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:38:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ t_bool	init(int ac, char **av, t_data *data)
 		return (print_error("Fail to allocate memory: data->philos"));
 	if (!init_forks(data))
 		return (FALSE);	// print_error in init_forks()
+	data->start_time = get_cur_time();
 	create_philo(data);
+	start_simul(data);
 	return (TRUE);
 }
-// > mprint, mdie mutex init

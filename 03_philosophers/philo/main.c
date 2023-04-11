@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/03/13 16:57:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:42:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int ac, char **av)
 		free_all();
 		return (FAILURE);
 	}
+	start_simul(data);
 	//free_all();
 	return (SUCCESS);
 }

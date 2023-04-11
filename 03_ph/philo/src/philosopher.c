@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosopher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marousta <marousta@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 15:49:44 by hroussea          #+#    #+#             */
-/*   Updated: 2021/12/23 04:09:14 by marousta         ###   ########lyon.fr   */
+/*   Updated: 2023/04/11 14:48:00 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	philo_create(t_simulation *sim)
 
 void	philo_destroy(t_pphilo phi)
 {
-	if (phi->state == PHILO_STATE_UNKNOWN) //? 진짜 unknown이네..
+	if (phi->state == PHILO_STATE_UNKNOWN)
 		return ;
 	pthread_mutex_destroy(&phi->mtx);
 }

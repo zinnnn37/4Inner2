@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:03:26 by minjinki          #+#    #+#             */
-/*   Updated: 2023/04/10 18:34:16 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:25:29 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ typedef struct s_data
 	int		limit;		// number of times philo must eat
 	size_t	start_time;
 	t_mutex	*mprint;	// print mutex
-	t_mutex	*mdie;		// die mutex
 	t_mutex	*forks;		// fork mutex
 	t_philo	*philos;	// philo struct
 }	t_data;

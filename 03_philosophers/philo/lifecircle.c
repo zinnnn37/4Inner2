@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:12:06 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/10 18:14:26 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:31:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	eating(t_philo *philo)
 void	thinking(t_philo *philo)
 {
 	if (!(philo->is_dead))
-		printf("%zu %u %s\n", get_cur_time(), philo->id + 1, THINK_MSG);
+		display_msg(philo, THINK_MSG);
 	philo->state = EATING;
 }
-// ref에 그 기묘한.. 코드 뭔지 확인 ?!
+// 기묘한..

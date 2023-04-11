@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simulation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marousta <marousta@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 18:55:06 by marousta          #+#    #+#             */
-/*   Updated: 2021/12/23 17:17:15 by marousta         ###   ########lyon.fr   */
+/*   Updated: 2023/04/11 14:36:55 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	simulation_begin(t_simulation *sim)
 	{
 		pthread_create(&sim->philosophers[i].thread, NULL,
 			(t_threadfunc) & philo_live, &sim->philosophers[i]);
-		// 아마(void *)philo_live와 유사하지 않을까 싶음
 	}
 }
 
