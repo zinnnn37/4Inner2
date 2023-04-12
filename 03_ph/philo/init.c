@@ -83,6 +83,6 @@ t_bool	init_data(t_data *data)
 		return (FALSE);
 	if (!init_mutexes(data))
 		return (FALSE);
-	data->dead = FALSE;
+	data->end = FALSE;
 	return (TRUE);
 }

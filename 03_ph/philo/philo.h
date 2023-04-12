@@ -46,7 +46,7 @@ typedef struct s_data
 	time_t			ttsleep;
 	int				must_eat;
 	time_t			start_time;
-	int				dead;
+	int				end;
 	pthread_t		monitor;
 	pthread_mutex_t	*mforks;
 	pthread_mutex_t	mprint;
