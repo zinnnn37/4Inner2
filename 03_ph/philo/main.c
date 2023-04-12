@@ -29,6 +29,19 @@ t_bool	run(t_data *data)
 	return (TRUE);
 }
 
+void	stop(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	while (++i < data->num_philos)
+		pthread_join(data->philos[i]->thread, NULL);
+	if (data->num_philos > 1)
+		pthread_join(data->monitor, NULL);
+	destroy_mutexes(data);
+	free_data(data);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	data;

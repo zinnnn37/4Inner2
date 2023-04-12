@@ -56,11 +56,12 @@ typedef struct s_data
 
 typedef struct s_philo
 {
+	pthread_t		thread;
 	int				id;
 	int				eat_count;
 	time_t			last_eat;
 	int				status;
-	pthread_t		meal;
+	pthread_mutex_t	meal;
 	int				fork[2];
 	t_data			*data;
 }	t_philo;

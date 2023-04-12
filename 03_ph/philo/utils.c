@@ -38,3 +38,32 @@ void	run_delay(time_t start)
 	while (get_cur_time() < start)
 		continue ;
 }
+
+void	destroy_mutexes(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	while (++i < data->num_philos)
+	{
+		pthread_mutex_destroy(&(data->philos[i]->meal));
+		pthread_mutex_destroy(&(data->mforks[i]));
+	}
+	pthread_mutex_destroy(&(data->mprint));
+	pthread_mutex_destroy(&(data->mdead));
+}
+
+void	free_data(t_data *data)
+{
+	int	i;
+
+	if (data->mforks)
+		free(data->mforks);
+	if (data->philos)
+	{
+		i = -1;
+		while (++i < data->num_philos)
+			free(data->philos[i]);
+		free(data->philos);
+	}
+}
