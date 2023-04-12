@@ -12,6 +12,15 @@
 
 #include "philo.h"
 
-void	msg()
+void	msg(t_philo *philo, char *s)
 {
+	pthread_mutex_lock(&(philo->data->mprint));
+	if (is_simul_stopped(philo->data))
+	{
+		pthread_mutex_unlock(&(philo->data->mprint));
+		return ;
+	}
+	printf("%ld\t%d\t%s\n", get_cur_time() - philo->data->start_time, \
+		philo->id + 1, s);
+	pthread_mutex_unlock(&(philo->data->mprint));
 }
