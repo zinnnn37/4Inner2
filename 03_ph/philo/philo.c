@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:32:43 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/13 12:09:55 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/13 12:49:35 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,19 @@ void	eating_n_sleeping(t_philo *philo)
 
 void	thinking(t_philo *philo, int print)
 {
+	time_t	ttthink;
+
+	pthread_mutex_lock(&(philo->meal));
+	ttthink = philo->data->ttdie - (get_cur_time() - philo->last_eat) \
+		- philo->data->tteat;
+	pthread_mutex_unlock(&(philo->meal));
+	if (ttthink < 0)
+		ttthink = 0;
+	if (ttthink > 500)
+		ttthink = 500;
 	if (print)
 		msg(philo, "is thinking");
+	do_usleep(philo->data, ttthink);
 }
 
 void	*one_philo(t_philo *philo)
@@ -46,7 +57,7 @@ void	*one_philo(t_philo *philo)
 	pthread_mutex_lock(&(philo->data->mforks[philo->fork[0]]));
 	msg(philo, "has taken a fork");
 	do_usleep(philo->data, philo->data->ttdie);
-	msg(philo, "is dead");
+	msg(philo, "died");
 	pthread_mutex_unlock(&(philo->data->mforks[philo->fork[0]]));
 	return (NULL);
 }
