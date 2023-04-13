@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 09:03:15 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/13 11:08:45 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/13 11:38:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <stdio.h>
-# include <stdlibs.h>
+# include <stdlib.h>
 # include <limits.h>
 # include <pthread.h>
 # include <sys/time.h>
@@ -35,7 +35,7 @@
 # define THINKING 3
 # define FORK 4
 
-typedef t_bool			int;
+typedef int				t_bool;
 typedef struct s_philo	t_philo;
 
 typedef struct s_data
@@ -103,6 +103,11 @@ void			do_usleep(t_data *data, time_t time);
 void			run_delay(time_t start);
 void			destroy_mutexes(t_data *data);
 void			free_data(t_data *data);
+
+/*
+** calloc.c
+*/
+void			*ft_calloc(size_t count, size_t size);
 
 /*
 ** print.c

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 09:31:04 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/13 11:09:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/13 11:45:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_philo	**init_philos(t_data *data)
 			return (err_null("Fail to init mutex\n", data));
 		philos[i]->data = data;
 		philos[i]->id = i;
-		philos[i]->num_eat = 0;
+		philos[i]->eat_count = 0;
 		give_forks(philos[i]);
 	}
 	return (philos);

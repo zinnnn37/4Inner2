@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:32:43 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/13 11:09:11 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/13 11:29:21 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	eating_n_sleeping(t_philo *philo)
 {
-	pthread_mutex_lock(&(philo->table->forks[philo->fork[0]]));
+	pthread_mutex_lock(&(philo->data->mforks[philo->fork[0]]));
 	msg(philo, "has taken a fork");
-	pthread_mutex_lock(&(philo->table->forks[philo->fork[1]]));
+	pthread_mutex_lock(&(philo->data->mforks[philo->fork[1]]));
 	msg(philo, "has taken a fork");
 	msg(philo, "is eating");
 	pthread_mutex_lock(&(philo->meal));
@@ -26,13 +26,13 @@ void	eating_n_sleeping(t_philo *philo)
 	if (!is_simul_stopped(philo->data))
 	{
 		pthread_mutex_lock(&(philo->meal));
-		philo->num_eat++;
+		philo->eat_count++;
 		pthread_mutex_unlock(&(philo->meal));
 	}
 	msg(philo, "is sleeping");
-	pthread_mutex_unlock(&(philo->table->forks[philo->fork[1]]));
-	pthread_mutex_unlock(&(philo->table->forks[philo->fork[0]]));
-	do_usleep(philo->data, philo->data->ttsleep)
+	pthread_mutex_unlock(&(philo->data->mforks[philo->fork[1]]));
+	pthread_mutex_unlock(&(philo->data->mforks[philo->fork[0]]));
+	do_usleep(philo->data, philo->data->ttsleep);
 }
 
 void	thinking(t_philo *philo, int print)
@@ -45,7 +45,9 @@ void	thinking(t_philo *philo, int print)
 	pthread_mutex_unlock(&(philo->meal));
 	if (ttthink < 0)
 		ttthink = 0;
-	if (ttthink > 500)
+	else if (ttthink == 0)
+		ttthink = 1;
+	else if (ttthink > 500)
 		ttthink = 500;
 	if (print)
 		msg(philo, "is thinking");
@@ -54,11 +56,12 @@ void	thinking(t_philo *philo, int print)
 
 void	*one_philo(t_philo *philo)
 {
-	pthread_mutex_lock(&(philo->table->forks[philo->fork[0]]));
+	pthread_mutex_lock(&(philo->data->mforks[philo->fork[0]]));
 	msg(philo, "has taken a fork");
 	do_usleep(philo->data, philo->data->ttdie);
 	msg(philo, "is dead");
-	pthread_mutex_unlock(&(philo->table->forks[philo->fork[0]]));
+	pthread_mutex_unlock(&(philo->data->mforks[philo->fork[0]]));
+	return (NULL);
 }
 
 void	*philosopher(void *arg)
@@ -71,9 +74,9 @@ void	*philosopher(void *arg)
 	pthread_mutex_lock(&(philo->meal));
 	philo->last_eat = philo->data->start_time;
 	pthread_mutex_unlock(&(philo->meal));
-	//run_delay(&(philo->data->start_time));
-	//if (philo->data->ttdie == 0)
-	//	return (NULL);
+	run_delay(philo->data->start_time);
+	if (philo->data->ttdie == 0)
+		return (NULL);
 	if (philo->data->num_philos == 1)
 		return (one_philo(philo));
 	else if (philo->id % 2)

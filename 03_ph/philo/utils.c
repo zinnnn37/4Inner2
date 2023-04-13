@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 09:51:14 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/13 11:09:15 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/13 11:19:56 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,17 @@ void	destroy_mutexes(t_data *data)
 	pthread_mutex_destroy(&(data->mdead));
 }
 
-void	free_data(t_data *data)
-{
-	int	i;
+// void	free_data(t_data *data)
+// {
+// 	int	i;
 
-	if (data->mforks)
-		free(data->mforks);
-	if (data->philos)
-	{
-		i = -1;
-		while (++i < data->num_philos)
-			free(data->philos[i]);
-		free(data->philos);
-	}
-}
+// 	if (data->mforks)
+// 		free(data->mforks);
+// 	if (data->philos)
+// 	{
+// 		i = -1;
+// 		while (++i < data->num_philos)
+// 			free(data->philos[i]);
+// 		free(data->philos);
+// 	}
+// }
