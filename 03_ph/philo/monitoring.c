@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 13:40:23 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/13 11:21:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/13 12:11:12 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ t_bool	is_philo_dead(t_philo *philo)
 	time = get_cur_time();
 	if ((time - philo->last_eat) >= philo->data->ttdie)
 	{
-		set_end_flag(philo->data, TRUE);
 		msg(philo, "is died");
+		set_end_flag(philo->data, TRUE);
 		pthread_mutex_unlock(&(philo->meal));
 		return (TRUE);
 	}
@@ -51,6 +51,7 @@ t_bool	should_be_ended(t_data *data)
 	int		i;
 	t_bool	end;
 
+	end = TRUE;
 	i = -1;
 	while (++i < data->num_philos)
 	{
@@ -78,7 +79,6 @@ void	*monitoring(void *arg)
 	if (data->must_eat == 0)
 		return (NULL);
 	set_end_flag(data, FALSE);
-	run_delay(data->start_time);
 	while (TRUE)
 	{
 		if (should_be_ended(data))

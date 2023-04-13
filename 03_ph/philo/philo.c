@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:32:43 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/13 11:29:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/13 12:09:55 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,8 @@ void	eating_n_sleeping(t_philo *philo)
 
 void	thinking(t_philo *philo, int print)
 {
-	time_t	ttthink;
-
-	pthread_mutex_lock(&(philo->meal));
-	ttthink = philo->data->ttdie - (get_cur_time() - philo->last_eat) \
-		- philo->data->tteat;
-	pthread_mutex_unlock(&(philo->meal));
-	if (ttthink < 0)
-		ttthink = 0;
-	else if (ttthink == 0)
-		ttthink = 1;
-	else if (ttthink > 500)
-		ttthink = 500;
 	if (print)
 		msg(philo, "is thinking");
-	do_usleep(philo->data, ttthink);
 }
 
 void	*one_philo(t_philo *philo)
@@ -74,9 +61,6 @@ void	*philosopher(void *arg)
 	pthread_mutex_lock(&(philo->meal));
 	philo->last_eat = philo->data->start_time;
 	pthread_mutex_unlock(&(philo->meal));
-	run_delay(philo->data->start_time);
-	if (philo->data->ttdie == 0)
-		return (NULL);
 	if (philo->data->num_philos == 1)
 		return (one_philo(philo));
 	else if (philo->id % 2)
