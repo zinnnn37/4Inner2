@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 13:40:23 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/13 12:37:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/13 14:50:44 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	*monitoring(void *arg)
 	{
 		if (should_be_ended(data))
 			break ;
-		usleep(500);
+		usleep(10);
 	}
 	return (NULL);
 }
