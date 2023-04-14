@@ -82,7 +82,7 @@ void	*monitoring(void *arg)
 	while (TRUE)
 	{
 		if (should_be_ended(data))
-			break ;
+			break ; // 여기에 detach?
 		usleep(10);
 	}
 	return (NULL);
