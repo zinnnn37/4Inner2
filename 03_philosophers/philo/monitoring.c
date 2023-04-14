@@ -82,8 +82,8 @@ void	*monitoring(void *arg)
 	while (TRUE)
 	{
 		if (should_be_ended(data))
-			break ; // 여기에서 필로 수만큼 돌면서 detach 아냐 그냥 join부터
-		usleep(10);
+			break ;
+		usleep(100);
 	}
 	return (NULL);
 }

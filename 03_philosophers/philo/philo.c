@@ -29,9 +29,9 @@ void	eating_n_sleeping(t_philo *philo)
 		philo->eat_count++;
 		pthread_mutex_unlock(&(philo->meal));
 	}
-	msg(philo, "is sleeping");
 	pthread_mutex_unlock(&(philo->data->mforks[philo->fork[1]]));
 	pthread_mutex_unlock(&(philo->data->mforks[philo->fork[0]]));
+	msg(philo, "is sleeping");
 	do_usleep(philo->data, philo->data->ttsleep);
 }
 
