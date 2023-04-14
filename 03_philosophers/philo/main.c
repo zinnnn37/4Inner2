@@ -26,7 +26,6 @@ t_bool	run(t_data *data)
 		if (pthread_create(&(data->monitor), NULL, \
 			&monitoring, data) != 0)
 			return (print_error("Fail to create thread: monitor\n", data));
-	i = -1;
 	return (TRUE);
 }
 
