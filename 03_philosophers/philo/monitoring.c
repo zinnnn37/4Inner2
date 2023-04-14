@@ -82,7 +82,7 @@ void	*monitoring(void *arg)
 	while (TRUE)
 	{
 		if (should_be_ended(data))
-			break ; // 여기에서 필로 수만큼 돌면서 detach -> 이거 먼저 하는 게 좋을 듯 함
+			break ; // 여기에서 필로 수만큼 돌면서 detach 아냐 그냥 join부터
 		usleep(10);
 	}
 	return (NULL);
