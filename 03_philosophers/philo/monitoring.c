@@ -82,7 +82,7 @@ void	*monitoring(void *arg)
 	while (TRUE)
 	{
 		if (should_be_ended(data))
-			break ; // 여기에 detach?
+			break ; // 여기에서 필로 수만큼 돌면서 detach?
 		usleep(10);
 	}
 	return (NULL);
