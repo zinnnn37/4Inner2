@@ -27,9 +27,6 @@ t_bool	run(t_data *data)
 			&monitoring, data) != 0)
 			return (print_error("Fail to create thread: monitor\n", data));
 	i = -1;
-	//while (++i < data->num_philos)
-	//	pthread_join(data->philos[i]->thread, NULL);
-	//pthread_join(data->monitor, NULL);
 	return (TRUE);
 }
 
@@ -46,6 +43,11 @@ void	stop(t_data *data)
 	free_data(data);
 }
 
+//void	check_leaks(void)
+//{
+//	system("leaks push_swap");
+//}
+
 int	main(int ac, char **av)
 {
 	t_data	*data;
@@ -60,5 +62,6 @@ int	main(int ac, char **av)
 	if (!run(data))
 		return (FAILURE);
 	stop(data);
+	//atexit(check_leaks);
 	return (SUCCESS);
 }
