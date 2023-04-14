@@ -50,6 +50,7 @@ void	stop(t_data *data)
 
 int	main(int ac, char **av)
 {
+	//atexit(check_leaks);
 	t_data	*data;
 
 	data = ft_calloc(1, sizeof(t_data));
@@ -62,6 +63,5 @@ int	main(int ac, char **av)
 	if (!run(data))
 		return (FAILURE);
 	stop(data);
-	//atexit(check_leaks);
 	return (SUCCESS);
 }

@@ -29,12 +29,6 @@
 # define MAX_INT 2147483647
 # define MIN_INT -2147483648
 
-# define DEAD 0
-# define EATING 1
-# define SLEEPING 2
-# define THINKING 3
-# define FORK 4
-
 typedef int				t_bool;
 typedef struct s_philo	t_philo;
 
@@ -46,7 +40,7 @@ typedef struct s_data
 	time_t			ttsleep;
 	int				must_eat;
 	time_t			start_time;
-	int				end;
+	t_bool			end;
 	pthread_t		monitor;
 	pthread_mutex_t	*mforks;
 	pthread_mutex_t	mprint;
@@ -60,7 +54,6 @@ typedef struct s_philo
 	int				id;
 	int				eat_count;
 	time_t			last_eat;
-	int				status;
 	pthread_mutex_t	meal;
 	int				fork[2];
 	t_data			*data;
