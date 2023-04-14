@@ -63,7 +63,7 @@ t_bool	check_valid(int ac, char **av, t_data *data)
 		return (print_error("Check if the arguments are valid: av[4]", data));
 	if (ac == 6 && (!ft_atoi(av[5], &data->must_eat) || data->must_eat < 0))
 		return (print_error("Check if the arguments are valid: av[5]", data));
-	else if (ac == 5 || av[5] == 0)
+	else if (ac == 5)
 		data->must_eat = -1;
 	return (SUCCESS);
 }
