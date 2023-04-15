@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 09:03:12 by MJKim             #+#    #+#             */
-/*   Updated: 2023/04/13 15:17:56 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/04/15 11:23:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	stop(t_data *data)
 
 //void	check_leaks(void)
 //{
-//	system("leaks push_swap");
+//	system("leaks philo");
 //}
 
 int	main(int ac, char **av)
