@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:11:13 by minjinki          #+#    #+#             */
-/*   Updated: 2023/05/22 16:31:12 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:48:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ int	main(void)
 			phonebook.add();
 		else if (cmd == "SEARCH")
 			phonebook.search();
-	std::cout << "Enter command(ADD, SEARCH, EXIT): ";
+		std::cout << "Enter command(ADD, SEARCH, EXIT): ";
 	}
 }

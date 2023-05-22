@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:07:53 by minjinki          #+#    #+#             */
-/*   Updated: 2023/05/22 16:46:01 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:54:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,64 @@ void PhoneBook::add()
 
 	// 이거 입력 while로 감싸서 length > 0인 거 나올때까지 받도록..
 	std::cout << "First Name: ";
-	std::getline(std::cin, s);
-	this->_contacts[this->_index].set_firstname(s);
+	while (std::getline(std::cin, s))
+	{
+		if (std::cin.eof() || s.length() == 0)
+		{
+			std::cout << "First Name: ";
+			continue ;
+		}
+		this->_contacts[this->_index].set_firstname(s);
+		break ;
+	}
 
 	std::cout << "Last Name: ";
-	std::getline(std::cin, s);
-	this->_contacts[this->_index].set_lastname(s);
+	while (std::getline(std::cin, s))
+	{
+		if (std::cin.eof() || s.length() == 0)
+		{
+			std::cout << "Last Name: ";
+			continue ;
+		}
+		this->_contacts[this->_index].set_lastname(s);
+		break ;
+	}
 
 	std::cout << "Nickname: ";
-	std::getline(std::cin, s);
-	this->_contacts[this->_index].set_nickname(s);
+	while (std::getline(std::cin, s))
+	{
+		if (std::cin.eof() || s.length() == 0)
+		{
+			std::cout << "Nickname: ";
+			continue ;
+		}
+		this->_contacts[this->_index].set_nickname(s);
+		break ;
+	}
 
 	std::cout << "Phone Number: ";
-	std::getline(std::cin, s);
-	this->_contacts[this->_index].set_phone(s);
+	while (std::getline(std::cin, s))
+	{
+		if (std::cin.eof() || s.length() == 0)
+		{
+			std::cout << "Phone Number: ";
+			continue ;
+		}
+		this->_contacts[this->_index].set_phone(s);
+		break ;
+	}
 
 	std::cout << "Your Darkest Secret: ";
-	std::getline(std::cin, s);
-	this->_contacts[this->_index].set_secret(s);
+	while (std::getline(std::cin, s))
+	{
+		if (std::cin.eof() || s.length() == 0)
+		{
+			std::cout << "Your Darkest Secret: ";
+			continue ;
+		}
+		this->_contacts[this->_index].set_secret(s);
+		break ;
+	}
 
 	this->_index = (this->_index + 1) % 8;
 	if (this->_cnt < 7)
@@ -113,7 +153,7 @@ void PhoneBook::search()
 	{
 		std::cout << "Enter index(press '9' to stop searching): ";
 		std::getline(std::cin, cmd);
-		if (std::cin.eof())
+		if (std::cin.eof() || cmd.length() == 0)
 			continue ;
 		if (!is_digit(cmd))
 			std::cout << "Contains non-numeric characters!" << std::endl;
