@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:07:36 by minjinki          #+#    #+#             */
-/*   Updated: 2023/05/22 14:59:36 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:57:06 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,18 @@
 
 #include "Contact.hpp"
 #include <iostream>
+#include <string>
+#include <cctype>
+
+std::string replace_last(std::string s);
+bool is_digit(std::string s);
 
 class PhoneBook
 {
 	private:
-		Contact	contacts[8];
-		int		index;
+		Contact	_contacts[8];
+		int		_index;
+		int		_cnt;
 	
 	public:
 		PhoneBook();
@@ -28,10 +34,10 @@ class PhoneBook
 
 		void	add();
 		void	search();
-		void	print(Contact contact);
+		void	print();
+		void	exit();
 
-		/* getter */
-		Contact	get_contect(int index);
+
 };
 
 #endif
