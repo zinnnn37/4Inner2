@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:07:36 by minjinki          #+#    #+#             */
-/*   Updated: 2023/05/22 16:30:28 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:34:15 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <string>
 #include <cctype>
+#include <iomanip>
 
 std::string replace_last(std::string s);
 bool is_digit(std::string s);

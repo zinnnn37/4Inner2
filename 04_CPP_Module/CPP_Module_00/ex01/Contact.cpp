@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:07:44 by minjinki          #+#    #+#             */
-/*   Updated: 2023/05/22 15:23:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:33:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@ Contact::Contact()
 }
 
 Contact::~Contact()
-{
-}
-
-Contact::Contact(std::string firstname, std::string lastname, \
-			std::string nickname, std::string phone, std::string secret)
 {
 }
 

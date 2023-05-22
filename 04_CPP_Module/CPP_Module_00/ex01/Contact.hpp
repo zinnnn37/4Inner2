@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:07:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/05/22 15:23:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:33:44 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ class Contact
 	public:
 		Contact();
 		~Contact();
-		Contact(std::string firstname, std::string lastname, \
-			std::string nickname, std::string phone, std::string secret);
 
 		/* getter */
 		std::string	get_firstname() const;
