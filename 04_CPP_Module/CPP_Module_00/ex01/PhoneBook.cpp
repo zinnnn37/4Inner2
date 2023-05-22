@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:07:53 by minjinki          #+#    #+#             */
-/*   Updated: 2023/05/22 16:14:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:30:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,16 @@ void PhoneBook::add()
 		this->_cnt++;
 }
 
-// display에서 setw(10) 함수 사용하기
-void PhoneBook::print()
+void PhoneBook::_print()
 {
 	std::string	s;
+
+	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << "|" << std::setw(10) << "INDEX" << "|" << std::setw(10) << "FIRST" << "|"\
+		<< std::setw(10) << "LAST" << "|" << std::setw(10) << "NICKNAME" << "|" << std::endl;
+	std::cout << "---------------------------------------------" << std::endl;
+
+
 	for (int i = 0; i < this->_cnt; i++)
 	{
 		/* index */
@@ -90,6 +96,7 @@ void PhoneBook::print()
 		/* nickname */
 		s = replace_last(this->_contacts[i].get_nickname());
 		std::cout << setw(10) << s << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
 	}
 }
 
@@ -97,8 +104,9 @@ void PhoneBook::search()
 {
 	int			icmd;
 	std::string	cmd;
+	Contact		*contact;
 
-	print();
+	_print();
 
 	while (true)
 	{
@@ -110,7 +118,7 @@ void PhoneBook::search()
 			std::cout << "Contains non-numeric characters!" << endl;
 		else if (cmd.length() > 1 || cmd[0] == '8')
 			std::cout << "Index out of range!" << endl;
-		else if (cmd)
+		else
 		{
 			icmd = cmd[0] - '0';
 			if (icmd == 9)
@@ -120,7 +128,12 @@ void PhoneBook::search()
 				std::cout << "Index out of range!" << endl;
 				continue ;
 			}
-			
+			contact = this._contact[icmd];
+			std::out << "First Name: " << contact->get_firstname() << std::endl;
+			std::out << "Last Name: " << contact->get_lastname() << std::endl;
+			std::out << "Nickname: " << contact->get_nickname() << std::endl;
+			std::out << "Phone: " contact->get_phone() << std::endl;
+			std::out << "Darkest Secret: " contact->set_secret() << std::endl;
 		}
 		continue ;
 	}
