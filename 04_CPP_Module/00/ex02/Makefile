@@ -6,20 +6,19 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 15:07:50 by minjinki          #+#    #+#              #
-#    Updated: 2023/05/22 16:39:58 by minjinki         ###   ########.fr        #
+#    Updated: 2023/05/22 18:46:02 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	PhoneBook
+NAME		=	Account
 
-SRCS		=	Contact.cpp\
-				PhoneBook.cpp\
-				main.cpp
+SRCS		=	Account.cpp\
+				tests.cpp
 
 OBJS		=	$(SRCS:%.cpp=%.o)
 
 CC			=	clang++
-CCFLAGS		=	-Wall -Wextra -Werror -std=c++98
+CCFLAGS		=	-std=c++98
 RM			=	rm -f
 
 all			:	$(NAME)

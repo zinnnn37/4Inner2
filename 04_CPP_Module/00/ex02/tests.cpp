@@ -12,7 +12,6 @@
 #include <functional>
 #include "Account.hpp"
 
-
 int		main( void ) {
 
 	typedef std::vector<Account::t>							  accounts_t;
@@ -70,4 +69,3 @@ int		main( void ) {
 // -*- mode: c++-mode;                                                       -*-
 // -*- fill-column: 75; comment-column: 75;                                  -*-
 // ************************************************************************** //
- 
