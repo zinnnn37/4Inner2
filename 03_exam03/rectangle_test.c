@@ -54,7 +54,8 @@ int	main(int ac, char **av)
 	if (!(width > 0 && width <= 300) || !(height > 0 && height <= 300))
 		return (print_error(CORR));
 
-	char	buf[(width * height)];
+	char	buf[(width * height) + 1];
+	buf[width * height] = '\0';
 
 	for (int i = 0; i < (width * height); i++)
 		buf[i] = back;
