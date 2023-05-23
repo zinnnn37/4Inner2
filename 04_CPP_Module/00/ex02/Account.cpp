@@ -6,13 +6,18 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:24:08 by minjinki          #+#    #+#             */
-/*   Updated: 2023/05/22 19:04:18 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/05/23 16:13:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
 #include <ctime>
+
+int Account::_nbAccounts = 0;
+int Account::_totalAmount = 0;
+int Account::_totalNbDeposits = 0;
+int Account::_totalNbWithdrawals = 0;
 
 Account::Account()
 {
@@ -23,7 +28,20 @@ Account::Account()
 Account::Account(int initial_deposit)
 {
 	this->_displayTimestamp();
-	std::cout << "Account(int)" << std::endl;
+	
+	this->_nbDeposits = 0;
+	this->_nbWithdrawals = 0;
+
+	std::cout << "index:" << _nbAccounts << ";";
+	this->_accountIndex = _nbAccounts;
+	_nbAccounts++;
+	
+	std::cout << "amount:" << initial_deposit << ";";
+	this->amount = _amount;
+	_totalAmount += initial_deposit;
+	
+	std::cout << "created" << std::endl;
+	// 작업
 }
 
 Account::~Account()
@@ -65,7 +83,10 @@ int Account::getNbWithdrawals()
 void Account::displayAccountsInfos()
 {
 	_displayTimestamp();
-	std::cout << "displayAccountsInfos()" << std::endl;
+	std::cout << "accounts:" << _nbAccounts << ";";
+	std::cout << "total:" << _totalAmount << ";";
+	std::cout << "deposits:" << _totalNbDeposits << ";";
+	std::cout << "withdrawals:" << _totalNbWithdrawals << ";";
 }
 
 void Account::makeDeposit(int deposit)
