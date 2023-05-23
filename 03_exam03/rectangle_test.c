@@ -78,5 +78,6 @@ int	main(int ac, char **av)
 	}
 	if (ret != -1)
 		return (print_error(CORR));
+	fclose(file);
 	return (ft_draw(buf, width, height));
 }
