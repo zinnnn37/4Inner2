@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
+#    By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 15:07:50 by minjinki          #+#    #+#              #
-#    Updated: 2023/05/22 18:46:02 by minjinki         ###   ########.fr        #
+#    Updated: 2023/05/24 19:57:01 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS		=	Account.cpp\
 
 OBJS		=	$(SRCS:%.cpp=%.o)
 
-CC			=	clang++
+CC			=	c++
 CCFLAGS		=	-std=c++98
 RM			=	rm -f
 
