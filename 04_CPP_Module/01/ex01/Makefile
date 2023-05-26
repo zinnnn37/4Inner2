@@ -6,11 +6,11 @@
 #    By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 14:27:27 by MJKim             #+#    #+#              #
-#    Updated: 2023/05/24 20:01:23 by minjinki         ###   ########.fr        #
+#    Updated: 2023/05/26 13:13:26 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	zombie
+NAME	=	Zombie
 
 SRCS	=	main.cpp\
 			Zombie.cpp\
