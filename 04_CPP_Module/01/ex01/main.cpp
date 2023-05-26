@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:10:08 by minjinki          #+#    #+#             */
-/*   Updated: 2023/05/26 13:13:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/05/26 13:19:49 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 int	main( void )
 {
-	Zombie *zombie;
+	Zombie *zombies;
 
-	zombie = zombieHorde(5, "zombies");
+	zombies = zombieHorde(5, "zombies");
+	if (!zombies)
+		return (1);
 
 	for (int i = 0; i < 5; i++)
-	{
-		zombie[i].announce(i);
-	}
+		zombies[i].announce(i);
 
-	delete[] zombie;
+	delete[] zombies;
+	
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:13:15 by minjinki          #+#    #+#             */
-/*   Updated: 2023/05/26 13:14:41 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/05/26 13:18:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 Zombie::Zombie()
 {
+	this->_name = "default";
 }
 
 Zombie::Zombie( std::string name )
