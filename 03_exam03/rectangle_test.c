@@ -64,7 +64,7 @@ int	main(int ac, char **av)
 
 	while ((ret = fscanf(file, "%c %f %f %f %f %c\n", &c, &X, &Y, &fwidth, &fheight, &draw)) == 6)
 	{
-		if (c != 'r' && c != 'R')
+		if ((c != 'r' && c != 'R') || fwidth < 1.00000000 || fhieght < 1.00000000)
 			return (print_error(CORR, file));
 		for (int y = 0; y < height; y++)
 		{
