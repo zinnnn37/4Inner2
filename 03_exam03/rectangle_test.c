@@ -6,9 +6,12 @@
 #define ARGERR "argument"
 #define CORR "Operation file corrupted"
 
-int	print_error(char *s)
+int	print_error(char *s, FILE *file)
 {
 	int	i = 0;
+
+	if (file)
+		fclose(file);
 
 	while (s[i])
 		i++;
@@ -46,16 +49,15 @@ int	main(int ac, char **av)
 	float	X, Y, Xcheck, Ycheck, fwidth, fheight;
 
 	if (ac != 2)
-		return (print_error(ARGERR));
+		return (print_error(ARGERR, NULL));
 	if (!(file = fopen(av[1], "r")))
-		return (print_error(CORR));
+		return (print_error(CORR, NULL));
 	if ((fscanf(file, "%d %d %c\n", &width, &height, &back)) != 3)
-		return (print_error(CORR));
+		return (print_error(CORR, file));
 	if (!(width > 0 && width <= 300) || !(height > 0 && height <= 300))
-		return (print_error(CORR));
+		return (print_error(CORR, file));
 
-	char	buf[(width * height) + 1];
-	buf[width * height] = '\0';
+	char	buf[(width * height)];
 
 	for (int i = 0; i < (width * height); i++)
 		buf[i] = back;
@@ -63,7 +65,7 @@ int	main(int ac, char **av)
 	while ((ret = fscanf(file, "%c %f %f %f %f %c\n", &c, &X, &Y, &fwidth, &fheight, &draw)) == 6)
 	{
 		if (c != 'r' && c != 'R')
-			print_error(CORR);
+			return (print_error(CORR, file));
 		for (int y = 0; y < height; y++)
 		{
 			Ycheck = (float)y;
@@ -77,7 +79,7 @@ int	main(int ac, char **av)
 		}
 	}
 	if (ret != -1)
-		return (print_error(CORR));
+		return (print_error(CORR, file));
 	fclose(file);
 	return (ft_draw(buf, width, height));
 }

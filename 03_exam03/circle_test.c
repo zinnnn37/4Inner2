@@ -5,9 +5,12 @@
 #define ARGERR "argument"
 #define CORR "Operation file corrupted"
 
-int	print_error(char *s)
+int	print_error(char *s, FILE *file)
 {
 	int	i = 0;
+
+	if (file)
+		fclose(file);
 
 	while (s[i])
 		i++;
@@ -35,13 +38,13 @@ int	main(int ac, char **av)
 	float	Xa, Ya, Xb, Yb, radius, dist;
 
 	if (ac != 2)
-		return (print_error(ARGERR));
+		return (print_error(ARGERR, NULL));
 	if (!(file = fopen(av[1], "r"))) // open as readonly?
-		return (print_error(CORR));
+		return (print_error(CORR, NULL));
 	if ((fscanf(file, "%d %d %c\n", &width, &height, &back)) != 3)
-		return (print_error(CORR));
+		return (print_error(CORR, file));
 	if (!(width > 0 && width <= 300) || !(height > 0 && height <= 300))
-		return (print_error(CORR));
+		return (print_error(CORR, file));
 
 	char	buf[(width * height)];	// save matrix as 1D array
 
@@ -50,7 +53,7 @@ int	main(int ac, char **av)
 	while ((ret = fscanf(file, "%c %f %f %f %c\n", &c, &Xa, &Ya, &radius, &draw)) == 5)
 	{
 		if ((c != 'c' && c != 'C') || radius <= 0.00000000)
-			return (print_error(CORR));
+			return (print_error(CORR, file));
 		for (int y = 0; y < height; y++)
 		{
 			Yb = (float)y;
@@ -67,7 +70,7 @@ int	main(int ac, char **av)
 		}
 	}
 	if (ret != -1)
-		return (print_error(CORR));
+		return (print_error(CORR, file));
 	
 	fclose(file);
 
