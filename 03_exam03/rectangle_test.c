@@ -18,7 +18,7 @@ int	print_error(char *s, FILE *file)
 	write(1, "Error: ", 7);
 	write(1, s, i);
 	write(1, "\n", 1);
-	return (0);
+	return (1);
 }
 
 int	ft_draw(char *buf, int w, int h)
