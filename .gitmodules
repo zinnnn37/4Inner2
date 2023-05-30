@@ -1,3 +1,3 @@
-[submodule "04_net_practice/04_net_practice/given_files"]
-	path = 04_net_practice/04_net_practice/given_files
-	url = https://github.com/zinnnn37/42_04_netpractice.git
+[submodule "04_net_practice/given_files"]
+	path = 04_net_practice/given_files
+	url = https://github.com/zinnnn37/404_netpractice2.git
