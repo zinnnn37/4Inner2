@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 13:36:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/23 16:09:08 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/23 16:12:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	Harl::complain( std::string level )
 			(this->*f[pos++])();
 		case 3:
 			(this->*f[pos])();
-			break;
+			break ;
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
