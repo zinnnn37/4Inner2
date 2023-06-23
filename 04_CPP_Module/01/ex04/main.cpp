@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:47:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/23 13:28:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/23 13:29:41 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	main(int ac, char **av)
 	s1 = av[2];
 	s2 = av[3];
 	
-	// file open and null guard
 	ifs.open(av[1]);
 	if (ifs.fail())
 	{
@@ -51,7 +50,6 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	
-	// file open and null guard : filename에 .repace 추가
 	output = av[1];
 	output.append(".replace");
 	ofs.open(output);
