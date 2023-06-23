@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:47:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/23 13:29:41 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:33:42 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	
-	if (std::strlen(av[1]) == 0 || std::strlen(av[2]) == 0 || std::strlen(av[3]) == 0)
+	if (av[1][0] == '\0' || av[2][0] == '\0' || av[3][0] == '\0')
 	{
 		std::cout << "Empty arguments" << std::endl;
 		return (1);
