@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:47:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/23 13:08:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/23 13:28:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 int	main(int ac, char **av)
 {
 	int				pos;
-	int				len;
+	int				len1;
+	int				len2;
 	
 	std::string		s1;
 	std::string		s2;
@@ -33,7 +34,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	
-	if (!*av[1] || !*av[2] || !*av[3])
+	if (std::strlen(av[1]) == 0 || std::strlen(av[2]) == 0 || std::strlen(av[3]) == 0)
 	{
 		std::cout << "Empty arguments" << std::endl;
 		return (1);
@@ -60,14 +61,21 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	
-	len = s1.size();
+	len1 = s1.size();
+	len2 = s2.size();
 	while (getline(ifs, line))
 	{
-		pos = line.find(av[2]);
+		pos = 0;
+		while (true) {
+			pos = line.find(s1, pos);
 
-		if (pos > -1) {
-			line.erase(pos, len);
-			line.insert(pos, s2);
+			if (pos > -1) {
+				line.erase(pos, len1);
+				line.insert(pos, s2);
+				pos += len2;
+			}
+			else
+				break ;
 		}
 
 		ofs << line << std::endl;
