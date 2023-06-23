@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+         #
+#    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 14:27:27 by MJKim             #+#    #+#              #
-#    Updated: 2023/05/24 20:06:37 by minjinki         ###   ########.fr        #
+#    Updated: 2023/06/23 16:00:50 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	Harl
+NAME		=	harlFilter
 
 SRC_FILES	=	main\
 				Harl
