@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:07:36 by minjinki          #+#    #+#             */
-/*   Updated: 2023/05/22 16:34:15 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/24 11:46:13 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class PhoneBook
 		void	add();
 		void	search();
 		void	exit();
+		void	run();
 };
 
 #endif

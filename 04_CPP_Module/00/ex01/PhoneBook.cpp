@@ -6,31 +6,44 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:07:53 by minjinki          #+#    #+#             */
-/*   Updated: 2023/05/22 16:54:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/24 11:55:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-std::string replace_last(std::string s)
+std::string	replace_last( std::string s )
 {
 	std::string	ret;
 
 	if (s.length() > 10)
 		s[9] = '.';
-	for (unsigned long i = 10; i < s.length(); i++)
+	for (unsigned long i = 10; i < s.size(); i++)
 		s[i] = '\0';
 	return (s);
 }
 
-bool is_digit(std::string s)
+bool	is_digit( std::string s )
 {
-	for (unsigned long i = 0; i < s.length(); i++)
+	for (unsigned long i = 0; i < s.size(); i++)
 	{
 		if (!std::isdigit(s[i]))
 			return (false);
 	}
 	return (true);
+}
+
+bool	is_space_only( std::string s )
+{
+	bool	flag;
+	
+	flag = false;
+	for (unsigned long i = 0; i < s.size(); i++)
+	{
+		if (!std::isspace(s[i]))
+			flag = true;
+	}
+	return (flag);
 }
 
 PhoneBook::PhoneBook()
@@ -43,15 +56,14 @@ PhoneBook::~PhoneBook()
 {
 }
 
-void PhoneBook::add()
+void	PhoneBook::add()
 {
 	std::string	s;
 
-	// 이거 입력 while로 감싸서 length > 0인 거 나올때까지 받도록..
-	std::cout << "First Name: ";
+	std::cout << std::endl << "First Name: ";
 	while (std::getline(std::cin, s))
 	{
-		if (std::cin.eof() || s.length() == 0)
+		if (std::cin.eof() || s.size() == 0 || !is_space_only(s))
 		{
 			std::cout << "First Name: ";
 			continue ;
@@ -63,7 +75,7 @@ void PhoneBook::add()
 	std::cout << "Last Name: ";
 	while (std::getline(std::cin, s))
 	{
-		if (std::cin.eof() || s.length() == 0)
+		if (std::cin.eof() || s.size() == 0 || !is_space_only(s))
 		{
 			std::cout << "Last Name: ";
 			continue ;
@@ -75,7 +87,7 @@ void PhoneBook::add()
 	std::cout << "Nickname: ";
 	while (std::getline(std::cin, s))
 	{
-		if (std::cin.eof() || s.length() == 0)
+		if (std::cin.eof() || s.size() == 0 || !is_space_only(s))
 		{
 			std::cout << "Nickname: ";
 			continue ;
@@ -87,7 +99,7 @@ void PhoneBook::add()
 	std::cout << "Phone Number: ";
 	while (std::getline(std::cin, s))
 	{
-		if (std::cin.eof() || s.length() == 0)
+		if (std::cin.eof() || s.size() == 0 || !is_space_only(s))
 		{
 			std::cout << "Phone Number: ";
 			continue ;
@@ -99,7 +111,7 @@ void PhoneBook::add()
 	std::cout << "Your Darkest Secret: ";
 	while (std::getline(std::cin, s))
 	{
-		if (std::cin.eof() || s.length() == 0)
+		if (std::cin.eof() || s.size() == 0 || !is_space_only(s))
 		{
 			std::cout << "Your Darkest Secret: ";
 			continue ;
@@ -109,11 +121,13 @@ void PhoneBook::add()
 	}
 
 	this->_index = (this->_index + 1) % 8;
-	if (this->_cnt < 7)
+	if (this->_cnt < 8)
 		this->_cnt++;
+
+	std::cout << std::endl;
 }
 
-void PhoneBook::_print()
+void	PhoneBook::_print()
 {
 	std::string	s;
 
@@ -121,7 +135,6 @@ void PhoneBook::_print()
 	std::cout << "|" << std::setw(10) << "INDEX" << "|" << std::setw(10) << "FIRST" << "|"\
 		<< std::setw(10) << "LAST" << "|" << std::setw(10) << "NICKNAME" << "|" << std::endl;
 	std::cout << "---------------------------------------------" << std::endl;
-
 
 	for (int i = 0; i < this->_cnt; i++)
 	{
@@ -139,9 +152,10 @@ void PhoneBook::_print()
 		std::cout << std::setw(10) << s << "|" << std::endl;
 		std::cout << "---------------------------------------------" << std::endl;
 	}
+	std::cout << std::endl;
 }
 
-void PhoneBook::search()
+void	PhoneBook::search()
 {
 	int			icmd;
 	std::string	cmd;
@@ -153,11 +167,11 @@ void PhoneBook::search()
 	{
 		std::cout << "Enter index(press '9' to stop searching): ";
 		std::getline(std::cin, cmd);
-		if (std::cin.eof() || cmd.length() == 0)
+		if (std::cin.eof() || cmd.size() == 0)
 			continue ;
 		if (!is_digit(cmd))
 			std::cout << "Contains non-numeric characters!" << std::endl;
-		else if (cmd.length() > 1 || cmd[0] == '8')
+		else if (cmd.size() > 1 || cmd[0] == '8')
 			std::cout << "Index out of range!" << std::endl;
 		else
 		{
@@ -166,7 +180,7 @@ void PhoneBook::search()
 				break ;
 			else if (icmd > this->_cnt - 1)
 			{
-				std::cout << "Index out of range!" << std::endl;
+				std::cout << "Index out of range!" << std::endl << std::endl;
 				continue ;
 			}
 			contact = this->_contacts[icmd];
@@ -176,11 +190,34 @@ void PhoneBook::search()
 			std::cout << "Phone: " << contact.get_phone() << std::endl;
 			std::cout << "Darkest Secret: " << contact.get_secret() << std::endl;
 		}
+		std::cout << std::endl;
 		continue ;
 	}
+	std::cout << std::endl;
 }
 
-void PhoneBook::exit()
+void	PhoneBook::exit()
 {
 	std::exit(0);
+}
+
+void	PhoneBook::run()
+{
+	std::string	cmd;
+
+	std::cout << std::endl << "================= PHONE BOOK =================" << std::endl;
+	std::cout << "Enter command(ADD, SEARCH, EXIT): ";
+	while (std::getline(std::cin, cmd))
+	{
+		if (std::cin.eof())
+			continue ;
+		if (cmd == "EXIT")
+			this->exit();
+		else if (cmd == "ADD")
+			this->add();
+		else if (cmd == "SEARCH")
+			this->search();
+		std::cout << std::endl << "================= PHONE BOOK =================" << std::endl;
+		std::cout << "Enter command(ADD, SEARCH, EXIT): ";
+	}
 }
