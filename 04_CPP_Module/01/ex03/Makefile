@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+         #
+#    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 14:27:27 by MJKim             #+#    #+#              #
-#    Updated: 2023/05/24 20:04:05 by minjinki         ###   ########.fr        #
+#    Updated: 2023/06/24 10:52:00 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	weapon
+NAME		=	Weapon
 
 SRC_FILES	=	main\
 				Weapon\
