@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:07:53 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/24 11:55:47 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/24 11:58:36 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,8 @@ bool	is_space_only( std::string s )
 }
 
 PhoneBook::PhoneBook()
+	: _index(0), _cnt(0)
 {
-	this->_index = 0;
-	this->_cnt = 0;
 }
 
 PhoneBook::~PhoneBook()
