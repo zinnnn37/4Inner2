@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 14:46:35 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/07 14:56:00 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/24 11:13:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
 HumanB::HumanB( std::string name )
+	: _name(name), _weapon(NULL)
 {
-	this->_name = name;
-	this->_weapon = NULL;
 }
 
 HumanB::~HumanB()
