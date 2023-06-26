@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:47:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/23 15:33:42 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:57:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int ac, char **av)
 	
 	len1 = s1.size();
 	len2 = s2.size();
-	while (getline(ifs, line))
+	while (std::getline(ifs, line))
 	{
 		pos = 0;
 		while (true) {
