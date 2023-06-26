@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:44:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/26 19:08:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/26 19:14:01 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,26 @@ int	Fixed::toInt( void ) const
 float	Fixed::toFloat( void ) const
 {
 	return (static_cast<float>(this->getRawBits()) / (1 << this->_bit));
+}
+
+Fixed	Fixed::min( Fixed &f1, Fixed &f2 )
+{
+	return ( f1 < f2 ? f1 : f2 );
+}
+
+const Fixed	Fixed::min( const Fixed &f1, const Fixed &f2 )
+{
+	return ( f1 < f2 ? f1 : f2 );
+}
+
+Fixed	Fixed::max( Fixed &f1, Fixed &f2 )
+{
+	return ( f1 > f2 ? f1 : f2 );
+}
+
+const Fixed	Fixed::max( const Fixed &f1, const Fixed &f2 )
+{
+	return ( f1 > f2 ? f1 : f2 );
 }
 
 // funcs
