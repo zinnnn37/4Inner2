@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:21:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/05/26 13:43:02 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/26 11:56:36 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	main( void )
 	std::string& strREF = str;
 
 	std::cout << "Address:" << std::endl;
-	std::cout << "str: " << &str << std::endl;
+	std::cout << "str   : " << &str << std::endl;
 	std::cout << "strPTR: " << &strPTR << std::endl;
 	std::cout << "strREF: " << &strREF << std::endl << std::endl;
 
 	std::cout << "Content:" << std::endl;
-	std::cout << "str: " << str << std::endl;
+	std::cout << "str   : " << str << std::endl;
 	std::cout << "strPTR: " << strPTR << std::endl;
 	std::cout << "strREF: " << strREF << std::endl;
 	
