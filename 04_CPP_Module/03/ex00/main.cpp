@@ -6,8 +6,17 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:23 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/26 21:51:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/27 06:21:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+int	main( void )
+{
+	ClapTrap	ct;
+	ClapTrap	ct2("Test");
+
+	ct._print();
+	return 0;
+}
