@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 18:51:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/23 18:56:14 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/26 17:32:56 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,21 @@ class	Fixed
 
 	public:
 		Fixed();
+		Fixed( int fixed );
+		Fixed( float fixed );
 		Fixed( const Fixed& fixed );
 		~Fixed();
-		Fixed& operator=( const Fixed& fixed );
+
+		Fixed&	operator=( const Fixed& fixed );
+		
+		int		getRawBits( void ) const;
+		void	setRawBits( int const raw );
 		
 		float	toFloat( void ) const;
 		int		toInt( void ) const;
-
-		Fixed& operator<<( Fixed& fixed );
 };
+
+std::ostream&	operator<<( std::ostream &out, const Fixed& fixed );
+// cout은 Fixed 소속이 아니기 때문에 바깥에서 선언해줘야 함
 
 #endif
