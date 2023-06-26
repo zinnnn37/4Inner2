@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:07:55 by minjinki          #+#    #+#             */
-/*   Updated: 2023/05/26 13:13:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/26 11:55:09 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Zombie
 		Zombie( std::string _name );
 		~Zombie();
 
-		void	announce( int i ); // BraiiiiiiinnnzzzZ...
+		void	announce() const;
 
 		/* setter */
 		void	setName( std::string _name );

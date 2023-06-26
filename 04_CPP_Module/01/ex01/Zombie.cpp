@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:13:15 by minjinki          #+#    #+#             */
-/*   Updated: 2023/05/26 13:18:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/26 11:54:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ void	Zombie::setName( std::string name )
 	this->_name = name;
 }
 
-void Zombie::announce( int i )
+void Zombie::announce() const
 {
-	std::cout << "<" << this->_name << " " << i + 1;
-	std::cout << "> BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << "<" << this->_name << "> BraiiiiiiinnnzzzZ..." << std::endl;
 }

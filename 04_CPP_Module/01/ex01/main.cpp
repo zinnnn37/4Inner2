@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:10:08 by minjinki          #+#    #+#             */
-/*   Updated: 2023/05/26 13:19:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/26 11:54:33 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main( void )
 		return (1);
 
 	for (int i = 0; i < 5; i++)
-		zombies[i].announce(i);
+		zombies[i].announce();
 
 	delete[] zombies;
 	
