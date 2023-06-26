@@ -6,11 +6,13 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:44:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/26 17:39:35 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/26 17:52:13 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+// 그러니까 왜 8만큼 shitf 하는지 이해할 필요가 있음...
 
 Fixed::Fixed( void )
 	: _fixed(0)
@@ -29,6 +31,8 @@ Fixed::Fixed( float fixed )
 	std::cout << "Float constructor called" << std::endl;
 	this->setRawBits( static_cast<int>(std::roundf(fixed * (1 << this->_bit))) );
 }
+// 42.42 * 256 = 10,859.52 > 그냥 저장하면 0.52 버림
+// 조금 더 정확한 연산을 위해 roundf 이용
 
 Fixed::Fixed( const Fixed& fixed )
 {
