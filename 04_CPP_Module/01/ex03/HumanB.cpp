@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 14:46:35 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/24 11:13:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:48:11 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	HumanB::attack( void ) const
 {
 	std::cout << this->_name << " attacked with ";
 	if (this->_weapon)
-		std::cout << this->_weapon->getType() << std::endl;	// pointer
+		std::cout << this->_weapon->getType() << std::endl;
 	else
-		std::cout << "nothing" << std::endl;	// pointer
+		std::cout << "nothing" << std::endl;
 }
 
 void	HumanB::setWeapon( Weapon &weapon )
