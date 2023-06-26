@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:44:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/26 18:51:51 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/26 19:08:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,60 +47,102 @@ Fixed&	Fixed::operator=( const Fixed& fixed )
 	return (*this);
 }
 
-bool	Fixed::operator>( const Fixed& fixed )
+bool	Fixed::operator>( const Fixed& fixed ) const
 {
 	return (this->toFloat() > fixed.toFloat());
 }
 
-bool	Fixed::operator<( const Fixed& fixed )
+bool	Fixed::operator<( const Fixed& fixed ) const
 {
 	return (this->toFloat() < fixed.toFloat());
 }
 
-bool	Fixed::operator>=( const Fixed& fixed )
+bool	Fixed::operator>=( const Fixed& fixed ) const
 {
 	return (this->toFloat() >= fixed.toFloat());
 }
 
-bool	Fixed::operator<=( const Fixed& fixed )
+bool	Fixed::operator<=( const Fixed& fixed ) const
 {
 	return (this->toFloat() <= fixed.toFloat());
 }
 
-bool	Fixed::operator==( const Fixed& fixed )
+bool	Fixed::operator==( const Fixed& fixed ) const
 {
 	return (this->toFloat() == fixed.toFloat());
 }
 
-bool	Fixed::operator!=( const Fixed& fixed )
+bool	Fixed::operator!=( const Fixed& fixed ) const
 {
 	return (this->toFloat() != fixed.toFloat());
 }
 
-Fixed	Fixed::operator+( const Fixed& fixed );
+Fixed	Fixed::operator+( const Fixed& fixed )
 {
 	Fixed	res( this->toFloat() + fixed.toFloat() );
 
 	return res;
 }
 
-Fixed	Fixed::operator-( const Fixed& fixed );
+Fixed	Fixed::operator-( const Fixed& fixed )
 {
 	Fixed	res( this->toFloat() - fixed.toFloat() );
 
 	return res;
 }
 
-Fixed	Fixed::operator*( const Fixed& fixed );
+Fixed	Fixed::operator*( const Fixed& fixed )
 {
 	Fixed	res( this->toFloat() * fixed.toFloat() );
 
 	return res;
 }
 
-Fixed	Fixed::operator/( const Fixed& fixed );
+Fixed	Fixed::operator/( const Fixed& fixed )
 {
 	Fixed	res( this->toFloat() / fixed.toFloat() );
+
+	return res;
+}
+
+Fixed&	Fixed::operator++( void )
+{
+	int	tmp;
+
+	tmp = this->getRawBits();
+	this->setRawBits(++tmp);	// ε로부터 증가 || 감소 > rawbit 바로 ++하기?
+
+	return *this;
+}
+
+Fixed	Fixed::operator++( int )
+{
+	int		tmp;
+	Fixed	res(*this);
+
+	tmp = this->getRawBits();
+	this->setRawBits(++tmp);
+
+	return res;
+}
+
+Fixed&	Fixed::operator--( void )
+{
+	int	tmp;
+
+	tmp = this->getRawBits();
+	this->setRawBits(--tmp);
+
+	return *this;
+}
+
+Fixed	Fixed::operator--( int )
+{
+	int		tmp;
+	Fixed	res(*this);
+
+	tmp = this->getRawBits();
+	this->setRawBits(--tmp);
 
 	return res;
 }
