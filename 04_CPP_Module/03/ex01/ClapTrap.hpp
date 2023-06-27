@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/27 14:50:02 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:00:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@
 
 class	ClapTrap
 {
-	private:
-		std::string	_name;
-		int			_hit;
-		int			_energy;
-		int			_damage;
-
+	protected:	// private으로 설정하면 상속받은 클래스가 사용하지 못함
+		std::string		_name;
+		int				_hit;
+		unsigned int	_energy;
+		unsigned int	_damage;
 	
 	public:
 		ClapTrap();

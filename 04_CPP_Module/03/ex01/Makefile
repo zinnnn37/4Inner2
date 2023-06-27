@@ -6,14 +6,15 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 21:48:33 by minjinki          #+#    #+#              #
-#    Updated: 2023/06/27 12:37:58 by minjinki         ###   ########.fr        #
+#    Updated: 2023/06/27 15:39:38 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	ClapTrap
 
 SRC_FILES	=	main\
-				ClapTrap
+				ClapTrap\
+				ScavTrap
 
 SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 

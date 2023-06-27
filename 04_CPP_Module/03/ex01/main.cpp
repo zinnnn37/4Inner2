@@ -6,11 +6,12 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:23 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/27 14:49:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/27 15:58:41 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int	main( void )
 {
@@ -19,25 +20,29 @@ int	main( void )
 	std::cout << "==========================================================" << std::endl << std::endl;
 	std::cout << WHITE"----------------------------------------------------------" << std::endl << std::endl;
 
-	ClapTrap	ct;
-	ClapTrap	ct2(ct);
-	ClapTrap	a("A");
-	ClapTrap	b("B");
+	ScavTrap	a("A");
+	ScavTrap	b("B");
 
 	a.attack("B");
-	b.takeDamage(4);
-	b.beRepaired(2);
+	b.takeDamage( a.getAttackDamage() );
+	b.beRepaired(10);
 	b.print();
 
 	b.attack("A");
-	a.takeDamage(5);
-	a.beRepaired(3);
+	a.takeDamage( a.getAttackDamage() );
+	a.beRepaired(15);
 	a.print();
 	
 	a.attack("B");
-	b.takeDamage(8);
+	b.takeDamage( a.getAttackDamage() );
+	b.takeDamage( a.getAttackDamage() );
+	b.takeDamage( a.getAttackDamage() );
+	b.takeDamage( a.getAttackDamage() );
+	b.takeDamage( a.getAttackDamage() );
 	b.beRepaired(10);
 	b.print();
+	
+	a.guardGate();
 
 	return 0;
 }
