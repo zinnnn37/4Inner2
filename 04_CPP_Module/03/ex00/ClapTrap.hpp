@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/27 12:30:34 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/27 15:53:02 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 class	ClapTrap
 {
 	private:
-		std::string	_name;
-		int			_hit;
-		int			_energy;
-		int			_damage;
+		std::string		_name;
+		int				_hit;
+		unsigned int	_energy;
+		unsigned int	_damage;
 
 	
 	public:
