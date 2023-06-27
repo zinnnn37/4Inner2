@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/27 06:22:56 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/27 12:30:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 #include <string>
 
 #define WHITE "\033[0;37m"
+#define BLUE "\033[0;34m"
 #define CYAN "\033[0;36m"
 #define GREEN "\033[0;32m"
+#define RED "\033[0;31m"
 
 class	ClapTrap
 {
@@ -28,7 +30,6 @@ class	ClapTrap
 		int			_energy;
 		int			_damage;
 
-		void		_print();
 	
 	public:
 		ClapTrap();
@@ -36,11 +37,12 @@ class	ClapTrap
 		ClapTrap( const ClapTrap& ct );
 		~ClapTrap();
 
-		// ClapTrap&	operator=( const ClapTrap& ct );
+		ClapTrap&	operator=( const ClapTrap& ct );
 		
-		// void	attack( const std::string& target );
-		// void	takeDamage( unsigned int amount );
-		// void	beRepaired( unsigned int amoutn );
+		void	attack( const std::string& target );
+		void	takeDamage( unsigned int amount );
+		void	beRepaired( unsigned int amoutn );
+		void	print();
 };
 
 #endif
