@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/27 14:52:02 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/28 15:49:44 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,4 +130,9 @@ void	ClapTrap::print()
 	std::cout << "ATTACK DAMAGE\t: " << this->_damage << std::endl << std::endl;
 	std::cout << "==========================================================" << std::endl << std::endl;
 	std::cout << WHITE"----------------------------------------------------------" << std::endl << std::endl;
+}
+
+std::string	ClapTrap::getName() const
+{
+	return (this->_name);
 }

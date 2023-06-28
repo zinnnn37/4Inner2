@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/28 14:01:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/28 15:30:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ class	ClapTrap
 		void	takeDamage( unsigned int amount );
 		void	beRepaired( unsigned int amoutn );
 		void	print();
+
+		std::string	getName() const;
 };
 
 #endif

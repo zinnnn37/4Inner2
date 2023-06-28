@@ -6,12 +6,12 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:23 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/28 14:03:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/28 16:49:19 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int	main( void )
 {
@@ -20,29 +20,10 @@ int	main( void )
 	std::cout << "==========================================================" << std::endl << std::endl;
 	std::cout << WHITE"----------------------------------------------------------" << std::endl << std::endl;
 
-	FragTrap	a("A");
-	FragTrap	b("B");
+	DiamondTrap	a( "A" );
 
-	a.attack("B");
-	b.takeDamage( a.getAttackDamage() );
-	b.beRepaired(10);
-	b.print();
-
-	b.attack("A");
-	a.takeDamage( a.getAttackDamage() );
-	a.beRepaired(15);
-	a.print();
-	
-	a.attack("B");
-	b.takeDamage( a.getAttackDamage() );
-	b.takeDamage( a.getAttackDamage() );
-	b.takeDamage( a.getAttackDamage() );
-	b.takeDamage( a.getAttackDamage() );
-	b.takeDamage( a.getAttackDamage() );
-	b.beRepaired(10);
-	b.print();
-	
-	a.highFivesGuys();
+	a.whoAmI();
 
 	return 0;
 }
+// virtual 상속 사용하면 문제 해결된다고 함
