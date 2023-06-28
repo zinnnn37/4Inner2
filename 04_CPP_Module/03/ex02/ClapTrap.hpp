@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/27 16:00:17 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/28 13:56:19 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #define CYAN "\033[0;36m"
 #define GREEN "\033[0;32m"
 #define RED "\033[0;31m"
+#define YELLOW "\033[0;33m"
 
 class	ClapTrap
 {

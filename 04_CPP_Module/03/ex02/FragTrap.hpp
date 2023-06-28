@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 12:17:50 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/28 12:21:08 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/28 13:53:55 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ class	FragTrap : public ClapTrap
 
 		FragTrap&	operator=( const FragTrap& ft );
 
-		void	highFivesGuys( void );
-}
+		void			highFivesGuys( void );
+		unsigned int	getAttackDamage() const;
+};
 
 #endif

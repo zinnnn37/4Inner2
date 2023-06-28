@@ -6,11 +6,11 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 21:48:33 by minjinki          #+#    #+#              #
-#    Updated: 2023/06/28 12:47:33 by minjinki         ###   ########.fr        #
+#    Updated: 2023/06/28 13:55:26 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	ClapTrap
+NAME		=	FragTrap
 
 SRC_FILES	=	main\
 				ClapTrap\
