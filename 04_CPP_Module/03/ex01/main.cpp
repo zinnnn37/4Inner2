@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:23 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/27 15:58:41 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/28 13:51:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	main( void )
 {
-	std::cout << CYAN"==========================================================" << std::endl << std::endl;
-	std::cout << "                         CLAPTRAP                        " << std::endl << std::endl;
+	std::cout << YELLOW"==========================================================" << std::endl << std::endl;
+	std::cout << "                         SCAVTRAP                        " << std::endl << std::endl;
 	std::cout << "==========================================================" << std::endl << std::endl;
 	std::cout << WHITE"----------------------------------------------------------" << std::endl << std::endl;
 

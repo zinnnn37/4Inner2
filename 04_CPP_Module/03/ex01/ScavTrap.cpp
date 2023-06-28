@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 12:39:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/27 15:58:09 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/28 13:44:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ScavTrap::ScavTrap()
 {
-	std::cout << CYAN"[ Default Constructor ]" << std::endl;
+	std::cout << YELLOW"[ Default Constructor ]" << std::endl;
 	std::cout << WHITE"ScavTrap < default > has been created" << std::endl << std::endl;
 	std::cout << "----------------------------------------------------------" << std::endl << std::endl;
 
@@ -26,7 +26,7 @@ ScavTrap::ScavTrap()
 
 ScavTrap::ScavTrap( const std::string name )
 {
-	std::cout << CYAN"[ Constructor ]" << std::endl;
+	std::cout << YELLOW"[ Constructor ]" << std::endl;
 	std::cout << WHITE"ScavTrap < " << name << " > has been created" << std::endl << std::endl;
 	std::cout << "----------------------------------------------------------" << std::endl << std::endl;
 
@@ -38,7 +38,7 @@ ScavTrap::ScavTrap( const std::string name )
 
 ScavTrap::ScavTrap( const ScavTrap& ct )
 {
-	std::cout << CYAN"[ Copy Constructor ]" << std::endl;
+	std::cout << YELLOW"[ Copy Constructor ]" << std::endl;
 	std::cout << WHITE"ScavTrap < " << ct._name << " > has been copied" << std::endl << std::endl;
 	std::cout << "----------------------------------------------------------" << std::endl << std::endl;
 
@@ -47,7 +47,7 @@ ScavTrap::ScavTrap( const ScavTrap& ct )
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << CYAN"[ Destructor ]" << std::endl;
+	std::cout << YELLOW"[ Destructor ]" << std::endl;
 	std::cout << WHITE"ScavTrap < " << this->_name << " > has gone" << std::endl << std::endl;
 	std::cout << "----------------------------------------------------------" << std::endl << std::endl;
 }
@@ -67,7 +67,7 @@ ScavTrap&	ScavTrap::operator=( const ScavTrap& ct )
 
 void	ScavTrap::guardGate()
 {
-	std::cout << CYAN"[ Guarding ]" << std::endl;
+	std::cout << YELLOW"[ Guarding ]" << std::endl;
 
 	std::cout << WHITE"ScavTrap < " << this->_name << " > is in Gate keeper mode" << std::endl << std::endl;
 	std::cout << "----------------------------------------------------------" << std::endl << std::endl;
