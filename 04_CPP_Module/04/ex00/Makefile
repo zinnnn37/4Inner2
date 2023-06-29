@@ -6,11 +6,11 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 21:48:33 by minjinki          #+#    #+#              #
-#    Updated: 2023/06/29 14:24:12 by minjinki         ###   ########.fr        #
+#    Updated: 2023/06/29 14:31:00 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	ClapTrap
+NAME		=	Animal
 
 SRC_FILES	=	main\
 				Animal\

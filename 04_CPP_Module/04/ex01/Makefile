@@ -6,16 +6,17 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 21:48:33 by minjinki          #+#    #+#              #
-#    Updated: 2023/06/29 14:28:36 by minjinki         ###   ########.fr        #
+#    Updated: 2023/06/29 14:31:43 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	ClapTrap
 
 SRC_FILES	=	main\
-				AMateria\
-				ICharacter\
-				IMateriaSource
+				Animal\
+				Cat\
+				Dog\
+				Brain
 
 SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 
