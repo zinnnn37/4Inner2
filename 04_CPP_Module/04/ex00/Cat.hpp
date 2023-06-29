@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:25:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/29 14:25:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/06/29 17:26:05 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 #include "Animal.hpp"
 
-class	Cat
+class	Cat : public Animal
 {
-
+	public:
+		void	makeSound();
 };
 
 #endif
