@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 18:52:05 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/30 11:43:31 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/04 14:05:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ Zombie::Zombie( std::string name )
 
 Zombie::~Zombie( void )
 {
-	std::cout << "<" << this->_name << "> is dead" << std::endl;
+	std::cout << this->_name << ": is dead" << std::endl;
 }
 
 void Zombie::announce( void )
 {
-	std::cout << "<" << this->_name << "> BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
