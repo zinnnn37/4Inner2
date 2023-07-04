@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 14:27:27 by MJKim             #+#    #+#              #
-#    Updated: 2023/07/04 14:30:46 by minjinki         ###   ########.fr        #
+#    Updated: 2023/07/04 14:35:13 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 OBJS		=	$(SRCS:%.cpp=%.o)
 
 CC			=	c++
-CCFLAGS		=	-Wall -Wextra -Werror
+CCFLAGS		=	-Wall -Wextra -Werror -std=c++98
 RM			=	rm -f
 
 all			:	$(NAME)
