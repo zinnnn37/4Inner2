@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:47:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/26 12:57:17 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/04 14:33:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int ac, char **av)
 	int				len1;
 	int				len2;
 	
+	std::string		file;
 	std::string		s1;
 	std::string		s2;
 	std::string		output;
@@ -33,15 +34,18 @@ int	main(int ac, char **av)
 		std::cout << "Usage: ./replace filename s1 s2" << std::endl;
 		return (1);
 	}
+
+	file = av[1];
+	s1 = av[2];
+	s2 = av[3];
 	
-	if (av[1][0] == '\0' || av[2][0] == '\0' || av[3][0] == '\0')
+	if (file.size() == 0)
 	{
 		std::cout << "Empty arguments" << std::endl;
 		return (1);
 	}
-	
-	s1 = av[2];
-	s2 = av[3];
+	if (s1.size() == 0)
+		return (0);
 	
 	ifs.open(av[1]);
 	if (ifs.fail())
