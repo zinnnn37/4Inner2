@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 13:36:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/23 16:12:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/04 14:39:42 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,13 @@ void	Harl::complain( std::string level )
 	{
 		case 0:
 			(this->*f[pos++])();
+			// INTENTIONAL FALL-THRU
 		case 1:
 			(this->*f[pos++])();
+			// INTENTIONAL FALL-THRU
 		case 2:
 			(this->*f[pos++])();
+			// INTENTIONAL FALL-THRU
 		case 3:
 			(this->*f[pos])();
 			break ;
