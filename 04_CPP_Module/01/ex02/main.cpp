@@ -6,12 +6,9 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:21:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/05 11:39:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/05 18:20:12 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <iostream>
-#include <string>
 
 int	main( void )
 {
