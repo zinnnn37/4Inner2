@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+         #
+#    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 14:27:27 by MJKim             #+#    #+#              #
-#    Updated: 2023/07/04 14:35:13 by minjinki         ###   ########.fr        #
+#    Updated: 2023/07/05 18:53:45 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	replace
 
-SRC_FILES	=	main
+SRC_FILES	=	main\
+				Replace
 
 SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 

@@ -6,17 +6,14 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:47:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/05 11:46:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/05 18:56:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <fstream>
-#include <string>
+#include "Replace.hpp"
 
 int	main(int ac, char **av)
 {
-	int				pos;
 	int				len1;
 	int				len2;
 	
@@ -24,7 +21,6 @@ int	main(int ac, char **av)
 	std::string		s1;
 	std::string		s2;
 	std::string		output;
-	std::string		line;
 	
 	std::ifstream	ifs;
 	std::ofstream	ofs;
@@ -65,27 +61,8 @@ int	main(int ac, char **av)
 		std::cout << "Fail to open file.replace" << std::endl;
 		return (1);
 	}
-	
-	while (std::getline(ifs, line))
-	{
-		pos = 0;
-		while (true) {
-			pos = line.find(s1, pos);
 
-			if (pos > -1) {
-				line.erase(pos, len1);
-				line.insert(pos, s2);
-				pos += len2;
-			}
-			else
-				break ;
-		}
-
-		ofs << line << std::endl;
-	}
-
-	ifs.close();
-	ofs.close();
+	replace( ifs, ofs, s1, s2 );
 
 	return (0);
 }
