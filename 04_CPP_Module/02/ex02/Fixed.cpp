@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:44:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/26 19:14:01 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/05 16:37:06 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ Fixed	Fixed::operator*( const Fixed& fixed )
 
 Fixed	Fixed::operator/( const Fixed& fixed )
 {
+	// try-catch
 	Fixed	res( this->toFloat() / fixed.toFloat() );
 
 	return res;
