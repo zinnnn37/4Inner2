@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:44:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/05 16:37:06 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/05 18:05:11 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,18 @@ Fixed	Fixed::operator*( const Fixed& fixed )
 
 Fixed	Fixed::operator/( const Fixed& fixed )
 {
-	// try-catch
-	Fixed	res( this->toFloat() / fixed.toFloat() );
+	try
+	{
+		if (fixed.toFloat() == 0)
+			throw "Division by Zero.";
+	}
+	catch(const char* str)
+	{
+		std::cout << str << std::endl;
+		std::exit(1);
+	}
+	
+	Fixed	res( this->toFloat() / fixed.toFloat() );	
 
 	return res;
 }
@@ -116,7 +126,7 @@ Fixed&	Fixed::operator++( void )
 	return *this;
 }
 
-Fixed	Fixed::operator++( int )
+Fixed	Fixed::operator++( int ) // const?
 {
 	int		tmp;
 	Fixed	res(*this);
