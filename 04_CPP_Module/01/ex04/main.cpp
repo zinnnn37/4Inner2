@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:47:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/04 14:33:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/05 11:46:21 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,15 @@ int	main(int ac, char **av)
 	s1 = av[2];
 	s2 = av[3];
 	
+	len1 = s1.size();
+	len2 = s2.size();
+	
 	if (file.size() == 0)
 	{
 		std::cout << "Empty arguments" << std::endl;
 		return (1);
 	}
-	if (s1.size() == 0)
+	if (len1 == 0)
 		return (0);
 	
 	ifs.open(av[1]);
@@ -63,8 +66,6 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	
-	len1 = s1.size();
-	len2 = s2.size();
 	while (std::getline(ifs, line))
 	{
 		pos = 0;
