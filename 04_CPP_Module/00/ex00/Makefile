@@ -3,38 +3,38 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+         #
+#    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 14:27:27 by MJKim             #+#    #+#              #
-#    Updated: 2023/05/24 19:56:49 by minjinki         ###   ########.fr        #
+#    Updated: 2023/07/06 13:36:45 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	megaphone
+NAME		=	megaphone
 
-SRCS	=	megaphone.cpp
-OBJS	=	$(SRCS:%.cpp=%.o)
+SRCS		=	megaphone.cpp
+OBJS		=	$(SRCS:%.cpp=%.o)
 
-CC		=	c++
-CCFLAGS	=	-Wall -Wextra -Werror -std=c++98
-RM		=	rm -f
+CXX			=	c++
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
+RM			=	rm -f
 
-all		:	$(NAME)
+all			:	$(NAME)
 
-%.o		:	%.cpp
-	$(CC) $(CCFLAGS) -c $< -o $@
+%.o			:	%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(NAME)	:	$(OBJS)
-	$(CC) $(CCFLAGS) $(OBJS) -o $(NAME)
+$(NAME)		:	$(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-clean	:
+clean		:
 	$(RM) $(OBJS)
 
-fclean	:	clean
+fclean		:	clean
 	$(RM) $(NAME)
 
-re		:
+re			:
 	$(MAKE) fclean
 	$(MAKE) all
 
-.PHONY	:	all clean fclean re
+.PHONY		:	all clean fclean re
