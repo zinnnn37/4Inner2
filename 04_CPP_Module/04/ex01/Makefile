@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 21:48:33 by minjinki          #+#    #+#              #
-#    Updated: 2023/07/06 14:43:12 by minjinki         ###   ########.fr        #
+#    Updated: 2023/07/06 14:49:53 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME		=	Animal
 SRC_FILES	=	main\
 				Animal\
 				Cat\
-				Dog
+				Dog\
+				Brain
 
 SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 
