@@ -3,43 +3,43 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+         #
+#    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 14:27:27 by MJKim             #+#    #+#              #
-#    Updated: 2023/07/04 14:07:17 by minjinki         ###   ########.fr        #
+#    Updated: 2023/07/06 13:38:36 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	Zombie
+NAME		=	Zombie
 
-SRCS	=	main.cpp\
-			Zombie.cpp\
-			newZombie.cpp\
-			randomChump.cpp
+SRCS		=	main.cpp\
+				Zombie.cpp\
+				newZombie.cpp\
+				randomChump.cpp
 
-OBJS	=	$(SRCS:%.cpp=%.o)
+OBJS		=	$(SRCS:%.cpp=%.o)
 
-CC		=	c++
+CXX			=	c++
 
-CCFLAGS	=	-Wall -Wextra -Werror -std=c++98 -pedantic
-RM		=	rm -f
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98 -pedantic
+RM			=	rm -f
 
-all		:	$(NAME)
+all			:	$(NAME)
 
-%.o		:	%.cpp
-	$(CC) $(CCFLAGS) -c $< -o $@
+%.o			:	%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(NAME)	:	$(OBJS)
-	$(CC) $(CCFLAGS) $(OBJS) -o $(NAME)
+$(NAME)		:	$(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-clean	:
+clean		:
 	$(RM) $(OBJS)
 
-fclean	:	clean
+fclean		:	clean
 	$(RM) $(NAME)
 
-re		:
+re			:
 	$(MAKE) fclean
 	$(MAKE) all
 
-.PHONY	:	all clean fclean re
+.PHONY		:	all clean fclean re
