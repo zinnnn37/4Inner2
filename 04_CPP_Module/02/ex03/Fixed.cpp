@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:44:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/26 19:14:01 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/06 12:41:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ Fixed&	Fixed::operator++( void )
 	return *this;
 }
 
-Fixed	Fixed::operator++( int )
+const Fixed	Fixed::operator++( int )
 {
 	int		tmp;
 	Fixed	res(*this);
@@ -136,7 +136,7 @@ Fixed&	Fixed::operator--( void )
 	return *this;
 }
 
-Fixed	Fixed::operator--( int )
+const Fixed	Fixed::operator--( int )
 {
 	int		tmp;
 	Fixed	res(*this);

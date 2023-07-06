@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 18:51:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/26 19:17:42 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/06 12:46:01 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ class	Fixed
 		Fixed	operator*( const Fixed& fixed );
 		Fixed	operator/( const Fixed& fixed );
 
-		Fixed&	operator++( void );	// 전위연산자
-		Fixed	operator++( int );	// 후위연산자
-		Fixed&	operator--( void );
-		Fixed	operator--( int );
+		Fixed&		operator++( void );		// 전위연산자
+		const Fixed	operator++( int );	// 후위연산자
+		Fixed&		operator--( void );
+		const Fixed	operator--( int );
 		
 		int		getRawBits( void ) const;
 		void	setRawBits( int const raw );
