@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:26:36 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/07 16:00:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/07 16:37:28 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ Dog::~Dog()
 
 Dog&	Dog::operator=( const Dog& dog )
 {
-	this->type = dog.type;
+	if (this != &dog)
+		this->type = dog.type;
 	return (*this);
 }
 
