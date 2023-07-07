@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:24:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/06 14:40:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/07 16:19:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 #include <iostream>
 #include <string>
+
+#define WHITE "\033[0;37m"
+#define RED "\033[0;31m"
+#define CYAN "\033[0;36m"
 
 class	Animal
 {

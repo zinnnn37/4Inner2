@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:25:56 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/07 15:45:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/07 16:21:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 Cat::Cat()
 	: Animal()
 {
+	std::cout << WHITE"[ 🐱::Constructor ]" << std::endl;
+
 	this->brain = new Brain();
 
 	this->type = "Cat";
@@ -27,6 +29,8 @@ Cat::Cat( const Cat& cat )
 
 Cat::~Cat()
 {
+	std::cout << WHITE"[ 🐱::Destructor ]" << std::endl;
+
 	delete this->brain;
 }
 
@@ -38,7 +42,7 @@ Cat&	Cat::operator=( const Cat& cat )
 
 void	Cat::makeSound() const
 {
-	std::cout << "Meow 🐱" << std::endl;
+	std::cout << WHITE"Meow 🐱" << std::endl;
 }
 
 Brain*	Cat::getbrain() const

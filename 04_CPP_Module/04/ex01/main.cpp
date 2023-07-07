@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:24:19 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/07 15:48:09 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/07 16:21:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,29 @@ void	test()
 
 void	test1()
 {
+	std::cout << CYAN"----------------------------------------" << std::endl;
+	std::cout << "\t\ttest_one" << std::endl;
+	std::cout << "----------------------------------------" << std::endl;
 	Cat	*cat = new Cat();
 	
-	cat->getbrain()->setIdea("Idea 1");
+	cat->getbrain()->setIdea(WHITE"Idea 1");
 	cat->getbrain()->setIdea("Idea 2");
 	cat->getbrain()->setIdea("Idea 3");
 	std::cout << cat->getbrain()->getIdea(0) << std::endl;
 	std::cout << cat->getbrain()->getIdea(1) << std::endl;
-	std::cout << cat->getbrain()->getIdea(2) << std::endl;
+	std::cout << cat->getbrain()->getIdea(20) << std::endl;
 
 	delete cat;
+
+	std::cout << std::endl;
 }
 
 void	test_sub()
 {
+	std::cout << CYAN"----------------------------------------" << std::endl;
+	std::cout << "\t\ttest_sub" << std::endl;
+	std::cout << "----------------------------------------" << std::endl;
+
 	const Animal* i = new Cat();
 	const Animal* j = new Dog();
 
@@ -57,11 +66,13 @@ void	test_sub()
 
 	delete i;
 	delete j;
+
+	std::cout << std::endl;
 }
 
 int main()
 {
-	//test_sub();
+	test_sub();
 	test1();
 	//test();
 	

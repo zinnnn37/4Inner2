@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 14:43:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/07 15:48:25 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/07 16:21:16 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 Brain::Brain()
 	: len(0)
 {
+	std::cout << WHITE"[ 🧠::Constructor ]" << std::endl;
 }
 
 Brain::Brain( const Brain& brain )
@@ -24,6 +25,7 @@ Brain::Brain( const Brain& brain )
 
 Brain::~Brain()
 {
+	std::cout << WHITE"[ 🧠::Destructor ]" << std::endl;
 }
 
 Brain&	Brain::operator=( const Brain& brain )
@@ -38,11 +40,10 @@ Brain&	Brain::operator=( const Brain& brain )
 
 std::string	Brain::getIdea( int idx ) const
 {
+	std::cout << WHITE"getIdea: ";
+
 	if ( idx < 0 || idx >= this->len )
-	{
-		std::cout << "Index out of range!" << std::endl;
-		return (NULL);
-	}
+		return (RED"💥 Index out of range! 💥");
 	
 	return (this->ideas[idx]);
 }
@@ -51,7 +52,7 @@ void	Brain::setIdea( std::string idea )
 {
 	if ( this->len >= 100 )
 	{
-		std::cout << "Out of storage!" << std::endl;
+		std::cout << RED"Out of storage!" << std::endl;
 		return ;
 	}
 

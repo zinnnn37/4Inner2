@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:26:36 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/06 14:46:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/07 16:21:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 Dog::Dog()
 	: Animal()
 {
+	std::cout << WHITE"[ 🐶::Constructor ]" << std::endl;
+
 	this->brain = new Brain();
 
 	this->type = "Dog";
@@ -27,6 +29,8 @@ Dog::Dog( const Dog& dog )
 
 Dog::~Dog()
 {
+	std::cout << WHITE"[ 🐶::Destructor ]" << std::endl;
+
 	delete this->brain;
 }
 
@@ -38,5 +42,5 @@ Dog&	Dog::operator=( const Dog& dog )
 
 void	Dog::makeSound() const
 {
-	std::cout << "Woof 🐶" << std::endl;
+	std::cout << WHITE"Woof 🐶" << std::endl;
 }
