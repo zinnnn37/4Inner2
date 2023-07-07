@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:24:19 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/07 12:02:42 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:11:55 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main()
 	
 	std::cout << i->getType() << " " << std::endl;
 	std::cout << j->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
+	i->makeSound();
 	j->makeSound();
 	meta->makeSound();
 
