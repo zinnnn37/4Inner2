@@ -6,15 +6,21 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:24:19 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/07 16:21:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/07 16:57:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
 
-void	test()
+#include <iomanip>
+
+void	test2()
 {
+	std::cout << CYAN"----------------------------------------" << std::endl;
+	std::cout << "\t\ttest_two" << std::endl;
+	std::cout << "----------------------------------------" << std::endl;
+
 	Animal *ani[100];
 
 	for ( int i = 0; i < 100; i++ )
@@ -23,6 +29,12 @@ void	test()
 			ani[i] = new Cat();
 		else
 			ani[i] = new Dog();
+	}
+
+	for ( int i = 0; i < 100; i++ )
+	{
+		std::cout << WHITE << std::setw(3) << i+1 << ": ";
+		ani[i]->makeSound();
 	}
 
 	for ( int i = 0; i < 100; i++ )
@@ -36,6 +48,7 @@ void	test1()
 	std::cout << CYAN"----------------------------------------" << std::endl;
 	std::cout << "\t\ttest_one" << std::endl;
 	std::cout << "----------------------------------------" << std::endl;
+
 	Cat	*cat = new Cat();
 	
 	cat->getbrain()->setIdea(WHITE"Idea 1");
@@ -74,7 +87,7 @@ int main()
 {
 	test_sub();
 	test1();
-	//test();
+	test2();
 	
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 14:43:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/07 16:43:12 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/07 16:53:57 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 Brain::Brain()
 	: len(0)
 {
-	std::cout << WHITE"[ 🧠::Constructor ]" << std::endl;
 }
 
 Brain::Brain( const Brain& brain )
@@ -25,7 +24,6 @@ Brain::Brain( const Brain& brain )
 
 Brain::~Brain()
 {
-	std::cout << WHITE"[ 🧠::Destructor ]" << std::endl;
 }
 
 Brain&	Brain::operator=( const Brain& brain )
