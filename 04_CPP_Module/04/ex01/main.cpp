@@ -6,14 +6,14 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:24:19 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/07 16:57:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/07 17:00:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iomanip>
+
 #include "Cat.hpp"
 #include "Dog.hpp"
-
-#include <iomanip>
 
 void	test2()
 {
