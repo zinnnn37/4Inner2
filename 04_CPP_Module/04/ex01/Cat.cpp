@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:25:56 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/07 16:21:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/07 16:43:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ Cat::~Cat()
 
 Cat&	Cat::operator=( const Cat& cat )
 {
-	this->type = cat.type;
+	if (this != &cat)
+		this->type = cat.type;
 	return (*this);
 }
 

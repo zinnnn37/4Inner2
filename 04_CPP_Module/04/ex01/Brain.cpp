@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 14:43:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/07 16:21:16 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/07 16:43:12 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ Brain::~Brain()
 
 Brain&	Brain::operator=( const Brain& brain )
 {
-	this->len = brain.len;
-	
-	for (int i = 0; i < 100; i++)
-		this->ideas[i] = brain.ideas[i];
-
+	if (this != &brain)
+	{
+		this->len = brain.len;
+		for (int i = 0; i < 100; i++)
+			this->ideas[i] = brain.ideas[i];
+	}
 	return (*this);
 }
 
