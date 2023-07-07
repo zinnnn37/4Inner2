@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 14:43:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/07 13:57:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/07 15:48:25 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ std::string	Brain::getIdea( int idx ) const
 	if ( idx < 0 || idx >= this->len )
 	{
 		std::cout << "Index out of range!" << std::endl;
-		return ;
+		return (NULL);
 	}
 	
 	return (this->ideas[idx]);
@@ -54,7 +54,7 @@ void	Brain::setIdea( std::string idea )
 		std::cout << "Out of storage!" << std::endl;
 		return ;
 	}
-	
+
 	this->ideas[this->len] = idea;
 	this->len++;
 }

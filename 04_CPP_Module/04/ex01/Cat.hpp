@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:25:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/06 14:47:25 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/07 15:45:25 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,18 @@
 class	Cat : public Animal
 {
 	private:
-		Brain*	brain;
+		Brain	*brain;
 
 	public:
 		Cat();
 		Cat( const Cat& cat );
 		~Cat();
 
-		Cat&	operator=( const Cat& cat );
+		Cat		&operator=( const Cat& cat );
 
 		void	makeSound() const;
+
+		Brain	*getbrain() const;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:25:56 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/06 14:45:48 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/07 15:45:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,9 @@ Cat&	Cat::operator=( const Cat& cat )
 void	Cat::makeSound() const
 {
 	std::cout << "Meow 🐱" << std::endl;
+}
+
+Brain*	Cat::getbrain() const
+{
+	return ( this->brain );
 }

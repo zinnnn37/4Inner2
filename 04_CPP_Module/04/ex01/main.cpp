@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:24:19 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/07 12:55:17 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/07 15:48:09 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,25 @@ void	test()
 	}
 }
 
+void	test1()
+{
+	Cat	*cat = new Cat();
+	
+	cat->getbrain()->setIdea("Idea 1");
+	cat->getbrain()->setIdea("Idea 2");
+	cat->getbrain()->setIdea("Idea 3");
+	std::cout << cat->getbrain()->getIdea(0) << std::endl;
+	std::cout << cat->getbrain()->getIdea(1) << std::endl;
+	std::cout << cat->getbrain()->getIdea(2) << std::endl;
+
+	delete cat;
+}
+
 void	test_sub()
 {
 	const Animal* i = new Cat();
 	const Animal* j = new Dog();
-	
+
 	std::cout << i->getType() << std::endl;
 	i->makeSound();
 	std::cout << j->getType() << std::endl;
@@ -47,8 +61,9 @@ void	test_sub()
 
 int main()
 {
-	test_sub();
-	test();
+	//test_sub();
+	test1();
+	//test();
 	
 	return 0;
 }
