@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:44:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/09 20:47:26 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/09 20:53:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Fixed::Fixed( float fixed )
 {
 	std::cout << "Float constructor called" << std::endl;
 
-	this->setRawBits( static_cast<int>(std::roundf(fixed * (1 << this->_bit))) );
+	this->setRawBits( static_cast<int>(roundf(fixed * (1 << this->_bit))) );
 }
 
 Fixed::Fixed( const Fixed& fixed )
