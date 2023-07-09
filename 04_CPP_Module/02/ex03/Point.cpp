@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:17:11 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/09 21:39:35 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/09 21:57:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ Point::Point( const float x, const float y )
 
 Point::Point( const Point& point )
 {
-	*this = point;
-	// change to deepcopy
+	if (this != &point)
+		*this = point;
 }
 
 Point::~Point()
@@ -33,7 +33,7 @@ Point::~Point()
 }
 
 Point&	Point::operator=( const Point& point )
-{
+{// const 속성을 잠시 없애주는 const_cast, 포인터간 사용 가능
 	Fixed	*px	= const_cast<Fixed *>(&(this->_x));
 	Fixed	*py	= const_cast<Fixed *>(&(this->_y));
 	
