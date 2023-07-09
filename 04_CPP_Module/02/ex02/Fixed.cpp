@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:44:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/09 20:55:36 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/09 21:29:45 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Fixed::Fixed( float fixed )
 
 Fixed::Fixed( const Fixed& fixed )
 {
-	*this = fixed;
+	this->_fixed = fixed.getRawBits();
 }
 
 Fixed::~Fixed( void )
@@ -40,10 +40,9 @@ Fixed::~Fixed( void )
 // overloading
 Fixed&	Fixed::operator=( const Fixed& fixed )
 {
-	if (this == &fixed)
-		return (*this);
+	if (this != &fixed)
+		this->setRawBits( fixed.getRawBits() );
 	
-	this->setRawBits( fixed.getRawBits() );
 	return (*this);
 }
 
@@ -100,17 +99,6 @@ Fixed	Fixed::operator*( const Fixed& fixed )
 
 Fixed	Fixed::operator/( const Fixed& fixed )
 {
-	try
-	{
-		if (fixed.toFloat() == 0)
-			throw "Division by Zero.";
-	}
-	catch(const char* str)
-	{
-		std::cout << str << std::endl;
-		std::exit(1);
-	}
-	
 	Fixed	res( this->toFloat() / fixed.toFloat() );	
 
 	return res;
@@ -180,22 +168,22 @@ float	Fixed::toFloat( void ) const
 	return (static_cast<float>(this->getRawBits()) / (1 << this->_bit));
 }
 
-Fixed	Fixed::min( Fixed &f1, Fixed &f2 )
+Fixed&	Fixed::min( Fixed &f1, Fixed &f2 )
 {
 	return ( f1 < f2 ? f1 : f2 );
 }
 
-const Fixed	Fixed::min( const Fixed &f1, const Fixed &f2 )
+const Fixed&	Fixed::min( const Fixed &f1, const Fixed &f2 )
 {
 	return ( f1 < f2 ? f1 : f2 );
 }
 
-Fixed	Fixed::max( Fixed &f1, Fixed &f2 )
+Fixed&	Fixed::max( Fixed &f1, Fixed &f2 )
 {
 	return ( f1 > f2 ? f1 : f2 );
 }
 
-const Fixed	Fixed::max( const Fixed &f1, const Fixed &f2 )
+const Fixed&	Fixed::max( const Fixed &f1, const Fixed &f2 )
 {
 	return ( f1 > f2 ? f1 : f2 );
 }

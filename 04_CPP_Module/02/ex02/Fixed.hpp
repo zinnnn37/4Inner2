@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 18:51:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/06 12:45:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/09 21:29:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ class	Fixed
 		float	toFloat( void ) const;
 		int		toInt( void ) const;
 
-		static Fixed		min( Fixed &f1, Fixed &f2 );
-		static const Fixed	min( const Fixed &f1, const Fixed &f2 );
-		static Fixed		max( Fixed &f1, Fixed &f2 );
-		static const Fixed	max( const Fixed &f1, const Fixed &f2 );
+		static Fixed&		min( Fixed &f1, Fixed &f2 );
+		static const Fixed&	min( const Fixed &f1, const Fixed &f2 );
+		static Fixed&		max( Fixed &f1, Fixed &f2 );
+		static const Fixed&	max( const Fixed &f1, const Fixed &f2 );
 		// static 멤버 함수는 객체별로 생성되는 게 아니라 모든 객체가 공유함
 };
 
