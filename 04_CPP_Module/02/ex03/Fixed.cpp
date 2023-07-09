@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:44:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/06 12:41:34 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/09 21:37:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ Fixed::Fixed( int fixed )
 
 Fixed::Fixed( float fixed )
 {
-	this->setRawBits( static_cast<int>(std::roundf(fixed * (1 << this->_bit))) );
+	this->setRawBits( static_cast<int>(roundf(fixed * (1 << this->_bit))) );
 }
 
 Fixed::Fixed( const Fixed& fixed )
 {
-	*this = fixed;
+	this->_fixed = fixed.getRawBits();
 }
 
 Fixed::~Fixed( void )
@@ -40,10 +40,9 @@ Fixed::~Fixed( void )
 // overloading
 Fixed&	Fixed::operator=( const Fixed& fixed )
 {
-	if (this == &fixed)
-		return (*this);
-	
-	this->setRawBits( fixed.getRawBits() );
+	if (this != &fixed)
+		this->setRawBits( fixed.getRawBits() );
+
 	return (*this);
 }
 
