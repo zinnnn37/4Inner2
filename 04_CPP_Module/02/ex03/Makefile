@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
+#    By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/23 16:12:14 by minjinki          #+#    #+#              #
-#    Updated: 2023/06/26 21:28:21 by minjinki         ###   ########.fr        #
+#    Updated: 2023/07/09 20:57:55 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,17 +21,17 @@ SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 
 OBJS		=	$(SRCS:%.cpp=%.o)
 
-CC			=	c++
-CCFLAGS		=	-Wall -Wextra -Werror -std=c++98
+CXX			=	c++
+CXXFLAGS		=	-Wall -Wextra -Werror -std=c++98
 RM			=	rm -f
 
 all			:	$(NAME)
 
 %.o			:	%.cpp
-	$(CC) $(CCFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(NAME)		:	$(OBJS)
-	$(CC) $(CCFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean		:
 	$(RM) $(OBJS)
