@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:44:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/26 18:40:16 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/09 20:47:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ Fixed::Fixed( int fixed )
 Fixed::Fixed( float fixed )
 {
 	std::cout << "Float constructor called" << std::endl;
+
 	this->setRawBits( static_cast<int>(std::roundf(fixed * (1 << this->_bit))) );
 }
 
@@ -34,7 +35,7 @@ Fixed::Fixed( const Fixed& fixed )
 {
 	std::cout << "Copy constructor called" << std::endl;
 	
-	*this = fixed;
+	this->_fixed = fixed.getRawBits();
 }
 
 Fixed::~Fixed( void )
@@ -46,10 +47,9 @@ Fixed&	Fixed::operator=( const Fixed& fixed )
 {
 	std::cout << "Assignment operator called" << std::endl;
 
-	if (this == &fixed)
-		return (*this);
+	if (this != &fixed)
+		this->setRawBits( fixed.getRawBits() );
 	
-	this->setRawBits( fixed.getRawBits() );
 	return (*this);
 }
 
