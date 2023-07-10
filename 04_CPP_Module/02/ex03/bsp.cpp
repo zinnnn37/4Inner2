@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 20:45:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/10 11:10:32 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/10 11:59:01 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 	s2 = get_area(b, c, point);
 	s3 = get_area(a, c, point);
 
-	std::cout << s1 << ", " << s2 << ", " << s3 << ", " << get_area(a, b, c) << std::endl;
-	std::cout << (s1 + s2 + s3) << ", " << get_area(a, b, c) << std::endl;
-	// rm above
+	std::cout << "s1\ts2\ts3\t△ abc" << std::endl;
+	std::cout << s1 << "\t" << s2 << "\t" << s3 << "\t" << get_area(a, b, c) << std::endl;
+	std::cout << "---------------------------------" << std::endl;
+	std::cout << "total area\t△ abc" << std::endl;
+	std::cout << (s1 + s2 + s3) << "\t\t" << get_area(a, b, c) << std::endl << std::endl;
 
 	if (s1 == 0.00000000 || s2 == 0.00000000 || s3 == 0.00000000)
 		return false;
