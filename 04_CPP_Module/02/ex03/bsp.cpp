@@ -6,13 +6,13 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 20:45:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/10 11:59:01 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:40:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-float	abs(Fixed f)
+float	abs(Fixed& f)
 {
 	float	x;
 

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 18:50:46 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/10 12:07:02 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:35:15 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int main( void )
 {
-	std::cout << "------------test1------------" << std::endl;
-
 	Fixed a;
 	Fixed const b( 10 );
 	Fixed const c( 42.42f );
@@ -32,8 +30,6 @@ int main( void )
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-
-	std::cout << 42.421875 << std::endl;
 
 	return (0);
 }

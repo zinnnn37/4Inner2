@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 18:51:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/10 11:59:55 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:21:57 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define FIXED_HPP
 
 #include <iostream>
-#include <cmath>	// roundf
+#include <cmath>
 
 class	Fixed
 {
@@ -39,6 +39,5 @@ class	Fixed
 };
 
 std::ostream&	operator<<( std::ostream &out, const Fixed& fixed );
-// cout은 Fixed 소속이 아니기 때문에 바깥에서 선언해줘야 함
 
 #endif

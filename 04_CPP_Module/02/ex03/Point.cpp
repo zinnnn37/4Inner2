@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:17:11 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/10 11:59:19 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:23:06 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Point::~Point()
 }
 
 Point&	Point::operator=( const Point& point )
-{// const 속성을 잠시 없애주는 const_cast, 포인터간 사용 가능
+{
 	Fixed	*px	= const_cast<Fixed *>(&(this->_x));
 	Fixed	*py	= const_cast<Fixed *>(&(this->_y));
 	
