@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:44:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/09 20:53:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/10 11:33:28 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ Fixed::Fixed( const Fixed& fixed )
 {
 	std::cout << "Copy constructor called" << std::endl;
 	
-	this->_fixed = fixed.getRawBits();
+	if (this != &fixed)
+		*this = fixed;
 }
 
 Fixed::~Fixed( void )

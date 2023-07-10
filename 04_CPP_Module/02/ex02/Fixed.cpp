@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:44:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/09 21:29:45 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/10 11:33:21 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ Fixed::Fixed( float fixed )
 
 Fixed::Fixed( const Fixed& fixed )
 {
-	this->_fixed = fixed.getRawBits();
+	if (this != &fixed)
+		*this = fixed;
 }
 
 Fixed::~Fixed( void )
@@ -99,7 +100,7 @@ Fixed	Fixed::operator*( const Fixed& fixed )
 
 Fixed	Fixed::operator/( const Fixed& fixed )
 {
-	Fixed	res( this->toFloat() / fixed.toFloat() );	
+	Fixed	res( this->toFloat() / fixed.toFloat() );
 
 	return res;
 }
@@ -109,12 +110,12 @@ Fixed&	Fixed::operator++( void )
 	int	tmp;
 
 	tmp = this->getRawBits();
-	this->setRawBits(++tmp);	// ε로부터 증가 || 감소 > rawbit 바로 ++하기?
+	this->setRawBits(++tmp);
 
 	return *this;
 }
 
-const Fixed	Fixed::operator++( int ) // const?
+const Fixed	Fixed::operator++( int )
 {
 	int		tmp;
 	Fixed	res(*this);

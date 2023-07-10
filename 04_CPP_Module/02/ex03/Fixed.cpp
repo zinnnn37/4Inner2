@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:44:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/09 21:37:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/10 11:33:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ Fixed::Fixed( float fixed )
 
 Fixed::Fixed( const Fixed& fixed )
 {
-	this->_fixed = fixed.getRawBits();
+	if (this != &fixed)
+		*this = fixed;
 }
 
 Fixed::~Fixed( void )

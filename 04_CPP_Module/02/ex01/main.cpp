@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 18:50:46 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/09 20:59:59 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/10 11:27:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,6 @@ int main( void )
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-	
-	std::cout << "\n------------test2------------" << std::endl;
-
-	Fixed	*test1 = new Fixed( 20 );
-	Fixed	*test2 = new Fixed(*test1);
-
-	std::cout << "test1 is " << *test1 << std::endl;
-	std::cout << "test2 is " << *test2 << std::endl;
-
-	delete test1;
-
-	std::cout << "test2 is " << *test2 << std::endl;
-
-	delete test2;
 
 	return (0);
 }
