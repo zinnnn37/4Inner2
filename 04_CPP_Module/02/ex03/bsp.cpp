@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 20:45:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/26 21:38:12 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/10 11:10:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 	std::cout << (s1 + s2 + s3) << ", " << get_area(a, b, c) << std::endl;
 	// rm above
 
-	if (s1 <= 0 || s2 <= 0 || s3 <= 0)
+	if (s1 == 0.00000000 || s2 == 0.00000000 || s3 == 0.00000000)
 		return false;
 	
 	if (s1 + s2 + s3 == get_area(a, b, c))
