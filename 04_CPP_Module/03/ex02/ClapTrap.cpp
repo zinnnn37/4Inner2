@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/27 14:52:02 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/11 14:09:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,11 +123,11 @@ void	ClapTrap::beRepaired( unsigned int amount )
 
 void	ClapTrap::print()
 {
-	std::cout << GREEN"========================< STATUS >========================" << std::endl << std::endl;
-	std::cout << "NAME\t\t: " << this->_name << std::endl;
-	std::cout << "HIT POINTS\t: " << this->_hit << std::endl;
-	std::cout << "ENERGY POINTS\t: " << this->_energy << std::endl;
-	std::cout << "ATTACK DAMAGE\t: " << this->_damage << std::endl << std::endl;
+	std::cout << CYAN"========================< STATUS >========================" << std::endl << std::endl;
+	std::cout << "\t\t   NAME\t\t  : " << this->_name << std::endl;
+	std::cout << "\t\t   HIT POINTS     : " << this->_hit << std::endl;
+	std::cout << "\t\t   ENERGY POINTS  : " << this->_energy << std::endl;
+	std::cout << "\t\t   ATTACK DAMAGE  : " << this->_damage << std::endl << std::endl;
 	std::cout << "==========================================================" << std::endl << std::endl;
 	std::cout << WHITE"----------------------------------------------------------" << std::endl << std::endl;
 }
