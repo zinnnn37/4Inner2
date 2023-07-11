@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:03:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 16:21:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/11 17:29:06 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ DiamondTrap::DiamondTrap()
 DiamondTrap::DiamondTrap( const std::string name )
 {
 	std::cout << PURPLE"[ Default Constructor ]" << std::endl;
-	std::cout << WHITE"DiamondTrap < " << name << " > has been created" << std::endl << std::endl;
-	std::cout << "----------------------------------------------------------" << std::endl << std::endl;
+	std::cout << WHITE"DiamondTrap < " << name << " > has been created\n\n";
+	std::cout << "----------------------------------------------------------\n" << std::endl;
 
 	this->_name = ClapTrap::_name.append(name);
 	this->_hit = FragTrap::_hit;
@@ -33,6 +33,9 @@ DiamondTrap::DiamondTrap( const DiamondTrap& dt )
 
 DiamondTrap::~DiamondTrap()
 {
+	std::cout << PURPLE"[ Destructor ]" << std::endl;
+	std::cout << WHITE"DiamondTrap < " << _name << " > has gone\n\n";
+	std::cout << "----------------------------------------------------------\n" << std::endl;
 }
 
 DiamondTrap&	DiamondTrap::operator=( const DiamondTrap& dt )
@@ -54,5 +57,5 @@ void	DiamondTrap::whoAmI()
 	
 	std::cout << WHITE"DiamondTrap < " << this->_name << " > is ClapTrap < ";
 	std::cout << ClapTrap::getName() << " >\n\n";
-	std::cout << "----------------------------------------------------------" << std::endl << std::endl;
+	std::cout << "----------------------------------------------------------\n" << std::endl;
 }
