@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/30 16:05:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/11 16:17:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class	ClapTrap
 		ClapTrap();
 		ClapTrap( const std::string& name );
 		ClapTrap( const ClapTrap& ct );
-		~ClapTrap();
+		virtual ~ClapTrap();
 
 		ClapTrap&	operator=( const ClapTrap& ct );
 		

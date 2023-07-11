@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:03:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/06 13:52:16 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/11 16:21:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,24 @@ DiamondTrap::~DiamondTrap()
 {
 }
 
-DiamondTrap&	operator=( const DiamondTrap& dt )
+DiamondTrap&	DiamondTrap::operator=( const DiamondTrap& dt )
 {
 	if (this == &dt)
-		return this;
+		return *this;
 
 	this->_name = dt._name;
 	this->_hit = dt._hit;
 	this->_energy = dt._energy;
 	this->_damage = dt._damage;
 
-	return this;
+	return *this;
 }
 
 void	DiamondTrap::whoAmI()
 {
 	std::cout << PURPLE"[ Who Am I ]" << std::endl;
 	
-	std::cout << WHITE"DiamondTrap < " << this->_name << "> is ClapTrap < ";
-	std::cout << ClapTrap::getName() << " >" << std::endl;
+	std::cout << WHITE"DiamondTrap < " << this->_name << " > is ClapTrap < ";
+	std::cout << ClapTrap::getName() << " >\n\n";
+	std::cout << "----------------------------------------------------------" << std::endl << std::endl;
 }
