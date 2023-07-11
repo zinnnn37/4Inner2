@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:03:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/28 16:34:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/06 13:52:16 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void	DiamondTrap::whoAmI()
 {
 	std::cout << PURPLE"[ Who Am I ]" << std::endl;
 	
-	std::cout << WHITE"DiamondTrap < " this->_name << "> is ClapTrap < ";
-	std::cout << ClapTrap::getName() " >" << std::endl;
+	std::cout << WHITE"DiamondTrap < " << this->_name << "> is ClapTrap < ";
+	std::cout << ClapTrap::getName() << " >" << std::endl;
 }
