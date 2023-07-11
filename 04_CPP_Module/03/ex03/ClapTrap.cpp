@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 17:55:51 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/11 23:35:38 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,9 @@ void	ClapTrap::takeDamage( unsigned int amount )
 	std::cout << "----------------------------------------------------------\n" << std::endl;
 
 	this->_hit -= amount;
+
+	if ( this->_hit < 0 )
+		this->_hit = 0;
 }
 
 void	ClapTrap::beRepaired( unsigned int amount )

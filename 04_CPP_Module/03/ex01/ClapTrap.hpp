@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 17:47:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/11 23:31:45 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 class	ClapTrap
 {
-	protected:	// private으로 설정하면 상속받은 클래스가 사용하지 못함
+	protected:
 		std::string		_name;
 		int				_hit;
 		unsigned int	_energy;

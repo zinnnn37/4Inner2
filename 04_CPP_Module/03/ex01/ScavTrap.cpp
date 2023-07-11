@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 12:39:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 17:48:22 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/11 23:32:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,14 @@ ScavTrap::ScavTrap( const std::string name )
 	this->_damage = 20;
 }
 
-ScavTrap::ScavTrap( const ScavTrap& ct )
+ScavTrap::ScavTrap( const ScavTrap& st )
+	: ClapTrap(st)
 {
 	std::cout << YELLOW"[ Copy Constructor ]\n";
-	std::cout << WHITE"ScavTrap < " << ct._name << " > has been copied\n\n";
+	std::cout << WHITE"ScavTrap < " << st._name << " > has been copied\n\n";
 	std::cout << "----------------------------------------------------------\n" << std::endl;
 
-	*this = ct;
+	*this = st;
 }
 
 ScavTrap::~ScavTrap()
