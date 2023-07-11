@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 16:17:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/11 23:31:45 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,13 @@
 #include <string>
 
 #define WHITE "\033[0;37m"
-#define BLUE "\033[0;34m"
 #define CYAN "\033[0;36m"
 #define GREEN "\033[0;32m"
-#define RED "\033[0;31m"
 #define YELLOW "\033[0;33m"
 
 class	ClapTrap
 {
-	protected:	// private으로 설정하면 상속받은 클래스가 사용하지 못함
+	protected:
 		std::string		_name;
 		int				_hit;
 		unsigned int	_energy;
@@ -35,7 +33,7 @@ class	ClapTrap
 		ClapTrap();
 		ClapTrap( const std::string& name );
 		ClapTrap( const ClapTrap& ct );
-		virtual~ClapTrap();
+		virtual	~ClapTrap();
 
 		ClapTrap&	operator=( const ClapTrap& ct );
 		

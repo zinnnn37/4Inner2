@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 23:35:28 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/11 23:35:08 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ ClapTrap::ClapTrap()
 ClapTrap::ClapTrap( const std::string& name )
 	: _name(name), _hit(10), _energy(10), _damage(0)
 {
-	std::cout << CYAN"[ Constructor ]\n";
+	std::cout << CYAN"[ Constructor: name ]\n";
 	std::cout << WHITE"ClapTrap < " << this->_name << " > has been created\n\n";
 	std::cout << "----------------------------------------------------------\n" << std::endl;
 }
@@ -59,7 +59,7 @@ ClapTrap&	ClapTrap::operator=( const ClapTrap& ct )
 
 void	ClapTrap::attack( const std::string& target )
 {
-	std::cout << CYAN"[ Attack ]" << std::endl;
+	std::cout << CYAN"[ Attack ]\n";
 	std::cout << WHITE"ClapTrap < " << this->_name << " > ";
 	std::cout << "tries to attack < " << target << " >\n";
 
@@ -92,7 +92,7 @@ void	ClapTrap::takeDamage( unsigned int amount )
 	std::cout << "----------------------------------------------------------\n" << std::endl;
 
 	this->_hit -= amount;
-
+	
 	if ( this->_hit < 0 )
 		this->_hit = 0;
 }
@@ -105,7 +105,7 @@ void	ClapTrap::beRepaired( unsigned int amount )
 	
 	if (this->_energy == 0)
 	{
-		std::cout << "▶︎ Out of energy! Fail to repair!\n\n";
+		std::cout << "▶︎ Out of energy! Fail to repair!\n";
 		std::cout << "----------------------------------------------------------\n" << std::endl;
 		return ;
 	}

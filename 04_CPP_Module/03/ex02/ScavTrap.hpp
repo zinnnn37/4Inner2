@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 12:38:25 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/28 13:44:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/11 14:33:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class	ScavTrap : public ClapTrap
 
 		ScavTrap&	operator=( const ScavTrap& st );
 
+		void			attack( const std::string& target );
 		void			guardGate();
 		unsigned int	getAttackDamage() const;
 };
