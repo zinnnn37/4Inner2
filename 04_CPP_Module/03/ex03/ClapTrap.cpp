@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 17:28:33 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/11 17:55:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,20 @@ void	ClapTrap::attack( const std::string& target )
 
 	if (this->_energy == 0)
 	{
-		std::cout << RED"▶︎ Out of energy! Fail to attack!\n\n";
-		std::cout << WHITE"----------------------------------------------------------\n" << std::endl;
+		std::cout << "▶︎ Out of energy! Fail to attack!\n\n";
+		std::cout << "----------------------------------------------------------\n" << std::endl;
 		return ;
 	}
 	else if (this->_hit <= 0)
 	{
-		std::cout << RED"▶︎ Out of hits! Fail to attack!\n\n";
-		std::cout << WHITE"----------------------------------------------------------\n" << std::endl;
+		std::cout << "▶︎ Out of hits! Fail to attack!\n\n";
+		std::cout << "----------------------------------------------------------\n" << std::endl;
 		return ;
 	}
 
-	std::cout << RED"▶︎ < " << target << " > got < " << this->_damage;
+	std::cout << "▶︎ < " << target << " > got < " << this->_damage;
 	std::cout << " > points of damage!\n\n";
-	std::cout << WHITE"----------------------------------------------------------\n" << std::endl;
+	std::cout << "----------------------------------------------------------\n" << std::endl;
 
 	this->_energy--;
 }
@@ -87,9 +87,9 @@ void	ClapTrap::takeDamage( unsigned int amount )
 {
 	std::cout << CYAN"[ Take Damage ]\n";
 
-	std::cout << RED"▶︎ ClapTrap < " << this->_name << " > got < ";
+	std::cout << WHITE"▶︎ ClapTrap < " << this->_name << " > got < ";
 	std::cout << amount << " > points of damage!\n\n";
-	std::cout << WHITE"----------------------------------------------------------\n" << std::endl;
+	std::cout << "----------------------------------------------------------\n" << std::endl;
 
 	this->_hit -= amount;
 }
@@ -102,20 +102,20 @@ void	ClapTrap::beRepaired( unsigned int amount )
 	
 	if (this->_energy == 0)
 	{
-		std::cout << RED"▶︎ Out of energy! Fail to repair!\n\n";
-		std::cout << WHITE"----------------------------------------------------------\n" << std::endl;
+		std::cout << "▶︎ Out of energy! Fail to repair!\n\n";
+		std::cout << "----------------------------------------------------------\n" << std::endl;
 		return ;
 	}
 	else if (this->_hit <= 0)
 	{
-		std::cout << RED"▶︎ Out of hits! Fail to repair!\n\n";
-		std::cout << WHITE"----------------------------------------------------------\n" << std::endl;
+		std::cout << "▶︎ Out of hits! Fail to repair!\n\n";
+		std::cout << "----------------------------------------------------------\n" << std::endl;
 		return ;
 	}
 
-	std::cout << BLUE"▶︎ ClapTrap < " << this->_name << " > got < ";
+	std::cout << "▶︎ ClapTrap < " << this->_name << " > got < ";
 	std::cout << amount << " > points of Hits!\n\n";
-	std::cout << WHITE"----------------------------------------------------------\n" << std::endl;
+	std::cout << "----------------------------------------------------------\n" << std::endl;
 
 	this->_hit += amount;
 	this->_energy--;
