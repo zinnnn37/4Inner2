@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 12:39:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/06/28 13:44:23 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/11 14:33:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,32 @@ ScavTrap&	ScavTrap::operator=( const ScavTrap& ct )
 	this->_energy = ct._energy;
 
 	return *this;
+}
+
+void	ScavTrap::attack( const std::string& target )
+{
+	std::cout << YELLOW"[ Attack ]" << std::endl;
+	std::cout << WHITE"ScavTrap < " << this->_name << " > ";
+	std::cout << "tries to attack < " << target << " >" << std::endl;
+
+	if (this->_energy == 0)
+	{
+		std::cout << RED"▶︎ Out of energy! Fail to attack!" << std::endl << std::endl;
+		std::cout << WHITE"----------------------------------------------------------" << std::endl << std::endl;
+		return ;
+	}
+	else if (this->_hit <= 0)
+	{
+		std::cout << RED"▶︎ Out of hits! Fail to attack!" << std::endl << std::endl;
+		std::cout << WHITE"----------------------------------------------------------" << std::endl << std::endl;
+		return ;
+	}
+
+	std::cout << RED"▶︎ < " << target << " > got < " << this->_damage;
+	std::cout << " > points of damage!" << std::endl << std::endl;
+	std::cout << WHITE"----------------------------------------------------------" << std::endl << std::endl;
+
+	this->_energy--;
 }
 
 void	ScavTrap::guardGate()
