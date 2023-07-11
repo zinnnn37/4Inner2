@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:41:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 17:30:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/11 23:46:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ FragTrap::FragTrap( const std::string name )
 }
 
 FragTrap::FragTrap( const FragTrap& ft )
+	: ClapTrap(ft)
 {
 	std::cout << GREEN"[ Copy Constructor ]\n";
 	std::cout << WHITE"FragTrap < " << ft._name << " > has been copied\n\n";

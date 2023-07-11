@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:58:37 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 16:17:57 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/12 00:21:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-class DiamondTrap : public ScavTrap, public FragTrap
+class DiamondTrap : public FragTrap, public ScavTrap
 {
+	private:
+		std::string	_name;
+		
 	public:
 		DiamondTrap();
 		DiamondTrap( const std::string name );

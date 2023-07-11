@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 12:38:25 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 16:17:11 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/11 23:58:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class	ScavTrap : virtual public ClapTrap
 
 		ScavTrap&	operator=( const ScavTrap& st );
 
+		void			attack( const std::string& target );
 		void			guardGate();
 		unsigned int	getAttackDamage() const;
 };

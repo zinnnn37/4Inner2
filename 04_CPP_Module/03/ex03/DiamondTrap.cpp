@@ -3,30 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:03:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 17:29:06 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/12 00:24:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap()
+	: FragTrap(), ScavTrap()
 {
+	std::cout << PURPLE"[ Default Constructor ]" << std::endl;
+	std::cout << WHITE"DiamondTrap < default > has been created\n\n";
+	std::cout << "----------------------------------------------------------\n" << std::endl;
+
+	this->_name = "default";
+	ClapTrap::_name = this->_name + "_clap_name";
+	this->_damage = 30;
 }
 
 DiamondTrap::DiamondTrap( const std::string name )
+	: FragTrap(name), ScavTrap(name)
 {
 	std::cout << PURPLE"[ Default Constructor ]" << std::endl;
 	std::cout << WHITE"DiamondTrap < " << name << " > has been created\n\n";
 	std::cout << "----------------------------------------------------------\n" << std::endl;
 
-	this->_name = ClapTrap::_name.append(name);
-	this->_hit = FragTrap::_hit;
+	this->_name = name;
+	ClapTrap::_name = name + "_clap_name";
+	this->_damage = 30;
 }
 
 DiamondTrap::DiamondTrap( const DiamondTrap& dt )
+	: ClapTrap(dt), FragTrap(dt), ScavTrap(dt)
 {
 	*this = dt;
 }
@@ -56,6 +67,6 @@ void	DiamondTrap::whoAmI()
 	std::cout << PURPLE"[ Who Am I ]" << std::endl;
 	
 	std::cout << WHITE"DiamondTrap < " << this->_name << " > is ClapTrap < ";
-	std::cout << ClapTrap::getName() << " >\n\n";
+	std::cout << ClapTrap::_name << " >\n\n";
 	std::cout << "----------------------------------------------------------\n" << std::endl;
 }

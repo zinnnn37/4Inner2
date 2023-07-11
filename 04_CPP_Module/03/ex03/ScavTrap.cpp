@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 12:39:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 17:31:39 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/11 23:49:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,14 @@ ScavTrap::ScavTrap( const std::string name )
 	this->_damage = 20;
 }
 
-ScavTrap::ScavTrap( const ScavTrap& ct )
+ScavTrap::ScavTrap( const ScavTrap& st )
+	: ClapTrap(st)
 {
 	std::cout << YELLOW"[ Copy Constructor ]\n";
-	std::cout << WHITE"ScavTrap < " << ct._name << " > has been copied\n\n";
+	std::cout << WHITE"ScavTrap < " << st._name << " > has been copied\n\n";
 	std::cout << "----------------------------------------------------------\n" << std::endl;
 
-	*this = ct;
+	*this = st;
 }
 
 ScavTrap::~ScavTrap()
@@ -65,11 +66,37 @@ ScavTrap&	ScavTrap::operator=( const ScavTrap& ct )
 	return *this;
 }
 
+void	ScavTrap::attack( const std::string& target )
+{
+	std::cout << YELLOW"[ Attack ]\n";
+	std::cout << WHITE"ScavTrap < " << this->_name << " > ";
+	std::cout << "tries to attack < " << target << " >\n";
+
+	if (this->_energy == 0)
+	{
+		std::cout << "▶︎ Out of energy! Fail to attack!\n\n";
+		std::cout << "----------------------------------------------------------\n" << std::endl;
+		return ;
+	}
+	else if (this->_hit <= 0)
+	{
+		std::cout << "▶︎ Out of hits! Fail to attack!\n\n";
+		std::cout << "----------------------------------------------------------\n" << std::endl;
+		return ;
+	}
+
+	std::cout << "▶︎ < " << target << " > got < " << this->_damage;
+	std::cout << " > points of damage!\n\n";
+	std::cout << "----------------------------------------------------------\n" << std::endl;
+
+	this->_energy--;
+}
+
 void	ScavTrap::guardGate()
 {
 	std::cout << YELLOW"[ Guarding ]\n";
 
-	std::cout << WHITE"ScavTrap < " << this->_name << " > is in Gate keeper mode\n\n";
+	std::cout << WHITE"ScavTrap < " << this->_name << " > is keeping the Gate\n\n";
 	std::cout << "----------------------------------------------------------\n" << std::endl;
 }
 

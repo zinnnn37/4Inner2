@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:23 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 17:30:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/12 00:28:05 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,22 @@
 int	main( void )
 {
 	std::cout << PURPLE"==========================================================\n\n";
-	std::cout << "                       DIAMONDTRAP                     \n\n";
+	std::cout << "                       DIAMONDTRAP\n\n";
 	std::cout << "==========================================================\n\n";
 	std::cout << WHITE"----------------------------------------------------------\n" << std::endl;
 
 	DiamondTrap	a( "A" );
+	DiamondTrap	b;
 
+	a.print();
 	a.whoAmI();
+
+	b.whoAmI();
+
+	a.attack("B");
+	a.takeDamage(4);
+	a.beRepaired(2);
+	a.print();
 
 	return 0;
 }

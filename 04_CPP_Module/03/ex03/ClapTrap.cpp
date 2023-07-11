@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 23:35:38 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/12 00:15:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ ClapTrap::ClapTrap()
 ClapTrap::ClapTrap( const std::string& name )
 	: _name(name), _hit(10), _energy(10), _damage(0)
 {
-	std::cout << CYAN"[ Constructor ]\n";
+	std::cout << CYAN"[ Constructor: name ]\n";
 	std::cout << WHITE"ClapTrap < " << this->_name << " > has been created\n\n";
 	std::cout << "----------------------------------------------------------\n" << std::endl;
 }
@@ -92,7 +92,7 @@ void	ClapTrap::takeDamage( unsigned int amount )
 	std::cout << "----------------------------------------------------------\n" << std::endl;
 
 	this->_hit -= amount;
-
+	
 	if ( this->_hit < 0 )
 		this->_hit = 0;
 }
@@ -105,7 +105,7 @@ void	ClapTrap::beRepaired( unsigned int amount )
 	
 	if (this->_energy == 0)
 	{
-		std::cout << "▶︎ Out of energy! Fail to repair!\n\n";
+		std::cout << "▶︎ Out of energy! Fail to repair!\n";
 		std::cout << "----------------------------------------------------------\n" << std::endl;
 		return ;
 	}
@@ -126,16 +126,11 @@ void	ClapTrap::beRepaired( unsigned int amount )
 
 void	ClapTrap::print()
 {
-	std::cout << GREEN"========================< STATUS >========================\n\n";
-	std::cout << "NAME\t\t: " << this->_name << '\n';
-	std::cout << "HIT POINTS\t: " << this->_hit << '\n';
-	std::cout << "ENERGY POINTS\t: " << this->_energy << '\n';
-	std::cout << "ATTACK DAMAGE\t: " << this->_damage << "\n\n";
+	std::cout << CYAN"========================< STATUS >========================\n\n";
+	std::cout << "\t\tNAME\t       : " << this->_name << '\n';
+	std::cout << "\t\tHIT POINTS     : " << this->_hit << '\n';
+	std::cout << "\t\tENERGY POINTS  : " << this->_energy << '\n';
+	std::cout << "\t\tATTACK DAMAGE  : " << this->_damage << "\n\n";
 	std::cout << "==========================================================\n\n";
 	std::cout << WHITE"----------------------------------------------------------\n" << std::endl;
-}
-
-std::string	ClapTrap::getName() const
-{
-	return (this->_name);
 }
