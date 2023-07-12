@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 23:35:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/12 13:33:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ ClapTrap::ClapTrap()
 ClapTrap::ClapTrap( const std::string& name )
 	: _name(name), _hit(10), _energy(10), _damage(0)
 {
-	std::cout << CYAN"[ Constructor ]\n";
+	std::cout << CYAN"[ Constructor: name ]\n";
 	std::cout << WHITE"ClapTrap < " << this->_name << " > has been created\n\n";
 	std::cout << "----------------------------------------------------------\n" << std::endl;
 }

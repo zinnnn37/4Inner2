@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:41:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 23:46:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/12 13:33:41 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
 FragTrap::FragTrap()
+	: ClapTrap()
 {
 	std::cout << GREEN"[ Default Constructor ]\n";
 	std::cout << WHITE"FragTrap < default > has been created\n\n";
@@ -25,8 +26,9 @@ FragTrap::FragTrap()
 }
 
 FragTrap::FragTrap( const std::string name )
+	: ClapTrap(name)
 {
-	std::cout << GREEN"[ Default Constructor ]\n";
+	std::cout << GREEN"[ Constructor: name ]\n";
 	std::cout << WHITE"FragTrap < " << name << " > has been created\n\n";
 	std::cout << "----------------------------------------------------------\n" << std::endl;
 

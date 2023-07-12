@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:03:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/12 00:24:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/12 12:21:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ DiamondTrap::DiamondTrap()
 DiamondTrap::DiamondTrap( const std::string name )
 	: FragTrap(name), ScavTrap(name)
 {
-	std::cout << PURPLE"[ Default Constructor ]" << std::endl;
+	std::cout << PURPLE"[ Constructor: name ]" << std::endl;
 	std::cout << WHITE"DiamondTrap < " << name << " > has been created\n\n";
 	std::cout << "----------------------------------------------------------\n" << std::endl;
 

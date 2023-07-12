@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 12:39:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 23:49:48 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/12 13:33:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap()
+	: ClapTrap()
 {
 	std::cout << YELLOW"[ Default Constructor ]\n";
 	std::cout << WHITE"ScavTrap < default > has been created\n\n";
@@ -25,8 +26,9 @@ ScavTrap::ScavTrap()
 }
 
 ScavTrap::ScavTrap( const std::string name )
+	: ClapTrap(name)
 {
-	std::cout << YELLOW"[ Constructor ]\n";
+	std::cout << YELLOW"[ Constructor: name ]\n";
 	std::cout << WHITE"ScavTrap < " << name << " > has been created\n\n";
 	std::cout << "----------------------------------------------------------\n" << std::endl;
 
