@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:25:56 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 13:18:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:40:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 Cat::Cat()
 	: Animal()
 {
+	std::cout << "🐱 Cat default constructor 🐱" << std::endl;
+
 	this->_type = "Cat";
 	this->_brain = new Brain();
 }
 
 Cat::Cat( const Cat& cat )
 {
+	std::cout << "🐱 Cat copy constructor 🐱" << std::endl;
+
 	this->_type = cat._type;
 	this->_brain = new Brain(*cat._brain);
 }
@@ -28,6 +32,8 @@ Cat::Cat( const Cat& cat )
 Cat::~Cat()
 {
 	delete this->_brain;
+
+	std::cout << "🐱 Cat Destructor 🐱" << std::endl;
 }
 
 Cat&	Cat::operator=( const Cat& cat )

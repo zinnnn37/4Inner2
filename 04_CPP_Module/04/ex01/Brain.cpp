@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 14:43:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 13:14:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:34:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,19 @@
 Brain::Brain()
 	: len(0)
 {
+	std::cout << "🧠 Brain default constructor 🧠" << std::endl;
 }
 
 Brain::Brain( const Brain& brain )
 {
+	std::cout << "🧠 Brain copy constructor 🧠" << std::endl;
+
 	*this = brain;
 }
 
 Brain::~Brain()
 {
+	std::cout << "🧠 Brain destructor 🧠" << std::endl;
 }
 
 Brain&	Brain::operator=( const Brain& brain )
