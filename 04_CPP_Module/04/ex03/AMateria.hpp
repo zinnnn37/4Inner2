@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 15:53:44 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 18:37:56 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 18:57:35 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 
 #define WHITE "\033[37m"
 #define PURPLE "\033[35m"
-#define GREEN "\033[32m"
 #define CYAN "\033[36m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
 
 class AMateria
 {

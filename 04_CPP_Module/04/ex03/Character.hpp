@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:40:28 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 18:53:26 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 19:01:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class	Character : public ICharacter
 	private:
 		std::string	_name;
 
-		// int			_idx;
+		int			_idx;
 		AMateria*	_slot[4];
 	
 	public:
