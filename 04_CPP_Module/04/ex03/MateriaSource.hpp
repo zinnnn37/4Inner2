@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:40:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 18:55:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 01:05:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 class	MateriaSource : public IMateriaSource
 {
 	private:
+		int			_idx;
 		AMateria*	_materia[4];
 
 	public:
@@ -27,8 +28,9 @@ class	MateriaSource : public IMateriaSource
 
 		MateriaSource&	operator=( const MateriaSource& ms );
 
-		void		learnMateria( AMateria* m );
-		AMateria*	createMateria( std::string const &type );
+		void			learnMateria( AMateria* m );
+		AMateria*		createMateria( std::string const &type );
+		const AMateria*	getMateria( int idx ) const;
 };
 
 #endif
