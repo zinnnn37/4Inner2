@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:24:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 13:18:41 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:58:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class	Animal
 		
 		Animal&	operator=( const Animal& animal );
 
-		virtual void	makeSound() const;
+		virtual void	makeSound() const = 0;
 		std::string		getType() const;
 };
 
