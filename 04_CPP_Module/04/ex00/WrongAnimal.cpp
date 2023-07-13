@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 11:27:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 13:18:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:26:38 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,19 @@
 WrongAnimal::WrongAnimal()
 	: _type("WrongAnimal")
 {
+	std::cout << "💥 WrongAnimal default constructor 💥" << std::endl;
 }
 
 WrongAnimal::WrongAnimal( const WrongAnimal& animal )
 {
+	std::cout << "💥 WrongAnimal copy constructor 💥" << std::endl;
+
 	*this = animal;
 }
 
 WrongAnimal::~WrongAnimal()
 {
+	std::cout << "💥 WrongAnimal destructor 💥" << std::endl;
 }
 
 WrongAnimal&	WrongAnimal::operator=( const WrongAnimal& animal )
