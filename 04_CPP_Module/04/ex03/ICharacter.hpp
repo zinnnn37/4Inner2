@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 15:55:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 18:51:27 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 00:31:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ class	ICharacter
 		virtual void		equip( AMateria* m ) = 0;
 		virtual void		unequip( int idx ) = 0;
 		virtual void		use( int idx, ICharacter& target ) = 0;
-}
+};
 
 #endif

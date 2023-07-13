@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 15:53:44 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 23:13:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 00:35:38 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,8 @@
 #include <iostream>
 #include <string>
 
-#define WHITE "\033[37m"
-#define PURPLE "\033[35m"
-#define CYAN "\033[36m"
-#define GREEN "\033[32m"
-#define YELLOW "\033[33m"
+#define WHITE "\033[0;37m"
+#define PURPLE "\033[0;35m"
 
 class ICharacter;
 
@@ -40,7 +37,7 @@ class AMateria
 		std::string const&	getType() const;
 
 		virtual AMateria*	clone() const = 0;
-		virtual void		use( ICharacter& target );
+		virtual void		use( const ICharacter& c );
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:23:25 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 23:17:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 00:35:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,8 @@ std::string const &AMateria::getType() const
 	return ( this->_type );
 }
 
-AMateria*	AMateria::clone() const
+void	AMateria::use( const ICharacter& c)
 {
-	return ( new AMateria(*this));
-}
-
-void	AMateria::use( ICharacter& target)
-{
-	std::cout << PURPLE"[ Skill ]" << WHITE << std::endl;
-	std::cout << "Use Skill of " << target.getName() << "\n" << std::endl;
+	std::cout << PURPLE"[ Use ]" << WHITE << std::endl;
+	std::cout << c.getName() << " is using skill\n" << std::endl;
 }
