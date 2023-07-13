@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 16:12:33 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 16:14:19 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 00:49:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class Ice : public AMateria
 
 		Ice&	operator=( const Ice &ice );
 
-		virtual AMateria*	clone() const;
-		virtual void		use( ICharacter& target );
-}
+		AMateria*	clone() const;
+		void		use( const ICharacter& c );
+};
 
 #endif
