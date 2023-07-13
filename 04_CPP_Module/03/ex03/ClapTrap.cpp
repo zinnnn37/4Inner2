@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/12 00:15:48 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/12 13:41:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ClapTrap::attack( const std::string& target )
 		std::cout << "----------------------------------------------------------\n" << std::endl;
 		return ;
 	}
-	else if (this->_hit <= 0)
+	else if (this->_hit == 0)
 	{
 		std::cout << "▶︎ Out of hits! Fail to attack!\n\n";
 		std::cout << "----------------------------------------------------------\n" << std::endl;
@@ -109,7 +109,7 @@ void	ClapTrap::beRepaired( unsigned int amount )
 		std::cout << "----------------------------------------------------------\n" << std::endl;
 		return ;
 	}
-	else if (this->_hit <= 0)
+	else if (this->_hit == 0)
 	{
 		std::cout << "▶︎ Out of hits! Fail to repair!\n\n";
 		std::cout << "----------------------------------------------------------\n" << std::endl;

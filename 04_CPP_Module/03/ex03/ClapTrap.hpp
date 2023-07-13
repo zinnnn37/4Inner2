@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:50:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/12 12:20:08 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/12 13:36:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class	ClapTrap
 		
 		virtual void	attack( const std::string& target );
 		void			takeDamage( unsigned int amount );
-		void			beRepaired( unsigned int amoutn );
+		void			beRepaired( unsigned int amount );
 		void			print();
 };
 

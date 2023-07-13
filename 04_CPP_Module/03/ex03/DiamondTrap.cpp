@@ -6,14 +6,14 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:03:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/12 12:21:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/12 14:17:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap()
-	: FragTrap(), ScavTrap()
+	: ClapTrap(), FragTrap(), ScavTrap()
 {
 	std::cout << PURPLE"[ Default Constructor ]" << std::endl;
 	std::cout << WHITE"DiamondTrap < default > has been created\n\n";
@@ -25,7 +25,7 @@ DiamondTrap::DiamondTrap()
 }
 
 DiamondTrap::DiamondTrap( const std::string name )
-	: FragTrap(name), ScavTrap(name)
+	: ClapTrap(name), FragTrap(name), ScavTrap(name)
 {
 	std::cout << PURPLE"[ Constructor: name ]" << std::endl;
 	std::cout << WHITE"DiamondTrap < " << name << " > has been created\n\n";
@@ -39,6 +39,10 @@ DiamondTrap::DiamondTrap( const std::string name )
 DiamondTrap::DiamondTrap( const DiamondTrap& dt )
 	: ClapTrap(dt), FragTrap(dt), ScavTrap(dt)
 {
+	std::cout << PURPLE"[ Copy Constructor ]" << std::endl;
+	std::cout << WHITE"DiamondTrap < " << this->_name << " > has been copied\n\n";
+	std::cout << "----------------------------------------------------------\n" << std::endl;
+	
 	*this = dt;
 }
 
