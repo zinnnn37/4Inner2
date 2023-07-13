@@ -6,16 +6,19 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 21:48:33 by minjinki          #+#    #+#              #
-#    Updated: 2023/06/29 14:31:10 by minjinki         ###   ########.fr        #
+#    Updated: 2023/07/13 18:43:20 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	ClapTrap
+NAME		=	Materia
 
 SRC_FILES	=	main\
 				AMateria\
-				ICharacter\
-				IMateriaSource
+				Character\
+				Cure\
+				Ice\
+				MateriaSource\
+				main
 
 SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 
