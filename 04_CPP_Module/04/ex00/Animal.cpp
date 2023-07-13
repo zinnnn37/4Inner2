@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:24:27 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/07 16:37:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 11:59:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ Animal&	Animal::operator=( const Animal& animal )
 {
 	if (this != &animal)
 		this->type = animal.type;
+
 	return (*this);
 }
 
