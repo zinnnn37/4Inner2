@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:24:19 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 11:38:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 11:41:01 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ int main()
 	Dog		copydog = Dog(*((Dog*)j));
 
 	std::cout << copy.getType() << " " << std::endl;
-	copy.makeSound();
 	std::cout << copycat.getType() << " " << std::endl;
-	copycat.makeSound();
 	std::cout << copydog.getType() << " " << std::endl;
+	copy.makeSound();
+	copycat.makeSound();
 	copydog.makeSound();
 
 	delete meta;
@@ -71,10 +71,10 @@ int main()
 	std::cout << "\n*** After delete ***\n" << std::endl;
 
 	std::cout << copy.getType() << " " << std::endl;
-	copy.makeSound();
 	std::cout << copycat.getType() << " " << std::endl;
-	copycat.makeSound();
 	std::cout << copydog.getType() << " " << std::endl;
+	copy.makeSound();
+	copycat.makeSound();
 	copydog.makeSound();
 
 	std::cout << "\n--------------------------------------\n" << std::endl;
