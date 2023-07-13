@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 16:14:25 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 00:41:08 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 00:52:57 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ class Cure : public AMateria
 
 		AMateria*	clone() const;
 		void		use( ICharacter& c );
-}
+};
 
 #endif

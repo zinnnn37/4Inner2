@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 15:53:44 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 00:35:38 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 00:52:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 
 #include <iostream>
 #include <string>
+#include "ICharacter.hpp"
 
 #define WHITE "\033[0;37m"
 #define PURPLE "\033[0;35m"
-
-class ICharacter;
 
 class AMateria
 {

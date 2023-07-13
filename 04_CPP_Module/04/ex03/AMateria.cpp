@@ -6,12 +6,11 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:23:25 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 00:35:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 00:52:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
-#include "ICharacter.hpp"
 
 AMateria::AMateria()
 	: _type("default")
