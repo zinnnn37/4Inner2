@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 11:26:08 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 11:26:50 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:19:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class WrongAnimal
 {
 	protected:
-		std::string	type;
+		std::string	_type;
 
 	public:
 		WrongAnimal();

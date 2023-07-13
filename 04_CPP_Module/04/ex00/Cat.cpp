@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:25:56 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 11:59:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:17:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Cat::Cat()
 	: Animal()
 {
-	this->type = "Cat";
+	this->_type = "Cat";
 }
 
 Cat::Cat( const Cat& cat )
@@ -30,7 +30,7 @@ Cat::~Cat()
 Cat&	Cat::operator=( const Cat& cat )
 {
 	if (this != &cat)
-		this->type = cat.type;
+		this->_type = cat._type;
 
 	return (*this);
 }

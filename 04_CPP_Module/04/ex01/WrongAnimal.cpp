@@ -6,14 +6,14 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 11:27:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 11:28:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:19:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
 WrongAnimal::WrongAnimal()
-	: type("WrongAnimal")
+	: _type("WrongAnimal")
 {
 }
 
@@ -29,7 +29,7 @@ WrongAnimal::~WrongAnimal()
 WrongAnimal&	WrongAnimal::operator=( const WrongAnimal& animal )
 {
 	if (this != &animal)
-		this->type = animal.type;
+		this->_type = animal._type;
 
 	return (*this);
 }
@@ -41,5 +41,5 @@ void	WrongAnimal::makeSound() const
 
 std::string	WrongAnimal::getType() const
 {
-	return (this->type);
+	return (this->_type);
 }

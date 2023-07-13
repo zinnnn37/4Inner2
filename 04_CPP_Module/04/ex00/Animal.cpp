@@ -6,14 +6,14 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:24:27 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 11:59:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:16:42 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
 Animal::Animal()
-	: type("Animal")
+	: _type("Animal")
 {
 }
 
@@ -29,7 +29,7 @@ Animal::~Animal()
 Animal&	Animal::operator=( const Animal& animal )
 {
 	if (this != &animal)
-		this->type = animal.type;
+		this->_type = animal._type;
 
 	return (*this);
 }
@@ -41,5 +41,5 @@ void	Animal::makeSound() const
 
 std::string	Animal::getType() const
 {
-	return (this->type);
+	return (this->_type);
 }

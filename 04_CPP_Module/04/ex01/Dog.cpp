@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:26:36 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 13:14:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:19:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 Dog::Dog()
 	: Animal()
 {
-	this->type = "Dog";
+	this->_type = "Dog";
 	this->_brain = new Brain();
 }
 
 Dog::Dog( const Dog& dog )
 {
-	this->type = dog.type;
+	this->_type = dog._type;
 	this->_brain = new Brain(*dog._brain);
 }
 
@@ -34,7 +34,7 @@ Dog&	Dog::operator=( const Dog& dog )
 {
 	if (this != &dog)
 	{
-		this->type = dog.type;
+		this->_type = dog._type;
 		
 		if (this->_brain)
 			delete this->_brain;

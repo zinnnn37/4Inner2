@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 11:28:35 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 11:29:23 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:18:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 WrongCat::WrongCat()
 	: WrongAnimal()
 {
-	this->type = "WrongCat";
+	this->_type = "WrongCat";
 }
 
 WrongCat::WrongCat( const WrongCat& cat )
@@ -30,7 +30,7 @@ WrongCat::~WrongCat()
 WrongCat&	WrongCat::operator=( const WrongCat& cat )
 {
 	if (this != &cat)
-		this->type = cat.type;
+		this->_type = cat._type;
 
 	return (*this);
 }

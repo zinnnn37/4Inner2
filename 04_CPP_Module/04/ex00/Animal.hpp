@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:24:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/06 14:40:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:16:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class	Animal
 {
 	protected:
-		std::string	type;
+		std::string	_type;
 
 	public:
 		Animal();
