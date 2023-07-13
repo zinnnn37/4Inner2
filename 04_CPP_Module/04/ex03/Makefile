@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
+#    By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 21:48:33 by minjinki          #+#    #+#              #
-#    Updated: 2023/07/13 18:43:20 by minjinki         ###   ########.fr        #
+#    Updated: 2023/07/14 01:29:50 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,15 +17,14 @@ SRC_FILES	=	main\
 				Character\
 				Cure\
 				Ice\
-				MateriaSource\
-				main
+				MateriaSource
 
 SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 
 OBJS		=	$(SRCS:%.cpp=%.o)
 
 CC			=	c++
-CCFLAGS		=	-Wall -Wextra -Werror -std=c++98
+CCFLAGS		=	-g -Wall -Wextra -Werror -std=c++98
 RM			=	rm -f
 
 all			:	$(NAME)

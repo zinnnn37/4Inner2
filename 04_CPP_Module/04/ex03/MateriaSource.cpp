@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:47:15 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 01:09:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 01:16:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ MateriaSource&	MateriaSource::operator=( const MateriaSource& ms )
 void	MateriaSource::learnMateria( AMateria* m )
 {
 	std::cout << BLUE"[ Learn Materia ]" << std::endl;
-	std::cout << WHITE"Learning " << m->getType() << '\n' << std::endl;
+	std::cout << WHITE"Learning " << m->getType() << std::endl;
 
 	if (this->_idx < 4)
 	{
@@ -103,7 +103,7 @@ void	MateriaSource::learnMateria( AMateria* m )
 AMateria*	MateriaSource::createMateria( std::string const &type )
 {
 	std::cout << BLUE"[ Create Materia ]" << std::endl;
-	std::cout << WHITE"Creating " << type << '\n' << std::endl;
+	std::cout << WHITE"Creating " << type << std::endl;
 
 	for (int i = 0; i < 4; i++)
 	{

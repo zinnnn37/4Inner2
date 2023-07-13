@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:34:00 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 00:51:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 01:14:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ AMateria*	Ice::clone() const
 
 void	Ice::use( const ICharacter& c )
 {
-	std::cout << CYAN"[ Attack ]\n" << std::endl;
-	std::cout << WHITE" * shoots an ice bolt at " << c.getName() << " *" << std::endl;
+	std::cout << CYAN"[ Attack ]" << std::endl;
+	std::cout << WHITE" * shoots an ice bolt at " << c.getName() << " *\n" << std::endl;
 }

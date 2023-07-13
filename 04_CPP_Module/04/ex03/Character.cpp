@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:46:33 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 00:36:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 01:21:01 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ void	Character::unequip( int idx ) // not delete
 		std::cout << this->_name << " unequiped " << this->_slot[idx]->getType() << "\n" << std::endl;
 		
 		this->_slot[idx] = NULL;
+		this->_idx--;
 	}
 	else
 		std::cout << "Empty slot\n" << std::endl;
