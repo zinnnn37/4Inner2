@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 21:48:33 by minjinki          #+#    #+#              #
-#    Updated: 2023/07/06 14:49:53 by minjinki         ###   ########.fr        #
+#    Updated: 2023/07/13 12:50:00 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ SRC_FILES	=	main\
 				Animal\
 				Cat\
 				Dog\
+				WrongAnimal\
+				WrongCat\
 				Brain
 
 SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
@@ -23,7 +25,7 @@ SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 OBJS		=	$(SRCS:%.cpp=%.o)
 
 CXX			=	c++
-CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
+CXXFLAGS	=	-g -Wall -Wextra -Werror -std=c++98
 RM			=	rm -f
 
 all			:	$(NAME)

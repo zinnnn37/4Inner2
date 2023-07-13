@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:26:36 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/07 16:54:08 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:40:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,48 @@
 Dog::Dog()
 	: Animal()
 {
-	this->brain = new Brain();
+	std::cout << "🐶 Dog default constructor 🐶" << std::endl;
 
-	this->type = "Dog";
+	this->_type = "Dog";
+	this->_brain = new Brain();
 }
 
 Dog::Dog( const Dog& dog )
 {
-	*this = dog;
+	std::cout << "🐶 Dog copy constructor 🐶" << std::endl;
+
+	this->_type = dog._type;
+	this->_brain = new Brain(*dog._brain);
 }
 
 Dog::~Dog()
 {
-	delete this->brain;
+	delete this->_brain;
+
+	std::cout << "🐶 Dog Destructor 🐶" << std::endl;
 }
 
 Dog&	Dog::operator=( const Dog& dog )
 {
 	if (this != &dog)
-		this->type = dog.type;
+	{
+		this->_type = dog._type;
+		
+		if (this->_brain)
+			delete this->_brain;
+
+		this->_brain = new Brain(*dog._brain);
+	}
+
 	return (*this);
 }
 
 void	Dog::makeSound() const
 {
-	std::cout << WHITE"Woof 🐶" << std::endl;
+	std::cout << "Woof 🐶" << std::endl;
+}
+
+Brain*	Dog::getBrain() const
+{
+	return ( this->_brain );
 }

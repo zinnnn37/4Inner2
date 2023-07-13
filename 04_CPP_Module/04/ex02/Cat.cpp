@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:25:56 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/07 16:54:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:40:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,48 @@
 Cat::Cat()
 	: Animal()
 {
-	this->brain = new Brain();
+	std::cout << "🐱 Cat default constructor 🐱" << std::endl;
 
-	this->type = "Cat";
+	this->_type = "Cat";
+	this->_brain = new Brain();
 }
 
 Cat::Cat( const Cat& cat )
 {
-	*this = cat;
+	std::cout << "🐱 Cat copy constructor 🐱" << std::endl;
+
+	this->_type = cat._type;
+	this->_brain = new Brain(*cat._brain);
 }
 
 Cat::~Cat()
 {
-	delete this->brain;
+	delete this->_brain;
+
+	std::cout << "🐱 Cat Destructor 🐱" << std::endl;
 }
 
 Cat&	Cat::operator=( const Cat& cat )
 {
 	if (this != &cat)
-		this->type = cat.type;
+	{
+		this->_type = cat._type;
+		
+		if (this->_brain)
+			delete this->_brain;
+
+		this->_brain = new Brain(*cat._brain);
+	}
+
 	return (*this);
 }
 
 void	Cat::makeSound() const
 {
-	std::cout << WHITE"Meow 🐱" << std::endl;
+	std::cout << "Meow 🐱" << std::endl;
 }
 
-Brain*	Cat::getbrain() const
+Brain*	Cat::getBrain() const
 {
-	return ( this->brain );
+	return ( this->_brain );
 }
