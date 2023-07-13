@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/29 14:24:27 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 11:59:24 by minjinki         ###   ########.fr       */
+/*   Created: 2023/07/13 11:27:12 by minjinki          #+#    #+#             */
+/*   Updated: 2023/07/13 11:28:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-Animal::Animal()
-	: type("Animal")
+WrongAnimal::WrongAnimal()
+	: type("WrongAnimal")
 {
 }
 
-Animal::Animal( const Animal& animal )
+WrongAnimal::WrongAnimal( const WrongAnimal& animal )
 {
 	*this = animal;
 }
 
-Animal::~Animal()
+WrongAnimal::~WrongAnimal()
 {
 }
 
-Animal&	Animal::operator=( const Animal& animal )
+WrongAnimal&	WrongAnimal::operator=( const WrongAnimal& animal )
 {
 	if (this != &animal)
 		this->type = animal.type;
@@ -34,12 +34,12 @@ Animal&	Animal::operator=( const Animal& animal )
 	return (*this);
 }
 
-void	Animal::makeSound() const
+void	WrongAnimal::makeSound() const
 {
-	std::cout << "Undefined sounds 🎶" << std::endl;
+	std::cout << "Wrong Animal sounds 🎶" << std::endl;
 }
 
-std::string	Animal::getType() const
+std::string	WrongAnimal::getType() const
 {
 	return (this->type);
 }

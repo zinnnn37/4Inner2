@@ -1,56 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/29 14:25:56 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 13:07:39 by minjinki         ###   ########.fr       */
+/*   Created: 2023/07/13 11:28:35 by minjinki          #+#    #+#             */
+/*   Updated: 2023/07/13 11:29:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 
-Cat::Cat()
-	: Animal()
+WrongCat::WrongCat()
+	: WrongAnimal()
 {
-	this->type = "Cat";
-	this->_brain = new Brain();
+	this->type = "WrongCat";
 }
 
-Cat::Cat( const Cat& cat )
+WrongCat::WrongCat( const WrongCat& cat )
 {
-	this->type = cat.type;
-	this->_brain = new Brain(*cat._brain);
+	*this = cat;
 }
 
-Cat::~Cat()
+WrongCat::~WrongCat()
 {
-	delete this->_brain;
 }
 
-Cat&	Cat::operator=( const Cat& cat )
+WrongCat&	WrongCat::operator=( const WrongCat& cat )
 {
 	if (this != &cat)
-	{
 		this->type = cat.type;
-		
-		if (this->_brain)
-			delete this->_brain;
-
-		this->_brain = new Brain(*cat._brain);
-	}
 
 	return (*this);
 }
 
-void	Cat::makeSound() const
+void	WrongCat::makeSound() const
 {
-	std::cout << "Meow 🐱" << std::endl;
-}
-
-Brain*	Cat::getBrain() const
-{
-	return ( this->_brain );
+	std::cout << "Wrong Cat Meows 🐱" << std::endl;
 }
