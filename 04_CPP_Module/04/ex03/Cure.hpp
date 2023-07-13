@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 16:14:25 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 16:29:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 00:41:08 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,20 @@
 
 #include "AMateria.hpp"
 
+#define GREEN "\033[0;32m"
+
 class Cure : public AMateria
 {
 	public:
 		Cure();
+		Cure( const std::string &type );
 		Cure( const Cure &cure );
 		virtual ~Cure();
 
 		Cure&	operator=( const Cure &cure );
 
-		virtual AMateria*	clone() const;
-		virtual void		use( ICharacter& target );
+		AMateria*	clone() const;
+		void		use( ICharacter& c );
 }
 
 #endif
