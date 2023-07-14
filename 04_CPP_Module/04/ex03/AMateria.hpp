@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 15:53:44 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 00:52:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 12:17:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "ICharacter.hpp"
 
 #define WHITE "\033[0;37m"
-#define PURPLE "\033[0;35m"
+#define BLUE "\033[0;34m"
 
 class AMateria
 {

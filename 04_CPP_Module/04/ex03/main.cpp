@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 01:09:38 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 11:52:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 12:30:29 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,53 +27,56 @@ int	main(void)
 {
 	atexit(leaks);
 
-	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
-	src->learnMateria(new Cure());
+	/* Learn Materias */
+	IMateriaSource* ms = new MateriaSource();
+	ms->learnMateria(new Ice());
+	ms->learnMateria(new Cure());
+	ms->learnMateria(new Ice());
+	ms->learnMateria(new Cure());
 
+	/* Create Materias */
 	AMateria* tmp;
-	tmp = src->createMateria("icecure");
+	tmp = ms->createMateria("sth");
 
-	Character* me = new Character("me");
-	Character* bob = new  Character("bob");
+	/* create Characters */
+	Character* pat = new Character("pat");
+	Character* mat = new  Character("mat");
 
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
+	/* Create and Equip */
+	tmp = ms->createMateria("ice");
+	pat->equip(tmp);
 	delete tmp;
 
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
+	tmp = ms->createMateria("cure");
+	pat->equip(tmp);
 	delete tmp;
 
-	AMateria* tmp1 = src->createMateria("ice");
-	me->equip(tmp1);
-	AMateria* tmp2 = src->createMateria("cure");
-	me->equip(tmp2);
+	AMateria* tmp1 = ms->createMateria("ice");
+	pat->equip(tmp1);
+	AMateria* tmp2 = ms->createMateria("cure");
+	pat->equip(tmp2);
 
-	const AMateria	*del = me->getMateria(2);
-	me->unequip(2);
+	/* Unequip */
+	const AMateria	*del = pat->getMateria(2);
+	pat->unequip(2);
 	delete del;
-	del = NULL;
-
-	del = me->getMateria(3);
-	me->unequip(3);
+	del = pat->getMateria(3);
+	pat->unequip(3);
 	delete del;
-	del = NULL;
 
-	bob->equip(tmp1);
-	bob->equip(tmp2);
+	/* Equip and Use */
+	mat->equip(tmp1);
+	mat->equip(tmp2);
 
-	me->use(0, *bob);
-	me->use(1, *bob);
+	pat->use(0, *mat);
+	pat->use(1, *mat);
+	mat->use(0, *pat);
+	mat->use(1, *pat);
 
-	bob->use(0, *me);
-	bob->use(1, *me);
-
-	delete bob;
-	delete me;
-	delete src;
+	/* delete */
+	delete mat;
+	delete pat;
+	delete ms;
 	delete tmp1;
 	delete tmp2;
 

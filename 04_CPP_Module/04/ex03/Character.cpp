@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:46:33 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 11:47:59 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 12:32:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Character::Character()
 	: _name("default"), _idx(0)
 {
-	std::cout << YELLOW"[ Character Default Constructor ]" << WHITE << std::endl;
+	std::cout << PURPLE"[ Character Default Constructor ]" << WHITE << std::endl;
 	std::cout << this->_name << " is created\n" << std::endl;
 
 	for (int i = 0; i < 4; i++)
@@ -25,7 +25,7 @@ Character::Character()
 Character::Character( std::string name )
 	: _name(name), _idx(0)
 {
-	std::cout << YELLOW"[ Character Constructor: name ]" << WHITE << std::endl;
+	std::cout << PURPLE"[ Character Constructor: name ]" << WHITE << std::endl;
 	std::cout << this->_name << " is created\n" << std::endl;
 
 	for (int i = 0; i < 4; i++)
@@ -34,7 +34,7 @@ Character::Character( std::string name )
 
 Character::Character( const Character &c )
 {
-	std::cout << YELLOW"[ Character Copy Constructor ]" << WHITE << std::endl;
+	std::cout << PURPLE"[ Character Copy Constructor ]" << WHITE << std::endl;
 	std::cout << this->_name << " is copied\n" << std::endl;
 
 	const AMateria*	tmp;
@@ -58,7 +58,7 @@ Character::Character( const Character &c )
 
 Character::~Character()
 {
-	std::cout << YELLOW"[ Character Destructor ]" << WHITE << std::endl;
+	std::cout << PURPLE"[ Character Destructor ]" << WHITE << std::endl;
 	std::cout << this->_name << " is gone\n" << std::endl;
 
 	for (int i = 0; i < 4; i++)
@@ -73,7 +73,7 @@ Character::~Character()
 
 Character&	Character::operator=( const Character &c )
 {
-	std::cout << YELLOW"[ Character Copy Assignment Operator ]\n" << WHITE << std::endl;
+	std::cout << PURPLE"[ Character Copy Assignment Operator ]\n" << WHITE << std::endl;
 
 	if (this != &c)
 	{
@@ -106,14 +106,14 @@ std::string const	&Character::getName() const
 
 void	Character::equip( AMateria* m )
 {
-	std::cout << YELLOW"[ Character Equip ]" << WHITE << std::endl;
+	std::cout << PURPLE"[ Character Equip ]" << WHITE << std::endl;
 
 	if ( !m )
 	{
 		std::cout << "Empty materia\n" << std::endl;
 		return ;
 	}
-	if ( this->_idx < 4 )
+	if ( this->_idx < 4 ) // for로 NULL인 곳에 넣도록 하기
 	{
 		std::cout << this->_name << " equiped " << m->getType() << "\n" << std::endl;
 		this->_slot[this->_idx] = m->clone();
@@ -123,9 +123,9 @@ void	Character::equip( AMateria* m )
 		std::cout << "Out of slots\n" << std::endl;
 }
 
-void	Character::unequip( int idx ) // not delete
+void	Character::unequip( int idx )
 {
-	std::cout << YELLOW"[ Character Unequip ]" << WHITE << std::endl;
+	std::cout << PURPLE"[ Character Unequip ]" << WHITE << std::endl;
 
 	if ( idx < 0 || idx > 3 )
 		return ;
@@ -143,7 +143,7 @@ void	Character::unequip( int idx ) // not delete
 
 void	Character::use( int idx, const ICharacter& ic )
 {
-	std::cout << YELLOW"[ Character Use ]" << WHITE << std::endl;
+	std::cout << PURPLE"[ Character Use ]" << WHITE << std::endl;
 	std::cout << this->_name << " used " << this->_slot[idx]->getType() << "\n" << std::endl;
 
 	if ( idx < 0 || idx > 3 )

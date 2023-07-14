@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:34:00 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 01:14:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 12:23:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Ice::Ice( const Ice &ice )
 	: AMateria(ice)
 {
 	std::cout << CYAN"[ Ice Copy Constructor ]" << std::endl;
-	std::cout << WHITE"Ice is created\n" << std::endl;
+	std::cout << WHITE"Ice is copied\n" << std::endl;
 }
 
 Ice::~Ice()

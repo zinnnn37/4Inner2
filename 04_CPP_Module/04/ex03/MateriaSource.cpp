@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:47:15 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 11:48:57 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 12:15:21 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,11 @@ void	MateriaSource::learnMateria( AMateria* m )
 	std::cout << BLUE"[ Learn Materia ]" << std::endl;
 	std::cout << WHITE"Learning " << m->getType() << std::endl;
 
+	if (!m)
+	{
+		std::cout << WHITE"Failed to Learn Materia: empty materia\n" << std::endl;
+		return ;
+	}
 	if (this->_idx < 4)
 	{
 		std::cout << WHITE"Succeed to Learn Materia\n" << std::endl;

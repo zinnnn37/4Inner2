@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:40:28 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 11:45:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 12:17:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define CHARACTER_HPP
 
 #define WHITE "\033[0;37m"
-#define YELLOW "\033[33m"
+#define PURPLE "\033[0;35m"
 
 #include "ICharacter.hpp"
 #include "AMateria.hpp"

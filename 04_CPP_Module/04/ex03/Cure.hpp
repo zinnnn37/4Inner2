@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 16:14:25 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 11:06:56 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 12:16:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "AMateria.hpp"
 
-#define GREEN "\033[0;32m"
+#define CYAN "\033[0;36m"
 
 class Cure : public AMateria
 {
