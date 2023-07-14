@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:40:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 01:05:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:15:42 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class	MateriaSource : public IMateriaSource
 {
 	private:
-		int			_idx;
+		int			_cnt;
 		AMateria*	_materia[4];
 
 	public:

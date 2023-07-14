@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:47:15 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 12:15:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:22:16 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define BLUE "\033[0;34m"
 
 MateriaSource::MateriaSource()
-	: _idx(0)
+	: _cnt(0)
 {
 	std::cout << BLUE"[ MateriaSource Default Constructor ]" << std::endl;
 	std::cout << WHITE"MateriaSource is created\n" << std::endl;
@@ -31,7 +31,7 @@ MateriaSource::MateriaSource( const MateriaSource &ms )
 
 	const AMateria*	tmp;
 
-	this->_idx = ms._idx;
+	this->_cnt = ms._cnt;
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -49,9 +49,6 @@ MateriaSource::MateriaSource( const MateriaSource &ms )
 
 MateriaSource::~MateriaSource()
 {
-	std::cout << BLUE"[ MateriaSource Destructor ]" << std::endl;
-	std::cout << WHITE"MateriaSource is destroyed\n" << std::endl;
-
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->_materia[i])
@@ -60,6 +57,9 @@ MateriaSource::~MateriaSource()
 			this->_materia[i] = NULL;
 		}
 	}
+
+	std::cout << BLUE"[ MateriaSource Destructor ]" << std::endl;
+	std::cout << WHITE"MateriaSource is destroyed\n" << std::endl;
 }
 
 MateriaSource&	MateriaSource::operator=( const MateriaSource& ms )
@@ -97,12 +97,19 @@ void	MateriaSource::learnMateria( AMateria* m )
 		std::cout << WHITE"Failed to Learn Materia: empty materia\n" << std::endl;
 		return ;
 	}
-	if (this->_idx < 4)
+	if ( this->_cnt < 4 )
 	{
-		std::cout << WHITE"Succeed to Learn Materia\n" << std::endl;
+		for ( int i = 0; i < 4; i++ )
+		{
+			if ( this->_materia[i] == NULL )
+			{
+				std::cout << WHITE"Succeed to Learn Materia\n" << std::endl;
+				this->_materia[i] = m;
+				this->_cnt++;
 
-		this->_materia[this->_idx] = m;
-		this->_idx++;
+				break ;
+			}
+		}
 	}
 	else
 		std::cout << WHITE"Failed to Learn Materia: slot is full\n" << std::endl;

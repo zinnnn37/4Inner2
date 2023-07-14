@@ -6,14 +6,14 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:46:33 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 13:05:31 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:21:29 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
 Character::Character()
-	: _name("default"), _idx(0)
+	: _name("default"), _cnt(0)
 {
 	std::cout << PURPLE"[ Character Default Constructor ]" << WHITE << std::endl;
 	std::cout << this->_name << " is created\n" << std::endl;
@@ -23,7 +23,7 @@ Character::Character()
 }
 
 Character::Character( std::string name )
-	: _name(name), _idx(0)
+	: _name(name), _cnt(0)
 {
 	std::cout << PURPLE"[ Character Constructor: name ]" << WHITE << std::endl;
 	std::cout << this->_name << " is created\n" << std::endl;
@@ -40,7 +40,7 @@ Character::Character( const Character &c )
 	const AMateria*	tmp;
 
 	this->_name = c._name;
-	this->_idx = c._idx;
+	this->_cnt = c._cnt;
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -58,9 +58,6 @@ Character::Character( const Character &c )
 
 Character::~Character()
 {
-	std::cout << PURPLE"[ Character Destructor ]" << WHITE << std::endl;
-	std::cout << this->_name << " is gone\n" << std::endl;
-
 	for (int i = 0; i < 4; i++)
 	{
 		if ( this->_slot[i] )
@@ -69,6 +66,9 @@ Character::~Character()
 			this->_slot[i] = NULL;
 		}
 	}
+
+	std::cout << PURPLE"[ Character Destructor ]" << WHITE << std::endl;
+	std::cout << this->_name << " is gone\n" << std::endl;
 }
 
 Character&	Character::operator=( const Character &c )
@@ -80,7 +80,7 @@ Character&	Character::operator=( const Character &c )
 		const AMateria*	tmp;
 
 		this->_name = c._name;
-		this->_idx = c._idx;
+		this->_cnt = c._cnt;
 
 		for (int i = 0; i < 4; i++)
 		{
@@ -113,7 +113,7 @@ void	Character::equip( AMateria* m )
 		std::cout << "Empty materia\n" << std::endl;
 		return ;
 	}
-	if ( this->_idx < 4 )
+	if ( this->_cnt < 4 )
 	{
 		for ( int i = 0; i < 4; i++ )
 		{
@@ -121,7 +121,7 @@ void	Character::equip( AMateria* m )
 			{
 				std::cout << this->_name << " equiped " << m->getType() << "\n" << std::endl;
 				this->_slot[i] = m->clone();
-				this->_idx++;
+				this->_cnt++;
 
 				break ;
 			}
@@ -143,7 +143,7 @@ void	Character::unequip( int idx )
 		std::cout << this->_name << " unequiped " << this->_slot[idx]->getType() << "\n" << std::endl;
 		
 		this->_slot[idx] = NULL;
-		this->_idx--;
+		this->_cnt--;
 	}
 	else
 		std::cout << "Empty slot\n" << std::endl;
