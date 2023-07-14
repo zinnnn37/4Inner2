@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:40:28 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 00:36:00 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 11:45:21 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ class	Character : public ICharacter
 		std::string const	&getName() const;
 		void				equip( AMateria* m );
 		void				unequip( int idx );
-		void				use( int idx, const ICharacter& c );
+		void				use( int idx, const ICharacter& ic );
+
 		const AMateria*		getMateria( int idx ) const;
 };
 

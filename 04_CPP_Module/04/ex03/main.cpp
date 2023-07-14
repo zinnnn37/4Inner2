@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 01:09:38 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 11:18:09 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 11:52:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,17 @@
 #include "Ice.hpp"
 #include "MateriaSource.hpp"
 
+#include <stdlib.h>
+
+void	leaks()
+{
+	system("leaks Materia");
+}
+
 int	main(void)
 {
+	atexit(leaks);
+
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Ice());
@@ -27,21 +36,31 @@ int	main(void)
 	AMateria* tmp;
 	tmp = src->createMateria("icecure");
 
-	ICharacter* me = new Character("me");
-	ICharacter* bob = new  Character("bob");
+	Character* me = new Character("me");
+	Character* bob = new  Character("bob");
 
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
+	delete tmp;
+
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+	delete tmp;
 
 	AMateria* tmp1 = src->createMateria("ice");
 	me->equip(tmp1);
 	AMateria* tmp2 = src->createMateria("cure");
-	me->equip(tmp);
+	me->equip(tmp2);
 
+	const AMateria	*del = me->getMateria(2);
 	me->unequip(2);
+	delete del;
+	del = NULL;
+
+	del = me->getMateria(3);
 	me->unequip(3);
+	delete del;
+	del = NULL;
 
 	bob->equip(tmp1);
 	bob->equip(tmp2);
@@ -55,6 +74,8 @@ int	main(void)
 	delete bob;
 	delete me;
 	delete src;
+	delete tmp1;
+	delete tmp2;
 
 	return 0;
 }

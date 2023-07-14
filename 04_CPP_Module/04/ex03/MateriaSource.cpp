@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:47:15 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 11:15:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 11:48:57 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ MateriaSource::~MateriaSource()
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->_materia[i])
+		{
 			delete this->_materia[i];
+			this->_materia[i] = NULL;
+		}
 	}
 }
 

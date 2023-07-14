@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:46:33 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 11:14:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 11:47:59 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ Character::~Character()
 	for (int i = 0; i < 4; i++)
 	{
 		if ( this->_slot[i] )
+		{
 			delete (this->_slot[i]);
+			this->_slot[i] = NULL;
+		}
 	}
 }
 
@@ -138,7 +141,7 @@ void	Character::unequip( int idx ) // not delete
 		std::cout << "Empty slot\n" << std::endl;
 }
 
-void	Character::use( int idx, const ICharacter& c )
+void	Character::use( int idx, const ICharacter& ic )
 {
 	std::cout << YELLOW"[ Character Use ]" << WHITE << std::endl;
 	std::cout << this->_name << " used " << this->_slot[idx]->getType() << "\n" << std::endl;
@@ -147,7 +150,7 @@ void	Character::use( int idx, const ICharacter& c )
 		return ;
 
 	if ( this->_slot[idx] )
-		this->_slot[idx]->use(c);
+		this->_slot[idx]->use(ic);
 	else
 		std::cout << "Empty slot\n" << std::endl;
 }
