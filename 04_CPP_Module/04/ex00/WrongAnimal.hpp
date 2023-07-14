@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 11:26:08 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 13:18:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:47:49 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class WrongAnimal
 		WrongAnimal();
 		WrongAnimal( const WrongAnimal& animal );
 		virtual ~WrongAnimal();
+
 		WrongAnimal&	operator=( const WrongAnimal& animal );
 
 		void	makeSound() const;

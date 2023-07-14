@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:24:19 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 13:30:18 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:54:00 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ int main()
 
 	std::cout << CYAN"----------<< subject test >>----------\n" << WHITE << std::endl;
 
-	const	Animal* meta = new Animal();
-	const	Animal* i = new Cat();
-	const	Animal* j = new Dog();
+	const Animal*	meta = new Animal();
+	const Animal*	i = new Cat();
+	const Animal*	j = new Dog();
+	// const Cat*		test = new Animal();
 	
 	std::cout << "\n" << meta->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;

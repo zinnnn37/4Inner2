@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 01:09:38 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 13:07:45 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 17:36:39 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(void)
 {
 	atexit(leaks);
 
+	std::cout << CYAN"\n\n---------<< Basic Funcs >>---------\n" << WHITE << std::endl;
 	/* Learn Materias */
 	IMateriaSource* ms = new MateriaSource();
 	ms->learnMateria(new Ice());
@@ -89,6 +90,41 @@ int	main(void)
 	delete ms;
 	delete tmp1;
 	delete tmp2;
+
+	std::cout << CYAN"----------<< Deep Copy >>----------\n" << WHITE << std::endl;
+
+	Character*	ori = new Character("ori");
+	AMateria*	ice = new Ice();
+
+	ori->equip(ice);
+
+	Character*	copy = new Character(*ori);
+
+	delete ori;
+
+	std::cout << CYAN"*** After delete ***\n" << std::endl;
+
+	copy->use(0, *copy);
+
+	delete copy;
+
+	std::cout << CYAN"-----------------------------------\n" << WHITE << std::endl;
+
+	Character	*c1 = new Character("c1");
+	Character	*c2 = new Character("c2");
+
+	c1->equip(ice);
+
+	*c2 = *c1;
+
+	delete c1;
+
+	std::cout << CYAN"*** After delete ***\n" << std::endl;
+
+	c2->use(0, *c2);
+
+	delete ice;
+	delete c2;
 
 	return 0;
 }

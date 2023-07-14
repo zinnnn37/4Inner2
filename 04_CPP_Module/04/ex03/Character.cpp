@@ -6,47 +6,42 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:46:33 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 13:21:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 17:39:08 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
 Character::Character()
-	: _name("default"), _cnt(0)
+	: _name( "default" ), _cnt( 0 )
 {
 	std::cout << PURPLE"[ Character Default Constructor ]" << WHITE << std::endl;
 	std::cout << this->_name << " is created\n" << std::endl;
 
-	for (int i = 0; i < 4; i++)
+	for ( int i = 0; i < 4; i++ )
 		this->_slot[i] = NULL;
 }
 
 Character::Character( std::string name )
-	: _name(name), _cnt(0)
+	: _name( name ), _cnt( 0 )
 {
 	std::cout << PURPLE"[ Character Constructor: name ]" << WHITE << std::endl;
 	std::cout << this->_name << " is created\n" << std::endl;
 
-	for (int i = 0; i < 4; i++)
+	for ( int i = 0; i < 4; i++ )
 		this->_slot[i] = NULL;
 }
 
 Character::Character( const Character &c )
+	: _name( c._name ), _cnt( c._cnt )
 {
 	std::cout << PURPLE"[ Character Copy Constructor ]" << WHITE << std::endl;
 	std::cout << this->_name << " is copied\n" << std::endl;
 
 	const AMateria*	tmp;
 
-	this->_name = c._name;
-	this->_cnt = c._cnt;
-
-	for (int i = 0; i < 4; i++)
+	for ( int i = 0; i < 4; i++ )
 	{
-		if ( this->_slot[i] )
-			delete this->_slot[i];
-		
 		tmp = c.getMateria(i);
 
 		if (tmp)
@@ -58,7 +53,7 @@ Character::Character( const Character &c )
 
 Character::~Character()
 {
-	for (int i = 0; i < 4; i++)
+	for ( int i = 0; i < 4; i++ )
 	{
 		if ( this->_slot[i] )
 		{
@@ -75,33 +70,33 @@ Character&	Character::operator=( const Character &c )
 {
 	std::cout << PURPLE"[ Character Copy Assignment Operator ]\n" << WHITE << std::endl;
 
-	if (this != &c)
+	if ( this != &c )
 	{
 		const AMateria*	tmp;
 
 		this->_name = c._name;
 		this->_cnt = c._cnt;
 
-		for (int i = 0; i < 4; i++)
+		for ( int i = 0; i < 4; i++ )
 		{
-			if ( this->_slot[i] )
+			if ( this->_slot[i] != NULL )
 				delete this->_slot[i];
 			
 			tmp = c.getMateria(i);
 
-			if (tmp)
+			if ( tmp )
 				this->_slot[i] = tmp->clone();
 			else
 				this->_slot[i] = NULL;
 		}
 	}
 
-	return (*this);
+	return *this;
 }
 
 std::string const	&Character::getName() const
 {
-	return (this->_name);
+	return ( this->_name );
 }
 
 void	Character::equip( AMateria* m )

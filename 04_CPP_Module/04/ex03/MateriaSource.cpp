@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:47:15 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 13:22:16 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 17:21:42 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ MateriaSource::MateriaSource( const MateriaSource &ms )
 
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->_materia[i])
-			delete this->_materia[i];
-		
 		tmp = ms.getMateria(i);
 
 		if (tmp)
@@ -49,7 +46,7 @@ MateriaSource::MateriaSource( const MateriaSource &ms )
 
 MateriaSource::~MateriaSource()
 {
-	for (int i = 0; i < 4; i++)
+	for ( int i = 0; i < 4; i++ )
 	{
 		if (this->_materia[i])
 		{
@@ -72,7 +69,7 @@ MateriaSource&	MateriaSource::operator=( const MateriaSource& ms )
 	{
 		for ( int i = 0; i < 4; i++ )
 		{
-			if (this->_materia[i])
+			if ( this->_materia[i] )
 				delete this->_materia[i];
 			
 			tmp = ms.getMateria(i);
@@ -120,7 +117,7 @@ AMateria*	MateriaSource::createMateria( std::string const &type )
 	std::cout << BLUE"[ Create Materia ]" << std::endl;
 	std::cout << WHITE"Creating " << type << std::endl;
 
-	for (int i = 0; i < 4; i++)
+	for ( int i = 0; i < 4; i++ )
 	{
 		if ( this->_materia[i] && type.compare(this->_materia[i]->getType()) == 0 )
 		{

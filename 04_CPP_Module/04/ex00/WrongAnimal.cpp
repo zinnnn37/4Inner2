@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 11:27:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 13:31:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:01:45 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ WrongAnimal::~WrongAnimal()
 WrongAnimal&	WrongAnimal::operator=( const WrongAnimal& animal )
 {
 	if (this != &animal)
-		this->_type = animal._type;
+		this->_type = animal.getType();
 
 	return (*this);
 }
 
 void	WrongAnimal::makeSound() const
 {
-	std::cout << "Wrong Animal sounds 🎶" << std::endl;
+	std::cout << "Wrong Animal sound 🎶" << std::endl;
 }
 
 std::string	WrongAnimal::getType() const
