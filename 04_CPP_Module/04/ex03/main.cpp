@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 01:09:38 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 12:30:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:07:45 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,19 @@ int	main(void)
 	pat->equip(tmp2);
 
 	/* Unequip */
+	pat->use(2, *mat);
+
 	const AMateria	*del = pat->getMateria(2);
 	pat->unequip(2);
 	delete del;
+
+	pat->equip(tmp2);
+	pat->use(2, *mat);
+
+	del = pat->getMateria(2);
+	pat->unequip(2);
+	delete del;
+
 	del = pat->getMateria(3);
 	pat->unequip(3);
 	delete del;

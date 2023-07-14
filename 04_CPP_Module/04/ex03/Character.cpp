@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:46:33 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 12:32:10 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:05:31 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,19 @@ void	Character::equip( AMateria* m )
 		std::cout << "Empty materia\n" << std::endl;
 		return ;
 	}
-	if ( this->_idx < 4 ) // for로 NULL인 곳에 넣도록 하기
+	if ( this->_idx < 4 )
 	{
-		std::cout << this->_name << " equiped " << m->getType() << "\n" << std::endl;
-		this->_slot[this->_idx] = m->clone();
-		this->_idx++;
+		for ( int i = 0; i < 4; i++ )
+		{
+			if ( this->_slot[i] == NULL )
+			{
+				std::cout << this->_name << " equiped " << m->getType() << "\n" << std::endl;
+				this->_slot[i] = m->clone();
+				this->_idx++;
+
+				break ;
+			}
+		}
 	}
 	else
 		std::cout << "Out of slots\n" << std::endl;
