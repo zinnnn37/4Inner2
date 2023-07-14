@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:23:25 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 00:52:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 11:13:59 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,30 @@
 AMateria::AMateria()
 	: _type("default")
 {
-	std::cout << PURPLE"[ Default Constructor ]\n" << WHITE << std::endl;
+	std::cout << PURPLE"[ AMateria Default Constructor ]\n" << WHITE << std::endl;
 }
 
 AMateria::AMateria( std::string const &type )
 	: _type(type)
 {
-	std::cout << PURPLE"[ Constructor: type ]\n" << WHITE << std::endl;
+	std::cout << PURPLE"[ AMateria Constructor: type ]\n" << WHITE << std::endl;
 }
 
 AMateria::AMateria( const AMateria& a )
 {
-	std::cout << PURPLE"[ Copy Constructor ]\n" << WHITE << std::endl;
+	std::cout << PURPLE"[ AMateria Copy Constructor ]\n" << WHITE << std::endl;
 
 	this->_type = a._type;
 }
 
 AMateria::~AMateria()
 {
-	std::cout << PURPLE"[ Destructor ]\n" << WHITE << std::endl;
+	std::cout << PURPLE"[ AMateria Destructor ]\n" << WHITE << std::endl;
 }
 
 AMateria&	AMateria::operator=( const AMateria& a )
 {
-	std::cout << PURPLE"[ Copy Assignment Operator ]" << WHITE << std::endl;
+	std::cout << PURPLE"[ AMateria Copy Assignment Operator ]" << WHITE << std::endl;
 
 	if (this != &a)
 		this->_type = a.getType();
@@ -53,6 +53,6 @@ std::string const &AMateria::getType() const
 
 void	AMateria::use( const ICharacter& c)
 {
-	std::cout << PURPLE"[ Use ]" << WHITE << std::endl;
+	std::cout << PURPLE"[ AMateria Use ]" << WHITE << std::endl;
 	std::cout << c.getName() << " is using skill\n" << std::endl;
 }

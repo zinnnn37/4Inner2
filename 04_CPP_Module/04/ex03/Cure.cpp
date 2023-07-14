@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:29:43 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 00:44:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 11:18:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ICharacter.hpp"
 
 Cure::Cure()
-	: AMateria("Cure")
+	: AMateria("cure")
 {
 	std::cout << GREEN"[ Cure Default Constructor ]" << WHITE << std::endl;
 	std::cout << WHITE"Cure is created\n" << std::endl;
@@ -45,7 +45,7 @@ Cure&	Cure::operator=( const Cure& cure )
 	std::cout << GREEN"[ Cure Copy Assignment Operator ]\n" << WHITE << std::endl;
 
 	if (this != &cure)
-		this->_type = cure._type;
+		this->_type = cure.getType();
 
 	return (*this);
 }
@@ -55,9 +55,8 @@ AMateria*	Cure::clone() const
 	return ( new Cure(*this) );
 }
 
-void	Cure::use( ICharacter& target )
+void	Cure::use( const ICharacter& target )
 {
-	std::cout << GREEN"[ Heal ]\n" << std::endl;
-
-	std::cout << WHITE" * heals " << target.getName() << "'s wounds *" << std::endl;
+	std::cout << GREEN"[ Heal ]" << std::endl;
+	std::cout << WHITE" * heals " << target.getName() << "'s wounds *\n" << std::endl;
 }

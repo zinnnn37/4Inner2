@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 16:14:25 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 00:52:57 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 11:06:56 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Cure : public AMateria
 		Cure&	operator=( const Cure &cure );
 
 		AMateria*	clone() const;
-		void		use( ICharacter& c );
+		void		use( const ICharacter& c );
 };
 
 #endif

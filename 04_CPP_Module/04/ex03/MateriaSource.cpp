@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:47:15 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 01:16:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/14 11:15:29 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ AMateria*	MateriaSource::createMateria( std::string const &type )
 
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->_materia[i] && this->_materia[i]->getType() == type)
+		if ( this->_materia[i] && type.compare(this->_materia[i]->getType()) == 0 )
 		{
 			std::cout << WHITE"Succeed to Create Materia\n" << std::endl;
 
