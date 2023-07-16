@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 01:09:38 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 17:36:39 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/16 13:52:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ int	main(void)
 	IMateriaSource* ms = new MateriaSource();
 	ms->learnMateria(new Ice());
 	ms->learnMateria(new Cure());
+	// ms->learnMateria(new AMateria("fire"));
 	ms->learnMateria(new Ice());
 	ms->learnMateria(new Cure());
 
 	/* Create Materias */
 	AMateria* tmp;
-	tmp = ms->createMateria("sth");
+	tmp = ms->createMateria("fire");
 
 	/* create Characters */
 	Character* pat = new Character("pat");

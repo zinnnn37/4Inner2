@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 11:28:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 11:28:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/16 12:53:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class WrongCat : public WrongAnimal
 		WrongCat();
 		WrongCat( const WrongCat& cat );
 		virtual ~WrongCat();
+
 		WrongCat&	operator=( const WrongCat& cat );
 
 		void	makeSound() const;

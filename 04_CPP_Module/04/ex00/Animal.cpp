@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:24:27 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 14:01:41 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/16 12:57:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ Animal::~Animal()
 
 Animal&	Animal::operator=( const Animal& animal )
 {
-	if (this != &animal)
+	if ( this != &animal )
 		this->_type = animal.getType();
 
-	return (*this);
+	return *this;
 }
 
 void	Animal::makeSound() const
@@ -45,5 +45,5 @@ void	Animal::makeSound() const
 
 std::string	Animal::getType() const
 {
-	return (this->_type);
+	return this->_type;
 }

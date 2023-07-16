@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:47:15 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 17:21:42 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/16 13:42:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ MateriaSource::MateriaSource()
 	std::cout << BLUE"[ MateriaSource Default Constructor ]" << std::endl;
 	std::cout << WHITE"MateriaSource is created\n" << std::endl;
 
-	for (int i = 0; i < 4; i++)
+	for ( int i = 0; i < 4; i++ )
 		this->_materia[i] = NULL;
 }
 
@@ -33,7 +33,7 @@ MateriaSource::MateriaSource( const MateriaSource &ms )
 
 	this->_cnt = ms._cnt;
 
-	for (int i = 0; i < 4; i++)
+	for ( int i = 0; i < 4; i++ )
 	{
 		tmp = ms.getMateria(i);
 
@@ -48,13 +48,12 @@ MateriaSource::~MateriaSource()
 {
 	for ( int i = 0; i < 4; i++ )
 	{
-		if (this->_materia[i])
+		if ( this->_materia[i] )
 		{
 			delete this->_materia[i];
 			this->_materia[i] = NULL;
 		}
 	}
-
 	std::cout << BLUE"[ MateriaSource Destructor ]" << std::endl;
 	std::cout << WHITE"MateriaSource is destroyed\n" << std::endl;
 }
@@ -67,6 +66,8 @@ MateriaSource&	MateriaSource::operator=( const MateriaSource& ms )
 
 	if (this != &ms)
 	{
+		this->_cnt = ms._cnt;
+
 		for ( int i = 0; i < 4; i++ )
 		{
 			if ( this->_materia[i] )
@@ -81,7 +82,7 @@ MateriaSource&	MateriaSource::operator=( const MateriaSource& ms )
 		}
 	}
 
-	return ( *this );
+	return *this;
 }
 
 void	MateriaSource::learnMateria( AMateria* m )
@@ -89,7 +90,7 @@ void	MateriaSource::learnMateria( AMateria* m )
 	std::cout << BLUE"[ Learn Materia ]" << std::endl;
 	std::cout << WHITE"Learning " << m->getType() << std::endl;
 
-	if (!m)
+	if ( !m )
 	{
 		std::cout << WHITE"Failed to Learn Materia: empty materia\n" << std::endl;
 		return ;
@@ -126,7 +127,6 @@ AMateria*	MateriaSource::createMateria( std::string const &type )
 			return this->_materia[i]->clone();
 		}
 	}
-
 	std::cout << WHITE"Failed to Create Materia: no matched type\n" << std::endl;
 
 	return NULL;

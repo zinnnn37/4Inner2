@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:40:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 13:15:42 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/16 13:39:28 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class	MateriaSource : public IMateriaSource
 
 		void			learnMateria( AMateria* m );
 		AMateria*		createMateria( std::string const &type );
+
 		const AMateria*	getMateria( int idx ) const;
 };
 

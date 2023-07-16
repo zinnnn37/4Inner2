@@ -6,14 +6,14 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:46:33 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 17:39:08 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/16 13:36:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
 Character::Character()
-	: _name( "default" ), _cnt( 0 )
+	: _name("default"), _cnt(0)
 {
 	std::cout << PURPLE"[ Character Default Constructor ]" << WHITE << std::endl;
 	std::cout << this->_name << " is created\n" << std::endl;
@@ -23,7 +23,7 @@ Character::Character()
 }
 
 Character::Character( std::string name )
-	: _name( name ), _cnt( 0 )
+	: _name(name), _cnt(0)
 {
 	std::cout << PURPLE"[ Character Constructor: name ]" << WHITE << std::endl;
 	std::cout << this->_name << " is created\n" << std::endl;
@@ -33,7 +33,7 @@ Character::Character( std::string name )
 }
 
 Character::Character( const Character &c )
-	: _name( c._name ), _cnt( c._cnt )
+	: _name(c._name), _cnt(c._cnt)
 {
 	std::cout << PURPLE"[ Character Copy Constructor ]" << WHITE << std::endl;
 	std::cout << this->_name << " is copied\n" << std::endl;
@@ -57,7 +57,7 @@ Character::~Character()
 	{
 		if ( this->_slot[i] )
 		{
-			delete (this->_slot[i]);
+			delete this->_slot[i];
 			this->_slot[i] = NULL;
 		}
 	}
@@ -84,7 +84,7 @@ Character&	Character::operator=( const Character &c )
 			
 			tmp = c.getMateria(i);
 
-			if ( tmp )
+			if (tmp)
 				this->_slot[i] = tmp->clone();
 			else
 				this->_slot[i] = NULL;
@@ -96,7 +96,7 @@ Character&	Character::operator=( const Character &c )
 
 std::string const	&Character::getName() const
 {
-	return ( this->_name );
+	return this->_name;
 }
 
 void	Character::equip( AMateria* m )

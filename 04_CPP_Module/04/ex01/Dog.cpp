@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:26:36 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 11:21:22 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/16 13:05:57 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Dog::Dog( const Dog& dog )
 	std::cout << "🐶 Dog copy constructor 🐶" << std::endl;
 
 	this->_type = dog.getType();
-	this->_brain = new Brain(*dog._brain);
+	this->_brain = new Brain( *dog._brain );
 }
 
 Dog::~Dog()
@@ -38,17 +38,17 @@ Dog::~Dog()
 
 Dog&	Dog::operator=( const Dog& dog )
 {
-	if (this != &dog)
+	if ( this != &dog )
 	{
 		this->_type = dog._type;
 		
-		if (this->_brain)
+		if ( this->_brain )
 			delete this->_brain;
 
-		this->_brain = new Brain(*dog._brain);
+		this->_brain = new Brain( *dog._brain );
 	}
 
-	return (*this);
+	return *this;
 }
 
 void	Dog::makeSound() const
@@ -58,5 +58,5 @@ void	Dog::makeSound() const
 
 Brain*	Dog::getBrain() const
 {
-	return ( this->_brain );
+	return this->_brain;
 }

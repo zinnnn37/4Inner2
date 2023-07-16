@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:25:56 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 11:21:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/16 13:05:08 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Cat::Cat( const Cat& cat )
 	std::cout << "🐱 Cat copy constructor 🐱" << std::endl;
 
 	this->_type = cat.getType();
-	this->_brain = new Brain(*cat._brain);
+	this->_brain = new Brain( *cat._brain );
 }
 
 Cat::~Cat()
@@ -38,17 +38,17 @@ Cat::~Cat()
 
 Cat&	Cat::operator=( const Cat& cat )
 {
-	if (this != &cat)
+	if ( this != &cat )
 	{
 		this->_type = cat._type;
 		
-		if (this->_brain)
+		if ( this->_brain )
 			delete this->_brain;
 
-		this->_brain = new Brain(*cat._brain);
+		this->_brain = new Brain( *cat._brain );
 	}
 
-	return (*this);
+	return *this;
 }
 
 void	Cat::makeSound() const
@@ -58,5 +58,5 @@ void	Cat::makeSound() const
 
 Brain*	Cat::getBrain() const
 {
-	return ( this->_brain );
+	return this->_brain;
 }

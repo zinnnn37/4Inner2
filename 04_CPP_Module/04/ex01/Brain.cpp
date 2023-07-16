@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 14:43:30 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/13 13:34:34 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/16 13:05:28 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ Brain::~Brain()
 
 Brain&	Brain::operator=( const Brain& brain )
 {
-	if (this != &brain)
+	if ( this != &brain )
 	{
 		this->len = brain.len;
-		for (int i = 0; i < brain.len; i++)
+		for ( int i = 0; i < brain.len; i++ )
 			this->ideas[i] = brain.ideas[i];
 	}
-	return (*this);
+	return *this;
 }
 
 std::string	Brain::getIdea( int idx ) const
@@ -46,9 +46,9 @@ std::string	Brain::getIdea( int idx ) const
 	std::cout << WHITE"getIdea: ";
 
 	if ( idx < 0 || idx >= this->len )
-		return (RED"Index out of range");
+		return ( RED"Index out of range" );
 	
-	return (this->ideas[idx]);
+	return this->ideas[idx];
 }
 
 void	Brain::setIdea( std::string idea )

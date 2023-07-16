@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:23:25 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 12:22:00 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/16 13:28:57 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,18 @@ AMateria&	AMateria::operator=( const AMateria& a )
 {
 	std::cout << BLUE"[ AMateria Copy Assignment Operator ]" << WHITE << std::endl;
 
-	if (this != &a)
+	if ( this != &a )
 		this->_type = a.getType();
 
-	return (*this);
+	return *this;
 }
 
 std::string const &AMateria::getType() const
 {
-	return ( this->_type );
+	return this->_type;
 }
 
-void	AMateria::use( const ICharacter& c)
+void	AMateria::use( const ICharacter& c )
 {
 	std::cout << BLUE"[ AMateria Use ]" << WHITE << std::endl;
 	std::cout << c.getName() << " is using skill\n" << std::endl;

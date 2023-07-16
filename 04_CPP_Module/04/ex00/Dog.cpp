@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:26:36 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/14 13:47:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/16 12:57:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ Dog::~Dog()
 
 Dog&	Dog::operator=( const Dog& dog )
 {
-	if (this != &dog)
+	if ( this != &dog )
 		this->_type = dog.getType();
 
-	return (*this);
+	return *this;
 }
 
 void	Dog::makeSound() const
