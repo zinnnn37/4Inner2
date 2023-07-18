@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 16:23:40 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/18 13:03:53 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/08 15:42:31 by minjinki          #+#    #+#             */
+/*   Updated: 2023/07/18 13:08:45 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../include/cub3d.h"
 
-int	main(int ac, char **av)
+size_t	ft_strlcpy(char *dst, const char *src, size_t destsize)
 {
-	if (ac == 2 || ac == 3)
+	size_t	srclen;
+	size_t	i;
+
+	i = 0;
+	srclen = ft_strlen(src);
+	while (i < srclen && i + 1 < destsize)
 	{
-		if (ft_strcmp(av[2], "--save") != 0)
-			return (print_error("Error\nInvalid argument"));
+		dst[i] = src[i];
+		i++;
 	}
-	else
-		return (print_error("Error\nInvalid argument"));
+	if (destsize != 0)
+		dst[i] = '\0';
+	return (srclen);
 }

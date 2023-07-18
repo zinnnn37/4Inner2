@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 16:23:40 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/18 13:03:53 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/08 14:43:12 by minjinki          #+#    #+#             */
+/*   Updated: 2023/07/18 13:08:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../include/cub3d.h"
 
-int	main(int ac, char **av)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	if (ac == 2 || ac == 3)
+	unsigned char	*new_s1;
+	unsigned char	*new_s2;
+
+	new_s1 = (unsigned char *)s1;
+	new_s2 = (unsigned char *)s2;
+	while (n-- && (*new_s1 || *new_s2))
 	{
-		if (ft_strcmp(av[2], "--save") != 0)
-			return (print_error("Error\nInvalid argument"));
+		if (*new_s1 != *new_s2)
+			return (*new_s1 - *new_s2);
+		new_s1++;
+		new_s2++;
 	}
-	else
-		return (print_error("Error\nInvalid argument"));
+	return (0);
 }

@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 16:23:40 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/18 13:03:53 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/11 16:13:18 by minjinki          #+#    #+#             */
+/*   Updated: 2023/07/18 13:07:57 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../include/cub3d.h"
 
-int	main(int ac, char **av)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (ac == 2 || ac == 3)
-	{
-		if (ft_strcmp(av[2], "--save") != 0)
-			return (print_error("Error\nInvalid argument"));
-	}
+	if (!lst || !new)
+		return ;
+	else if (!*lst)
+		*lst = new;
 	else
-		return (print_error("Error\nInvalid argument"));
+		ft_lstlast(*lst)->next = new;
 }

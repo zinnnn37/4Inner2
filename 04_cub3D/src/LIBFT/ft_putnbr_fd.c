@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 16:23:40 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/18 13:03:53 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/11 15:15:33 by minjinki          #+#    #+#             */
+/*   Updated: 2023/07/18 13:08:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../include/cub3d.h"
 
-int	main(int ac, char **av)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (ac == 2 || ac == 3)
+	if (n == -2147483648)
 	{
-		if (ft_strcmp(av[2], "--save") != 0)
-			return (print_error("Error\nInvalid argument"));
+		ft_putstr_fd("-2147483648", fd);
+		return ;
 	}
-	else
-		return (print_error("Error\nInvalid argument"));
+	if (n < 0)
+	{
+		n *= -1;
+		ft_putchar_fd('-', fd);
+	}
+	if (n < 10)
+	{
+		ft_putchar_fd(n + '0', fd);
+		return ;
+	}
+	ft_putnbr_fd(n / 10, fd);
+	ft_putchar_fd(n % 10 + '0', fd);
 }

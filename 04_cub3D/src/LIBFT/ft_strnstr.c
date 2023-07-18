@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 16:23:40 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/18 13:03:53 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/08 16:53:07 by minjinki          #+#    #+#             */
+/*   Updated: 2023/07/18 13:08:55 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../include/cub3d.h"
 
-int	main(int ac, char **av)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	if (ac == 2 || ac == 3)
+	size_t	nlen;
+
+	if (!*needle)
+		return ((char *)haystack);
+	if (len == 0)
+		return (NULL);
+	nlen = ft_strlen(needle);
+	while (*haystack && len >= nlen)
 	{
-		if (ft_strcmp(av[2], "--save") != 0)
-			return (print_error("Error\nInvalid argument"));
+		if (*haystack == *needle && ft_strncmp(haystack, needle, nlen) == 0)
+			return ((char *)haystack);
+		len--;
+		haystack++;
 	}
-	else
-		return (print_error("Error\nInvalid argument"));
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:24:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/17 16:25:11 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/18 13:10:12 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 # include <fcntl.h>
 # include <math.h>
 # include "../mlx/mlx.h"
+# include "libft.h"
 
 #endif

@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 16:23:40 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/18 13:03:53 by minjinki         ###   ########.fr       */
+/*   Created: 2023/07/18 13:04:01 by minjinki          #+#    #+#             */
+/*   Updated: 2023/07/18 13:06:16 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	main(int ac, char **av)
+int	print_error(char *str)
 {
-	if (ac == 2 || ac == 3)
-	{
-		if (ft_strcmp(av[2], "--save") != 0)
-			return (print_error("Error\nInvalid argument"));
-	}
-	else
-		return (print_error("Error\nInvalid argument"));
+	printf("%s\n", str);
+	return (-1);
+}
+
+void	free_all()
+{
+	// free all malloced memory
+}
+
+void	exit_with_code(int code, char *str)
+{
+	printf("%s\n", str);
+	free_all();
+	exit(code);
 }

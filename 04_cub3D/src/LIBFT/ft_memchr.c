@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 16:23:40 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/18 13:03:53 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/08 16:39:03 by minjinki          #+#    #+#             */
+/*   Updated: 2023/07/18 13:08:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../include/cub3d.h"
 
-int	main(int ac, char **av)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if (ac == 2 || ac == 3)
+	unsigned char	new_c;
+	unsigned char	*new_s;
+
+	new_c = (unsigned char)c;
+	new_s = (unsigned char *)s;
+	while (n--)
 	{
-		if (ft_strcmp(av[2], "--save") != 0)
-			return (print_error("Error\nInvalid argument"));
+		if (*new_s == new_c)
+			return (new_s);
+		new_s++;
 	}
-	else
-		return (print_error("Error\nInvalid argument"));
+	return (NULL);
 }

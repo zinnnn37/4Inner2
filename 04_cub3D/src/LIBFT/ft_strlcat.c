@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 16:23:40 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/18 13:03:53 by minjinki         ###   ########.fr       */
+/*   Created: 2022/07/08 16:04:48 by minjinki          #+#    #+#             */
+/*   Updated: 2023/07/18 13:08:44 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../include/cub3d.h"
 
-int	main(int ac, char **av)
+size_t	ft_strlcat(char *dst, const char *src, size_t destsize)
 {
-	if (ac == 2 || ac == 3)
+	unsigned int	dst_len;
+	unsigned int	src_len;
+	unsigned int	i;
+
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	i = 0;
+	if (destsize <= dst_len)
+		return (destsize + src_len);
+	while (src[i] && i < destsize - dst_len - 1)
 	{
-		if (ft_strcmp(av[2], "--save") != 0)
-			return (print_error("Error\nInvalid argument"));
+		dst[dst_len + i] = src[i];
+		i++;
 	}
-	else
-		return (print_error("Error\nInvalid argument"));
+	dst[dst_len + i] = '\0';
+	return (dst_len + src_len);
 }
