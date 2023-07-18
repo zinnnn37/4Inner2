@@ -1,25 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 16:24:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/18 13:20:59 by minjinki         ###   ########.fr       */
+/*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
+/*   Updated: 2023/07/18 13:25:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef STRUCT_H
+# define STRUCT_H
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <math.h>
-# include "../mlx/mlx.h"
-# include "libft.h"
-# include "struct.h"
+typedef struct s_img
+{
+	int		flor;
+	int		ceil;
+
+	void	*north;
+	void	*south;
+	void	*west;
+	void	*east;
+	void	*tmp;
+}	t_img;
+
+typedef struct s_map
+{
+	char	**map;
+	int		width;
+	int		height;
+
+	double	px;
+	double	py;
+}	t_map;
+
+typedef struct s_game
+{
+	void	*mlx;
+	void	*win;
+
+	int		bmp;
+	int		width;
+	int		height;
+
+	t_img	img;
+	t_map	map;
+}	t_game;
 
 #endif

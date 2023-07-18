@@ -6,18 +6,18 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 12:17:00 by minjinki          #+#    #+#              #
-#    Updated: 2023/07/17 16:26:51 by minjinki         ###   ########.fr        #
+#    Updated: 2023/07/18 13:14:52 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	cub3D
 
-LIBFT		=	libft/
+LIBFT		=	LIBFT/
 LIBFT_LIB	=	$(LIBFT)libft.a
 
 SRC_FILES	=	main
 
-MLX			=	../mlx/
+MLX			=	../mlx/	# mlx/ 도 해보고 결정
 MLX_LIB		=	$(MLX)libmlx.a
 
 SRCS		=	$(addsuffix .c, $(SRC_FILES))
