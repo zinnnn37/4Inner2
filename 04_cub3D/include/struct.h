@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/18 14:22:02 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/07/18 18:51:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 typedef struct s_img
 {
-	int		flor;
+	int		floor;
 	int		ceil;
 
 	void	*north;
@@ -39,9 +39,6 @@ typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
-
-	int		width;
-	int		height;
 
 	t_img	img;
 	t_map	map;
