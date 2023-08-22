@@ -6,11 +6,14 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 13:23:00 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/11 13:37:48 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/22 14:25:25 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "microshell.h"
+#include <string.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <stdio.h>
 
 int	err(char *str)
 {
