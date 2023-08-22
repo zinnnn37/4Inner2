@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 13:23:00 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/22 14:25:25 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/22 14:29:38 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,65 +15,70 @@
 #include <sys/wait.h>
 #include <stdio.h>
 
-int	err(char *str)
+int	ft_error(char *s)
 {
-	while (*str)
-		write(2, str++, 1);
+	while (*s)
+		write(2, s++, 1);
 	return (1);
 }
 
-int	cd(char **argv, int i)
+int	ft_cd(char **av, int i)
 {
 	if (i != 2)
-		return (err("error: cd: bad arguments\n"));
-	else if (chdir(argv[1]) == -1)
-		return (err("error: cd: cannot change directory to "), err(argv[1]), err("\n"));
+		return (ft_error("error: cd: bad arguments\n"));
+	else if (chdir(av[1]) == -1)
+		return (ft_error("error: cd: cannot change directory to "), ft_error(av[1]), ft_error("\n"));
 	return (0);
 }
 
-int	exec(char **argv, char **envp, int i)
+int	ft_exec(char **av, char **env, int i)
 {
 	int	fd[2];
-	int	status;
-	int	has_pipe = argv[i] && !strcmp(argv[i], "|");
+	int	stat;
+	int	piped;
 
-	if (has_pipe && pipe(fd) == -1)
-		return (err("error: fatal\n"));
+	if (av[i] && *(av[i]) == '|')
+		piped = 1;
+	else
+		piped = 0;
+
+	if (piped && pipe(fd) == -1)
+		return (ft_error("error: fatal\n"));
 
 	int	pid = fork();
-	if (!pid)
+
+	if (pid == 0)
 	{
-		argv[i] = 0;
-		if (has_pipe && (dup2(fd[1], 1) == -1 || close(fd[0]) == -1 || close(fd[1]) == -1))
-			return (err("error: fatal\n"));
-		execve(*argv, argv, envp);
-		return (err("error: cannot execute "), err(*argv), err("\n"));
+		av[i] = 0;
+		if (piped && (dup2(fd[1], 1) == -1 || close(fd[0]) == -1 || close(fd[1]) == -1))
+			return (ft_error("error: fatal\n"));
+		execve(*av, av, env);
+		return (ft_error("error: cannot execute "), ft_error(*av), ft_error("\n"));
 	}
 
-	waitpid(pid, &status, 0);
-	if (has_pipe && (dup2(fd[0], 0) == -1 || close(fd[0]) == -1 || close(fd[1]) == -1))
-		return (err("error: fatal\n"));
-	return (WIFEXITED(status) && WEXITSTATUS(status));
+	waitpid(pid, &stat, 0);
+	if (piped && (dup2(fd[0], 0) == -1 || close(fd[0]) == -1 || close(fd[1]) == -1))
+		return (ft_error("error: fatal\n"));
+	return (WIFEXITED(stat) && WEXITSTATUS(stat));
 }
 
-int	main(int argc, char **argv, char **envp)
+int	main(int ac, char **av, char **env)
 {
-	int	i = 0;
-	int	status = 0;
+	int	i = 0, stat = 0;
 
-	if (argc > 1)
+	if (ac > 1)
 	{
-		while (argv[i] && argv[++i])
+		while (av[i] && av[++i])
 		{
-			argv += i;
+			av += i;
 			i = 0;
-			while (argv[i] && strcmp(argv[i], "|") && strcmp(argv[i], ";"))
+			while (av[i] && *(av[i]) == '|' && *(av[i]) == ';')
 				i++;
-			if (!strcmp(*argv, "cd"))
-				status = cd(argv, i);
+			if (!strcmp(*av, "cd"))
+				stat = ft_cd(av, i);
 			else if (i)
-				status = exec(argv, envp, i);
+				stat = ft_exec(av, env, i);
 		}
 	}
-	return (status);
+	return (stat);
 }
