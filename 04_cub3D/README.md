@@ -6,5 +6,5 @@ _요약: 이 프로젝트는 최초의 FPS이자 세계적으로 유명한 90년
 
 full code: https://github.com/zinnnn37/cub3d
 
-minjinki: src/mlx
+minjinki: src/mlx<br />
 eunjeong: src/parsing
