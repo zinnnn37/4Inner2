@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
+#    By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 21:48:33 by minjinki          #+#    #+#              #
-#    Updated: 2023/08/29 11:55:43 by minjinki         ###   ########.fr        #
+#    Updated: 2023/09/07 12:00:59 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	Bureaucrat
 
-SRC_FILES	=	main
+SRC_FILES	=	main\
+				Bureaucrat
 
 SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 
