@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:59:49 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/07 12:09:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/11 11:09:15 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main()
 
 		std::cout << b << std::endl;
 
-		b.increase_grade();
+		b.increaseGrade();
 		std::cout << b << std::endl;
 	}
 	catch(const std::exception& e)
@@ -36,10 +36,10 @@ int	main()
 
 		std::cout << b << std::endl;
 
-		b.decrease_grade();
+		b.decreaseGrade();
 		std::cout << b << std::endl;
 
-		b.decrease_grade();
+		b.decreaseGrade();
 		std::cout << b << std::endl;
 	}
 	catch(const std::exception& e)

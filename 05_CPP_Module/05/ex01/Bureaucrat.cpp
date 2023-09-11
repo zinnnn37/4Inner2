@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 12:41:19 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/07 12:08:15 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/11 11:08:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	Bureaucrat::getGrade() const
 	return (_grade);
 }
 
-void	Bureaucrat::increase_grade()
+void	Bureaucrat::increaseGrade()
 {
 	if (_grade - 1 < 1)
 		throw GradeTooHighException();
@@ -61,7 +61,7 @@ void	Bureaucrat::increase_grade()
 		_grade--;
 }
 
-void	Bureaucrat::decrease_grade()
+void	Bureaucrat::decreaseGrade()
 {
 	if (_grade + 1 > 150)
 		throw GradeTooLowException();

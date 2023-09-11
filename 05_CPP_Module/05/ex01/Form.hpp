@@ -1,45 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/29 12:41:37 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/11 11:09:37 by minjinki         ###   ########.fr       */
+/*   Created: 2023/09/11 11:02:12 by minjinki          #+#    #+#             */
+/*   Updated: 2023/09/11 11:08:16 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
+#ifndef FORM_HPP
+#define FORM_HPP
 
 #include <iostream>
 
-class Bureaucrat
+class Form
 {
 	private:
 		const std::string	_name;
-		int					_grade;
+		bool				_signed;
+		const int			_gradeToSign;
+		const int			_gradeToExec;
 
 	public:
-		Bureaucrat();
-		Bureaucrat( std::string name, int grade );
-		Bureaucrat( const Bureaucrat &b );
-		~Bureaucrat();
+		Form();
+		Form( std::string name, int gradeToSign, int gradeToExec );
+		Form( const Form &form );
+		~Form();
 
-		Bureaucrat&			operator=( const Bureaucrat &b );
+		Form&	operator=( const Form &form );
 
 		const std::string	getName() const;
-		int					getGrade() const;
-		void				increaseGrade();
-		void				decreaseGrade();
+		bool				getSigned() const;
+		int					getGradeToSign() const;
+		int					getGradeToExec() const;
+		void				beSigned( const Bureaucrat &b );
 
 		class GradeTooHighException : public std::exception
-		{	// exception 클래스 상속
+		{
 			public:
 				const char* what() const throw();
-				// 예외 종류에 맞는 에러 메시지를 리턴하는 함수
-				// std::exception 클래스의 what 함수를 오버라이딩
 		};
 
 		class GradeTooLowException : public std::exception
@@ -48,7 +49,5 @@ class Bureaucrat
 				const char* what() const throw();
 		};
 };
-
-std::ostream&	operator<<( std::ostream &out, const Bureaucrat &b );
 
 #endif
