@@ -6,13 +6,15 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 21:48:33 by minjinki          #+#    #+#              #
-#    Updated: 2023/08/29 11:56:39 by minjinki         ###   ########.fr        #
+#    Updated: 2023/09/11 11:00:55 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	Bureaucrat
 
-SRC_FILES	=	main
+SRC_FILES	=	main\
+				Bureaucrat\
+				Form
 
 SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 
