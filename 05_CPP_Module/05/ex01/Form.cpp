@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 08:41:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/13 12:44:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:59:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,17 @@ void	Form::setSigned( bool sign )
 void	Form::beSigned( const Bureaucrat &b )
 {
 	if (b.getGrade() > this->_gradeToSign || b.getGrade() > this->_gradeToExec)
+	{
+		std::cout << b.getName() << " couldn't sign " << this->_name
+			<< " because their grade is too low" << std::cout;
 		throw GradeTooLowException();
+	}
 	else if (this->_signed == true)
+	{
+		std::cout << b.getName() << " couldn't sign " << this->_name
+			<< " because it's already signed" << std::cout;
 		throw AlreadySignedException();
+	}
 	else
 		this->setSigned(true);
 }
