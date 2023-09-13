@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 12:41:37 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/11 11:08:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/13 09:05:05 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
+#include "Form.hpp"
 
 class Bureaucrat
 {
