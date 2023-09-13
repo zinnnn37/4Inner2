@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 12:41:19 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/13 12:17:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:43:33 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,27 +71,19 @@ void	Bureaucrat::decreaseGrade()
 
 void	Bureaucrat::signForm( Form &form )
 {
-	if (form.getGradeToSign() < _grade || form.getGradeToExec() < _grade)
-		std::cout << this->_name << " cannot sign " << form.getName()
-			<< " because the grade is too low" << std::endl;
-	else if (form.getSigned() == true)
-		std::cout << this->_name << " cannot sign " << form.getName()
-			<< " because the form is already signed" << std::endl;
-	else
-	{
+	form.beSigned(*this);
+	if (form.getSigned())
 		std::cout << this->_name << " signed " << form.getName() << std::endl;
-		form.setSigned(true);
-	}
 }
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Grade is too high");
+	return ("Error: Grade is too high");
 }
 
 const char*	Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Grade is too low");
+	return ("Error: Grade is too low");
 }
 
 std::ostream&	operator<<( std::ostream &out, const Bureaucrat& b )
