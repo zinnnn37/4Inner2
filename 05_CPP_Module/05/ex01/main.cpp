@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/13 12:45:10 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/13 13:08:05 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main()
 	try
 	{
 		Bureaucrat	b("b", 50);
-		Form		f("f", false, 49, 48);
+		Form		f("f", false, 49, 51);
 
 		b.increaseGrade();
 		b.increaseGrade();
