@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 12:41:19 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/13 09:07:35 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:17:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,14 @@ void	Bureaucrat::decreaseGrade()
 		this->_grade++;
 }
 
-void	Bureaucrat::signForm( const Form &form )
+void	Bureaucrat::signForm( Form &form )
 {
-	if (form.getGradeToSign() < _grade)
+	if (form.getGradeToSign() < _grade || form.getGradeToExec() < _grade)
 		std::cout << this->_name << " cannot sign " << form.getName()
 			<< " because the grade is too low" << std::endl;
+	else if (form.getSigned() == true)
+		std::cout << this->_name << " cannot sign " << form.getName()
+			<< " because the form is already signed" << std::endl;
 	else
 	{
 		std::cout << this->_name << " signed " << form.getName() << std::endl;

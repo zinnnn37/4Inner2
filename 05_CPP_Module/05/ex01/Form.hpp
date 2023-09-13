@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:02:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/13 09:04:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:07:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 #define FORM_HPP
 
 #include <iostream>
-#include "Bureaucrat.hpp"
+#include <string>
+#include <exception>
 
-class Form
+class	Bureaucrat;
+
+class	Form
 {
 	private:
 		const std::string	_name;
@@ -26,7 +29,7 @@ class Form
 
 	public:
 		Form();
-		Form( std::string name, int gradeToSign, int gradeToExec );
+		Form( std::string name, bool sign, int gradeToSign, int gradeToExec );
 		Form( const Form &form );
 		~Form();
 
@@ -37,9 +40,6 @@ class Form
 		int					getGradeToSign() const;
 		int					getGradeToExec() const;
 		void				setSigned( bool sign );
-		void				setGradeToSign( int grade );
-		void				setGradeToExec( int grade );
-
 		void				beSigned( const Bureaucrat &b );
 
 		class GradeTooHighException : public std::exception
@@ -53,6 +53,14 @@ class Form
 			public:
 				const char* what() const throw();
 		};
+
+		class AlreadySignedException : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
 };
+
+std::ostream&	operator<<( std::ostream &out, const Form &form );
 
 #endif
