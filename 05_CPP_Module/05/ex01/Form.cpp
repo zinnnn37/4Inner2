@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 08:41:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/13 16:01:09 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/13 16:24:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ Form::Form()
 {
 }
 
-Form::Form( std::string name, bool sign, int gradeToSign, int gradeToExec )
-	: _name(name), _signed(sign), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec)
+Form::Form( std::string name, int gradeToSign, int gradeToExec )
+	: _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec)
 {
 	if (this->_gradeToSign < 1 || this->_gradeToExec < 1)
 		throw GradeTooHighException();

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/13 15:22:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/13 16:26:11 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main()
 	try
 	{
 		Bureaucrat	b("b", 1);
-		Form		f("f", true, 1, 1);
+		Form		f("f", 1, 1);
 
 		b.signForm(f);
 		std::cout << f << std::endl;
@@ -33,7 +33,7 @@ int	main()
 	try
 	{
 		Bureaucrat	b("b", 50);
-		Form		f("f", false, 49, 51);
+		Form		f("f", 49, 51);
 
 		b.increaseGrade();
 		b.increaseGrade();

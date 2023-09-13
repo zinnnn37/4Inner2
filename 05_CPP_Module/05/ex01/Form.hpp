@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:02:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/13 12:07:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/13 16:24:25 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class	Form
 
 	public:
 		Form();
-		Form( std::string name, bool sign, int gradeToSign, int gradeToExec );
+		Form( std::string name, int gradeToSign, int gradeToExec );
 		Form( const Form &form );
 		~Form();
 
