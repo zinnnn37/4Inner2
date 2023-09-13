@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 12:41:37 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/13 10:55:15 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/13 10:56:38 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
+#include <string>
 #include <exception>
 
 class Bureaucrat
