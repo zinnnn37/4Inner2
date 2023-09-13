@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/13 13:08:05 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:22:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main()
 	}
 	catch ( std::exception &e )
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
