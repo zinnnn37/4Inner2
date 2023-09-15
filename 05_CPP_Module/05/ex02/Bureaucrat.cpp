@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 12:41:19 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/13 12:43:33 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/16 08:53:56 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	Bureaucrat::decreaseGrade()
 		this->_grade++;
 }
 
-void	Bureaucrat::signForm( Form &form )
+void	Bureaucrat::signForm( AForm &form )
 {
 	form.beSigned(*this);
 	if (form.getSigned())

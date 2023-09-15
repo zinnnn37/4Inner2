@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:48:23 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/13 19:00:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/16 08:55:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,34 @@
 std::string	ascii()
 {
 	std::string	tree =
-	"               ,@@@@@@@,
-		,,,.   ,@@@@@@/@@,  .oo8888o.
-		,&%%&%&&%,@@@@@/@@@@@@,8888\88/8o
-	,%&\%&&%&&%,@@@\@@@/@@@88\88888/88'
-	%&&%&%&/%&&%@@\@@/ /@@@88888\88888'
-	%&&%/ %&%%&&@@\ V /@@' `88\8 `/88'
-	`&%\ ` /%&'    |.|        \ '|8'
-		|o|        | |         | |
-		|.|        | |         | |
-		\\/ ._\//_/__/  ,\_//__\\/.  \_//__/_
-	------------------------------------------------
+	"               ,@@@@@@@,\
+		,,,.   ,@@@@@@/@@,  .oo8888o.\
+		,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\
+	,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'\
+	%&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'\
+	%&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'\
+	`&%\\ ` /%&'    |.|        \\ '|8'\
+		|o|        | |         | |\
+		|.|        | |         | |\
+		\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_\
+	------------------------------------------------\
 	";
 
 	return (tree);
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-	: Form("ShrubberyCreationForm", 145, 137)
+	: AForm("ShrubberyCreationForm", 145, 137)
 {
 }
 
-ShrubberyCreationForm::ShrubeeryCreationForm( std::string name )
-	: Form(name, 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm( std::string name )
+	: AForm(name, 145, 137)
 {
 }
 
-ShrubberyCreationForm::ShrubeeryCreationForm( const ShrubeeryCreationForm &sf )
-	: Form(sf.getName(), sf.getGradeToSign(), sf.getGradeToExecute())
+ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm &sf )
+	: AForm(sf.getName(), sf.getGradeToSign(), sf.getGradeToExec())
 {
 	*this = sf;
 }
@@ -55,7 +55,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=( const ShrubberyCreationForm &sf )
 {
 	if (this != &sf)
-		this->_signed = sf.getSigned();
+		this->setSigned(sf.getSigned());
 
 	return (*this);
 }
@@ -67,7 +67,7 @@ void	ShrubberyCreationForm::execute( const Bureaucrat& executor ) const
 
 	if (!this->getSigned())
 		throw NotSignedException();
-	else if (executor.getGrade() > this->getGradeToExecute())
+	else if (executor.getGrade() > this->getGradeToExec())
 		throw GradeTooLowException();
 	
 	fileName = this->getName() + "_shrubbery";
