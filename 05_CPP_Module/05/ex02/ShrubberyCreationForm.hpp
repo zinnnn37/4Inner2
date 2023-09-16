@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:36:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 17:22:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/16 18:20:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 #include <fstream>
 #include "AForm.hpp"
-
-class	Bureaucrat;
 
 class	ShrubberyCreationForm : public AForm
 {

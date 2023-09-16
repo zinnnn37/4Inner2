@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 21:48:33 by minjinki          #+#    #+#              #
-#    Updated: 2023/09/16 10:35:22 by minjinki         ###   ########.fr        #
+#    Updated: 2023/09/16 18:16:29 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME		=	AForm
 SRC_FILES	=	main\
 				Bureaucrat\
 				AForm\
-				ShrubberyCreationForm
+				ShrubberyCreationForm\
+				RobotomyRequestForm
 
 SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:48:23 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 17:27:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:58:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,10 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=( const ShrubberyCreation
 		this->setSigned(sf.getSigned());
 		this->_target = sf._target;
 	}
-
 	return (*this);
 }
 
-void	ShrubberyCreationForm::execute( const Bureaucrat& executor ) const
+void	ShrubberyCreationForm::execute( const Bureaucrat &executor ) const
 {
 	std::string		fileName;
 	std::ofstream	ofs;
@@ -104,13 +103,13 @@ const char* ShrubberyCreationForm::NotSignedException::what() const throw()
 
 std::ostream&	operator<<( std::ostream &out, const ShrubberyCreationForm &sf )
 {
-	std::cout << "\n============ ShrubberyCreationForm Info ============\n" << std::endl;
+	out << "\n============ ShrubberyCreationForm Info ============\n" << std::endl;
 	out << sf.getName() << " form is "
 		<< (sf.getSigned() ? "signed" : "not signed") << std::endl;
 	out << sf.getName() << " form requires " << sf.getGradeToSign()
-		<< " grade to sign in and " << sf.getGradeToExec()
+		<< " grade to sign and " << sf.getGradeToExec()
 		<< " grade to execute" << std::endl;
-	std::cout << "\n====================================================" << std::endl;
+	out << "\n====================================================" << std::endl;
 
 	return out;
 }

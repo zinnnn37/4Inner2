@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 10:56:45 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 17:20:59 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/16 18:21:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 #include <cstdlib>
 #include "AForm.hpp"
-
-class	Bureaucrat;
 
 class	RobotomyRequestForm : public AForm
 {
@@ -31,7 +29,8 @@ class	RobotomyRequestForm : public AForm
 
 		RobotomyRequestForm&	operator=( const RobotomyRequestForm &rf );
 
-		void	execute( const Bureaucrat &executor ) const;
+		void		execute( const Bureaucrat &executor ) const;
+		std::string	getTarget( void ) const;
 
 		class	NotSignedException : public std::exception
 		{

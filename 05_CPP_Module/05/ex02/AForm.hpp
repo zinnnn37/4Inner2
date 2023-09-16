@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:02:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 17:24:00 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/16 18:19:36 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <exception>
 
 #define GREEN "\033[32m"
+#define BLUE "\033[34m"
+#define RED "\033[31m"
 #define RESET "\033[0m"
 
 class	Bureaucrat;
