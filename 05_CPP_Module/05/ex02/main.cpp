@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 10:34:41 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:25:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main()
 
 		sf.setSigned(false);
 
-		b3.signForm(sf);
+		b1.signForm(sf);
 		b3.executeForm(sf);
 		std::cout << std::endl;
 	}

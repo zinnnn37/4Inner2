@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:48:23 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 10:33:19 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:27:13 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ std::string	ascii()
 ShrubberyCreationForm::ShrubberyCreationForm()
 	: AForm("ShrubberyCreationForm", 145, 137)
 {
+	this->_target = "default";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm( std::string name )
-	: AForm(name, 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm( std::string target )
+	: AForm("ShrubberyCreationForm", 145, 137)
 {
+	this->_target = target;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm &sf )
@@ -54,7 +56,10 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=( const ShrubberyCreationForm &sf )
 {
 	if (this != &sf)
+	{
 		this->setSigned(sf.getSigned());
+		this->_target = sf._target;
+	}
 
 	return (*this);
 }
@@ -77,6 +82,14 @@ void	ShrubberyCreationForm::execute( const Bureaucrat& executor ) const
 
 	ofs << ascii();
 	ofs.close();
+
+	std::cout << executor.getName() << " executes " << this->getName() << std::endl;
+	std::cout << GREEN"Shrubbery is planted in " << this->getTarget() << RESET << std::endl;
+}
+
+std::string	ShrubberyCreationForm::getTarget( void ) const
+{
+	return (this->_target);
 }
 
 const char*	ShrubberyCreationForm::FileNotOpendException::what() const throw()

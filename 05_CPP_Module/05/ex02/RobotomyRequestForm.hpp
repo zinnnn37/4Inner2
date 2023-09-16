@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 10:56:45 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 11:31:25 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:20:59 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,18 @@
 
 class	Bureaucrat;
 
-class	RobotoMyRequestForm : public AForm
+class	RobotomyRequestForm : public AForm
 {
-	public:
-		RobotoMyRequestForm();
-		RobotoMyRequestForm( std::string target );
-		RobotoMyRequestForm( const RobotoMyRequestForm &rf );
-		~RobotoMyRequestForm();
+	private:
+		std::string	_target;
 
-		RobotoMyRequestForm&	operator=( const RobotoMyRequestForm &rf );
+	public:
+		RobotomyRequestForm();
+		RobotomyRequestForm( std::string target );
+		RobotomyRequestForm( const RobotomyRequestForm &rf );
+		~RobotomyRequestForm();
+
+		RobotomyRequestForm&	operator=( const RobotomyRequestForm &rf );
 
 		void	execute( const Bureaucrat &executor ) const;
 
@@ -36,5 +39,7 @@ class	RobotoMyRequestForm : public AForm
 				const char*	what() const throw();
 		};
 };
+
+std::ostream&	operator<<( std::ostream &out, const RobotomyRequestForm &rf );
 
 #endif
