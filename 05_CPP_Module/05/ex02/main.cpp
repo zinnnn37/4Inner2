@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 18:01:16 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/16 18:26:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ int	main()
 	try
 	{
 		Bureaucrat				b1("b1", 1);
-		Bureaucrat				b2("b2", 45);
-		Bureaucrat				b3("b3", 72);
+		Bureaucrat				b2("b2", 72);
 		RobotomyRequestForm		rf("robotomy");
 
 		std::cout << rf << std::endl;
@@ -63,14 +62,8 @@ int	main()
 
 		rf.setSigned(false);
 
-		b2.signForm(rf);
-		b2.executeForm(rf);
-		std::cout << std::endl;
-
-		rf.setSigned(false);
-
 		b1.signForm(rf);
-		b3.executeForm(rf);
+		b2.executeForm(rf);
 		std::cout << std::endl;
 	}
 	catch ( const std::exception &e )

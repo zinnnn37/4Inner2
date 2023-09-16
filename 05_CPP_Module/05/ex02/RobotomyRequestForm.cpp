@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 10:56:50 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 18:22:23 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/16 18:25:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=( const RobotomyRequestForm &
 
 void	RobotomyRequestForm::execute( const Bureaucrat &executor ) const
 {
-	int	random = rand() % 2;
+	int	random;
 
 	if (!this->getSigned())
 		throw NotSignedException();
@@ -56,6 +56,9 @@ void	RobotomyRequestForm::execute( const Bureaucrat &executor ) const
 
 	std::cout << executor.getName() << " executes " << this->getName() << std::endl;
 	std::cout << "Bzzzzz..." << std::endl;
+
+	srand((unsigned int)time(NULL));
+	random = rand() % 2;
 
 	if (random)
 		std::cout << BLUE << this->_target << " has been robotomized" << RESET << std::endl;
