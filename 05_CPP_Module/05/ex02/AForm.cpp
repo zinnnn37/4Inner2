@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 08:41:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 08:56:25 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/16 10:26:11 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,15 @@ void	AForm::beSigned( const Bureaucrat &b )
 			<< " because it's already signed" << std::endl;
 		throw AlreadySignedException();
 	}
-	else
-		this->setSigned(true);
+	this->setSigned(true);
 }
 
 void	AForm::execute( const Bureaucrat &executor ) const
 {
+	if (!this->getSigned())
+		throw NotSignedException();
+	else if (executor.getGrade() > this->getGradeToExec())
+		throw GradeTooLowException();
 	std::cout << executor.getName() << " executed in AForm\n" << std::endl;
 }
 
@@ -106,6 +109,11 @@ const char*	AForm::GradeTooLowException::what() const throw()
 const char*	AForm::AlreadySignedException::what() const throw()
 {
 	return ("Error: Already signed");
+}
+
+const char*	AForm::NotSignedException::what() const throw()
+{
+	return ("Error: Form not signed");
 }
 
 std::ostream&	operator<<( std::ostream &out, const AForm &form )

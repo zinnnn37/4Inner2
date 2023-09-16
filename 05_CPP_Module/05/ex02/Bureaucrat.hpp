@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 12:41:37 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 08:53:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/16 10:28:13 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class	Bureaucrat
 		void				increaseGrade();
 		void				decreaseGrade();
 		void				signForm( AForm &form );
+		void				executeForm( const AForm &form );
 
 		class GradeTooHighException : public std::exception
 		{

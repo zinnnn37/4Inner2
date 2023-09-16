@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:02:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 08:53:30 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/16 10:26:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,25 @@ class	AForm
 		void				beSigned( const Bureaucrat &b );
 		virtual void		execute( const Bureaucrat &executor ) const;
 
-		class GradeTooHighException : public std::exception
+		class	GradeTooHighException : public std::exception
 		{
 			public:
 				const char* what() const throw();
 		};
 
-		class GradeTooLowException : public std::exception
+		class	GradeTooLowException : public std::exception
 		{
 			public:
 				const char* what() const throw();
 		};
 
-		class AlreadySignedException : public std::exception
+		class	AlreadySignedException : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
+
+		class	NotSignedException : public std::exception
 		{
 			public:
 				const char* what() const throw();

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 12:41:19 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 08:53:56 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/16 10:28:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,12 @@ void	Bureaucrat::signForm( AForm &form )
 	form.beSigned(*this);
 	if (form.getSigned())
 		std::cout << this->_name << " signed " << form.getName() << std::endl;
+}
+
+void	Bureaucrat::executeForm( const AForm &form )
+{
+	form.execute(*this);
+	std::cout << this->_name << " executes " << form.getName() << std::endl;
 }
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw()
