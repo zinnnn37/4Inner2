@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 10:29:11 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/16 10:34:41 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,24 @@ int	main()
 		Bureaucrat				b1("b1", 1);
 		Bureaucrat				b2("b2", 137);
 		Bureaucrat				b3("b3", 145);
-		ShrubberyCreationForm	f("sf");
+		ShrubberyCreationForm	sf("shrubbery");
 
-		std::cout << f << std::endl;
+		std::cout << sf << std::endl;
 
-		b1.signForm(f);
-		b1.executeForm(f);
+		b1.signForm(sf);
+		b1.executeForm(sf);
 		std::cout << std::endl;
 
-		f.setSigned(false);
+		sf.setSigned(false);
 
-		b2.signForm(f);
-		b2.executeForm(f);
+		b2.signForm(sf);
+		b2.executeForm(sf);
 		std::cout << std::endl;
 
-		f.setSigned(false);
+		sf.setSigned(false);
 
-		b3.signForm(f);
-		b3.executeForm(f);
+		b3.signForm(sf);
+		b3.executeForm(sf);
 		std::cout << std::endl;
 	}
 	catch(const std::exception& e)

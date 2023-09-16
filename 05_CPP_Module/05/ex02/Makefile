@@ -6,11 +6,11 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 21:48:33 by minjinki          #+#    #+#              #
-#    Updated: 2023/09/13 18:48:06 by minjinki         ###   ########.fr        #
+#    Updated: 2023/09/16 10:35:22 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	Bureaucrat
+NAME		=	AForm
 
 SRC_FILES	=	main\
 				Bureaucrat\
