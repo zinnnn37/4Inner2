@@ -6,13 +6,14 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 18:26:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/20 08:37:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int	main()
 {
@@ -70,6 +71,30 @@ int	main()
 	{
 		std::cerr << e.what() << '\n';
 	}
+
+	try
+	{
+		Bureaucrat				b1("b1", 5);
+		Bureaucrat				b2("b2", 26);
+		PresidentialPardonForm	pf("president");
+
+		std::cout << pf << std::endl;
+
+		b1.signForm(pf);
+		b1.executeForm(pf);
+		std::cout << std::endl;
+
+		pf.setSigned(false);
+
+		b1.signForm(pf);
+		b2.executeForm(pf);
+		std::cout << std::endl;
+	}
+	catch ( const std::exception& e )
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 
 	return 0;
 }

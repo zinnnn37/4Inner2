@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 10:56:50 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 18:25:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/20 08:44:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	RobotomyRequestForm::execute( const Bureaucrat &executor ) const
 	std::cout << "Bzzzzz..." << std::endl;
 
 	srand((unsigned int)time(NULL));
+	// random = rand();
+	// std::cout << random << std::endl;
 	random = rand() % 2;
 
 	if (random)
@@ -73,18 +75,18 @@ std::string	RobotomyRequestForm::getTarget( void ) const
 
 const char* RobotomyRequestForm::NotSignedException::what() const throw()
 {
-	return ("Error: Form isn't signed");
+	return (RED"Error: Form isn't signed"RESET);
 }
 
 std::ostream&	operator<<( std::ostream &out, const RobotomyRequestForm &rf )
 {
-	std::cout << "\n============= RobotomyRequestForm Info =============\n" << std::endl;
+	std::cout << "\n\n============= RobotomyRequestForm Info =============\n" << std::endl;
 	out << rf.getName() << " form is "
 		<< (rf.getSigned() ? "signed" : "not signed") << std::endl;
 	out << rf.getName() << " form requires " << rf.getGradeToSign()
 		<< " grade to sign and " << rf.getGradeToExec()
 		<< " grade to execute" << std::endl;
-	out << "\n====================================================\n" << std::endl;
+	out << "\n====================================================" << std::endl;
 
 	return out;
 }

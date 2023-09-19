@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 08:41:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 17:26:12 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/20 08:41:12 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,22 +98,22 @@ void	AForm::execute( const Bureaucrat &executor ) const
 
 const char*	AForm::GradeTooHighException::what() const throw()
 {
-	return ("Error: Grade is too high");
+	return (RED"Error: Grade is too high");
 }
 
 const char*	AForm::GradeTooLowException::what() const throw()
 {
-	return ("Error: Grade is too low");
+	return (RED"Error: Grade is too low"RESET);
 }
 
 const char*	AForm::AlreadySignedException::what() const throw()
 {
-	return ("Error: Already signed");
+	return (RED"Error: Already signed"RESET);
 }
 
 const char*	AForm::NotSignedException::what() const throw()
 {
-	return ("Error: Form not signed");
+	return (RED"Error: Form not signed"RESET);
 }
 
 std::ostream&	operator<<( std::ostream &out, const AForm &form )

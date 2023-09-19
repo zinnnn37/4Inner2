@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 18:28:20 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 18:48:08 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/20 08:38:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class	PresidentialPardonForm : public AForm
 {
 	private:
-		std::string target;
+		std::string	_target;
 
 	public:
 		PresidentialPardonForm();
@@ -36,7 +36,7 @@ class	PresidentialPardonForm : public AForm
 			public:
 				virtual const char*	what() const throw();
 		};
-}
+};
 
 std::ostream&	operator<<( std::ostream &out, const PresidentialPardonForm &pf );
 

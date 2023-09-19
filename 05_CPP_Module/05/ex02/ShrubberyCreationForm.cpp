@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:48:23 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 17:58:48 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/20 08:42:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,12 @@ std::string	ShrubberyCreationForm::getTarget( void ) const
 
 const char*	ShrubberyCreationForm::FileNotOpendException::what() const throw()
 {
-	return ("Error: File isn't opend");
+	return (RED"Error: File isn't opend"RESET);
 }
 
 const char* ShrubberyCreationForm::NotSignedException::what() const throw()
 {
-	return ("Error: Form isn't signed");
+	return (RED"Error: Form isn't signed"RESET);
 }
 
 std::ostream&	operator<<( std::ostream &out, const ShrubberyCreationForm &sf )
