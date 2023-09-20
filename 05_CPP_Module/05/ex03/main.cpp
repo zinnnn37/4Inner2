@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/20 11:49:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/20 13:24:57 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main()
 	AForm	*rrf;
 
 	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+
+	std::cout << *rrf << std::endl;
 
 	Bureaucrat	b("b", 1);
 
