@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/20 08:37:51 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/20 11:37:31 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	main()
 		std::cerr << e.what() << '\n';
 	}
 
+	// PresidentialPardonForm
 	try
 	{
 		Bureaucrat				b1("b1", 5);
@@ -94,7 +95,6 @@ int	main()
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
 
 	return 0;
 }
