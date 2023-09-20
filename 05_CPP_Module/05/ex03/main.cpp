@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/20 11:44:17 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/20 11:48:01 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	main()
 {
 	atexit(leaks);
 
-	Intern someRandomIntern;
-	AForm* rrf;
+	Intern	someRandomIntern;
+	AForm	*rrf;
 
 	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 
@@ -38,6 +38,19 @@ int	main()
 	b.executeForm(*rrf);
 
 	delete rrf;
+
+	std::cout << std::endl;
+
+	try
+	{
+		AForm	*wrong;
+
+		wrong = someRandomIntern.makeForm("wrong", "Bender");
+	}
+	catch ( const std::exception& e )
+	{
+		std::cerr << e.what() << '\n';
+	}
 
 	return 0;
 }
