@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:02:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/16 18:19:36 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/20 11:53:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,25 @@ class	AForm
 		class	GradeTooHighException : public std::exception
 		{
 			public:
-				const char* what() const throw();
+				const char*	what() const throw();
 		};
 
 		class	GradeTooLowException : public std::exception
 		{
 			public:
-				const char* what() const throw();
+				const char*	what() const throw();
 		};
 
 		class	AlreadySignedException : public std::exception
 		{
 			public:
-				const char* what() const throw();
+				const char*	what() const throw();
 		};
 
 		class	NotSignedException : public std::exception
 		{
 			public:
-				const char* what() const throw();
+				const char*	what() const throw();
 		};
 };
 

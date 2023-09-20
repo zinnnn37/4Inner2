@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 12:41:37 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/13 10:56:38 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/20 11:52:33 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <string>
 #include <exception>
 
-class Bureaucrat
+class	Bureaucrat
 {
 	private:
 		const std::string	_name;
@@ -36,18 +36,18 @@ class Bureaucrat
 		void				increaseGrade();
 		void				decreaseGrade();
 
-		class GradeTooHighException : public std::exception
+		class	GradeTooHighException : public std::exception
 		{	// exception 클래스 상속
 			public:
-				const char* what() const throw();
+				const char*	what() const throw();
 				// 예외 종류에 맞는 에러 메시지를 리턴하는 함수
 				// std::exception 클래스의 what 함수를 오버라이딩
 		};
 
-		class GradeTooLowException : public std::exception
+		class	GradeTooLowException : public std::exception
 		{
 			public:
-				const char* what() const throw();
+				const char*	what() const throw();
 		};
 };
 

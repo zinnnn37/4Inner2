@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 12:41:37 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/20 10:30:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/20 11:54:21 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ class	Bureaucrat
 		class	GradeTooHighException : public std::exception
 		{
 			public:
-				const char* what() const throw();
+				const char*	what() const throw();
 		};
 
 		class	GradeTooLowException : public std::exception
 		{
 			public:
-				const char* what() const throw();
+				const char*	what() const throw();
 		};
 };
 

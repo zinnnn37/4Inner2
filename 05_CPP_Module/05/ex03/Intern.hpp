@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 08:46:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/20 11:38:25 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/20 11:54:25 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class	Intern
 		class	InvalidFormException : public std::exception
 		{
 			public:
-				const char* what() const throw();
+				const char*	what() const throw();
 		};
 };
 
