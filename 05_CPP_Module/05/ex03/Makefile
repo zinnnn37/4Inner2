@@ -6,13 +6,19 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 21:48:33 by minjinki          #+#    #+#              #
-#    Updated: 2023/08/29 11:57:00 by minjinki         ###   ########.fr        #
+#    Updated: 2023/09/20 08:46:45 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	Bureaucrat
+NAME		=	Intern
 
-SRC_FILES	=	main
+SRC_FILES	=	main\
+				Bureaucrat\
+				AForm\
+				ShrubberyCreationForm\
+				RobotomyRequestForm\
+				PresidentialPardonForm\
+				Intern
 
 SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 
