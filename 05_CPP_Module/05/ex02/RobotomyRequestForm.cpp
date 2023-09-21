@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 10:56:50 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/20 08:44:34 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:08:15 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ std::string	RobotomyRequestForm::getTarget( void ) const
 
 const char* RobotomyRequestForm::NotSignedException::what() const throw()
 {
-	return (RED"Error: Form isn't signed"RESET);
+	red();
+	return ("Error: Form isn't signed");
 }
 
 std::ostream&	operator<<( std::ostream &out, const RobotomyRequestForm &rf )

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/20 11:37:31 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:06:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	main()
 		std::cerr << e.what() << '\n';
 	}
 
+	reset();
+
 	//RobotomyRequestForm
 	try
 	{
@@ -71,6 +73,8 @@ int	main()
 	{
 		std::cerr << e.what() << '\n';
 	}
+
+	reset();
 
 	// PresidentialPardonForm
 	try
