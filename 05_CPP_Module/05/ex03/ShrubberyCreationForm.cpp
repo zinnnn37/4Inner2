@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:48:23 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/20 08:42:32 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:13:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=( const ShrubberyCreation
 
 void	ShrubberyCreationForm::execute( const Bureaucrat &executor ) const
 {
+	const char		*file;
 	std::string		fileName;
 	std::ofstream	ofs;
 
@@ -73,9 +74,11 @@ void	ShrubberyCreationForm::execute( const Bureaucrat &executor ) const
 	else if (executor.getGrade() > this->getGradeToExec())
 		throw GradeTooLowException();
 	
-	fileName = this->getName() + "_shrubbery";
+	fileName = this->getName();
+	fileName.append("_shrubbery");
+	file = fileName.c_str();
 
-	ofs.open(fileName);
+	ofs.open(file);
 	if (ofs.fail())
 		throw FileNotOpendException();
 
@@ -93,12 +96,14 @@ std::string	ShrubberyCreationForm::getTarget( void ) const
 
 const char*	ShrubberyCreationForm::FileNotOpendException::what() const throw()
 {
-	return (RED"Error: File isn't opend"RESET);
+	red();
+	return ("Error: File isn't opend");
 }
 
 const char* ShrubberyCreationForm::NotSignedException::what() const throw()
 {
-	return (RED"Error: Form isn't signed"RESET);
+	red();
+	return ("Error: Form isn't signed");
 }
 
 std::ostream&	operator<<( std::ostream &out, const ShrubberyCreationForm &sf )

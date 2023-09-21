@@ -3,15 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 08:41:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/20 08:41:12 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:12:08 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
+
+void	red()
+{
+	std::cout << RED;
+}
+
+void	green()
+{
+	std::cout << GREEN;
+}
+
+void	blue()
+{
+	std::cout << BLUE;
+}
+
+void	reset()
+{
+	std::cout << RESET;
+}
 
 AForm::AForm()
 	: _name("default_form"), _signed(false), _gradeToSign(150), _gradeToExec(150)
@@ -19,7 +39,7 @@ AForm::AForm()
 }
 
 AForm::AForm( std::string name, int gradeToSign, int gradeToExec )
-	: _name(name), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec)
+	: _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec)
 {
 	if (this->_gradeToSign < 1 || this->_gradeToExec < 1)
 		throw GradeTooHighException();
@@ -98,22 +118,26 @@ void	AForm::execute( const Bureaucrat &executor ) const
 
 const char*	AForm::GradeTooHighException::what() const throw()
 {
-	return (RED"Error: Grade is too high");
+	red();
+	return ("Error: Grade is too high");
 }
 
 const char*	AForm::GradeTooLowException::what() const throw()
 {
-	return (RED"Error: Grade is too low"RESET);
+	red();
+	return ("Error: Grade is too low");
 }
 
 const char*	AForm::AlreadySignedException::what() const throw()
 {
-	return (RED"Error: Already signed"RESET);
+	red();
+	return ("Error: Already signed");
 }
 
 const char*	AForm::NotSignedException::what() const throw()
 {
-	return (RED"Error: Form not signed"RESET);
+	red();
+	return ("Error: Form not signed");
 }
 
 std::ostream&	operator<<( std::ostream &out, const AForm &form )

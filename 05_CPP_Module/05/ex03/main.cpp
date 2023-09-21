@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/20 13:24:57 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:16:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,11 @@ int	main()
 		AForm	*wrong;
 
 		wrong = someRandomIntern.makeForm("wrong", "Bender");
+		(void)wrong;
 	}
 	catch ( const std::exception& e )
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << RESET << '\n';
 	}
 
 	return 0;

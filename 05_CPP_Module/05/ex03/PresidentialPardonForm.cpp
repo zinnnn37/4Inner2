@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 18:28:50 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/20 08:42:42 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:13:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void	PresidentialPardonForm::execute( const Bureaucrat &executor ) const
 		throw GradeTooLowException();
 
 	std::cout << executor.getName() << " executes " << this->getName() << std::endl;
-	std::cout << GREEN << this->_target << " has been pardoned by Zafod Beeblebrox."RESET << std::endl;
+	green();
+	std::cout << this->_target << " has been pardoned by Zafod Beeblebrox." << std::endl;
+	reset();
 }
 
 std::string	PresidentialPardonForm::getTarget() const
@@ -63,7 +65,8 @@ std::string	PresidentialPardonForm::getTarget() const
 
 const char*	PresidentialPardonForm::NotSignedException::what() const throw()
 {
-	return (RED"Error: Form isn't signed."RESET);
+	red();
+	return ("Error: Form isn't signed.");
 }
 
 std::ostream&	operator<<( std::ostream &out, const PresidentialPardonForm &pf )

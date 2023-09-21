@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 08:47:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/20 11:42:35 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:14:38 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,30 @@ AForm*	Intern::makeForm( std::string form, std::string target )
 
 AForm*	Intern::makeShrubberyCreationForm( std::string target )
 {
-	std::cout << GREEN"Intern creates ShrubberyCreationForm"RESET << std::endl;
+	green();
+	std::cout << "Intern creates ShrubberyCreationForm" << std::endl;
+	reset();
 	return (new ShrubberyCreationForm(target));
 }
 
 AForm*	Intern::makeRobotomyRequestForm( std::string target )
 {
-	std::cout << GREEN"Intern creates RobotomyRequestForm"RESET << std::endl;
+	green();
+	std::cout << "Intern creates RobotomyRequestForm" << std::endl;
+	reset();
 	return (new RobotomyRequestForm(target));
 }
 
 AForm*	Intern::makePresidentialPardonForm( std::string target )
 {
-	std::cout << GREEN"Intern creates PresidentialPardonForm"RESET << std::endl;
+	green();
+	std::cout << "Intern creates PresidentialPardonForm" << std::endl;
+	reset();
 	return (new PresidentialPardonForm(target));
 }
 
 const char*	Intern::InvalidFormException::what() const throw()
 {
-	return (RED"Error: Invalid form name"RESET);
+	red();
+	return ("Error: Invalid form name");
 }
