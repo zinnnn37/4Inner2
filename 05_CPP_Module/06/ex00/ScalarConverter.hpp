@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConvert.hpp                                  :+:      :+:    :+:   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:20:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/20 18:56:15 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/22 10:55:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERT_HPP
-#define SCALARCONVERT_HPP
+#ifndef SCALARCONVERTER_HPP
+#define SCALARCONVERTER_HPP
 
 #include <iostream>
 #include <string>
 
-class	ScalarConvert
+class	ScalarConverter
 {
 	private:
 		/* data */
 	public:
-		ScalarConvert();
-		ScalarConvert( const ScalarConvert &sc );
-		~ScalarConvert();
+		ScalarConverter();
+		ScalarConverter( const ScalarConvert &sc );
+		~ScalarConverter();
 
-		ScalarConvert&	operator=( const ScalarConvert &sc );
+		ScalarConverter&	operator=( const ScalarConverter &sc );
 
 		static void	convert( std::string str );
 };
