@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:20:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/22 10:55:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/22 10:58:36 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class	ScalarConverter
 		/* data */
 	public:
 		ScalarConverter();
-		ScalarConverter( const ScalarConvert &sc );
+		ScalarConverter( const ScalarConverter &sc );
 		~ScalarConverter();
 
 		ScalarConverter&	operator=( const ScalarConverter &sc );
