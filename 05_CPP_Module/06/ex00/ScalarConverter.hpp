@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:20:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/22 10:58:36 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/23 19:45:33 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,42 @@
 
 #include <iostream>
 #include <string>
+#include <cmath>
+#include <exception>
 
 class	ScalarConverter
 {
 	private:
-		/* data */
-	public:
+		int		_int;
+		char	_char;
+		float	_float;
+		double	_double;
+
 		ScalarConverter();
+
+		static void	_toInt( std::string str );
+		static void	_toChar( char *str );
+		static void	_toFloat( char *str );
+		static void	_toDouble( char *str );
+
+	public:
 		ScalarConverter( const ScalarConverter &sc );
 		~ScalarConverter();
 
 		ScalarConverter&	operator=( const ScalarConverter &sc );
 
 		static void	convert( std::string str );
+
+		static bool	isValid( std::string str );
+
+		class	ImpossibleException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("impossible");
+				}
+		};
 };
 
 /* Static Class */
