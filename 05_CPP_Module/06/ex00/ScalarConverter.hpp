@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:20:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/23 19:45:33 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/24 08:30:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,6 @@ class	ScalarConverter
 		static void	convert( std::string str );
 
 		static bool	isValid( std::string str );
-
-		class	ImpossibleException : public std::exception
-		{
-			public:
-				virtual const char* what() const throw()
-				{
-					return ("impossible");
-				}
-		};
 };
 
 /* Static Class */
