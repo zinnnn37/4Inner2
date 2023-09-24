@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 08:47:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/24 15:28:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/24 16:19:29 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,46 +34,40 @@ Intern&	Intern::operator=( const Intern &intern )
 
 AForm*	Intern::makeForm( std::string form, std::string target )
 {
-	int			pos;
-	std::string	check;
-	AForm*		( Intern::*f[3] )( std::string, std::string )
+	std::string	check[3]
+				= {"shrubbery creation", "robotomy request", "presidential pardon"};
+
+	AForm*		( Intern::*f[3] )( std::string )
 				= { &Intern::makeShrubberyCreationForm,
 				&Intern::makeRobotomyRequestForm,
 				&Intern::makePresidentialPardonForm };
 
-	check = "0shrubbery creation1robotomy request2presidential pardon";
-	pos = check[check.find(form) - 1] - '0';
-
-	if (isdigit(form[0]) || check.find(form) == std::string::npos)
-		throw Intern::InvalidFormException();
-	else
-		return ((this->*f[pos])(form, target));
+	for (int i = 0; i < 3; i++)
+	{
+		if (form.compare(check[i]) == 0)
+			return ((this->*f[i])(target));
+	}
+	throw InvalidFormException();
 }
 
-AForm*	Intern::makeShrubberyCreationForm( std::string form, std::string target )
+AForm*	Intern::makeShrubberyCreationForm( std::string target )
 {
-	if (form.length() != 18)
-		throw Intern::InvalidFormException();
 	green();
 	std::cout << "Intern creates ShrubberyCreationForm" << std::endl;
 	reset();
 	return (new ShrubberyCreationForm(target));
 }
 
-AForm*	Intern::makeRobotomyRequestForm( std::string form, std::string target )
+AForm*	Intern::makeRobotomyRequestForm( std::string target )
 {
-	if (form.length() != 16)
-		throw Intern::InvalidFormException();
 	green();
 	std::cout << "Intern creates RobotomyRequestForm" << std::endl;
 	reset();
 	return (new RobotomyRequestForm(target));
 }
 
-AForm*	Intern::makePresidentialPardonForm( std::string form, std::string target )
+AForm*	Intern::makePresidentialPardonForm( std::string target )
 {
-	if (form.length() != 19)
-		throw Intern::InvalidFormException();
 	green();
 	std::cout << "Intern creates PresidentialPardonForm" << std::endl;
 	reset();
