@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 10:56:50 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/21 12:13:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/24 08:59:49 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,7 @@ void	RobotomyRequestForm::execute( const Bureaucrat &executor ) const
 	std::cout << executor.getName() << " executes " << this->getName() << std::endl;
 	std::cout << "Bzzzzz..." << std::endl;
 
-	srand((unsigned int)time(NULL));
-	// random = rand();
-	// std::cout << random << std::endl;
+	srand(time(NULL));
 	random = rand() % 2;
 
 	if (random)
