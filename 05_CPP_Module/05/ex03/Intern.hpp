@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intern.hpp                                         :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 08:46:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/20 11:54:25 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/24 15:09:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include <string>
+#include <exception>
+#include <cctype>
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -32,9 +34,9 @@ class	Intern
 		Intern&	operator=( const Intern &intern );
 
 		AForm*	makeForm( std::string form, std::string target );
-		AForm*	makeShrubberyCreationForm( std::string target );
-		AForm*	makeRobotomyRequestForm( std::string target );
-		AForm*	makePresidentialPardonForm( std::string target );
+		AForm*	makeShrubberyCreationForm( std::string form, std::string target );
+		AForm*	makeRobotomyRequestForm( std::string form, std::string target );
+		AForm*	makePresidentialPardonForm( std::string form, std::string target );
 
 		class	InvalidFormException : public std::exception
 		{

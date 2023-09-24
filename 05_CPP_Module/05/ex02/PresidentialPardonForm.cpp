@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 18:28:50 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/21 12:06:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/24 14:59:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	PresidentialPardonForm::execute( const Bureaucrat &executor ) const
 
 	std::cout << executor.getName() << " executes " << this->getName() << std::endl;
 	green();
-	std::cout << this->_target << " has been pardoned by Zafod Beeblebrox." << std::endl;
+	std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 	reset();
 }
 

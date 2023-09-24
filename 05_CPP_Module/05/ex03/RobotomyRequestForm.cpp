@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 10:56:50 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/24 08:59:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/24 15:17:45 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,21 @@ RobotomyRequestForm::RobotomyRequestForm()
 	: AForm("RobotomyRequestForm", 72, 45)
 {
 	this->_target = "default";
+	srand(time(NULL));
 }
 
 RobotomyRequestForm::RobotomyRequestForm( std::string target )
 	: AForm("RobotomyRequestForm", 72, 45)
 {
 	this->_target = target;
+	srand(time(NULL));
 }
 
 RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm &rf )
 	: AForm(rf.getName(), rf.getGradeToSign(), rf.getGradeToExec())
 {
 	*this = rf;
+	srand(time(NULL));
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()

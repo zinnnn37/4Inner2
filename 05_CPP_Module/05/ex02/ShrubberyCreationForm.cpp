@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:48:23 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/21 12:06:16 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/24 15:12:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ShrubberyCreationForm::execute( const Bureaucrat &executor ) const
 	else if (executor.getGrade() > this->getGradeToExec())
 		throw GradeTooLowException();
 	
-	fileName = this->getName();
+	fileName = this->getTarget();
 	fileName.append("_shrubbery");
 	file = fileName.c_str();
 
