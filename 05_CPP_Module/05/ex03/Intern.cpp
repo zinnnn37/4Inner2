@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 08:47:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/24 15:11:35 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/24 15:28:44 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ AForm*	Intern::makeForm( std::string form, std::string target )
 
 AForm*	Intern::makeShrubberyCreationForm( std::string form, std::string target )
 {
-	if (form != "shrubbery creation")
+	if (form.length() != 18)
 		throw Intern::InvalidFormException();
 	green();
 	std::cout << "Intern creates ShrubberyCreationForm" << std::endl;
@@ -62,7 +62,7 @@ AForm*	Intern::makeShrubberyCreationForm( std::string form, std::string target )
 
 AForm*	Intern::makeRobotomyRequestForm( std::string form, std::string target )
 {
-	if (form != "robotomy request")
+	if (form.length() != 16)
 		throw Intern::InvalidFormException();
 	green();
 	std::cout << "Intern creates RobotomyRequestForm" << std::endl;
@@ -72,7 +72,7 @@ AForm*	Intern::makeRobotomyRequestForm( std::string form, std::string target )
 
 AForm*	Intern::makePresidentialPardonForm( std::string form, std::string target )
 {
-	if (form != "presidential pardon")
+	if (form.length() != 19)
 		throw Intern::InvalidFormException();
 	green();
 	std::cout << "Intern creates PresidentialPardonForm" << std::endl;

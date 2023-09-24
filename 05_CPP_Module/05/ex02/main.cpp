@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/24 15:20:38 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/24 16:05:02 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	main()
 
 		b1.signForm(rf);
 		b1.executeForm(rf);
+
 		std::cout << std::endl;
 
 		rf.setSigned(false);

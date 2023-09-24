@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 10:56:50 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/24 15:17:45 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/24 16:09:01 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	RobotomyRequestForm::execute( const Bureaucrat &executor ) const
 	std::cout << executor.getName() << " executes " << this->getName() << std::endl;
 	std::cout << "Bzzzzz..." << std::endl;
 
-	srand(time(NULL));
 	random = rand() % 2;
 
 	if (random)
