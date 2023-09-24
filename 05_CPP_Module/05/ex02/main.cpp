@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/24 15:16:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/24 15:19:42 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,14 @@ int	main()
 	{
 		std::cerr << e.what() << '\n';
 	}
+
+	std::string	s;
+
+	s = "123";
+	if (s == "123")
+		std::cout << "123" << std::endl;
+	else
+		std::cout << "456" << std::endl;
 
 	return 0;
 }
