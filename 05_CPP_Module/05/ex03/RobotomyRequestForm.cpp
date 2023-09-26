@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 10:56:50 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/24 16:09:01 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:26:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm &rf )
 	: AForm(rf.getName(), rf.getGradeToSign(), rf.getGradeToExec())
 {
 	*this = rf;
-	srand(time(NULL));
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
