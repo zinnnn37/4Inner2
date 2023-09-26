@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:01:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/13 16:26:11 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:41:02 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	main()
 		Bureaucrat	b("b", 50);
 		Form		f("f", 49, 51);
 
-		b.increaseGrade();
-		b.increaseGrade();
+		//b.increaseGrade();
+		//b.increaseGrade();
 		b.signForm(f);
 		std::cout << f << std::endl;
 	}

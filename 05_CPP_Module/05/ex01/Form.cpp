@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 08:41:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/13 16:24:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:40:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	Form::setSigned( bool sign )
 
 void	Form::beSigned( const Bureaucrat &b )
 {
-	if (b.getGrade() > this->_gradeToSign || b.getGrade() > this->_gradeToExec)
+	if (b.getGrade() > this->_gradeToSign)
 	{
 		std::cout << b.getName() << " couldn't sign " << this->_name
 			<< " because their grade is too low" << std::endl;
