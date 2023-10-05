@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
+#    By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/29 11:44:31 by minjinki          #+#    #+#              #
-#    Updated: 2023/09/22 10:55:22 by minjinki         ###   ########.fr        #
+#    Updated: 2023/10/05 12:39:00 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	convert
+NAME		=	converter
 
 SRC_FILES	=	main\
 				ScalarConverter

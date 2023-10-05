@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 10:56:25 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/23 18:54:41 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:39:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main( int ac, char **av )
 		std::cerr << "Usage: ./convert value" << std::endl;
 		return 1;
 	}
-	ScalarConverter::convert(av[1]);
+	//ScalarConverter::convert(av[1]);
+	(void)av;
 	return 0;
 }

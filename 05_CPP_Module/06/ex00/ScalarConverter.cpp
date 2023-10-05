@@ -3,20 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/23 19:48:26 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:38:31 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
+std::string	ScalarConverter::_input = NULL;
+char		ScalarConverter::_char = '\0';
+int			ScalarConverter::_int = 0;
+float		ScalarConverter::_float = 0.0f;
+double		ScalarConverter::_double = 0.0;
+
 ScalarConverter::ScalarConverter() {}
+
+ScalarConverter::ScalarConverter( const std::string s )
+{
+	_input = s;
+	_setType( s );
+}
 
 ScalarConverter::ScalarConverter( const ScalarConverter &sc )
 {
 	(void)sc;
+	// 동작 확인해봐야.. 아마 이렇게만 해도 될 듯
 }
 
 ScalarConverter::~ScalarConverter() {}
@@ -27,30 +40,11 @@ ScalarConverter&	ScalarConverter::operator=( const ScalarConverter &sc )
 	return (*this);
 }
 
-bool	ScalarConverter::isValid( std::string str )
+void	ScalarConverter::_setType( std::string s )
 {
-	if (str.length() == 1 && !isdigit(str[0]))
-		return (false);
-	if (str.length() == 2 && !isdigit(str[0]) && str[0] != '-' && !isdigit(str[1]))
-		return (false);
-	if (str.length() == 3 && !isdigit(str[0]) && str[0] != '-' && !isdigit(str[1]) && str[1] != '.' && !isdigit(str[2]))
-		return (false);
-	return (true);
-}
-
-void	ScalarConverter::_toInt( std::string str )
-{
-	double		res;
-	const char *c_str;
-
-	c_str = str.c_str();
-	res = std::strtod(c_str, NULL);
-	this->_int = res;
-}
-
-void	ScalarConverter::convert( std::string str )
-{
-	std::cout << isValid(str) << std::endl;
-	std::cout << str << std::endl;
-	// std::cout << _toInt(str.c_str()) << std::endl;
+	if (!s.compare("nan") || !s.compare("nanf") || !s.compare("+inf")
+		|| !s.compare("+inff") || !s.compare("-inf") || !s.compare("-inff"))
+		_type = NANINF;
+	else if (s.length() == 1 && !isdigit(s[0]) && !isprint(s[0]))
+		_type = CHAR;
 }

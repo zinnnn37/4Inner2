@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:20:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/24 08:30:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:34:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,46 @@
 #include <cmath>
 #include <exception>
 
+#define CHAR 0
+#define INT 1
+#define FLOAT 2
+#define DOUBLE 3
+#define NANINF 4
+#define ERROR 6
+
 class	ScalarConverter
 {
 	private:
-		int		_int;
-		char	_char;
-		float	_float;
-		double	_double;
+		static std::string	_input;
+		static char			_char;
+		static int			_int;
+		static float		_float;
+		static double		_double;
+		static int			_type;
 
 		ScalarConverter();
 
-		static void	_toInt( std::string str );
-		static void	_toChar( char *str );
-		static void	_toFloat( char *str );
-		static void	_toDouble( char *str );
+		static void	_setType( const std::string s );
+		static void	_typeChar();
+		static void	_typeInt();
+		static void	_typeFloat();
+		static void	_typeDouble();
 
 	public:
+		ScalarConverter( const std::string s );
 		ScalarConverter( const ScalarConverter &sc );
 		~ScalarConverter();
 
 		ScalarConverter&	operator=( const ScalarConverter &sc );
 
 		static void	convert( std::string str );
+		static void	print();
 
-		static bool	isValid( std::string str );
+		class	ConversionImpossibleException : public std::exception
+		{
+			public:
+				virtual const char*	what() const throw();
+		};
 };
 
 /* Static Class */
