@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 08:41:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/21 12:12:08 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/07 13:27:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	AForm::setSigned( bool sign )
 
 void	AForm::beSigned( const Bureaucrat &b )
 {
-	if (b.getGrade() > this->_gradeToSign || b.getGrade() > this->_gradeToExec)
+	if (b.getGrade() > this->_gradeToSign)
 	{
 		std::cout << b.getName() << " couldn't sign " << this->_name
 			<< " because their grade is too low" << std::endl;

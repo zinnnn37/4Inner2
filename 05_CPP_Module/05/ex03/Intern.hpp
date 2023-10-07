@@ -6,17 +6,13 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 08:46:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/09/24 16:19:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/07 14:04:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INTERN_HPP
 #define INTERN_HPP
 
-#include <iostream>
-#include <string>
-#include <exception>
-#include <cctype>
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -24,8 +20,6 @@
 
 class	Intern
 {
-	private:
-
 	public:
 		Intern();
 		Intern( const Intern &intern );
