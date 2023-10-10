@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/10 16:30:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:40:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ScalarConverter::_setType( std::string s )
 		long	l = std::atol(s.c_str());
 		
 		if (l > INT_MAX || l < INT_MIN)
-			_type = ERROR;
+			_type = OVER;
 		else
 			_type = INT;
 	}
@@ -109,6 +109,16 @@ void	ScalarConverter::_typeDouble()
 	_float = static_cast<float>(_double);
 }
 
+void	ScalarConverter::_typeOver()
+{
+	long	l;
+
+	l = std::atol(_input.c_str());
+	_char = static_cast<unsigned char>(l);
+	_float = static_cast<float>(l);
+	_double = static_cast<double>(l);
+}
+
 void	ScalarConverter::convert()
 {
 	if (_input.length() == 0)
@@ -133,6 +143,10 @@ void	ScalarConverter::convert()
 		
 		case NANINF:
 			break;
+		
+		case OVER:
+			_typeOver();
+			break;
 
 		default:
 			throw InvalidInputException();
@@ -144,7 +158,7 @@ void	ScalarConverter::convert()
 void	ScalarConverter::print()
 {
 	// char
-	if (_type != NANINF && _char >= 0)
+	if (_type != NANINF && _type != OVER && _char >= 0)
 	{
 		if (isprint(_char))
 			std::cout << "char: '" << _char << "'" << std::endl;
@@ -155,7 +169,9 @@ void	ScalarConverter::print()
 		std::cout << "char: impossible" << std::endl;
 
 	// int
-	if (_type != NANINF && _int >= INT_MIN && _int <= INT_MAX)
+	if (_type == OVER)
+		std::cout << "int: impossible" << std::endl;
+	else if (_type != NANINF && _int >= INT_MIN && _int <= INT_MAX)
 		std::cout << "int: " << _int << std::endl;
 	else
 		std::cout << "int: impossible" << std::endl;
