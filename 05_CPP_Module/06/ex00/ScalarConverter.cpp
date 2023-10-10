@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/10 11:06:45 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/10 11:22:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,69 @@ void	ScalarConverter::_setType( std::string s )
 		_type = ERROR;
 }
 
+void	ScalarConverter::_typeChar()
+{
+	_char = static_cast<unsigned char>(_input[0]);
+	_int = static_cast<int>(_char);
+	_float = static_cast<float>(_char);
+	_double = static_cast<double>(_char);
+}
+
+void	ScalarConverter::_typeInt()
+{
+	_int = std::atoi(_input.c_str());
+	_char = static_cast<unsigned char>(_int);
+	_float = static_cast<float>(_int);
+	_double = static_cast<double>(_int);
+}
+
+void	ScalarConverter::_typeFloat()
+{
+	_float = std::atof(_input.c_str());
+	_char = static_cast<unsigned char>(_float);
+	_int = static_cast<int>(_float);
+	_double = static_cast<double>(_float);
+}
+
+void	ScalarConverter::_typeDouble()
+{
+	_double = std::strtod(_input.c_str(), NULL);
+	_char = static_cast<unsigned char>(_double);
+	_int = static_cast<int>(_double);
+	_float = static_cast<float>(_double);
+}
+
 void	ScalarConverter::convert( std::string s )
 {
-	if (s.empty())
-		throw InvalidInputException();
+	switch (_type)
+	{
+		case CHAR:
+			_typeChar();
+			break;
+
+		case INT:
+			_typeInt();
+			break;
+
+		case FLOAT:
+			_typeFloat();
+			break;
+
+		case DOUBLE:
+			_typeDouble();
+			break;
+		
+		case NANINF:
+			break;
+
+		default:
+			throw InvalidInputException();
+	}
+
+	print();
+}
+
+void	ScalarConverter::print()
+{
+	
 }
