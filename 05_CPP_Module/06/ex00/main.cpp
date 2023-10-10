@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 10:56:25 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/10 11:56:15 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:25:01 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main( int ac, char **av )
 	{
 		try
 		{
-			ScalarConverter convert(av[1]);
+			ScalarConverter	convert(av[1]);
 		}
 		catch ( const std::exception& e )
 		{

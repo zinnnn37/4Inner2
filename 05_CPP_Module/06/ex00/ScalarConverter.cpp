@@ -6,13 +6,13 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/10 11:53:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:25:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-std::string	ScalarConverter::_input = NULL;
+std::string	ScalarConverter::_input = "";
 char		ScalarConverter::_char = '\0';
 int			ScalarConverter::_int = 0;
 float		ScalarConverter::_float = 0.0f;
@@ -24,7 +24,8 @@ ScalarConverter::ScalarConverter() {}
 ScalarConverter::ScalarConverter( const std::string s )
 {
 	_input = s;
-	_setType( s );
+	_setType(s);
+	convert();
 }
 
 ScalarConverter::ScalarConverter( const ScalarConverter &sc )
@@ -108,7 +109,7 @@ void	ScalarConverter::_typeDouble()
 	_float = static_cast<float>(_double);
 }
 
-void	ScalarConverter::convert( std::string s )
+void	ScalarConverter::convert()
 {
 	switch (_type)
 	{

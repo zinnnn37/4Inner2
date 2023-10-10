@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:20:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/10 11:54:02 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:21:55 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ class	ScalarConverter
 
 		ScalarConverter&	operator=( const ScalarConverter &sc );
 
-		static void	convert( std::string str );
+		static void	convert();
 		static void	print();
 
 		class	InvalidInputException : public std::exception
