@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:20:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/10 11:22:50 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/10 11:54:02 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 #define SCALARCONVERTER_HPP
 
 #include <iostream>
+#include <cstdlib>
 #include <string>
-#include <cmath>
+#include <climits>
 #include <exception>
 
+#define ERROR -1
 #define CHAR 0
 #define INT 1
 #define FLOAT 2
 #define DOUBLE 3
 #define NANINF 4
-#define ERROR 6
 
 class	ScalarConverter
 {

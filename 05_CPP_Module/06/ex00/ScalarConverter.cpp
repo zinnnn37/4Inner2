@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/10 11:22:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/10 11:53:49 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char		ScalarConverter::_char = '\0';
 int			ScalarConverter::_int = 0;
 float		ScalarConverter::_float = 0.0f;
 double		ScalarConverter::_double = 0.0;
+int			ScalarConverter::_type = ERROR;
 
 ScalarConverter::ScalarConverter() {}
 
@@ -139,5 +140,61 @@ void	ScalarConverter::convert( std::string s )
 
 void	ScalarConverter::print()
 {
+	// char
+	if (_type != NANINF && _char >= 0)
+	{
+		if (isprint(_char))
+			std::cout << "char: '" << _char << "'" << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
+	}
+	else
+		std::cout << "char: impossible" << std::endl;
+
+	// int
+	if (_type != NANINF && _int >= INT_MIN && _int <= INT_MAX)
+		std::cout << "int: " << _int << std::endl;
+	else
+		std::cout << "int: impossible" << std::endl;
 	
+	// float
+	if (_type != NANINF)
+	{
+		if (_float - static_cast<int>(_float) == 0)
+			std::cout << "float: " << _float << ".0f" << std::endl;
+		else
+			std::cout << "float: " << _float << "f" << std::endl;
+	}
+	else if (!_input.compare("nan") || !_input.compare("nanf"))
+		std::cout << "float: nanf" << std::endl;
+	else
+	{
+		if (_input[0] == '+')
+			std::cout << "float: +inff" << std::endl;
+		else
+			std::cout << "float: -inff" << std::endl;
+	}
+
+	// double
+	if (_type != NANINF)
+	{
+		if (_double - static_cast<int>(_double) == 0)
+			std::cout << "double: " << _double << ".0" << std::endl;
+		else
+			std::cout << "double: " << _double << std::endl;
+	}
+	else if (!_input.compare("nan") || !_input.compare("nanf"))
+		std::cout << "double: nan" << std::endl;
+	else
+	{
+		if (_input[0] == '+')
+			std::cout << "double: +inf" << std::endl;
+		else
+			std::cout << "double: -inf" << std::endl;
+	}
+}
+
+const char	*ScalarConverter::InvalidInputException::what() const throw()
+{
+	return ("Invalid Input");
 }
