@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:20:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/10 16:39:05 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/10 23:12:21 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 #define FLOAT 2
 #define DOUBLE 3
 #define NANINF 4
-#define OVER 5
+#define CHAROVER 5
+#define INTOVER 6
 
 class	ScalarConverter
 {
@@ -44,7 +45,6 @@ class	ScalarConverter
 		static void	_typeInt();
 		static void	_typeFloat();
 		static void	_typeDouble();
-		static void	_typeOver();
 
 	public:
 		ScalarConverter( const std::string s );
