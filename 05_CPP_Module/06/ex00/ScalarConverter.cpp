@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/10 16:25:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:30:21 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ScalarConverter::_setType( std::string s )
 	if (!s.compare("nan") || !s.compare("nanf") || !s.compare("+inf")
 		|| !s.compare("+inff") || !s.compare("-inf") || !s.compare("-inff"))
 		_type = NANINF;
-	else if (s.length() == 1 && !isdigit(s[0]) && !isprint(s[0]))
+	else if (s.length() == 1 && !isdigit(s[0]) && isprint(s[0]))
 		_type = CHAR;
 	else if (s.find_first_of("+-") != s.find_last_of("+-")	// 다른 경우 부호가 두 개 이상
 		|| s.find_first_not_of("-+0123456789.ef") != std::string::npos)	// 숫자가 아닌 문자가 있는 경우
@@ -111,6 +111,8 @@ void	ScalarConverter::_typeDouble()
 
 void	ScalarConverter::convert()
 {
+	if (_input.length() == 0)
+		throw InvalidInputException();
 	switch (_type)
 	{
 		case CHAR:
