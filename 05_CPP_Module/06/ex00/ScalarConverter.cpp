@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/11 13:14:25 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/11 14:06:33 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ void	ScalarConverter::_setType( std::string s )
 	else if (s.length() == 1 && !isdigit(s[0]) && isprint(s[0]))
 		_type = CHAR;
 	else if ((s.find("e+") == std::string::npos && s.find("e-") == std::string::npos && cnt >= 2)	// 부호가 두 개 이상
-		|| ((s.find("e+") != std::string::npos || s.find("e-") != std::string::npos) && cnt >= 3)
-		|| s.find_first_not_of("-+0123456789.ef") != std::string::npos)	// 숫자가 아닌 문자가 있는 경우
+		|| ((s.find("e+") != std::string::npos || s.find("e-") != std::string::npos) && cnt >= 3)	// 실수일 때 부호 두 개 이상
+		|| s.find_first_not_of("+-0123456789.ef") != std::string::npos	// 숫자가 아닌 문자가 있는 경우
+		|| s.find_first_of(".") != s.find_last_of(".")
+		|| s.find_first_of("e") != s.find_last_of("e"))
 		_type = ERROR;
-	else if ((s.find_first_of("+-") == 0 && s.find_first_not_of("-+0123456789") == std::string::npos)	// 부호 있는 정수
+	else if ((s.find_first_of("+-") == 0 && s.find_first_not_of("+-0123456789") == std::string::npos)	// 부호 있는 정수
 		|| s.find_first_not_of("0123456789") == std::string::npos)
 		_type = INT;
-	else if (s.find_first_of(".") != s.find_last_of("."))
-		_type = ERROR;
 	else if (s.find_first_of(".") == s.find_last_of("."))
 	{
 		if (!isdigit(s[s.find_first_of(".") + 1]))
