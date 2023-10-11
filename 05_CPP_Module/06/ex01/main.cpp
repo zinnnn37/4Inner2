@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:13:03 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/11 13:29:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:31:06 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(void)
 	data->i = 42;
 
 	std::cout << "---------- before serialization ----------\n" << std::endl;
+
 	std::cout << "data->str:\t" << data->str << std::endl;
 	std::cout << "data->i:\t" << data->i << std::endl;
 
