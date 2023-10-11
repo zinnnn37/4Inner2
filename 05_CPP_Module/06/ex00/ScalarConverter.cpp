@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/10 23:26:11 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/11 12:17:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,21 @@ ScalarConverter&	ScalarConverter::operator=( const ScalarConverter &sc )
 
 void	ScalarConverter::_setType( std::string s )
 {
+	int	cnt = 0;
+
+	for (int i = 0; s[i] != '\0'; i++)
+	{
+		if (s[i] == '+' || s[i] == '-')
+			cnt++;
+	}
+
 	if (!s.compare("nan") || !s.compare("nanf") || !s.compare("+inf")
 		|| !s.compare("+inff") || !s.compare("-inf") || !s.compare("-inff"))
 		_type = NANINF;
 	else if (s.length() == 1 && !isdigit(s[0]) && isprint(s[0]))
 		_type = CHAR;
-	else if (s.find_first_of("+-") != s.find_last_of("+-")	// 다른 경우 부호가 두 개 이상
+	else if ((s.find("e+") == std::string::npos && s.find("e-") == std::string::npos && cnt >= 2)	// 부호가 두 개 이상
+		|| ((s.find("e+") != std::string::npos || s.find("e-") != std::string::npos) && cnt >= 3)
 		|| s.find_first_not_of("-+0123456789.ef") != std::string::npos)	// 숫자가 아닌 문자가 있는 경우
 		_type = ERROR;
 	else if ((s.find_first_of("+-") == 0 && s.find_first_not_of("-+0123456789") == std::string::npos)	// 부호 있는 정수
@@ -83,26 +92,32 @@ void	ScalarConverter::_typeInt()
 	long	l;
 
 	l = std::atol(_input.c_str());
-	if (l < INT_MIN || INT_MAX < l)
-		_type = INTOVER;
 
 	_int = std::atoi(_input.c_str());
-	_char = static_cast<unsigned char>(_int);
-	_float = static_cast<float>(_int);
-	_double = static_cast<double>(_int);
+	_char = static_cast<unsigned char>(l);
+	_float = static_cast<float>(l);
+	_double = static_cast<double>(l);
 
-	if (_type != INTOVER && (_int < -128 || 127 < _int))
+	if (l < INT_MIN || INT_MAX < l)
+		_type = INTOVER;
+	else if (_int < -128 || 127 < _int)
 		_type = CHAROVER;
 }
 
 void	ScalarConverter::_typeFloat()
 {
+	double	d;
+
+	d = std::atof(_input.c_str());
+
 	_float = std::atof(_input.c_str());
 	_char = static_cast<unsigned char>(_float);
 	_int = static_cast<int>(_float);
-	_double = static_cast<double>(_float);
+	_double = static_cast<double>(d);
 
-	if (_float < -128 || 127 < _float)
+	if (isinf(_float))
+		_type = INTOVER;
+	else if (_float < -128 || 127 < _float)
 		_type = CHAROVER;
 }
 
@@ -113,7 +128,9 @@ void	ScalarConverter::_typeDouble()
 	_int = static_cast<int>(_double);
 	_float = static_cast<float>(_double);
 
-	if (_double < -128 || 127 < _double)
+	if (isinf(_float))
+		_type = INTOVER;
+	else if (_double < -128 || 127 < _double)
 		_type = CHAROVER;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:20:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/10 23:12:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/11 12:10:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <cstdlib>
 #include <string>
 #include <climits>
+#include <cmath>
 #include <exception>
 
 #define ERROR -1
@@ -25,8 +26,8 @@
 #define FLOAT 2
 #define DOUBLE 3
 #define NANINF 4
-#define CHAROVER 5
-#define INTOVER 6
+#define CHAROVER -5
+#define INTOVER -6
 
 class	ScalarConverter
 {
@@ -45,6 +46,7 @@ class	ScalarConverter
 		static void	_typeInt();
 		static void	_typeFloat();
 		static void	_typeDouble();
+		static void	_typeOver( void *p );
 
 	public:
 		ScalarConverter( const std::string s );
