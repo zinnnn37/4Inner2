@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/11 13:03:18 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:06:38 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,11 @@ void	ScalarConverter::_print()
 		else
 			std::cout << "double: -inf" << std::endl;
 	}
+}
+
+void	ScalarConverter::setInput( std::string s )
+{
+	input = s;
 }
 
 const char	*ScalarConverter::InvalidInputException::what() const throw()
