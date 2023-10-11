@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+         #
+#    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/29 11:44:31 by minjinki          #+#    #+#              #
-#    Updated: 2023/10/10 16:52:53 by minjinki         ###   ########.fr        #
+#    Updated: 2023/10/11 13:21:11 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	serializer
 
 SRC_FILES	=	main\
-				Serializer.cpp
+				Serializer
 
 SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 
