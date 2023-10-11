@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:54:28 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/11 13:20:59 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:34:01 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define SERIALIZER_HPP
 
 #include <iostream>
-#include <string>
 #include <cstdint>
 
 typedef struct	Data
