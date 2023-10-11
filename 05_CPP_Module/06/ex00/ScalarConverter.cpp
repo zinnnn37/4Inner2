@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/11 14:06:33 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/11 14:14:28 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	ScalarConverter::_typeFloat()
 	_int = static_cast<int>(_float);
 	_double = static_cast<double>(d);
 
-	if (isinf(_float))
+	if (isinf(_float) || fabs(_float - static_cast<int>(_float)) >= 1.00000000)
 		_type = INTOVER;
 	else if (_float < -128 || 127 < _float)
 		_type = CHAROVER;
@@ -120,7 +120,7 @@ void	ScalarConverter::_typeDouble()
 	_int = static_cast<int>(_double);
 	_float = static_cast<float>(_double);
 
-	if (isinf(_float))
+	if (isinf(_float) || fabs(_double - static_cast<int>(_double)) >= 1.00000000)
 		_type = INTOVER;
 	else if (_double < -128 || 127 < _double)
 		_type = CHAROVER;
