@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/11 13:10:14 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:14:25 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,6 @@ double		ScalarConverter::_double = 0.0;
 int			ScalarConverter::_type = ERROR;
 
 ScalarConverter::ScalarConverter() {}
-
-ScalarConverter::ScalarConverter( const std::string s )
-{
-	input = s;
-	_setType(s);
-	convert();
-}
 
 ScalarConverter::ScalarConverter( const ScalarConverter &sc )
 {

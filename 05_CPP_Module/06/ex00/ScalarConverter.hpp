@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:20:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/11 13:06:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:14:13 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ class	ScalarConverter
 
 		ScalarConverter();
 		ScalarConverter( const ScalarConverter &sc );
+		~ScalarConverter();
 
 		static void	_setType( const std::string s );
 		static void	_typeChar();
@@ -50,9 +51,6 @@ class	ScalarConverter
 
 	public:
 		static std::string	input;
-
-		ScalarConverter( const std::string s );
-		~ScalarConverter();
 
 		ScalarConverter&	operator=( const ScalarConverter &sc );
 	
