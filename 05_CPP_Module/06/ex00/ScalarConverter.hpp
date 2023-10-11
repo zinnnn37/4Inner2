@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:20:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/11 12:10:47 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:05:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 class	ScalarConverter
 {
 	private:
-		static std::string	_input;
 		static char			_char;
 		static int			_int;
 		static float		_float;
@@ -40,23 +39,24 @@ class	ScalarConverter
 		static int			_type;
 
 		ScalarConverter();
+		ScalarConverter( const ScalarConverter &sc );
 
 		static void	_setType( const std::string s );
 		static void	_typeChar();
 		static void	_typeInt();
 		static void	_typeFloat();
 		static void	_typeDouble();
-		static void	_typeOver( void *p );
+		static void	_print();
 
 	public:
+		static std::string	input;
+
 		ScalarConverter( const std::string s );
-		ScalarConverter( const ScalarConverter &sc );
 		~ScalarConverter();
 
 		ScalarConverter&	operator=( const ScalarConverter &sc );
-
+	
 		static void	convert();
-		static void	print();
 
 		class	InvalidInputException : public std::exception
 		{

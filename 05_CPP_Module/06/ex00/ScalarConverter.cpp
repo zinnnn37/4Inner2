@@ -6,13 +6,13 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/11 12:17:47 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:03:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-std::string	ScalarConverter::_input = "";
+std::string	ScalarConverter::input = "";
 char		ScalarConverter::_char = '\0';
 int			ScalarConverter::_int = 0;
 float		ScalarConverter::_float = 0.0f;
@@ -23,7 +23,7 @@ ScalarConverter::ScalarConverter() {}
 
 ScalarConverter::ScalarConverter( const std::string s )
 {
-	_input = s;
+	input = s;
 	_setType(s);
 	convert();
 }
@@ -31,7 +31,6 @@ ScalarConverter::ScalarConverter( const std::string s )
 ScalarConverter::ScalarConverter( const ScalarConverter &sc )
 {
 	(void)sc;
-	// 동작 확인해봐야.. 아마 이렇게만 해도 될 듯
 }
 
 ScalarConverter::~ScalarConverter() {}
@@ -81,7 +80,7 @@ void	ScalarConverter::_setType( std::string s )
 
 void	ScalarConverter::_typeChar()
 {
-	_char = static_cast<unsigned char>(_input[0]);
+	_char = static_cast<unsigned char>(input[0]);
 	_int = static_cast<int>(_char);
 	_float = static_cast<float>(_char);
 	_double = static_cast<double>(_char);
@@ -91,9 +90,9 @@ void	ScalarConverter::_typeInt()
 {
 	long	l;
 
-	l = std::atol(_input.c_str());
+	l = std::atol(input.c_str());
 
-	_int = std::atoi(_input.c_str());
+	_int = std::atoi(input.c_str());
 	_char = static_cast<unsigned char>(l);
 	_float = static_cast<float>(l);
 	_double = static_cast<double>(l);
@@ -108,9 +107,9 @@ void	ScalarConverter::_typeFloat()
 {
 	double	d;
 
-	d = std::atof(_input.c_str());
+	d = std::atof(input.c_str());
 
-	_float = std::atof(_input.c_str());
+	_float = std::atof(input.c_str());
 	_char = static_cast<unsigned char>(_float);
 	_int = static_cast<int>(_float);
 	_double = static_cast<double>(d);
@@ -123,7 +122,7 @@ void	ScalarConverter::_typeFloat()
 
 void	ScalarConverter::_typeDouble()
 {
-	_double = std::strtod(_input.c_str(), NULL);
+	_double = std::strtod(input.c_str(), NULL);
 	_char = static_cast<unsigned char>(_double);
 	_int = static_cast<int>(_double);
 	_float = static_cast<float>(_double);
@@ -136,7 +135,7 @@ void	ScalarConverter::_typeDouble()
 
 void	ScalarConverter::convert()
 {
-	if (_input.length() == 0)
+	if (input.length() == 0)
 		throw InvalidInputException();
 	switch (_type)
 	{
@@ -162,11 +161,10 @@ void	ScalarConverter::convert()
 		default:
 			throw InvalidInputException();
 	}
-
-	print();
+	_print();
 }
 
-void	ScalarConverter::print()
+void	ScalarConverter::_print()
 {
 	// char
 	if (_type != NANINF && _type != CHAROVER && _type != INTOVER && _char >= 0)
@@ -195,11 +193,11 @@ void	ScalarConverter::print()
 		else
 			std::cout << "float: " << _float << "f" << std::endl;
 	}
-	else if (!_input.compare("nan") || !_input.compare("nanf"))
+	else if (!input.compare("nan") || !input.compare("nanf"))
 		std::cout << "float: nanf" << std::endl;
 	else
 	{
-		if (_input[0] == '+')
+		if (input[0] == '+')
 			std::cout << "float: +inff" << std::endl;
 		else
 			std::cout << "float: -inff" << std::endl;
@@ -213,11 +211,11 @@ void	ScalarConverter::print()
 		else
 			std::cout << "double: " << _double << std::endl;
 	}
-	else if (!_input.compare("nan") || !_input.compare("nanf"))
+	else if (!input.compare("nan") || !input.compare("nanf"))
 		std::cout << "double: nan" << std::endl;
 	else
 	{
-		if (_input[0] == '+')
+		if (input[0] == '+')
 			std::cout << "double: +inf" << std::endl;
 		else
 			std::cout << "double: -inf" << std::endl;

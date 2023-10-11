@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 10:56:25 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/10 16:42:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:04:08 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ int main( int ac, char **av )
 		{
 			std::cerr << e.what() << std::endl;
 		}
+
+		std::cout << "----------------------------------" << std::endl;
+		try
+		{
+			ScalarConverter::input = "42";
+			ScalarConverter::convert();
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+		
 		return (0);
 	}
 	std::cout << "Usage: ./converter param" << std::endl;
