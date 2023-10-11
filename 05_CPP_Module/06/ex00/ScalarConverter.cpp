@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/11 13:06:38 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:10:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,6 +225,7 @@ void	ScalarConverter::_print()
 void	ScalarConverter::setInput( std::string s )
 {
 	input = s;
+	_setType(s);
 }
 
 const char	*ScalarConverter::InvalidInputException::what() const throw()
