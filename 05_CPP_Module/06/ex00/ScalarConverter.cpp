@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/13 19:20:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/13 19:49:49 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,16 +98,19 @@ void	ScalarConverter::_typeInt()
 
 void	ScalarConverter::_typeFloat()
 {
+	long	l;
 	double	d;
 
 	d = std::atof(_input.c_str());
 
 	_float = std::atof(_input.c_str());
 	_char = static_cast<unsigned char>(_float);
-	_int = static_cast<int>(_float);
 	_double = static_cast<double>(d);
 
-	if (std::isinf(_float) || fabs(_float - static_cast<int>(_float)) >= 1.00000000)
+	l = static_cast<long>(_double);
+	_int = static_cast<int>(l);
+
+	if (l > INT_MAX || l < INT_MIN)
 		_type = INTOVER;
 	else if (_float < -128 || 127 < _float)
 		_type = CHAROVER;
@@ -115,12 +118,16 @@ void	ScalarConverter::_typeFloat()
 
 void	ScalarConverter::_typeDouble()
 {
+	long	l;
+
 	_double = std::strtod(_input.c_str(), NULL);
 	_char = static_cast<unsigned char>(_double);
-	_int = static_cast<int>(_double);
 	_float = static_cast<float>(_double);
 
-	if (std::isinf(_float) || fabs(_double - static_cast<int>(_double)) >= 1.00000000)
+	l = static_cast<long>(_double);
+	_int = static_cast<int>(l);
+
+	if (l > INT_MAX || l < INT_MIN)
 		_type = INTOVER;
 	else if (_double < -128 || 127 < _double)
 		_type = CHAROVER;
@@ -129,6 +136,7 @@ void	ScalarConverter::_typeDouble()
 void	ScalarConverter::convert( std::string input )
 {
 	_setInput(input);
+
 	if (_input.length() == 0)
 		throw InvalidInputException();
 	switch (_type)
@@ -160,6 +168,8 @@ void	ScalarConverter::convert( std::string input )
 
 void	ScalarConverter::_print()
 {
+	//std::cout << _type << std::endl;
+
 	// char
 	if (_type != NANINF && _type != CHAROVER && _type != INTOVER && _char >= 0)
 	{
@@ -234,7 +244,6 @@ void	ScalarConverter::_setInput( std::string s )
 {
 	_input = s;
 	_setType(s);
-	std::cout << _type << std::endl;
 }
 
 int	ScalarConverter::_cntDigit( int n, float num )
