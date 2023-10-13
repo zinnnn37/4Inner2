@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:20:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/11 13:14:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/13 10:56:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <climits>
 #include <cmath>
 #include <exception>
+#include <iomanip>
 
 #define ERROR -1
 #define CHAR 0
@@ -32,6 +33,7 @@
 class	ScalarConverter
 {
 	private:
+		static std::string	_input;
 		static char			_char;
 		static int			_int;
 		static float		_float;
@@ -42,6 +44,7 @@ class	ScalarConverter
 		ScalarConverter( const ScalarConverter &sc );
 		~ScalarConverter();
 
+		static void	_setInput( const std::string s );
 		static void	_setType( const std::string s );
 		static void	_typeChar();
 		static void	_typeInt();
@@ -50,12 +53,10 @@ class	ScalarConverter
 		static void	_print();
 
 	public:
-		static std::string	input;
 
 		ScalarConverter&	operator=( const ScalarConverter &sc );
 	
-		static void	setInput( const std::string s );
-		static void	convert();
+		static void	convert( const std::string s );
 
 		class	InvalidInputException : public std::exception
 		{

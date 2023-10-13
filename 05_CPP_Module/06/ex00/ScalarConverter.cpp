@@ -6,13 +6,13 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/11 14:14:28 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:05:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-std::string	ScalarConverter::input = "";
+std::string	ScalarConverter::_input = "";
 char		ScalarConverter::_char = '\0';
 int			ScalarConverter::_int = 0;
 float		ScalarConverter::_float = 0.0f;
@@ -73,7 +73,7 @@ void	ScalarConverter::_setType( std::string s )
 
 void	ScalarConverter::_typeChar()
 {
-	_char = static_cast<unsigned char>(input[0]);
+	_char = static_cast<unsigned char>(_input[0]);
 	_int = static_cast<int>(_char);
 	_float = static_cast<float>(_char);
 	_double = static_cast<double>(_char);
@@ -83,9 +83,9 @@ void	ScalarConverter::_typeInt()
 {
 	long	l;
 
-	l = std::atol(input.c_str());
+	l = std::atol(_input.c_str());
 
-	_int = std::atoi(input.c_str());
+	_int = std::atoi(_input.c_str());
 	_char = static_cast<unsigned char>(l);
 	_float = static_cast<float>(l);
 	_double = static_cast<double>(l);
@@ -100,9 +100,9 @@ void	ScalarConverter::_typeFloat()
 {
 	double	d;
 
-	d = std::atof(input.c_str());
+	d = std::atof(_input.c_str());
 
-	_float = std::atof(input.c_str());
+	_float = std::atof(_input.c_str());
 	_char = static_cast<unsigned char>(_float);
 	_int = static_cast<int>(_float);
 	_double = static_cast<double>(d);
@@ -115,7 +115,7 @@ void	ScalarConverter::_typeFloat()
 
 void	ScalarConverter::_typeDouble()
 {
-	_double = std::strtod(input.c_str(), NULL);
+	_double = std::strtod(_input.c_str(), NULL);
 	_char = static_cast<unsigned char>(_double);
 	_int = static_cast<int>(_double);
 	_float = static_cast<float>(_double);
@@ -126,9 +126,10 @@ void	ScalarConverter::_typeDouble()
 		_type = CHAROVER;
 }
 
-void	ScalarConverter::convert()
+void	ScalarConverter::convert( std::string input )
 {
-	if (input.length() == 0)
+	_setInput(input);
+	if (_input.length() == 0)
 		throw InvalidInputException();
 	switch (_type)
 	{
@@ -182,15 +183,15 @@ void	ScalarConverter::_print()
 	if (_type != NANINF)
 	{
 		if (_float - static_cast<int>(_float) == 0)
-			std::cout << "float: " << _float << ".0f" << std::endl;
+			std::cout << "float: " << std::setprecision(7) << _float << ".0f" << std::endl;
 		else
 			std::cout << "float: " << _float << "f" << std::endl;
 	}
-	else if (!input.compare("nan") || !input.compare("nanf"))
+	else if (!_input.compare("nan") || !_input.compare("nanf"))
 		std::cout << "float: nanf" << std::endl;
 	else
 	{
-		if (input[0] == '+')
+		if (_input[0] == '+')
 			std::cout << "float: +inff" << std::endl;
 		else
 			std::cout << "float: -inff" << std::endl;
@@ -200,24 +201,24 @@ void	ScalarConverter::_print()
 	if (_type != NANINF)
 	{
 		if (_double - static_cast<int>(_double) == 0)
-			std::cout << "double: " << _double << ".0" << std::endl;
+			std::cout << "double: " << std::setprecision(15) << _double << ".0" << std::endl;
 		else
 			std::cout << "double: " << _double << std::endl;
 	}
-	else if (!input.compare("nan") || !input.compare("nanf"))
+	else if (!_input.compare("nan") || !_input.compare("nanf"))
 		std::cout << "double: nan" << std::endl;
 	else
 	{
-		if (input[0] == '+')
+		if (_input[0] == '+')
 			std::cout << "double: +inf" << std::endl;
 		else
 			std::cout << "double: -inf" << std::endl;
 	}
 }
 
-void	ScalarConverter::setInput( std::string s )
+void	ScalarConverter::_setInput( std::string s )
 {
-	input = s;
+	_input = s;
 	_setType(s);
 }
 
