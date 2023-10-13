@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:20:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/13 10:56:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/13 19:12:57 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 #define NANINF 4
 #define CHAROVER -5
 #define INTOVER -6
+#define FLTPRECISION 7
+#define DBLPRECISION 15
 
 class	ScalarConverter
 {
@@ -51,6 +53,7 @@ class	ScalarConverter
 		static void	_typeFloat();
 		static void	_typeDouble();
 		static void	_print();
+		static int	_cntDigit( int n, float num );
 
 	public:
 
