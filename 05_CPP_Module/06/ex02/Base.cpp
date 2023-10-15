@@ -6,11 +6,14 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:33:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/11 14:00:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/15 11:17:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 
 Base::~Base()
 {

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:33:40 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/11 13:50:10 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/15 11:17:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@ class	Base
 	public:
 		virtual ~Base();
 };
-
-class	A : public Base {};
-class	B : public Base {};
-class	C : public Base {};
 
 Base	*generate( void );
 void	identify( Base *p );
