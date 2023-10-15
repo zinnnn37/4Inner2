@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:06:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/11 16:14:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/15 17:00:05 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include <string>
-#include <excption>
+#include <exception>
 
 template <typename T>
 class	Array
@@ -40,6 +40,6 @@ class	Array
 			public:
 				const char	*what() const throw();
 		}
-}
+};
 
 #endif
