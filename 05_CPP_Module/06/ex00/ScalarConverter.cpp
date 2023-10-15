@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/15 11:09:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/15 11:51:49 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,45 @@ ScalarConverter&	ScalarConverter::operator=( const ScalarConverter &sc )
 	return (*this);
 }
 
+void	ScalarConverter::convert( std::string input )
+{
+	_setInput(input);
+
+	if (_input.length() == 0)
+		throw InvalidInputException();
+	switch (_type)
+	{
+		case CHAR:
+			_typeChar();
+			break;
+
+		case INT:
+			_typeInt();
+			break;
+
+		case FLOAT:
+			_typeFloat();
+			break;
+
+		case DOUBLE:
+			_typeDouble();
+			break;
+		
+		case NANINF:
+			break;
+
+		default:
+			throw InvalidInputException();
+	}
+	_print();
+}
+
+void	ScalarConverter::_setInput( std::string s )
+{
+	_input = s;
+	_setType(s);
+}
+
 void	ScalarConverter::_setType( std::string s )
 {
 	int	cnt = 0;
@@ -54,7 +93,8 @@ void	ScalarConverter::_setType( std::string s )
 		|| ((s.find("e+") != std::string::npos || s.find("e-") != std::string::npos) && cnt >= 3)	// 실수일 때 부호 두 개 이상
 		|| s.find_first_not_of("+-0123456789.ef") != std::string::npos	// 숫자가 아닌 문자가 있는 경우
 		|| s.find_first_of(".") != s.find_last_of(".")
-		|| s.find_first_of("e") != s.find_last_of("e"))
+		|| s.find_first_of("e") != s.find_last_of("e")
+		|| s.find_first_of("f") != s.find_last_of("f"))
 		_type = ERROR;
 	else if ((s.find_first_of("+-") == 0 && s.find_first_not_of("+-0123456789") == std::string::npos)	// 부호 있는 정수
 		|| s.find_first_not_of("0123456789") == std::string::npos)
@@ -63,7 +103,7 @@ void	ScalarConverter::_setType( std::string s )
 	{
 		if (!isdigit(s[s.find_first_of(".") + 1]))
 			_type = ERROR;
-		if (s.find_first_of("f") == s.find_last_of("f") && s[s.find_first_of("f") + 1] == '\0')
+		if (s.find_first_of("f") && s[s.find_first_of("f") + 1] == '\0')
 			_type = FLOAT;	// f가 있는 경우
 		else
 			_type = DOUBLE;
@@ -129,41 +169,8 @@ void	ScalarConverter::_checkOverflow( long l )
 {
 	if (l > INT_MAX || l < INT_MIN)
 		_over = INTOVER;
-	else if (_double < -128 || 127 < _double)
+	else if (l < -128 || 127 < l)
 		_over = CHAROVER;
-}
-
-void	ScalarConverter::convert( std::string input )
-{
-	_setInput(input);
-
-	if (_input.length() == 0)
-		throw InvalidInputException();
-	switch (_type)
-	{
-		case CHAR:
-			_typeChar();
-			break;
-
-		case INT:
-			_typeInt();
-			break;
-
-		case FLOAT:
-			_typeFloat();
-			break;
-
-		case DOUBLE:
-			_typeDouble();
-			break;
-		
-		case NANINF:
-			break;
-
-		default:
-			throw InvalidInputException();
-	}
-	_print();
 }
 
 void	ScalarConverter::_print()
@@ -182,9 +189,7 @@ void	ScalarConverter::_print()
 		std::cout << "char: impossible" << std::endl;
 
 	// int
-	if (_over == INTOVER)
-		std::cout << "int: impossible" << std::endl;
-	else if (_type != NANINF && _int >= INT_MIN && _int <= INT_MAX)
+	if (_type != NANINF && _over != INTOVER)
 		std::cout << "int: " << _int << std::endl;
 	else
 		std::cout << "int: impossible" << std::endl;
@@ -221,7 +226,7 @@ void	ScalarConverter::_print()
 			else
 				std::cout << "double: " << std::setprecision(DBLPRECISION) << _double << std::endl;
 		}
-		else if (_double - static_cast<long>(_double) == 0)
+		else if (_double - static_cast<long>(_double) == 0)	// 값 자체는 정수이나 실수형으로 들어오는 경우
 			std::cout << "double: " << std::setprecision(DBLPRECISION) << _double << ".0" << std::endl;
 		else
 			std::cout << "double: " << std::setprecision(DBLPRECISION) << _double << std::endl;
@@ -235,12 +240,6 @@ void	ScalarConverter::_print()
 		else
 			std::cout << "double: -inf" << std::endl;
 	}
-}
-
-void	ScalarConverter::_setInput( std::string s )
-{
-	_input = s;
-	_setType(s);
 }
 
 int	ScalarConverter::_cntDigit( int n, float num )
