@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/15 11:51:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/15 14:06:05 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	ScalarConverter::_typeInt()
 	l = std::atol(_input.c_str());
 
 	_int = std::atoi(_input.c_str());
-	_char = static_cast<unsigned char>(l);
+	_char = static_cast<unsigned char>(_int);
 	_float = static_cast<float>(l);
 	_double = static_cast<double>(l);
 
@@ -141,11 +141,11 @@ void	ScalarConverter::_typeFloat()
 
 	d = std::atof(_input.c_str());
 
-	_float = static_cast<float>(std::atof(_input.c_str()));
+	_float = std::atof(_input.c_str());
 	_char = static_cast<unsigned char>(_float);
 	_double = static_cast<double>(d);
 
-	l = static_cast<long>(_double);
+	l = static_cast<long>(d);
 	_int = static_cast<int>(l);
 
 	_checkOverflow(l);
@@ -169,7 +169,7 @@ void	ScalarConverter::_checkOverflow( long l )
 {
 	if (l > INT_MAX || l < INT_MIN)
 		_over = INTOVER;
-	else if (l < -128 || 127 < l)
+	else if (l < -128 || l > 127)
 		_over = CHAROVER;
 }
 

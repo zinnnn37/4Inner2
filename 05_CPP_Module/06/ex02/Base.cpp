@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:33:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/15 11:20:45 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/15 14:18:01 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,13 @@ Base	*generate(void)
 	switch (random)
 	{
 		case 0:
+			std::cout << "Class A has been made\n" << std::endl;
 			return (new A());
 		case 1:
+			std::cout << "Class B has been made\n" << std::endl;
 			return (new B());
 		case 2:
+			std::cout << "Class C has been made\n" << std::endl;
 			return (new C());
 		default:
 			return (NULL);
