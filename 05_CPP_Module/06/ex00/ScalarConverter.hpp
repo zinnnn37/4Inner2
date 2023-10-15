@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:20:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/13 19:12:57 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/15 11:06:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@
 #include <iomanip>
 
 #define ERROR -1
-#define CHAR 0
-#define INT 1
-#define FLOAT 2
-#define DOUBLE 3
-#define NANINF 4
+#define DEFAULT 0
+#define CHAR 1
+#define INT 2
+#define FLOAT 3
+#define DOUBLE 4
+#define NANINF 5
 #define CHAROVER -5
 #define INTOVER -6
 #define FLTPRECISION 7
@@ -41,6 +42,7 @@ class	ScalarConverter
 		static float		_float;
 		static double		_double;
 		static int			_type;
+		static int			_over;
 
 		ScalarConverter();
 		ScalarConverter( const ScalarConverter &sc );
@@ -52,6 +54,7 @@ class	ScalarConverter
 		static void	_typeInt();
 		static void	_typeFloat();
 		static void	_typeDouble();
+		static void	_checkOverflow( long l );
 		static void	_print();
 		static int	_cntDigit( int n, float num );
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 17:21:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/13 19:49:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/15 11:09:44 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ char		ScalarConverter::_char = '\0';
 int			ScalarConverter::_int = 0;
 float		ScalarConverter::_float = 0.0f;
 double		ScalarConverter::_double = 0.0;
-int			ScalarConverter::_type = ERROR;
+int			ScalarConverter::_type = DEFAULT;
+int			ScalarConverter::_over = DEFAULT;
 
 ScalarConverter::ScalarConverter() {}
 
@@ -90,10 +91,7 @@ void	ScalarConverter::_typeInt()
 	_float = static_cast<float>(l);
 	_double = static_cast<double>(l);
 
-	if (l < INT_MIN || INT_MAX < l)
-		_type = INTOVER;
-	else if (_int < -128 || 127 < _int)
-		_type = CHAROVER;
+	_checkOverflow(l);
 }
 
 void	ScalarConverter::_typeFloat()
@@ -103,17 +101,14 @@ void	ScalarConverter::_typeFloat()
 
 	d = std::atof(_input.c_str());
 
-	_float = std::atof(_input.c_str());
+	_float = static_cast<float>(std::atof(_input.c_str()));
 	_char = static_cast<unsigned char>(_float);
 	_double = static_cast<double>(d);
 
 	l = static_cast<long>(_double);
 	_int = static_cast<int>(l);
 
-	if (l > INT_MAX || l < INT_MIN)
-		_type = INTOVER;
-	else if (_float < -128 || 127 < _float)
-		_type = CHAROVER;
+	_checkOverflow(l);
 }
 
 void	ScalarConverter::_typeDouble()
@@ -127,10 +122,15 @@ void	ScalarConverter::_typeDouble()
 	l = static_cast<long>(_double);
 	_int = static_cast<int>(l);
 
+	_checkOverflow(l);
+}
+
+void	ScalarConverter::_checkOverflow( long l )
+{
 	if (l > INT_MAX || l < INT_MIN)
-		_type = INTOVER;
+		_over = INTOVER;
 	else if (_double < -128 || 127 < _double)
-		_type = CHAROVER;
+		_over = CHAROVER;
 }
 
 void	ScalarConverter::convert( std::string input )
@@ -171,7 +171,7 @@ void	ScalarConverter::_print()
 	//std::cout << _type << std::endl;
 
 	// char
-	if (_type != NANINF && _type != CHAROVER && _type != INTOVER && _char >= 0)
+	if (_type != NANINF && _over != CHAROVER && _over != INTOVER && _char >= 0)
 	{
 		if (isprint(_char))
 			std::cout << "char: '" << _char << "'" << std::endl;
@@ -182,7 +182,7 @@ void	ScalarConverter::_print()
 		std::cout << "char: impossible" << std::endl;
 
 	// int
-	if (_type == INTOVER)
+	if (_over == INTOVER)
 		std::cout << "int: impossible" << std::endl;
 	else if (_type != NANINF && _int >= INT_MIN && _int <= INT_MAX)
 		std::cout << "int: " << _int << std::endl;
@@ -192,17 +192,12 @@ void	ScalarConverter::_print()
 	// float
 	if (_type != NANINF)
 	{
-		if (std::isinf(_float))
-		{
-			if (_float > 0)
-				std::cout << "float: +inff" << std::endl;
-			else
-				std::cout << "float: -inff" << std::endl;
-		}
+		if (std::isinf(_float) && _float > 0)
+			std::cout << "float: +inff" << std::endl;
 		else if (_float - static_cast<int>(_float) == 0 && _cntDigit(FLTPRECISION, _float) == 0)
 			std::cout << "float: " << std::setprecision(FLTPRECISION) << _float << ".0f" << std::endl;
 		else
-			std::cout << "float: " << _float << "f" << std::endl;
+			std::cout << "float: " << std::setprecision(FLTPRECISION) << _float << "f" << std::endl;
 	}
 	else if (!_input.compare("nan") || !_input.compare("nanf"))
 		std::cout << "float: nanf" << std::endl;
@@ -217,17 +212,19 @@ void	ScalarConverter::_print()
 	// double
 	if (_type != NANINF)
 	{
-		if (std::isinf(_double))
+		if (std::isinf(_double) && _double > 0)
+			std::cout << "double: +inf" << std::endl;
+		else if (_type != DOUBLE && _type != FLOAT)
 		{
-			if (_double > 0)
-				std::cout << "double: +inf" << std::endl;
+			if (_cntDigit(DBLPRECISION, _double) == 0)
+				std::cout << "double: " << std::setprecision(DBLPRECISION) << _double << ".0" << std::endl;
 			else
-				std::cout << "double: -inf" << std::endl;
+				std::cout << "double: " << std::setprecision(DBLPRECISION) << _double << std::endl;
 		}
-		else if (_double - static_cast<int>(_double) == 0)
+		else if (_double - static_cast<long>(_double) == 0)
 			std::cout << "double: " << std::setprecision(DBLPRECISION) << _double << ".0" << std::endl;
 		else
-			std::cout << "double: " << _double << std::endl;
+			std::cout << "double: " << std::setprecision(DBLPRECISION) << _double << std::endl;
 	}
 	else if (!_input.compare("nan") || !_input.compare("nanf"))
 		std::cout << "double: nan" << std::endl;
