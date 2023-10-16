@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:40:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/11 16:05:11 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/17 08:59:11 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
-
-void	add( int &a )
-{
-	a += 1;
-}
 
 void	append( std::string &a )
 {
@@ -28,28 +23,24 @@ int	main(void)
 
 	int	arr[5] = { 1, 2, 3, 4, 5 };
 
-	for ( int i = 0; i < 5; i++ )
-		std::cout << arr[i] << " ";
+	iter(arr, 5, print);
 	std::cout << std::endl;
 
 	iter(arr, 5, add);
 
-	for ( int i = 0; i < 5; i++ )
-		std::cout << arr[i] << " ";
+	iter(arr, 5, print);
 	std::cout << std::endl;
 
 	std::cout << "\n---------- string test ----------\n\n";
 
-	std::string	str[5] = { "a", "b", "c", "d", "e" };
+	char	c[5] = { 'a', 'b', 'c', 'd', 'e' };
 
-	for (int i = 0; i < 5; i++ )
-		std::cout << str[i] << " ";
+	iter(c, 5, print);
 	std::cout << std::endl;
 
-	iter(str, 5, append);
+	iter(c, 5, add);
 
-	for (int i = 0; i < 5; i++ )
-		std::cout << str[i] << " ";
+	iter(c, 5, print);
 	std::cout << std::endl << std::endl;
 
 	return (0);

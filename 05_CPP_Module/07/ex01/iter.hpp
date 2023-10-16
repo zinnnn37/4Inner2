@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:40:11 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/15 11:14:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/17 08:58:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ void	iter( const T *arr, unsigned int len, void( *f )( const T & ) )
 		f(arr[i]);
 }
 
-// const도 만들어야 함
+template <typename T>
+void	add( T &t )
+{
+	t += 1;
+}
+
+template <typename T>
+void	print( const T &t )
+{
+	std::cout << t << " ";
+}
 
 #endif
