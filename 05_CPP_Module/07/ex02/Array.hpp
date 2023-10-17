@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:06:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/17 09:11:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:20:01 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 #include <iostream>
 #include <string>
 #include <exception>
+#include <cstdlib>
+
+#define RED "\033[31m"
+#define BLUE "\033[34m"
+#define RESET "\033[0m"
 
 template <typename T>
 class	Array
@@ -25,7 +30,7 @@ class	Array
 		unsigned int	_size;
 
 	public:
-		Array<T>() : _size(0)
+		Array<T>( void ) : _size(0)
 		{
 			this->_arr = new T[0];
 		}
@@ -37,7 +42,8 @@ class	Array
 
 		Array<T>( Array<T> const &arr )
 		{
-			*this->arr;
+			this->_arr = NULL;
+			*this = arr;
 		}
 
 		~Array<T>()
@@ -46,7 +52,7 @@ class	Array
 				delete[] this->_arr;
 		}
 
-		Array<T>	&operator=( const Array<T> &arr );
+		Array<T>	&operator=( const Array<T> &arr )
 		{
 			if (this == &arr)
 				return (*this);
@@ -82,7 +88,22 @@ class	Array
 				{
 					return ("Index out of range");
 				}
-		}
+		};
 };
+
+void	blue()
+{
+	std::cout << BLUE;
+}
+
+void	reset()
+{
+	std::cout << RESET;
+}
+
+void	red()
+{
+	std::cout << RED;
+}
 
 #endif
