@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:02:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/17 14:36:55 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/17 16:47:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,28 @@ Span	&Span::operator=( const Span &s )
 	if (this != &s)
 	{
 		_N = s._N;
-		_vec.assign(s._vec.begin(), s._vec.end());
+		_dq.assign(s._dq.begin(), s._dq.end());
 	}
 	return (*this);
 }
 
 void	Span::addNumber( int n )
 {
-	if (this->_vec.size() == _N)
+	if (this->_dq.size() == _N)
 		throw FullException();
 
-	if (find(this->_vec.begin(), this->_vec.end(), this->_vec.size())
-		== this->_vec.end())
-		this->_vec.push_back(n);
+	if (find(this->_dq.begin(), this->_dq.end(), n)
+		== this->_dq.end())
+		this->_dq.push_back(n);
 }
 
 int	Span::shortestSpan()
 {
-	if (this->_vec.size() <= 1)
+	if (this->size() <= 1)
 		throw CannotSpanException();
 
-	int					shortest = INT_MAX;
-	std::vector<int>	tmp(_vec);
+	int				shortest = INT_MAX;
+	std::deque<int>	tmp(_dq);
 
 	std::sort(tmp.begin(), tmp.end());
 
@@ -64,13 +64,57 @@ int	Span::shortestSpan()
 
 int	Span::longestSpan()
 {
-	if (this->_vec.size() <= 1)
+	if (this->size() <= 1)
 		throw CannotSpanException();
 	
 	int	min, max;
 
-	min = *std::min_element(this->_vec.begin(), this->_vec.end());
-	max = *std::max_element(this->_vec.begin(), this->_vec.end());
+	min = *std::min_element(this->_dq.begin(), this->_dq.end());
+	max = *std::max_element(this->_dq.begin(), this->_dq.end());
 
 	return (max - min);
+}
+
+unsigned int	Span::getN() const
+{
+	return (this->_N);
+}
+
+unsigned int	Span::size() const
+{
+	return (this->_dq.size());
+}
+
+void	Span::print() const
+{
+	for (unsigned int i = 0; i < this->size(); i++)
+		std::cout << this->_dq[i] << " ";
+	std::cout << std::endl;
+}
+
+const char	*Span::FullException::what() const throw()
+{
+	red();
+	return ("Span is full");
+}
+
+const char	*Span::CannotSpanException::what() const throw()
+{
+	red();
+	return ("Too few arguments to span");
+}
+
+void	red()
+{
+	std::cout << RED;
+}
+
+void	blue()
+{
+	std::cout << BLUE;
+}
+
+void	reset()
+{
+	std::cout << RESET;
 }

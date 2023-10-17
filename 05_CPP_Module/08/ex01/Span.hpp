@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:02:35 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/17 14:33:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/17 16:47:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,18 @@
 #include <iostream>
 #include <algorithm>
 #include <exception>
-#include <vector>
+#include <deque>
 #include <climits>
+
+#define RED "\033[1;31m"
+#define BLUE "\033[1;34m"
+#define RESET "\033[0m"
 
 class	Span
 {
 	private:
-		unsigned int		_N;
-		std::vector<int>	_vec;
+		unsigned int	_N;
+		std::deque<int>	_dq;
 
 		Span();
 
@@ -34,9 +38,14 @@ class	Span
 
 		Span	&operator=( const Span & s );
 
-		void	addNumber( int n );
-		int		shortestSpan();
-		int		longestSpan();
+		void			addNumber( int n );
+		int				shortestSpan();
+		int				longestSpan();
+
+		unsigned int	getN() const;
+		unsigned int	size() const;
+
+		void			print() const;
 
 		class	FullException : public std::exception
 		{
@@ -50,5 +59,9 @@ class	Span
 				virtual const char	*what() const throw();
 		};
 };
+
+void	red();
+void	blue();
+void	reset();
 
 #endif

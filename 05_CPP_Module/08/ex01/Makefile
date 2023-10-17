@@ -6,13 +6,14 @@
 #    By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 16:27:12 by minjinki          #+#    #+#              #
-#    Updated: 2023/10/17 14:02:00 by minjinki         ###   ########.fr        #
+#    Updated: 2023/10/17 16:28:37 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	Span
 
-SRC_FILES	=	main
+SRC_FILES	=	main\
+				Span
 
 SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 
