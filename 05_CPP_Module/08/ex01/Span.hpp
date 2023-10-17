@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:02:35 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/17 14:11:33 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:33:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <exception>
 #include <vector>
+#include <climits>
 
 class	Span
 {
@@ -48,6 +49,6 @@ class	Span
 			public:
 				virtual const char	*what() const throw();
 		};
-}
+};
 
 #endif
