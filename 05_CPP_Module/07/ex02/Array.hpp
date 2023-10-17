@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:06:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/15 17:00:05 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/17 09:11:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,67 @@ template <typename T>
 class	Array
 {
 	private:
-		T				*arr;
-		unsigned int	len;
+		T				*_arr;
+		unsigned int	_size;
 
 	public:
-		Array();
-		Array( unsigned int n );
-		Array( Array const &arr );
-		~Array();
+		Array<T>() : _size(0)
+		{
+			this->_arr = new T[0];
+		}
 
-		Array	&operator=( const Array &arr );
-		T		&operator[]( unsigned int n );
+		Array<T>( unsigned int n ) : _size(n)
+		{
+			this->_arr = new T[n];
+		}
 
-		unsigned int	size() const;
+		Array<T>( Array<T> const &arr )
+		{
+			*this->arr;
+		}
+
+		~Array<T>()
+		{
+			if ( this->_arr )
+				delete[] this->_arr;
+		}
+
+		Array<T>	&operator=( const Array<T> &arr );
+		{
+			if (this == &arr)
+				return (*this);
+
+			if (this->_arr)
+				delete[] this->_arr;
+
+			this->_size = arr.size();
+			this->_arr = new T[arr.size()];
+
+			for (unsigned int i = 0; i < this->_size; i++)
+				this->_arr[i] = arr._arr[i];
+
+			return (*this);
+		}
+
+		T		&operator[]( unsigned int n )
+		{
+			if (n >= this->_size)
+				throw IndexOutOfRangeException();
+			return (this->_arr[n]);
+		}
+
+		unsigned int	size() const
+		{
+			return (this->_size);
+		}
 
 		class	IndexOutOfRangeException : public std::exception
 		{
 			public:
-				const char	*what() const throw();
+				const char	*what() const throw()
+				{
+					return ("Index out of range");
+				}
 		}
 };
 
