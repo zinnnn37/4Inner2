@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:06:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/18 10:36:47 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:11:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,21 @@
 #define RED "\033[31m"
 #define BLUE "\033[34m"
 #define RESET "\033[0m"
+
+void	blue()
+{
+	std::cout << BLUE;
+}
+
+void	reset()
+{
+	std::cout << RESET;
+}
+
+void	red()
+{
+	std::cout << RED;
+}
 
 template <typename T>
 class	Array
@@ -38,6 +53,9 @@ class	Array
 		Array<T>( unsigned int n ) : _size(n)
 		{
 			this->_arr = new T[n];
+
+			for (unsigned int i = 0; i < n; i++)
+				this->_arr[i] = 0;
 		}
 
 		Array<T>( Array<T> const &arr )
@@ -99,31 +117,17 @@ class	Array
 
 				IndexOutOfRangeException( const IndexOutOfRangeException &e )
 				{
-					(void)e;
+					*this = e;
 				}
 
 				~IndexOutOfRangeException() throw() {}
 
 				const char	*what() const throw()
 				{
+					red();
 					return ("Index out of range");
 				}
 		};
 };
-
-void	blue()
-{
-	std::cout << BLUE;
-}
-
-void	reset()
-{
-	std::cout << RESET;
-}
-
-void	red()
-{
-	std::cout << RED;
-}
 
 #endif

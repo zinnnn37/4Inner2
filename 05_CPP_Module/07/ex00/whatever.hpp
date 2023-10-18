@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:30:09 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/13 10:00:23 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:05:11 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void	swap( T &a, T &b )
 }
 
 template <typename T>
-T	min( const T &a, const T &b )
+T	min( T &a, T &b )
 {
 	return (a < b ? a : b);
 }
 
 template <typename T>
-T	max( const T &a, const T &b )
+T	max( T &a, T &b )
 {
 	return (a > b ? a : b);
 }
