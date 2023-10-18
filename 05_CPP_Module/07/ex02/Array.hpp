@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:06:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/18 10:28:22 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:36:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ class	Array
 		T		&operator[]( unsigned int n )
 		{
 			if (n >= this->_size)
-				throw std::exception();
+				throw IndexOutOfRangeException();
+
 			return (this->_arr[n]);
 		}
 
@@ -83,6 +84,31 @@ class	Array
 		{
 			return (this->_size);
 		}
+
+		class	IndexOutOfRangeException : public std::exception
+		{
+			private:
+				IndexOutOfRangeException &operator=( const IndexOutOfRangeException &e )
+				{
+					(void)e;
+					return (*this);
+				}
+
+			public:
+				IndexOutOfRangeException() throw() {}
+
+				IndexOutOfRangeException( const IndexOutOfRangeException &e )
+				{
+					(void)e;
+				}
+
+				~IndexOutOfRangeException() throw() {}
+
+				const char	*what() const throw()
+				{
+					return ("Index out of range");
+				}
+		};
 };
 
 void	blue()

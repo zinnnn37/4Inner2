@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:05:41 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/18 10:27:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:37:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,23 @@ int	main(void)
 
 	try
 	{
+		std::cout << "----------- Index Out of Bounds ----------\n" << std::endl;
 		std::cout << arr[5] << std::endl;
 	}
-	catch ( std::exception &e )
+	catch (std::exception &e)
+	{
+		red();
+		std::cout << e.what() << std::endl;
+		reset();
+	}
+
+	// negative
+	try
+	{
+		std::cout << "\n------------- Negative Index -------------\n" << std::endl;
+		std::cout << arr[-1] << std::endl;
+	}
+	catch (std::exception &e)
 	{
 		red();
 		std::cout << e.what() << std::endl;
