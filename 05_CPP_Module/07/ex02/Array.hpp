@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:06:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/18 10:20:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:28:22 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ class	Array
 		T		&operator[]( unsigned int n )
 		{
 			if (n >= this->_size)
-				throw "Index out of bounds";
+				throw std::exception();
 			return (this->_arr[n]);
 		}
 

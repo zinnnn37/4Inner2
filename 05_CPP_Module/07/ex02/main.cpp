@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:05:41 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/18 10:20:42 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:27:44 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ int	main(void)
 	{
 		std::cout << arr[5] << std::endl;
 	}
-	catch ( const char *e )
+	catch ( std::exception &e )
 	{
 		red();
-		std::cout << e << std::endl;
+		std::cout << e.what() << std::endl;
 		reset();
 	}
 
