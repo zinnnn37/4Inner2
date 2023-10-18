@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:06:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/17 13:20:01 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:06:35 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,13 @@ class	Array
 				return (*this);
 
 			if (this->_arr)
+			{
 				delete[] this->_arr;
+				this->_arr = NULL;
+			}
 
 			this->_size = arr.size();
-			this->_arr = new T[arr.size()];
+			this->_arr = new T[this->_size];
 
 			for (unsigned int i = 0; i < this->_size; i++)
 				this->_arr[i] = arr._arr[i];

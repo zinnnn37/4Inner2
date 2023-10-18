@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:40:02 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/17 08:59:11 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:04:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(void)
 	iter(arr, 5, print);
 	std::cout << std::endl;
 
-	std::cout << "\n---------- string test ----------\n\n";
+	std::cout << "\n----------- char test -----------\n\n";
 
 	char	c[5] = { 'a', 'b', 'c', 'd', 'e' };
 
