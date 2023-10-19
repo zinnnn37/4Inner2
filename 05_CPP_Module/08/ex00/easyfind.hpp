@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:27:56 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/17 13:43:26 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:52:41 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,6 @@
 #include <algorithm>
 #include <deque>
 
-class	NotFoundException : public std::exception
-{
-	public:
-		virtual const char	*what() const throw()
-		{
-			return ("Occurence Not Found");
-		}
-};
-
 template <typename T>
 int	easyfind( T &t, int n )
 {
@@ -35,7 +26,7 @@ int	easyfind( T &t, int n )
 	it = std::find(t.begin(), t.end(), n);
 
 	if (it == t.end())
-		throw NotFoundException();
+		throw "Occurence Not Found";
 	
 	return (it - t.begin());
 }

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:27:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/17 13:49:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:53:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	main()
 		std::cout << "res: " << idx << std::endl;
 		std::cout << "deque[res]: " << deque[idx] << std::endl;
 	}
-	catch( const std::exception &e )
+	catch( const char *e )
 	{
-		std::cerr << e.what() << '\n' << std::endl;
+		std::cerr << e << '\n' << std::endl;
 	}
 
 	std::cout << "=========== char test ============\n" << std::endl;
@@ -58,9 +58,9 @@ int	main()
 		std::cout << "res: " << idx << std::endl;
 		std::cout << "deque[res]: " << deque2[idx] << std::endl;
 	}
-	catch(const std::exception& e)
+	catch(const char *e)
 	{
-		std::cerr << e.what() << '\n' << std::endl;
+		std::cerr << e << '\n' << std::endl;
 	}
 	
 
