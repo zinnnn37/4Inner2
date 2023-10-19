@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:02:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/17 16:47:50 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:54:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Span	&Span::operator=( const Span &s )
 void	Span::addNumber( int n )
 {
 	if (this->_dq.size() == _N)
-		throw FullException();
+		throw "Span is full";
 
 	if (find(this->_dq.begin(), this->_dq.end(), n)
 		== this->_dq.end())
@@ -46,7 +46,7 @@ void	Span::addNumber( int n )
 int	Span::shortestSpan()
 {
 	if (this->size() <= 1)
-		throw CannotSpanException();
+		throw "Too few arguments to span";
 
 	int				shortest = INT_MAX;
 	std::deque<int>	tmp(_dq);
@@ -65,7 +65,7 @@ int	Span::shortestSpan()
 int	Span::longestSpan()
 {
 	if (this->size() <= 1)
-		throw CannotSpanException();
+		throw "Too few arguments to span";
 	
 	int	min, max;
 
@@ -92,17 +92,17 @@ void	Span::print() const
 	std::cout << std::endl;
 }
 
-const char	*Span::FullException::what() const throw()
-{
-	red();
-	return ("Span is full");
-}
+//const char	*Span::FullException::what() const throw()
+//{
+//	red();
+//	return ("Span is full");
+//}
 
-const char	*Span::CannotSpanException::what() const throw()
-{
-	red();
-	return ("Too few arguments to span");
-}
+//const char	*Span::CannotSpanException::what() const throw()
+//{
+//	red();
+//	return ("Too few arguments to span");
+//}
 
 void	red()
 {

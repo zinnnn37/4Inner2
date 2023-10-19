@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:22:52 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/17 16:50:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:55:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int	main()
 	{
 		sp.addNumber(1);
 	}
-	catch(const std::exception& e)
+	catch(const char *e)
 	{
-		std::cerr << e.what() << '\n' << std::endl;
+		std::cerr << e << '\n' << std::endl;
 		reset();
 	}
 
@@ -62,9 +62,9 @@ int	main()
 		ex.addNumber(1);
 		std::cout << ex.shortestSpan() << std::endl;
 	}
-	catch(const std::exception& e)
+	catch(const char *e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e << '\n';
 		reset();
 	}
 

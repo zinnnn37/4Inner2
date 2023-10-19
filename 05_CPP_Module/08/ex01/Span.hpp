@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:02:35 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/17 16:47:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:54:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,6 @@ class	Span
 		unsigned int	size() const;
 
 		void			print() const;
-
-		class	FullException : public std::exception
-		{
-			public:
-				virtual const char	*what() const throw();
-		};
-
-		class	CannotSpanException : public std::exception
-		{
-			public:
-				virtual const char	*what() const throw();
-		};
 };
 
 void	red();
