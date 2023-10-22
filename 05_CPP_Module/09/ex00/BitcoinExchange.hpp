@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:18 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/22 17:27:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/22 17:58:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <fstream>
 #include <algorithm>
 #include <map>
+#include <sstream>
 
 class	BitcoinExchange
 {
@@ -25,9 +26,10 @@ class	BitcoinExchange
 		std::string						_input;
 		std::map<std::string, float>	_data;
 
-
-		void	readFile();
-		void	parsing();
+		void	readCSVFile();
+		void	readInputFile();
+		bool	checkDate( std::string date );
+		bool	checkRate( std::string rate );
 
 	public:
 		BitcoinExchange();
@@ -37,18 +39,21 @@ class	BitcoinExchange
 
 		BitcoinExchange	&operator=( const BitcoinExchange &be );
 
-		void	execute();
-
 	class	Error : public std::exception
 	{
+		private:
+			const char	*_msg;
+
 		public:
 			Error();
+			Error( const char *msg );
 			Error( const Error &e );
 			~Error() throw();
 
 			Error	&operator=( const Error &e );
 
 			const char	*what() const throw();
+			const char	*getMsg() const;
 	};
 };
 
