@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:18 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/22 17:58:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/22 18:18:15 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,22 @@ class	BitcoinExchange
 
 		BitcoinExchange	&operator=( const BitcoinExchange &be );
 
-	class	Error : public std::exception
-	{
-		private:
-			const char	*_msg;
+	//class	Error : public std::exception
+	//{
+	//	private:
+	//		const char	*_msg;
 
-		public:
-			Error();
-			Error( const char *msg );
-			Error( const Error &e );
-			~Error() throw();
+	//	public:
+	//		Error();
+	//		Error( const char *msg );
+	//		Error( const Error &e );
+	//		~Error() throw();
 
-			Error	&operator=( const Error &e );
+	//		Error	&operator=( const Error &e );
 
-			const char	*what() const throw();
-			const char	*getMsg() const;
-	};
+	//		const char	*what() const throw();
+	//		const char	*getMsg() const;
+	//};
 };
 
 #endif
