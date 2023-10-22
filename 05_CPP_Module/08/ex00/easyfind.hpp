@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:27:56 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/19 12:07:06 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/22 15:01:55 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int	easyfind( T &t, int n )
 	if (it == t.end())
 		throw "Occurence Not Found";
 	
-	return (it - t.begin());
-	// distance
+	return (std::distance(t.begin(), it));
 }
 
 #endif

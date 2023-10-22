@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:27:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/19 11:53:17 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/22 15:02:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int	main()
 	{
 		std::cout << "find 3 in deque" << std::endl;
 		int	idx = easyfind(deque, 3);
-		std::cout << "res: " << idx << std::endl;
+		std::cout << "idx: " << idx << std::endl;
 		std::cout << "deque[res]: " << deque[idx] << std::endl;
 
 		std::cout << "\nfind 5 in deque" << std::endl;
 		idx = easyfind(deque, 5);
-		std::cout << "res: " << idx << std::endl;
+		std::cout << "idx: " << idx << std::endl;
 		std::cout << "deque[res]: " << deque[idx] << std::endl;
 	}
 	catch( const char *e )
@@ -50,12 +50,12 @@ int	main()
 	{
 		std::cout << "find e in deque" << std::endl;
 		int	idx = easyfind(deque2, 'e');
-		std::cout << "res: " << idx << std::endl;
+		std::cout << "idx: " << idx << std::endl;
 		std::cout << "deque[res]: " << deque2[idx] << std::endl;
 
 		std::cout << "\nfind v in deque" << std::endl;
 		idx = easyfind(deque2, 'v');
-		std::cout << "res: " << idx << std::endl;
+		std::cout << "idx: " << idx << std::endl;
 		std::cout << "deque[res]: " << deque2[idx] << std::endl;
 	}
 	catch(const char *e)
