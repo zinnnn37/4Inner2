@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:52:21 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/22 15:17:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/22 15:23:59 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 
 #include <iostream>
 #include <stack>
-#include <deque>
-#include <algorithm>
-#include <exception>
-
-/*
- * push, pop, top, size
-*/
 
 template <typename T>
 class	MutantStack : public std::stack<T>
@@ -39,7 +32,7 @@ class	MutantStack : public std::stack<T>
 		MutantStack &operator=( const MutantStack &ms )
 		{
 			if (this != &ms)
-				*this = ms;
+				*this = ms;	// deque의 operator= 호출
 			return (*this);
 		}
 
