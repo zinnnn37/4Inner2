@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:52:21 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/22 20:55:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/23 16:27:35 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ class	MutantStack : public std::stack<T>
 		MutantStack &operator=( const MutantStack &ms )
 		{
 			if (this != &ms)
-				*this = ms;	// deque의 operator= 호출
+				*this = ms;
 			return (*this);
 		}
 
 		typedef typename std::stack<T>::container_type::iterator iterator;
-		iterator begin() {return this->c.begin();}	// stack::c의 자료형은 deque이며 protected
+		iterator begin() {return this->c.begin();}
 		iterator end() {return this->c.end();}
 
 		typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;

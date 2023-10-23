@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:02:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/19 11:54:50 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/23 16:29:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ Span	&Span::operator=( const Span &s )
 {
 	if (this != &s)
 	{
-		_N = s._N;
-		_dq.assign(s._dq.begin(), s._dq.end());
+		this->_N = s._getN();
+		this->_dq.assign(s._dq.begin(), s._dq.end());
 	}
 	return (*this);
 }
 
 void	Span::addNumber( int n )
 {
-	if (this->_dq.size() == _N)
+	if (this->_size() == this->_getN())
 		throw "Span is full";
 
 	if (find(this->_dq.begin(), this->_dq.end(), n)
@@ -45,7 +45,7 @@ void	Span::addNumber( int n )
 
 int	Span::shortestSpan()
 {
-	if (this->size() <= 1)
+	if (this->_size() <= 1)
 		throw "Too few arguments to span";
 
 	int				shortest = INT_MAX;
@@ -64,7 +64,7 @@ int	Span::shortestSpan()
 
 int	Span::longestSpan()
 {
-	if (this->size() <= 1)
+	if (this->_size() <= 1)
 		throw "Too few arguments to span";
 	
 	int	min, max;
@@ -75,19 +75,19 @@ int	Span::longestSpan()
 	return (max - min);
 }
 
-unsigned int	Span::getN() const
+unsigned int	Span::_getN() const
 {
 	return (this->_N);
 }
 
-unsigned int	Span::size() const
+unsigned int	Span::_size() const
 {
 	return (this->_dq.size());
 }
 
 void	Span::print() const
 {
-	for (unsigned int i = 0; i < this->size(); i++)
+	for (unsigned int i = 0; i < this->_size(); i++)
 		std::cout << this->_dq[i] << " ";
 	std::cout << std::endl;
 }

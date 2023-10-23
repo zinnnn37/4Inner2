@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:27:56 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/22 15:01:55 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/23 16:10:29 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <iostream>
 #include <exception>
 #include <algorithm>
-#include <deque>
 
 template <typename T>
 int	easyfind( T &t, int n )

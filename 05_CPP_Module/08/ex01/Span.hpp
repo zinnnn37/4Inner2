@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:02:35 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/19 11:54:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/23 16:02:12 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ class	Span
 
 		Span();
 
+		unsigned int	_getN() const;
+		unsigned int	_size() const;
+
 	public:
 		Span( unsigned int N );
 		Span( const Span & src );
@@ -41,9 +44,6 @@ class	Span
 		void			addNumber( int n );
 		int				shortestSpan();
 		int				longestSpan();
-
-		unsigned int	getN() const;
-		unsigned int	size() const;
 
 		void			print() const;
 };

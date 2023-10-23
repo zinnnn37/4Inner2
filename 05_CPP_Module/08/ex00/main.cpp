@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:27:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/22 15:02:51 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/23 16:10:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
 #include <deque>
+#include <vector>
 
 int	main()
 {
@@ -41,28 +42,27 @@ int	main()
 
 	std::cout << "=========== char test ============\n" << std::endl;
 
-	std::deque<char>	deque2;
+	std::vector<char>	vec;
 
 	for (int i = 0; i < 5; i++)
-		deque2.push_back(i + 'a');
+		vec.push_back(i + 'a');
 
 	try
 	{
-		std::cout << "find e in deque" << std::endl;
-		int	idx = easyfind(deque2, 'e');
+		std::cout << "find e in vector" << std::endl;
+		int	idx = easyfind(vec, 'e');
 		std::cout << "idx: " << idx << std::endl;
-		std::cout << "deque[res]: " << deque2[idx] << std::endl;
+		std::cout << "vector[res]: " << vec[idx] << std::endl;
 
-		std::cout << "\nfind v in deque" << std::endl;
-		idx = easyfind(deque2, 'v');
+		std::cout << "\nfind v in vector" << std::endl;
+		idx = easyfind(vec, 'v');
 		std::cout << "idx: " << idx << std::endl;
-		std::cout << "deque[res]: " << deque2[idx] << std::endl;
+		std::cout << "vector[res]: " << vec[idx] << std::endl;
 	}
 	catch(const char *e)
 	{
 		std::cerr << e << '\n' << std::endl;
 	}
-	
 
 	return 0;
 }
