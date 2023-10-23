@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 18:17:00 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/22 18:22:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:45:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	main(int ac, char **av)
 
 	try
 	{
-		//std::string	input(av[1]);
-
 		BitcoinExchange	be(av[1]);
 	}
 	catch (const char *e)

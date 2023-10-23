@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+         #
+#    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 15:38:47 by minjinki          #+#    #+#              #
-#    Updated: 2023/10/22 15:39:08 by minjinki         ###   ########.fr        #
+#    Updated: 2023/10/23 18:48:28 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	btc
 
-SRC_FILES	=	main
+SRC_FILES	=	main\
+				BitcoinExchange
 
 SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 
