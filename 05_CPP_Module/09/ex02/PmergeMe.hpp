@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 19:11:50 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 18:48:14 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:03:56 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ class	PmergeMe
 		bool	_checkValid( std::string buf );
 
 		void	_printBefore();
+		void	_printAfter();
+		void	_printDeque();
+		void	_printVector();
 
 	public:
 		PmergeMe( int ac, char **av );

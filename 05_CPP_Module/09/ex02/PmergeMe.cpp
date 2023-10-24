@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 19:55:44 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 18:48:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:06:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ PmergeMe	&PmergeMe::operator=( const PmergeMe &pm )
 {
 	if (this != &pm)
 	{
-		_av = pm._av;
-		_dq = pm._dq;
-		_vec = pm._vec;
+		this->_ac = pm._ac;
+		this->_av = pm._av;
+		this->_dq = pm._dq;
+		this->_vec = pm._vec;
 	}
 	return (*this);
 }
@@ -47,6 +48,33 @@ void	PmergeMe::_printBefore()
 		std::cout << _av[i] << " ";
 
 	std::cout << std::endl;
+}
+
+void	PmergeMe::_printDeque()
+{
+	std::cout << "Deque: ";
+
+	for (std::deque<int>::iterator it = _dq.begin(); it != _dq.end(); it++)
+		std::cout << *it << " ";
+	
+	std::cout << std::endl;
+}
+
+void	PmergeMe::_printVector()
+{
+	std::cout << "Vector: ";
+
+	for (std::vector<int>::iterator it = _vec.begin(); it != _vec.end(); it++)
+		std::cout << *it << " ";
+
+	std::cout << std::endl;
+}
+
+void	PmergeMe::_printAfter()
+{
+	std::cout << "After: " << std::endl;
+	_printDeque();
+	_printVector();
 }
 
 bool	PmergeMe::_checkValid( std::string buf )
@@ -78,12 +106,11 @@ void	PmergeMe::_parse()
 			_dq.push_back(atoi(buf.c_str()));
 			_vec.push_back(atoi(buf.c_str()));
 		}
-		i++;
 	}
 	_printBefore();
 }
 
 void	PmergeMe::_sort()
 {
-	
+	_printAfter();
 }
