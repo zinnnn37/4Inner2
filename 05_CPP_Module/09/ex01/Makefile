@@ -6,14 +6,14 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 16:01:00 by minjinki          #+#    #+#              #
-#    Updated: 2023/10/24 16:35:15 by minjinki         ###   ########.fr        #
+#    Updated: 2023/10/24 18:29:42 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	RPN
 
 SRC_FILES	=	main\
-				BitcoinExchange
+				RPN
 
 SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 

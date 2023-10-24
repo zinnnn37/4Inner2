@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:35:37 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 17:38:09 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:29:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,15 @@
 #include <algorithm>
 #include <exception>
 
-class	RPN:
+class	RPN
 {
 	private:
-		int					_len;
-		std::string			_input;
-		stack<int>			_rpn;
-		stack<std::string>	_tmp;
+		int						_len;
+		std::string				_input;
+		std::stack<int>			_rpn;
+		std::stack<std::string>	_tmp;
+
+		RPN();
 
 		bool	_isOp( char c );
 		void	_split();
@@ -35,8 +37,7 @@ class	RPN:
 		void	_calc();
 		int		_doOp( int x, int y, char op );
 
-	pubilc:
-		RPN();
+	public:
 		RPN( std::string input );
 		RPN( const RPN &r );
 		~RPN();
@@ -44,6 +45,6 @@ class	RPN:
 		RPN	&operator=( const RPN &rpn );
 
 		void	exec();
-}
+};
 
 #endif

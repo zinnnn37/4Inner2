@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:35:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 17:49:56 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:36:45 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ RPN::RPN()	{}
 RPN::RPN( std::string input )
 	: _len(0), _input(input)
 {
-	
+	this->exec();
 }
 
 RPN::RPN( const RPN &rpn )
@@ -31,7 +31,7 @@ RPN	&RPN::operator=( const RPN &rpn )
 {
 	if (this != &rpn)
 	{
-		this->_input = rpn->_input;
+		*this = rpn;
 	}
 	return (*this);
 }
@@ -57,11 +57,11 @@ void	RPN::_checkValid( std::string s )
 
 void	RPN::_split()
 {
-	std::string			buf;
-	std::stringstream	ss(this->_input);
-	stack<std::string>	tmp;
+	std::string				buf;
+	std::stringstream		ss(this->_input);
+	std::stack<std::string>	tmp;
 
-	while (getline(iss, buf, ' '))
+	while (getline(ss, buf, ' '))
 	{
 		if (buf.length() == 0)
 			continue ;
@@ -73,18 +73,45 @@ void	RPN::_split()
 		this->_checkValid(tmp.top());
 		this->_tmp.push(tmp.top());
 		this->_len++;
-		tmp.pop()	// pop 반환 값 없음
+		tmp.pop();	// pop 반환 값 없음
 	}
 }
 
 void	RPN::_calc()
 {
+	this->_split();
+
+	int			x, y;
 	std::string	buf;
 
 	while (!this->_tmp.empty())
 	{
-		buf = this->_tmp.top()
+		buf = this->_tmp.top();
+
+		if (isdigit(buf[0]))
+		{
+			x = atoi(buf.c_str());
+			this->_rpn.push(x);
+			this->_tmp.pop();
+		}
+		if (this->_isOp(buf[0]))
+		{
+			if (this->_rpn.size() < 2)
+				throw "The number of nums and ops doesn't match";
+
+			this->_tmp.pop();
+			y = this->_rpn.top();
+			this->_rpn.pop();
+			x = this->_rpn.top();
+			this->_rpn.pop();
+
+			this->_rpn.push(this->_doOp(x, y, buf[0]));
+		}
 	}
+
+	if (this->_rpn.size() > 1)
+		throw "The number of nums and ops doesn't match";
+	std::cout << this->_rpn.top() << std::endl;
 }
 
 int	RPN::_doOp( int x, int y, char op )
@@ -103,5 +130,13 @@ int	RPN::_doOp( int x, int y, char op )
 
 void	RPN::exec()
 {
+	try
+	{
+		this->_calc();
+	}
+	catch(const char *e)
+	{
+		std::cerr << e << std::endl;
+	}
 	
 }
