@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 16:26:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:32:56 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,6 +209,9 @@ void	BitcoinExchange::_readInputFile()
 		getline(ss, date, ' ');
 		getline(ss, del, ' ');
 		getline(ss, val);
+
+		if (del.length() > 0 && del.compare("|") != 0)
+			throw "input file has invalid format";
 
 		_compareCSVInput(date, val);
 	}
