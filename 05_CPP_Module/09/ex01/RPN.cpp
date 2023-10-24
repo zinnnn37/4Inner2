@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:35:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 19:08:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:53:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	RPN::_checkValid( std::string s )
 	if (*end)
 		throw "Invalid value";
 	if (l < 0 || l >= 10)
-		throw "Input numbers between 0 ~ 9";
+		throw "Numbers should be between 0 ~ 9";
 }
 
 void	RPN::_split()
