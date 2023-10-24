@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 16:24:18 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:26:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,6 @@ bool	BitcoinExchange::_checkRate( std::string rate )
 
 	if (*endptr && str.compare("f") != 0)	// endptr에 든 값이 f가 아니면
 		return (false);
-	//else if (r < 0)
-	//	return (false);
 	
 	return (true);
 }
@@ -123,7 +121,6 @@ void	BitcoinExchange::_readCSVFile()
 			throw "data.csv has invalid value";
 
 		this->_data[date] = atof(rate.c_str());
-		// std::cout << this->_data[date] + 1 << std::endl;
 	}
 
 	ifs.close();
