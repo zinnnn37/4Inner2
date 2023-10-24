@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:18 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 10:15:30 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 11:02:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include <algorithm>
 #include <map>
 #include <sstream>
+#include <iomanip>
+#include <climits>
 
 class	BitcoinExchange
 {
@@ -34,6 +36,9 @@ class	BitcoinExchange
 		bool	_checkDate( std::string date );
 		bool	_isLeap( int year );
 		bool	_checkRate( std::string rate );
+		bool	_checkVal( std::string val );
+		void	_compareCSVInput( std::string date, std::string val );
+		void	_findDate( std::string date, std::string rate );
 
 	public:
 		BitcoinExchange( std::string input );

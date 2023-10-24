@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 10:27:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 11:04:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ bool	BitcoinExchange::_checkDate( std::string date )
 {
 	std::stringstream	ss(date);
 	std::string			year, month, day;
-
 
 	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
 		return (false);
@@ -99,14 +98,11 @@ bool	BitcoinExchange::_checkRate( std::string rate )
 
 void	BitcoinExchange::_readCSVFile()
 {
-	std::ifstream	ifs("data1.csv");
+	std::ifstream	ifs("data.csv");
 	std::string		line;
 
 	if (ifs.fail())
 		throw "Fail to open data.csv";
-
-	if (std::getline(ifs, line).eof())
-		throw "data.csv is empty";
 
 	getline(ifs, line);
 
@@ -127,6 +123,98 @@ void	BitcoinExchange::_readCSVFile()
 			throw "data.csv has invalid value";
 
 		this->_data[date] = atof(rate.c_str());
+	}
+
+	ifs.close();
+}
+
+void	BitcoinExchange::_findDate( std::string date, std::string val )
+{
+	if (this->_data.find(date) != this->_data.end())
+	{
+		float	res = atof(val.c_str()) * this->_data[date];
+		std::cout << date << " => " << std::fixed
+			<< std::setprecision(2) << this->_data[date]
+			<< " = " << res << std::endl;
+	}
+	//else
+	//{
+	//	std::map<std::string, float>::iterator	it;
+
+	//	it = lower_bound(this->_data.begin(), this->_data.end(), date);
+	//	if (it == this->_data.end())
+	//		throw "No such data";
+	//	else
+	//	{
+	//		float	res = atof(rate.c_str()) * it->second;
+	//		std::cout << date << " => " << std::fixed
+	//			<< std::setprecision(2) << it->second
+	//			<< " = " << res << std::endl;
+	//	}
+	//}
+}
+
+bool	BitcoinExchange::_checkVal( std::string val )
+{
+	float	v = atof(val.c_str());
+	long	l = atol(val.c_str());
+
+	if (v < 0)
+	{
+		std::cout << "Error: not a positive number." << std::endl;
+		return (false);
+	}
+	if (l > INT_MAX)
+	{
+		std::cout << "Error: too large a number." << std::endl;
+		return (false);
+	}
+
+	return (true);
+}
+
+void	BitcoinExchange::_compareCSVInput( std::string date, std::string val )
+{
+	if (!this->_checkDate(date))
+	{
+		std::cout << "Error: bad input => " << date << std::endl;
+		return ;
+	}
+	if (!this->_checkVal(val))
+	{
+		return ;
+	}
+
+	_findDate(date, val);
+}
+
+void	BitcoinExchange::_readInputFile()
+{
+	std::ifstream	ifs(this->_input.c_str());
+	std::string		line;
+
+	if (ifs.fail())
+		throw "Fail to open input file";
+
+	getline(ifs, line);
+	if (line.compare("date | value") != 0)
+		throw "input file has invalid format";
+
+	while (!ifs.eof())
+	{
+		getline(ifs, line);
+
+		if (line.size() == 0)
+			continue;
+
+		std::stringstream	ss(line);
+		std::string			date, val, del;
+
+		getline(ss, date, ' ');
+		getline(ss, del, ' ');
+		getline(ss, val);
+
+		_compareCSVInput(date, val);
 	}
 
 	ifs.close();
