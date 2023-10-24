@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 19:55:44 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 20:40:32 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/25 07:13:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	PmergeMe::_parse()
 		while (getline(ss, buf, ' '))
 		{
 			if (buf.empty())
-				continue ;
+				break ;
 			else if (!buf.empty() && !_checkValid(buf))
 				throw "Invalid input";
 			
