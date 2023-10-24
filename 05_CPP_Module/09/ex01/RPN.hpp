@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:35:37 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 17:32:36 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:38:09 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define RPN_HPP
 
 #include <iostream>
+#include <cstdlib>
 #include <string>
 #include <sstream>
 #include <stack>
@@ -30,7 +31,7 @@ class	RPN:
 
 		bool	_isOp( char c );
 		void	_split();
-		void	_checkValid();
+		void	_checkValid( std::string s );
 		void	_calc();
 		int		_doOp( int x, int y, char op );
 

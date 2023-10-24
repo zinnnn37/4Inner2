@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:35:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 17:33:07 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:43:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,24 @@ bool	RPN::_isOp( char c )
 	return (c == '+' || c == '-' || c == '*' || c == '/');
 }
 
+void	RPN::_checkValid( std::string s )
+{
+	if (s.length() == 1 && this->_isOp(s[0]))
+		return ;
+	
+	char	*end;
+	long	l = strtol(s.c_str(), &end, 10);
+
+	if (*end)
+		throw "Invalid value";
+	if (l < 0 || l >= 10)
+		throw "Input numbers between 0 ~ 9";
+}
+
 void	RPN::_split()
 {
 	std::string			buf;
-	std::istringstream	iss(this->_input);
+	std::stringstream	ss(this->_input);
 	stack<std::string>	tmp;
 
 	while (std::getline(iss, buf, ' '))
@@ -61,11 +75,6 @@ void	RPN::_split()
 		this->_len++;
 		tmp.pop()	// pop 반환 값 없음
 	}
-}
-
-void	RPN::_checkValid()
-{
-
 }
 
 void	RPN::_calc()
