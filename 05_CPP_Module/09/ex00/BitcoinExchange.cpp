@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 10:07:57 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:26:21 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ BitcoinExchange::BitcoinExchange() {}
 BitcoinExchange::BitcoinExchange( std::string input )
 	: _input(input)
 {
-	this->readCSVFile();
-	this->readInputFile();
+	this->_readCSVFile();
+	this->_readInputFile();
 }
 
 BitcoinExchange::BitcoinExchange( const BitcoinExchange &be )
@@ -46,6 +46,7 @@ bool	BitcoinExchange::_checkDate( std::string date )
 	std::stringstream	ss(date);
 	std::string			year, month, day;
 
+
 	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
 		return (false);
 
@@ -64,7 +65,7 @@ bool	BitcoinExchange::_checkDate( std::string date )
 		return (false);
 	else if ((m == 4 || m == 6 || m == 9 || m == 11) && d > 30)
 		return (false);
-	else if (m == 2 && (d > 28 || this->_isLeap(y) && d > 29))
+	else if (m == 2 && (d > 28 || (this->_isLeap(y) && d > 29)))
 		return (false);
 
 	return (true);
@@ -72,7 +73,7 @@ bool	BitcoinExchange::_checkDate( std::string date )
 
 bool	BitcoinExchange::_isLeap( int year )
 {
-	if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+	if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
 		return (true);
 	return (false);
 }
@@ -82,6 +83,7 @@ bool	BitcoinExchange::_checkRate( std::string rate )
 	char	*endptr;
 	double	r = strtod(rate.c_str(), &endptr);
 
+	(void)r;
 	if (!isdigit(rate[0]) && rate[0] != '+')	// 맨 앞이 숫자나 +가 아니면
 		return (false);
 	
@@ -89,13 +91,15 @@ bool	BitcoinExchange::_checkRate( std::string rate )
 
 	if (*endptr && str.compare("f") != 0)	// endptr에 든 값이 f가 아니면
 		return (false);
+	//else if (r < 0)
+	//	return (false);
 	
 	return (true);
 }
 
 void	BitcoinExchange::_readCSVFile()
 {
-	std::ifstream	ifs("data.csv");
+	std::ifstream	ifs("data1.csv");
 	std::string		line;
 
 	if (ifs.fail())
