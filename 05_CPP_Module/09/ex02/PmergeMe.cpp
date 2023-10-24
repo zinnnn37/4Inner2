@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 08:20:10 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/25 08:41:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/25 08:50:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,45 @@ void	PmergeMe::_parse()
 
 /////////////////////////////////////////////////////////////////
 
+void	PmergeMe::_mergeDeque( int start, int mid, int end )
+{
+	unsigned long	left, right, merged;
+
+	std::deque< std::pair<int, int> >	leftarr(_dqPair.begin() + start, _dqPair.begin() + mid + 1);
+	std::deque< std::pair<int, int> >	rightarr(_dqPair.begin() + mid + 1, _dqPair.begin() + end + 1);
+
+	left = 0;
+	right = 0;
+	merged = start;
+
+	while (left < leftarr.size() && right < rightarr.size())
+	{
+		if (leftarr[left].first <= rightarr[right].first)
+			_dqPair[merged++] = leftarr[left++];
+		else
+			_dqPair[merged++] = rightarr[right++];
+	}
+
+	while (left < leftarr.size())
+		_dqPair[merged++] = leftarr[left++];
+	while (right < rightarr.size())
+		_dqPair[merged++] = rightarr[right++];
+}
+
+void	PmergeMe::_mergeSortDeque( int start, int end )
+{
+	int	mid;
+
+	if (start >= end)
+		return ;
+	
+	mid = (start + end) / 2;
+
+	_mergeSortDeque(start, mid);
+	_mergeSortDeque(mid + 1, end);
+	_mergeDeque(start, mid, end);
+}
+
 void	PmergeMe::_sortDequePairs()
 {
 	int	tmp;
@@ -152,7 +191,7 @@ void	PmergeMe::_doSortDeque( int start, int end )
 	{
 		_createDequePairs();
 		_sortDequePairs();
-		// _mergeSortDeque( 0, _dqPair.size() - 1);
+		_mergeSortDeque( 0, _dqPair.size() - 1);
 		// _chainDeque();
 		// _insertDeque();
 	}
@@ -170,6 +209,10 @@ void	PmergeMe::_sort()
 	end = clock();
 
 	timeDeque = static_cast<double>(end - start);
+
+	std::cout << _dqPair.size() << std::endl;
+	std::cout << _dqPair[0].first << " " << _dqPair[0].second << std::endl;
+	std::cout << _dqPair[1].first << " " << _dqPair[1].second << std::endl;
 
 	(void)timeDeque;
 	(void)timeVector;
