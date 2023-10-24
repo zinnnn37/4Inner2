@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 19:55:44 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 19:14:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:25:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,14 +115,32 @@ void	PmergeMe::_parse()
 	_printBefore();
 }
 
-void	PmergeMe::_sortDeque()
+void	PmergeMe::_sortDeque( int start, int end )
 {
+	if (end - start > K)
+	{
+		int	mid = (start + end) / 2;
 
+		_sortDeque(start, mid);
+		_sortDeque(mid + 1, end);
+		_mergeDeque(start, mid, end);
+	}
+	else
+		_insertDeque(start, end);
 }
 
-void	PmergeMe::_sortVector()
+void	PmergeMe::_sortVector( int start, int end )
 {
+	if (end - start > K)
+	{
+		int	mid = (start + end) / 2;
 
+		_sortVector(start, mid);
+		_sortVector(mid + 1, end);
+		_mergeVector(s, mid, end);
+	}
+	else
+		_insertVector(start, end);
 }
 
 void	PmergeMe::_sort()
@@ -131,13 +149,13 @@ void	PmergeMe::_sort()
 	double	timeDeque, timeVector;
 
 	start = clock();
-	_sortDeque();
+	_sortDeque(0, _dq.size() - 1);
 	end = clock();
 
 	timeDeque = static_cast<double>(end - start) / CLOCKS_PER_SEC;
 
 	start = clock();
-	_sortVector();
+	_sortVector(0, _vec.size() - 1);
 	end = clock();
 
 	timeVector = static_cast<double>(end - start) / CLOCKS_PER_SEC;
