@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 08:05:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/25 08:36:09 by minjinki         ###   ########.fr       */
+/*   Created: 2023/10/24 19:11:50 by minjinki          #+#    #+#             */
+/*   Updated: 2023/10/24 19:25:19 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,15 @@
 #include <sstream>
 #include <climits>
 
+#define K 5
+
 class	PmergeMe
 {
 	private:
 		int					_ac;
 		char				**_av;
-
-		std::deque<int>					_dq;
-		std::deque< std::pair<int, int> > _dqPair;
-		std::deque<int>					_dqChain;
-
-		std::vector<int>					_vec;
-		std::vector< std::pair<int, int> >	_vecPair;
-		std::vector<int>					_vecChain;
+		std::deque<int>		_dq;
+		std::vector<int>	_vec;
 
 		PmergeMe();
 
@@ -43,40 +39,14 @@ class	PmergeMe
 
 		bool	_checkValid( std::string buf );
 
-		// use pair
-		void	_doSortDeque( int start, int end );
-		void	_doSortVector( int start, int end );
+		void	_sortDeque( int start, int end );
+		void	_sortVector( int start, int end );
 
-		void	_createDequePairs();
-		void	_createVectorPairs();
-
-		void	_sortDequePairs();
-		void	_sortVectorPairs();
-
-		// use pair
-		void	_mergeSortDeque( int start, int end );
-		void	_mergeSortVector( int start, int end );
 		void	_mergeDeque( int start, int mid, int end );
 		void	_mergeVector( int start, int mid, int end );
 
-		void	_chainDeque();
-		void	_chainVector();
-
-		// use chain
-		int		_binaryDeque( int target, int begin, int end );
-		int		_binaryVector( int target, int begin, int end );
-
 		void	_insertDeque( int start, int end );
 		void	_insertVector( int start, int end );
-
-		void	_jacobSeqDeque();
-		void	_jacobSeqVector();
-
-		int		_jacobsthalDeque();
-		int		_jacobsthalVector();
-
-		void	_generatePosDeque();
-		void	_generatePosVector();
 
 		void	_printBefore();
 		void	_printAfter( double timeDeque, double timeVector );

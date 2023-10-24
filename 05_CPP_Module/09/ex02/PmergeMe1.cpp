@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
+/*   PmergeMe1.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 08:20:10 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/25 08:41:29 by minjinki         ###   ########.fr       */
+/*   Created: 2023/10/24 19:55:44 by minjinki          #+#    #+#             */
+/*   Updated: 2023/10/25 08:25:38 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+PmergeMe::PmergeMe() {}
 
 PmergeMe::PmergeMe( int ac, char **av )
 	: _ac(ac), _av(av)
@@ -29,12 +31,14 @@ PmergeMe::~PmergeMe() {}
 PmergeMe	&PmergeMe::operator=( const PmergeMe &pm )
 {
 	if (this != &pm)
-		*this = pm;
-
+	{
+		this->_ac = pm._ac;
+		this->_av = pm._av;
+		this->_dq = pm._dq;
+		this->_vec = pm._vec;
+	}
 	return (*this);
 }
-
-/////////////////////////////////////////////////////////////////
 
 void	PmergeMe::_printBefore()
 {
@@ -78,8 +82,6 @@ void	PmergeMe::_printAfter( double timeDeque, double timeVector )
 		<< timeVector << "ms" << std::endl;
 }
 
-/////////////////////////////////////////////////////////////////
-
 bool	PmergeMe::_checkValid( std::string buf )
 {
 	char	*end;
@@ -113,51 +115,140 @@ void	PmergeMe::_parse()
 	_printBefore();
 }
 
-/////////////////////////////////////////////////////////////////
-
-void	PmergeMe::_sortDequePairs()
+void	PmergeMe::_insertDeque( int start, int end )
 {
 	int	tmp;
+	int	j;
 
-	for (unsigned long i = 0; i < _dqPair.size(); i++)
+	for (int i = start; i < end; i++)
 	{
-		if (_dqPair[i].first > _dqPair[i].second)
+		tmp = _dq[i + 1];
+		j = i + 1;
+
+		while (j > start && _dq[j - 1] > tmp)
 		{
-			tmp = _dqPair[i].first;
-			_dqPair[i].first = _dqPair[i].second;
-			_dqPair[i].second = tmp;
+			_dq[j] = _dq[j - 1];
+			j--;
+		}
+		_dq[j] = tmp;
+	}
+}
+
+void	PmergeMe::_insertVector( int start, int end )
+{
+	int	tmp;
+	int	j;
+
+	for (int i = start; i < end; i++)
+	{
+		tmp = _vec[i + 1];
+		j = i + 1;
+
+		while (j > start && _vec[j - 1] > tmp)
+		{
+			_vec[j] = _vec[j - 1];
+			j--;
+		}
+		_vec[j] = tmp;
+	}
+}
+
+void	PmergeMe::_mergeDeque( int start, int mid, int end )
+{
+	int	n1 = mid - start + 1;
+	int	n2 = end - mid;
+	int	l, r;
+
+	std::deque<int>	left(_dq.begin() + start, _dq.begin() + mid + 1);
+	std::deque<int>	right(_dq.begin() + mid + 1, _dq.begin() + end + 1);
+
+	l = 0;
+	r = 0;
+	for (int i = start; i <= end; i++)
+	{
+		if (l == n1)
+		{
+			_dq[i] = right[r];
+			r++;
+		}
+		else if (r == n2)
+		{
+			_dq[i] = left[l];
+			l++;
+		}
+		else if (left[l] < right[r])
+		{
+			_dq[i] = left[l];
+			l++;
+		}
+		else
+		{
+			_dq[i] = right[r];
+			r++;
 		}
 	}
 }
 
-void	PmergeMe::_createDequePairs()
+void	PmergeMe::_mergeVector( int start, int mid, int end )
 {
-	int	i, size;
+	int	n1 = mid - start + 1;
+	int	n2 = end - mid;
+	int	l, r;
 
-	i = 0;
-	size = _dq.size() / 2;
-	while (size > 0)
+	std::vector<int>	left(_vec.begin() + start, _vec.begin() + mid + 1);
+	std::vector<int>	right(_vec.begin() + mid + 1, _vec.begin() + end + 1);
+
+	l = 0;
+	r = 0;
+	for (int i = start; i <= end; i++)
 	{
-		_dqPair.push_back(std::make_pair(_dq[i], _dq[i + 1]));
-		i += 2;
-		size--;
+		if (l == n1)
+		{
+			_vec[i] = right[r];
+			r++;
+		}
+		else if (r == n2)
+		{
+			_vec[i] = left[l];
+			l++;
+		}
+		else if (left[l] < right[r])
+		{
+			_vec[i] = left[l];
+			l++;
+		}
+		else
+		{
+			_vec[i] = right[r];
+			r++;
+		}
 	}
 }
 
-void	PmergeMe::_doSortDeque( int start, int end )
+void	PmergeMe::_sortDeque( int start, int end )
 {
-	(void)start;
-	(void)end;
-	if (_dq.size() > 1)
+	if (_dq.size() != 1)
 	{
 		_createDequePairs();
 		_sortDequePairs();
-		// _mergeSortDeque( 0, _dqPair.size() - 1);
-		// _chainDeque();
-		// _insertDeque();
+		_
 	}
 	else
-		_dqChain.push_back(_dq.front());
+		_insertDeque(start, end);
+}
+
+void	PmergeMe::_sortVector( int start, int end )
+{
+	if (end - start > K)
+	{
+		int	mid = (start + end) / 2;
+
+		_sortVector(start, mid);
+		_sortVector(mid + 1, end);
+		_mergeVector(start, mid, end);
+	}
+	else
+		_insertVector(start, end);
 }
 
 void	PmergeMe::_sort()
@@ -166,19 +257,16 @@ void	PmergeMe::_sort()
 	double	timeDeque, timeVector;
 
 	start = clock();
-	_doSortDeque(0, _dq.size() - 1);
+	_sortDeque(0, _dq.size() - 1);
 	end = clock();
 
 	timeDeque = static_cast<double>(end - start);
 
-	(void)timeDeque;
-	(void)timeVector;
+	start = clock();
+	_sortVector(0, _vec.size() - 1);
+	end = clock();
 
-	// start = clock();
-	// _doSortVector(0, _vec.size() - 1);
-	// end = clock();
+	timeVector = static_cast<double>(end - start);
 
-	// timeVector = static_cast<double>(end - start);
-
-	// _printAfter(timeDeque, timeVector);
+	_printAfter(timeDeque, timeVector);
 }
