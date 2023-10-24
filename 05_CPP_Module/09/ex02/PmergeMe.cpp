@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 19:55:44 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 20:25:48 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 20:28:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ void	PmergeMe::_printAfter( double timeDeque, double timeVector )
 	_printVector();
 
 	std::cout << "Time to process a range of " << _ac - 1 << " elements with std::deque  : "
-		<< timeDeque << "us" << std::endl;
+		<< timeDeque << "ms" << std::endl;
 	std::cout << "Time to process a range of " << _ac - 1 << " elements with std::vector : "
-		<< timeVector << "us" << std::endl;
+		<< timeVector << "ms" << std::endl;
 }
 
 bool	PmergeMe::_checkValid( std::string buf )
@@ -262,13 +262,13 @@ void	PmergeMe::_sort()
 	_sortDeque(0, _dq.size() - 1);
 	end = clock();
 
-	timeDeque = 1000.0 * (end - start);
+	timeDeque = 1000.0 * (end - start) / CLOCKS_PER_SEC;
 
 	start = clock();
 	_sortVector(0, _vec.size() - 1);
 	end = clock();
 
-	timeVector = 1000.0 * (end - start);
+	timeVector = 1000.0 * (end - start) / CLOCKS_PER_SEC;
 
 	_printAfter(timeDeque, timeVector);
 }
