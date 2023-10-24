@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:35:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 17:43:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:49:56 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,14 @@ void	RPN::_split()
 	std::stringstream	ss(this->_input);
 	stack<std::string>	tmp;
 
-	while (std::getline(iss, buf, ' '))
+	while (getline(iss, buf, ' '))
 	{
 		if (buf.length() == 0)
 			continue ;
 		tmp.push(buf);
 	}
 
-	while (tmp.size() != 0)
+	while (!tmp.empty())
 	{
 		this->_checkValid(tmp.top());
 		this->_tmp.push(tmp.top());
@@ -79,7 +79,12 @@ void	RPN::_split()
 
 void	RPN::_calc()
 {
+	std::string	buf;
 
+	while (!this->_tmp.empty())
+	{
+		buf = this->_tmp.top()
+	}
 }
 
 int	RPN::_doOp( int x, int y, char op )
