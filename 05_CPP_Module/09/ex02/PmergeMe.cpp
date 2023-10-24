@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 19:55:44 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/25 07:13:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/25 07:34:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	PmergeMe::_printDeque()
 
 void	PmergeMe::_printVector()
 {
-	std::cout << "Vector: ";
+	std::cout << "\nVector: ";
 
 	for (std::vector<int>::iterator it = _vec.begin(); it != _vec.end(); it++)
 		std::cout << *it << " ";
@@ -72,13 +72,13 @@ void	PmergeMe::_printVector()
 
 void	PmergeMe::_printAfter( double timeDeque, double timeVector )
 {
-	std::cout << "After: " << std::endl;
+	std::cout << "\nAfter: " << std::endl;
 	_printDeque();
 	_printVector();
 
-	std::cout << "Time to process a range of " << _ac - 1 << " elements with std::deque  : "
+	std::cout << "\nTime to process a range of " << _dq.size() << " elements with std::deque  : "
 		<< timeDeque << "ms" << std::endl;
-	std::cout << "Time to process a range of " << _ac - 1 << " elements with std::vector : "
+	std::cout << "Time to process a range of " << _vec.size() << " elements with std::vector : "
 		<< timeVector << "ms" << std::endl;
 }
 
@@ -166,15 +166,15 @@ void	PmergeMe::_mergeDeque( int start, int mid, int end )
 	r = 0;
 	for (int i = start; i <= end; i++)
 	{
-		if (r == n2)
-		{
-			_dq[i] = left[l];
-			l++;
-		}
-		else if (l == n1)
+		if (l == n1)
 		{
 			_dq[i] = right[r];
 			r++;
+		}
+		else if (r == n2)
+		{
+			_dq[i] = left[l];
+			l++;
 		}
 		else if (left[l] < right[r])
 		{
@@ -202,15 +202,15 @@ void	PmergeMe::_mergeVector( int start, int mid, int end )
 	r = 0;
 	for (int i = start; i <= end; i++)
 	{
-		if (r == n2)
-		{
-			_vec[i] = left[l];
-			l++;
-		}
-		else if (l == n1)
+		if (l == n1)
 		{
 			_vec[i] = right[r];
 			r++;
+		}
+		else if (r == n2)
+		{
+			_vec[i] = left[l];
+			l++;
 		}
 		else if (left[l] < right[r])
 		{
