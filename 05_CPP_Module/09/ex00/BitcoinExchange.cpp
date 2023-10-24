@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 11:04:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:16:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void	BitcoinExchange::_readCSVFile()
 			throw "data.csv has invalid value";
 
 		this->_data[date] = atof(rate.c_str());
+		// std::cout << this->_data[date] + 1 << std::endl;
 	}
 
 	ifs.close();
@@ -133,25 +134,23 @@ void	BitcoinExchange::_findDate( std::string date, std::string val )
 	if (this->_data.find(date) != this->_data.end())
 	{
 		float	res = atof(val.c_str()) * this->_data[date];
-		std::cout << date << " => " << std::fixed
-			<< std::setprecision(2) << this->_data[date]
+		std::cout << date << " => " << val
 			<< " = " << res << std::endl;
 	}
-	//else
-	//{
-	//	std::map<std::string, float>::iterator	it;
+	else
+	{
+		std::map<std::string, float>::iterator	it;
 
-	//	it = lower_bound(this->_data.begin(), this->_data.end(), date);
-	//	if (it == this->_data.end())
-	//		throw "No such data";
-	//	else
-	//	{
-	//		float	res = atof(rate.c_str()) * it->second;
-	//		std::cout << date << " => " << std::fixed
-	//			<< std::setprecision(2) << it->second
-	//			<< " = " << res << std::endl;
-	//	}
-	//}
+		it = this->_data.lower_bound(date);
+		if (it == this->_data.end())
+			std::cout << "Error: Cannot find the date close to " << date << std::endl;
+		else
+		{
+			float	res = atof(val.c_str()) * it->second;
+			std::cout << date << " => " << val
+				<< " = " << res << std::endl;
+		}
+	}
 }
 
 bool	BitcoinExchange::_checkVal( std::string val )
@@ -219,30 +218,3 @@ void	BitcoinExchange::_readInputFile()
 
 	ifs.close();
 }
-
-//BitcoinExchange::Error::Error() {}
-
-//BitcoinExchange::Error::Error( const char *msg ) : _msg(msg) {}
-
-//BitcoinExchange::Error::Error( const Error &e )
-//{
-//	*this = e;
-//}
-
-//BitcoinExchange::Error::~Error() throw() {}
-
-//BitcoinExchange::Error	&BitcoinExchange::Error::operator=( const Error &e )
-//{
-//	(void)e;
-//	return (*this);
-//}
-
-//const char	*BitcoinExchange::Error::what() const throw()
-//{
-//	return ("Error");
-//}
-
-//const char	*BitcoinExchange::Error::getMsg() const
-//{
-//	return (this->_msg);
-//}
