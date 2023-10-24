@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:35:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 18:40:45 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:08:44 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ RPN	&RPN::operator=( const RPN &rpn )
 {
 	if (this != &rpn)
 	{
-		*this = rpn;
+		this->_len = rpn._len;
+		this->_input = rpn._input;
+		this->_rpn = rpn._rpn;
+		this->_tmp = rpn._tmp;
 	}
 	return (*this);
 }
