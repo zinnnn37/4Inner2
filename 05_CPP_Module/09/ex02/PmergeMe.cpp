@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 19:55:44 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 19:27:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:28:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,22 +117,28 @@ void	PmergeMe::_parse()
 
 void	PmergeMe::_insertDeque( int start, int end )
 {
-
+	(void)start;
+	(void)end;
 }
 
 void	PmergeMe::_insertVector( int start, int end )
 {
-
+	(void)start;
+	(void)end;
 }
 
 void	PmergeMe::_mergeDeque( int start, int mid, int end )
 {
-
+	(void)start;
+	(void)mid;
+	(void)end;
 }
 
 void	PmergeMe::_mergeVector( int start, int mid, int end )
 {
-
+	(void)start;
+	(void)mid;
+	(void)end;
 }
 
 void	PmergeMe::_sortDeque( int start, int end )
@@ -157,7 +163,7 @@ void	PmergeMe::_sortVector( int start, int end )
 
 		_sortVector(start, mid);
 		_sortVector(mid + 1, end);
-		_mergeVector(s, mid, end);
+		_mergeVector(start, mid, end);
 	}
 	else
 		_insertVector(start, end);
