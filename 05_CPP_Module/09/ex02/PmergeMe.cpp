@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 19:55:44 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 19:25:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:27:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,26 @@ void	PmergeMe::_parse()
 		}
 	}
 	_printBefore();
+}
+
+void	PmergeMe::_insertDeque( int start, int end )
+{
+
+}
+
+void	PmergeMe::_insertVector( int start, int end )
+{
+
+}
+
+void	PmergeMe::_mergeDeque( int start, int mid, int end )
+{
+
+}
+
+void	PmergeMe::_mergeVector( int start, int mid, int end )
+{
+
 }
 
 void	PmergeMe::_sortDeque( int start, int end )
