@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 19:55:44 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 20:28:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 20:40:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -262,13 +262,13 @@ void	PmergeMe::_sort()
 	_sortDeque(0, _dq.size() - 1);
 	end = clock();
 
-	timeDeque = 1000.0 * (end - start) / CLOCKS_PER_SEC;
+	timeDeque = static_cast<double>(end - start);
 
 	start = clock();
 	_sortVector(0, _vec.size() - 1);
 	end = clock();
 
-	timeVector = 1000.0 * (end - start) / CLOCKS_PER_SEC;
+	timeVector = static_cast<double>(end - start);
 
 	_printAfter(timeDeque, timeVector);
 }
