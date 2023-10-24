@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 16:16:50 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:24:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ bool	BitcoinExchange::_checkDate( std::string date )
 	int	m = atoi(month.c_str());
 	int	d = atoi(day.c_str());
 
-	if (y > 2023 || y < 2009 || m > 12 || m < 1 || d < 1)
-	// 비트코인 거래 시작 연도 ~ 현재
+	if (y > 2022 || y < 2009 || m > 12 || m < 1 || d < 1
+		|| (y == 2009 && m == 1 && d < 2))
 		return (false);
 	else if (d > 31)
 		return (false);
