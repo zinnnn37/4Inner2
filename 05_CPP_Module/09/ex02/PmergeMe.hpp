@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 19:11:50 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 19:03:56 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:14:08 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,11 @@ class	PmergeMe
 
 		bool	_checkValid( std::string buf );
 
+		void	_sortDeque();
+		void	_sortVector();
+
 		void	_printBefore();
-		void	_printAfter();
+		void	_printAfter( double timeDeque, double timeVector );
 		void	_printDeque();
 		void	_printVector();
 

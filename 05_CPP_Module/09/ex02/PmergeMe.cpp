@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 19:55:44 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 19:06:34 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:14:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,16 @@ void	PmergeMe::_printVector()
 	std::cout << std::endl;
 }
 
-void	PmergeMe::_printAfter()
+void	PmergeMe::_printAfter( double timeDeque, double timeVector )
 {
 	std::cout << "After: " << std::endl;
 	_printDeque();
 	_printVector();
+
+	std::cout << "Time to process a range of " << _ac - 1 << " elements with std::deque  : "
+		<< timeDeque << "ms" << std::endl;
+	std::cout << "Time to process a range of " << _ac - 1 << " elements with std::vector : "
+		<< timeVector << "ms" << std::endl;
 }
 
 bool	PmergeMe::_checkValid( std::string buf )
@@ -110,7 +115,32 @@ void	PmergeMe::_parse()
 	_printBefore();
 }
 
+void	PmergeMe::_sortDeque()
+{
+
+}
+
+void	PmergeMe::_sortVector()
+{
+
+}
+
 void	PmergeMe::_sort()
 {
-	_printAfter();
+	clock_t	start, end;
+	double	timeDeque, timeVector;
+
+	start = clock();
+	_sortDeque();
+	end = clock();
+
+	timeDeque = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+
+	start = clock();
+	_sortVector();
+	end = clock();
+
+	timeVector = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+
+	_printAfter(timeDeque, timeVector);
 }
