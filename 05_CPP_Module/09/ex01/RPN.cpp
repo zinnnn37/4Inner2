@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:35:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 18:36:45 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:40:45 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,9 @@ void	RPN::_split()
 void	RPN::_calc()
 {
 	this->_split();
+
+	if (this->_tmp.empty())
+		return ;
 
 	int			x, y;
 	std::string	buf;
