@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/23 18:48:36 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:07:57 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ BitcoinExchange	&BitcoinExchange::operator=( const BitcoinExchange &be )
 	return (*this);
 }
 
-bool	BitcoinExchange::checkDate( std::string date )
+bool	BitcoinExchange::_checkDate( std::string date )
 {
 	std::stringstream	ss(date);
 	std::string			year, month, day;
@@ -64,13 +64,20 @@ bool	BitcoinExchange::checkDate( std::string date )
 		return (false);
 	else if ((m == 4 || m == 6 || m == 9 || m == 11) && d > 30)
 		return (false);
-	else if (m == 2 && d > 28)
+	else if (m == 2 && (d > 28 || this->_isLeap(y) && d > 29))
 		return (false);
 
 	return (true);
 }
 
-bool	BitcoinExchange::checkRate( std::string rate )
+bool	BitcoinExchange::_isLeap( int year )
+{
+	if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+		return (true);
+	return (false);
+}
+
+bool	BitcoinExchange::_checkRate( std::string rate )
 {
 	char	*endptr;
 	double	r = strtod(rate.c_str(), &endptr);
@@ -86,7 +93,7 @@ bool	BitcoinExchange::checkRate( std::string rate )
 	return (true);
 }
 
-void	BitcoinExchange::readCSVFile()
+void	BitcoinExchange::_readCSVFile()
 {
 	std::ifstream	ifs("data.csv");
 	std::string		line;
@@ -109,7 +116,7 @@ void	BitcoinExchange::readCSVFile()
 		getline(ss, date, ',');
 		getline(ss, rate);
 		
-		if (!checkDate(date) || !checkRate(rate))
+		if (!_checkDate(date) || !_checkRate(rate))
 			throw "data.csv has invalid value";
 
 		this->_data[date] = atof(rate.c_str());

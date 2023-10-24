@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:18 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/23 18:48:32 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:06:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ class	BitcoinExchange
 		char							*_test;
 		std::map<std::string, float>	_data;
 
-		void	readCSVFile();
-		void	readInputFile();
-		bool	checkDate( std::string date );
-		bool	checkRate( std::string rate );
+		void	_readCSVFile();
+		void	_readInputFile();
+		bool	_checkDate( std::string date );
+		bool	_isLeap( int year );
+		bool	_checkRate( std::string rate );
 
 	public:
 		BitcoinExchange();
