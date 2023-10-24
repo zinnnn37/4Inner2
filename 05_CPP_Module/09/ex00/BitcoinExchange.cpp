@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 10:26:21 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:27:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,9 @@ void	BitcoinExchange::_readCSVFile()
 	while (!ifs.eof())
 	{
 		getline(ifs, line);
+
+		if (line.size() == 0)
+			continue;
 
 		std::stringstream	ss(line);
 		std::string			date, rate;
