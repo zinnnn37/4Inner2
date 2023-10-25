@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 08:05:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/25 08:36:09 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/25 09:22:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,19 @@ class	PmergeMe
 		int					_ac;
 		char				**_av;
 
-		std::deque<int>					_dq;
-		std::deque< std::pair<int, int> > _dqPair;
-		std::deque<int>					_dqChain;
+		std::deque<int>						_dq;
+		std::deque< std::pair<int, int> >	_dqPair;
+		std::deque<int>						_dqChain;
+		std::deque<int>						_dqPend;
+		std::deque<int>						_dqJacob;
+		std::deque<int>						_dqPos;
 
 		std::vector<int>					_vec;
 		std::vector< std::pair<int, int> >	_vecPair;
 		std::vector<int>					_vecChain;
+		std::vector<int>					_vecPend;
+		std::vector<int>					_vecJacob;
+		std::vector<int>					_vecPos;
 
 		PmergeMe();
 
@@ -44,8 +50,8 @@ class	PmergeMe
 		bool	_checkValid( std::string buf );
 
 		// use pair
-		void	_doSortDeque( int start, int end );
-		void	_doSortVector( int start, int end );
+		void	_doSortDeque();
+		void	_doSortVector();
 
 		void	_createDequePairs();
 		void	_createVectorPairs();
@@ -66,17 +72,17 @@ class	PmergeMe
 		int		_binaryDeque( int target, int begin, int end );
 		int		_binaryVector( int target, int begin, int end );
 
-		void	_insertDeque( int start, int end );
-		void	_insertVector( int start, int end );
+		void	_insertDeque();
+		void	_insertVector();
 
 		void	_jacobSeqDeque();
 		void	_jacobSeqVector();
 
-		int		_jacobsthalDeque();
-		int		_jacobsthalVector();
 
 		void	_generatePosDeque();
 		void	_generatePosVector();
+
+		int		_jacobsthal( int n );
 
 		void	_printBefore();
 		void	_printAfter( double timeDeque, double timeVector );

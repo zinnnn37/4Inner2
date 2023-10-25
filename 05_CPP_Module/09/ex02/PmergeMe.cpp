@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 08:20:10 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/25 08:50:18 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:12:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,127 @@ void	PmergeMe::_parse()
 	_printBefore();
 }
 
+int	PmergeMe::_jacobsthal( int n )
+{
+	if (n == 0)
+		return (0);
+	else if (n == 1)
+		return (1);
+	else
+		return (_jacobsthal(n - 1) + 2 * _jacobsthal(n - 2));
+}
+
 /////////////////////////////////////////////////////////////////
+
+int	PmergeMe::_binaryDeque( int target, int start, int end )
+{
+	int mid;
+
+	while (start <= end)
+	{
+		mid = (start + end) / 2;
+
+		if (target == _dqChain[mid])
+			return (mid);
+		else if (target > _dqChain[mid])
+			start = mid + 1;
+		else
+			end = mid - 1;
+	}
+
+	if (target > _dqChain[mid])
+		return (mid + 1);
+	else
+		return (mid);
+}
+
+void	PmergeMe::_jacobSeqDeque()
+{
+	int	idx, size, jacobstal;
+
+	size = _dqPend.size();
+	idx = 3;
+
+	jacobstal = _jacobsthal(idx);
+
+	while (jacobstal < size - 1)
+	{
+		_dqJacob.push_back(jacobstal);
+		jacobstal = _jacobsthal(++idx);
+	}
+}
+
+void	PmergeMe::_generatePosDeque()
+{
+	int				pos, last;
+	unsigned long	tmp;
+
+	if (_dqPend.empty())
+		return ;
+	
+	_jacobSeqDeque();
+
+	last = 1;
+	tmp = 1;
+
+	while (!_dqJacob.empty())
+	{
+		tmp = _dqJacob.front();
+
+		_dqJacob.pop_front();
+		_dqPos.push_back(tmp);
+
+		pos = tmp - 1;
+
+		while (pos > last)
+		{
+			_dqPos.push_back(pos);
+			pos--;
+		}
+		last = tmp;
+	}
+
+	while (tmp++ < _dqPend.size())
+		_dqPos.push_back(tmp);
+}
+
+void	PmergeMe::_insertDeque()
+{
+	int							target, end, cnt, pos;
+	std::deque<int>::iterator	it;
+
+	_generatePosDeque();
+
+	cnt = 0;
+
+	for (it = _dqPos.begin(); it != _dqPos.end(); it++)
+	{
+		target = _dqPend[*it - 1];
+
+		end = *it + cnt;
+		pos = _binaryDeque(target, 0, end);
+		_dqChain.insert(_dqChain.begin() + pos, target);
+		cnt++;
+	}
+
+	if (_dq.size() % 2 != 0)
+	{
+		target = _dq[_dq.size() - 1];
+		pos = _binaryDeque(target, 0, _dqChain.size() - 1);
+		_dqChain.insert(_dqChain.begin() + pos, target);
+	}
+}
+
+void	PmergeMe::_chainDeque()
+{
+	_dqChain.push_back(_dqPair[0].second);
+
+	for (unsigned long i = 0; i < _dqPair.size(); i++)
+	{
+		_dqChain.push_back(_dqPair[i].first);
+		_dqPend.push_back(_dqPair[i].second);
+	}
+}
 
 void	PmergeMe::_mergeDeque( int start, int mid, int end )
 {
@@ -183,17 +303,15 @@ void	PmergeMe::_createDequePairs()
 	}
 }
 
-void	PmergeMe::_doSortDeque( int start, int end )
+void	PmergeMe::_doSortDeque()
 {
-	(void)start;
-	(void)end;
 	if (_dq.size() > 1)
 	{
 		_createDequePairs();
 		_sortDequePairs();
-		_mergeSortDeque( 0, _dqPair.size() - 1);
-		// _chainDeque();
-		// _insertDeque();
+		_mergeSortDeque(0, _dqPair.size() - 1);
+		_chainDeque();
+		_insertDeque();
 	}
 	else
 		_dqChain.push_back(_dq.front());
@@ -205,14 +323,14 @@ void	PmergeMe::_sort()
 	double	timeDeque, timeVector;
 
 	start = clock();
-	_doSortDeque(0, _dq.size() - 1);
+	_doSortDeque();
 	end = clock();
 
 	timeDeque = static_cast<double>(end - start);
 
-	std::cout << _dqPair.size() << std::endl;
-	std::cout << _dqPair[0].first << " " << _dqPair[0].second << std::endl;
-	std::cout << _dqPair[1].first << " " << _dqPair[1].second << std::endl;
+	for (unsigned long i = 0; i < _dqChain.size(); i++)
+		std::cout << _dqChain[i] << " ";
+	std::cout << std::endl;
 
 	(void)timeDeque;
 	(void)timeVector;
