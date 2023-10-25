@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 08:20:10 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/25 11:14:47 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:18:41 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	PmergeMe::_printVector()
 void	PmergeMe::_printAfter( double timeDeque, double timeVector )
 {
 	std::cout << "\nAfter: " << std::endl;
+
 	_printDeque();
 	_printVector();
 
@@ -85,7 +86,7 @@ bool	PmergeMe::_checkValid( std::string buf )
 	char	*end;
 	long	l = strtol(buf.c_str(), &end, 10);
 
-	if (*end != '\0' || l > INT_MAX || l < 0)
+	if (*end != '\0' || l > INT_MAX || l <= 0)
 		return (false);
 	
 	return (true);
