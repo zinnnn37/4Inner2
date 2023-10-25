@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 08:20:10 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/25 10:12:34 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:00:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ void	PmergeMe::_printDeque()
 {
 	std::cout << "Deque: ";
 
-	for (std::deque<int>::iterator it = _dq.begin(); it != _dq.end(); it++)
-		std::cout << *it << " ";
-	
+	for (unsigned long i = 0; i < _dqChain.size(); i++)
+		std::cout << _dqChain[i] << " ";
+
 	std::cout << std::endl;
 }
 
 void	PmergeMe::_printVector()
 {
-	std::cout << "\nVector: ";
+	std::cout << "Vector: ";
 
-	for (std::vector<int>::iterator it = _vec.begin(); it != _vec.end(); it++)
-		std::cout << *it << " ";
+	for (unsigned long i = 0; i < _vecChain.size(); i++)
+		std::cout << _vecChain[i] << " ";
 
 	std::cout << std::endl;
 }
@@ -121,6 +121,201 @@ int	PmergeMe::_jacobsthal( int n )
 		return (1);
 	else
 		return (_jacobsthal(n - 1) + 2 * _jacobsthal(n - 2));
+}
+
+/////////////////////////////////////////////////////////////////
+
+int	PmergeMe::_binaryVector( int target, int start, int end )
+{
+	int mid;
+
+	while (start <= end)
+	{
+		mid = (start + end) / 2;
+
+		if (target == _vecChain[mid])
+			return (mid);
+		else if (target > _vecChain[mid])
+			start = mid + 1;
+		else
+			end = mid - 1;
+	}
+
+	if (target > _vecChain[mid])
+		return (mid + 1);
+	else
+		return (mid);
+}
+
+void	PmergeMe::_jacobSeqVector()
+{
+	int	idx, size, jacobstal;
+
+	size = _vecPend.size();
+	idx = 3;
+
+	jacobstal = _jacobsthal(idx);
+
+	while (jacobstal < size - 1)
+	{
+		_vecJacob.push_back(jacobstal);
+		jacobstal = _jacobsthal(++idx);
+	}
+}
+
+void	PmergeMe::_generatePosVector()
+{
+	int				pos, last;
+	unsigned long	i, tmp;
+
+	if (_vecPend.empty())
+		return ;
+	
+	_jacobSeqVector();
+
+	last = 1;
+	tmp = 1;
+
+	i = 0;
+	while (i < _vecJacob.size())
+	{
+		tmp = _vecJacob[i];
+
+		_vecPos.push_back(tmp);
+
+		pos = tmp - 1;
+
+		while (pos > last)
+		{
+			_vecPos.push_back(pos);
+			pos--;
+		}
+		last = tmp;
+		i++;
+	}
+
+	while (tmp++ < _vecPend.size())
+		_vecPos.push_back(tmp);
+}
+
+void	PmergeMe::_insertVector()
+{
+	int							target, end, cnt, pos;
+	std::vector<int>::iterator	it;
+
+	_generatePosVector();
+
+	cnt = 0;
+
+	for (it = _vecPos.begin(); it != _vecPos.end(); it++)
+	{
+		target = _vecPend[*it - 1];
+
+		end = *it + cnt;
+		pos = _binaryVector(target, 0, end);
+		_vecChain.insert(_vecChain.begin() + pos, target);
+		cnt++;
+	}
+
+	if (_vec.size() % 2 != 0)
+	{
+		target = _vec[_vec.size() - 1];
+		pos = _binaryVector(target, 0, _vecChain.size() - 1);
+		_vecChain.insert(_vecChain.begin() + pos, target);
+	}
+}
+
+void	PmergeMe::_chainVector()
+{
+	_vecChain.push_back(_vecPair[0].second);
+
+	for (unsigned long i = 0; i < _vecPair.size(); i++)
+	{
+		_vecChain.push_back(_vecPair[i].first);
+		_vecPend.push_back(_vecPair[i].second);
+	}
+}
+
+void	PmergeMe::_mergeVector( int start, int mid, int end )
+{
+	unsigned long	left, right, merged;
+
+	std::vector< std::pair<int, int> >	leftarr(_vecPair.begin() + start, _vecPair.begin() + mid + 1);
+	std::vector< std::pair<int, int> >	rightarr(_vecPair.begin() + mid + 1, _vecPair.begin() + end + 1);
+
+	left = 0;
+	right = 0;
+	merged = start;
+
+	while (left < leftarr.size() && right < rightarr.size())
+	{
+		if (leftarr[left].first <= rightarr[right].first)
+			_vecPair[merged++] = leftarr[left++];
+		else
+			_vecPair[merged++] = rightarr[right++];
+	}
+
+	while (left < leftarr.size())
+		_vecPair[merged++] = leftarr[left++];
+	while (right < rightarr.size())
+		_vecPair[merged++] = rightarr[right++];
+}
+
+void	PmergeMe::_mergeSortVector( int start, int end )
+{
+	int	mid;
+
+	if (start >= end)
+		return ;
+	
+	mid = (start + end) / 2;
+
+	_mergeSortVector(start, mid);
+	_mergeSortVector(mid + 1, end);
+	_mergeVector(start, mid, end);
+}
+
+void	PmergeMe::_sortVectorPairs()
+{
+	int	tmp;
+
+	for (unsigned long i = 0; i < _vecPair.size(); i++)
+	{
+		if (_vecPair[i].first < _vecPair[i].second)
+		{
+			tmp = _vecPair[i].first;
+			_vecPair[i].first = _vecPair[i].second;
+			_vecPair[i].second = tmp;
+		}
+	}
+}
+
+void	PmergeMe::_createVectorPairs()
+{
+	int	i, size;
+
+	i = 0;
+	size = _vec.size() / 2;
+	while (size > 0)
+	{
+		_vecPair.push_back(std::make_pair(_vec[i], _vec[i + 1]));
+		i += 2;
+		size--;
+	}
+}
+
+void	PmergeMe::_doSortVector()
+{
+	if (_vec.size() > 1)
+	{
+		_createVectorPairs();
+		_sortVectorPairs();
+		_mergeSortVector(0, _vecPair.size() - 1);
+		_chainVector();
+		_insertVector();
+	}
+	else
+		_vecChain.push_back(_vec.front());
 }
 
 /////////////////////////////////////////////////////////////////
@@ -280,7 +475,7 @@ void	PmergeMe::_sortDequePairs()
 
 	for (unsigned long i = 0; i < _dqPair.size(); i++)
 	{
-		if (_dqPair[i].first > _dqPair[i].second)
+		if (_dqPair[i].first < _dqPair[i].second)
 		{
 			tmp = _dqPair[i].first;
 			_dqPair[i].first = _dqPair[i].second;
@@ -328,18 +523,11 @@ void	PmergeMe::_sort()
 
 	timeDeque = static_cast<double>(end - start);
 
-	for (unsigned long i = 0; i < _dqChain.size(); i++)
-		std::cout << _dqChain[i] << " ";
-	std::cout << std::endl;
+	start = clock();
+	_doSortVector();
+	end = clock();
 
-	(void)timeDeque;
-	(void)timeVector;
+	timeVector = static_cast<double>(end - start);
 
-	// start = clock();
-	// _doSortVector(0, _vec.size() - 1);
-	// end = clock();
-
-	// timeVector = static_cast<double>(end - start);
-
-	// _printAfter(timeDeque, timeVector);
+	_printAfter(timeDeque, timeVector);
 }
