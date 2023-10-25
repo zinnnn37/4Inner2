@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 08:05:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/25 09:22:14 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:08:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ class	PmergeMe
 		std::vector<int>					_vecPos;
 
 		PmergeMe();
+		PmergeMe( const PmergeMe &pm );
 
 		void	_parse();
 		void	_sort();
@@ -91,7 +92,6 @@ class	PmergeMe
 
 	public:
 		PmergeMe( int ac, char **av );
-		PmergeMe( const PmergeMe &pm );
 		~PmergeMe();
 
 		PmergeMe	&operator=( const PmergeMe &pm );

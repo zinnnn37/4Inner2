@@ -6,11 +6,13 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 08:20:10 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/25 11:00:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:14:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+PmergeMe::PmergeMe() {}
 
 PmergeMe::PmergeMe( int ac, char **av )
 	: _ac(ac), _av(av)
@@ -21,16 +23,14 @@ PmergeMe::PmergeMe( int ac, char **av )
 
 PmergeMe::PmergeMe( const PmergeMe &pm )
 {
-	*this = pm;
+	(void)pm;
 }
 
 PmergeMe::~PmergeMe() {}
 
 PmergeMe	&PmergeMe::operator=( const PmergeMe &pm )
 {
-	if (this != &pm)
-		*this = pm;
-
+	(void)pm;
 	return (*this);
 }
 
