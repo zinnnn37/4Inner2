@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:35:37 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 18:29:32 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:26:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class	RPN
 		std::stack<std::string>	_tmp;
 
 		RPN();
+		RPN( const RPN &r );
 
 		bool	_isOp( char c );
 		void	_split();
@@ -39,7 +40,6 @@ class	RPN
 
 	public:
 		RPN( std::string input );
-		RPN( const RPN &r );
 		~RPN();
 
 		RPN	&operator=( const RPN &rpn );

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:18 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 16:01:32 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:26:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class	BitcoinExchange
 		std::map<std::string, float>	_data;
 
 		BitcoinExchange();
+		BitcoinExchange( const BitcoinExchange &be );
 
 		void	_readCSVFile();
 		void	_readInputFile();
@@ -41,27 +42,9 @@ class	BitcoinExchange
 
 	public:
 		BitcoinExchange( std::string input );
-		BitcoinExchange( const BitcoinExchange &be );
 		~BitcoinExchange();
 
 		BitcoinExchange	&operator=( const BitcoinExchange &be );
-
-	//class	Error : public std::exception
-	//{
-	//	private:
-	//		const char	*_msg;
-
-	//	public:
-	//		Error();
-	//		Error( const char *msg );
-	//		Error( const Error &e );
-	//		~Error() throw();
-
-	//		Error	&operator=( const Error &e );
-
-	//		const char	*what() const throw();
-	//		const char	*getMsg() const;
-	//};
 };
 
 #endif
