@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 18:05:27 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/25 11:14:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:21:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,9 @@ int	main(int ac, char **av)
 		return 1;
 	}
 
-	try
-	{
-		PmergeMe	pm(ac, av);
-	}
-	catch ( const char *e )
-	{
-		std::cerr << e << std::endl;
-		return 1;
-	}
+	PmergeMe	pm(ac, av);
+
+	pm.exec();
 
 	return 0;
 }

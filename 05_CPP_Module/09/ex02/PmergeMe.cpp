@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 08:20:10 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 16:38:30 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:21:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ PmergeMe::PmergeMe() {}
 PmergeMe::PmergeMe( int ac, char **av )
 	: _ac(ac), _av(av)
 {
-	_parse();
-	_sort();
 }
 
 PmergeMe::PmergeMe( const PmergeMe &pm )
@@ -531,4 +529,17 @@ void	PmergeMe::_sort()
 	timeVector = static_cast<double>(end - start);
 
 	_printAfter(timeDeque, timeVector);
+}
+
+void	PmergeMe::exec()
+{
+	try
+	{
+		_parse();
+		_sort();
+	}
+	catch ( const char *e )
+	{
+		std::cerr << e << std::endl;
+	}
 }
