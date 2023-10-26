@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 19:20:12 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:26:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,6 +218,6 @@ void	BitcoinExchange::exec()
 	}
 	catch( const char *e )
 	{
-		std::cerr << e << std::endl;
+		std::cout << e << std::endl;
 	}	
 }

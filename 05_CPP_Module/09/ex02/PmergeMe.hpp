@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 08:05:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 16:31:05 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:23:55 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ class	PmergeMe
 	public:
 		PmergeMe( int ac, char **av );
 		~PmergeMe();
+
+		void	exec();
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 08:20:10 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 19:21:34 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:26:55 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ void	PmergeMe::_printAfter( double timeDeque, double timeVector )
 	_printVector();
 
 	std::cout << "\nTime to process a range of " << _dq.size() << " elements with std::deque  : "
-		<< timeDeque << "ms" << std::endl;
+		<< timeDeque << "us" << std::endl;
 	std::cout << "Time to process a range of " << _vec.size() << " elements with std::vector : "
-		<< timeVector << "ms" << std::endl;
+		<< timeVector << "us" << std::endl;
 }
 
 /////////////////////////////////////////////////////////////////
@@ -540,6 +540,6 @@ void	PmergeMe::exec()
 	}
 	catch ( const char *e )
 	{
-		std::cerr << e << std::endl;
+		std::cout << e << std::endl;
 	}
 }

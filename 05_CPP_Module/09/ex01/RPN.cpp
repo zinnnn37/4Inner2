@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:35:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 19:22:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:23:15 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,6 @@ void	RPN::exec()
 	}
 	catch(const char *e)
 	{
-		std::cerr << e << std::endl;
+		std::cout << e << std::endl;
 	}
 }
