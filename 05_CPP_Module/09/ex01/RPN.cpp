@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:35:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 19:23:15 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:35:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	RPN::_split()
 	{
 		this->_checkValid(tmp.top());
 		this->_tmp.push(tmp.top());
-		tmp.pop();	// pop 반환 값 없음
+		tmp.pop();
 	}
 }
 

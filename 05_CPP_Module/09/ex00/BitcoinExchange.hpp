@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:18 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 19:16:22 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:38:32 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #define BITCOINEXCHANGE_HPP
 
 #include <iostream>
+#include <cstdlib>
 #include <string>
 #include <fstream>
 #include <algorithm>
 #include <map>
 #include <sstream>
-#include <iomanip>
-#include <climits>
+#include <exception>
 
 class	BitcoinExchange
 {

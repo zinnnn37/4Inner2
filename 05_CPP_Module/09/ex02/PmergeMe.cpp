@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 08:20:10 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 19:28:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 23:19:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,8 +193,10 @@ void	PmergeMe::_generatePosVector()
 		i++;
 	}
 
-	while (tmp++ < _vecPend.size())
-		_vecPos.push_back(tmp);
+	unsigned long	idx = _vecPend.size();
+
+	while (tmp < --idx)
+		_vecPos.push_back(idx);
 }
 
 void	PmergeMe::_insertVector()
@@ -387,8 +389,10 @@ void	PmergeMe::_generatePosDeque()
 		last = tmp;
 	}
 
-	while (tmp++ < _dqPend.size())
-		_dqPos.push_back(tmp);
+	unsigned long	idx = _dqPend.size();
+
+	while (tmp < --idx)
+		_dqPos.push_back(idx);
 }
 
 void	PmergeMe::_insertDeque()

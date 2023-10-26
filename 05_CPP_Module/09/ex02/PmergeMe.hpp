@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 08:05:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 19:23:55 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:38:21 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 #include <deque>
 #include <vector>
 #include <algorithm>
-#include <ctime>	// or time.h?
+#include <ctime>
 #include <sstream>
 #include <climits>
+#include <exception>
 
 class	PmergeMe
 {

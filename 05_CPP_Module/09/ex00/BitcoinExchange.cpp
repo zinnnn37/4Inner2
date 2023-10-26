@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 19:26:32 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:35:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ bool	BitcoinExchange::_checkRate( std::string rate )
 	double	r = strtod(rate.c_str(), &endptr);
 
 	(void)r;
-	if (!isdigit(rate[0]) && rate[0] != '+')	// 맨 앞이 숫자나 +가 아니면
+	if (!isdigit(rate[0]) && rate[0] != '+')
 		return (false);
 	
 	std::string	str(endptr);
 
-	if (*endptr && str.compare("f") != 0)	// endptr에 든 값이 f가 아니면
+	if (*endptr && str.compare("f") != 0)
 		return (false);
 	
 	return (true);
