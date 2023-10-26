@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 18:17:00 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 19:17:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:23:02 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,9 @@ int	main(int ac, char **av)
 		return (1);
 	}
 
-	try
-	{
-		BitcoinExchange	be(av[1]);
+	BitcoinExchange	be(av[1]);
 
-		be.exec();
-	}
-	catch (const char *e)
-	{
-		std::cout << "Error: " << e << std::endl;
-		return (1);
-	}
+	be.exec();
+
 	return (0);
 }
