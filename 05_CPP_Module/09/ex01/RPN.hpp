@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:35:37 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 16:30:15 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:19:11 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 class	RPN
 {
 	private:
-		int						_len;
 		std::string				_input;
 		std::stack<int>			_rpn;
 		std::stack<std::string>	_tmp;

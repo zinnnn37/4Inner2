@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 18:25:34 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 16:31:35 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:18:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main(int ac, char **av)
 	}
 
 	RPN	rpn(av[1]);
+
+	rpn.exec();
 
 	return 0;
 }

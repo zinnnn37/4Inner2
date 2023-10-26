@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:35:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 16:38:06 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:19:07 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 RPN::RPN()	{}
 
 RPN::RPN( std::string input )
-	: _len(0), _input(input)
+	: _input(input)
 {
-	this->exec();
 }
 
 RPN::RPN( const RPN &rpn )
@@ -69,7 +68,6 @@ void	RPN::_split()
 	{
 		this->_checkValid(tmp.top());
 		this->_tmp.push(tmp.top());
-		this->_len++;
 		tmp.pop();	// pop 반환 값 없음
 	}
 }
@@ -138,5 +136,4 @@ void	RPN::exec()
 	{
 		std::cerr << e << std::endl;
 	}
-	
 }
