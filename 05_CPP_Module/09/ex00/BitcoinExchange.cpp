@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 18:32:56 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:01:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ bool	BitcoinExchange::_checkVal( std::string val )
 		std::cout << "Error: not a positive number." << std::endl;
 		return (false);
 	}
-	if (l > INT_MAX)
+	if (l > 1000)
 	{
 		std::cout << "Error: too large a number." << std::endl;
 		return (false);
