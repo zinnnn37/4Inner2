@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:35:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 16:33:05 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:38:06 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	RPN::_checkValid( std::string s )
 void	RPN::_split()
 {
 	std::string				buf;
-	std::stringstream		ss(this->_input);
+	std::istringstream		ss(this->_input);
 	std::stack<std::string>	tmp;
 
 	while (getline(ss, buf, ' '))

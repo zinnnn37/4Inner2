@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 16:32:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:37:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ BitcoinExchange	&BitcoinExchange::operator=( const BitcoinExchange &be )
 
 bool	BitcoinExchange::_checkDate( std::string date )
 {
-	std::stringstream	ss(date);
+	std::istringstream	ss(date);
 	std::string			year, month, day;
 
 	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
@@ -104,7 +104,7 @@ void	BitcoinExchange::_readCSVFile()
 		if (line.size() == 0)
 			continue;
 
-		std::stringstream	ss(line);
+		std::istringstream	ss(line);
 		std::string			date, rate;
 
 		getline(ss, date, ',');
@@ -196,7 +196,7 @@ void	BitcoinExchange::_readInputFile()
 		if (line.size() == 0)
 			continue;
 
-		std::stringstream	ss(line);
+		std::istringstream	ss(line);
 		std::string			date, val, del;
 
 		getline(ss, date, ' ');

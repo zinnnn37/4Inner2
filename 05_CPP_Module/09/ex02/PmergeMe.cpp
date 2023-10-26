@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 08:20:10 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/25 14:11:14 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:38:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	PmergeMe::_parse()
 
 	for (int i = 1; i < _ac; i++)
 	{
-		std::stringstream	ss(_av[i]);
+		std::istringstream	ss(_av[i]);
 
 		while (getline(ss, buf, ' '))
 		{
