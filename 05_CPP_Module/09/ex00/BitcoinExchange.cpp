@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 16:01:27 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:32:29 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,7 @@ BitcoinExchange::~BitcoinExchange() {}
 
 BitcoinExchange	&BitcoinExchange::operator=( const BitcoinExchange &be )
 {
-	if (this != &be)
-	{
-		this->_data.clear();
-		std::map<std::string, float>::const_iterator it;
-
-		for (it = be._data.begin(); it != be._data.end(); it++)
-			this->_data[it->first] = it->second;
-	}
+	(void)be;
 	return (*this);
 }
 

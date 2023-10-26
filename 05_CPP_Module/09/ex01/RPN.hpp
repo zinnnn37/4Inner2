@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:35:37 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 16:26:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:30:15 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ class	RPN
 		RPN();
 		RPN( const RPN &r );
 
+		RPN	&operator=( const RPN &rpn );
+
 		bool	_isOp( char c );
 		void	_split();
 		void	_checkValid( std::string s );
@@ -41,8 +43,6 @@ class	RPN
 	public:
 		RPN( std::string input );
 		~RPN();
-
-		RPN	&operator=( const RPN &rpn );
 
 		void	exec();
 };

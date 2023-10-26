@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:35:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/24 19:53:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:33:05 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,7 @@ RPN::~RPN() {}
 
 RPN	&RPN::operator=( const RPN &rpn )
 {
-	if (this != &rpn)
-	{
-		this->_len = rpn._len;
-		this->_input = rpn._input;
-		this->_rpn = rpn._rpn;
-		this->_tmp = rpn._tmp;
-	}
+	(void)rpn;
 	return (*this);
 }
 

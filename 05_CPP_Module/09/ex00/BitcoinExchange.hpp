@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:18 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 16:26:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:32:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ class	BitcoinExchange
 		BitcoinExchange();
 		BitcoinExchange( const BitcoinExchange &be );
 
+		BitcoinExchange	&operator=( const BitcoinExchange &be );
+
 		void	_readCSVFile();
 		void	_readInputFile();
 		bool	_checkDate( std::string date );
@@ -43,8 +45,6 @@ class	BitcoinExchange
 	public:
 		BitcoinExchange( std::string input );
 		~BitcoinExchange();
-
-		BitcoinExchange	&operator=( const BitcoinExchange &be );
 };
 
 #endif

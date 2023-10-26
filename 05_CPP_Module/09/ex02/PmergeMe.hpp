@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 08:05:06 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/25 11:08:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:31:05 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ class	PmergeMe
 		PmergeMe();
 		PmergeMe( const PmergeMe &pm );
 
+		PmergeMe	&operator=( const PmergeMe &pm );
+
 		void	_parse();
 		void	_sort();
 
@@ -79,7 +81,6 @@ class	PmergeMe
 		void	_jacobSeqDeque();
 		void	_jacobSeqVector();
 
-
 		void	_generatePosDeque();
 		void	_generatePosVector();
 
@@ -93,8 +94,6 @@ class	PmergeMe
 	public:
 		PmergeMe( int ac, char **av );
 		~PmergeMe();
-
-		PmergeMe	&operator=( const PmergeMe &pm );
 };
 
 #endif
