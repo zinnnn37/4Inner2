@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 16:49:37 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:17:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ BitcoinExchange::BitcoinExchange() {}
 BitcoinExchange::BitcoinExchange( std::string input )
 	: _input(input)
 {
-	this->_readCSVFile();
-	this->_readInputFile();
 }
 
 BitcoinExchange::BitcoinExchange( const BitcoinExchange &be )
@@ -209,4 +207,10 @@ void	BitcoinExchange::_readInputFile()
 	}
 
 	ifs.close();
+}
+
+void	BitcoinExchange::exec()
+{
+	_readCSVFile();
+	_readInputFile();
 }
