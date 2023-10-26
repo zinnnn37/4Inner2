@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:37:04 by minjinki          #+#    #+#             */
-/*   Updated: 2023/10/26 16:37:50 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:49:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,14 +146,13 @@ void	BitcoinExchange::_findDate( std::string date, std::string val )
 bool	BitcoinExchange::_checkVal( std::string val )
 {
 	float	v = atof(val.c_str());
-	long	l = atol(val.c_str());
 
 	if (v < 0)
 	{
 		std::cout << "Error: not a positive number." << std::endl;
 		return (false);
 	}
-	if (l > 1000)
+	if (v > 1000.00000000)
 	{
 		std::cout << "Error: too large a number." << std::endl;
 		return (false);
