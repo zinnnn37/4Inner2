@@ -6,14 +6,21 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:10:25 by minjinki          #+#    #+#             */
-/*   Updated: 2023/11/15 12:21:23 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:09:42 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Server.hpp"
 
+void	leaks()
+{
+	system("leaks ircserv");
+}
+
 int	check_params(int ac, char **av)
 {
+	atexit(leaks);
+
 	if (ac != 3)
 	{
 		std::cout << "Usage: ./ircserv <port> <password>" << std::endl;
