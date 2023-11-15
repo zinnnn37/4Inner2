@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:09:10 by minjinki          #+#    #+#             */
-/*   Updated: 2023/11/15 16:13:39 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:43:00 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ void	Server::_init()
 	// bind
 	struct	sockaddr_in	sockAddr;
 	
-	memset(&sockAddr, 0, sizeof(sockAddr));
+	bzero(&sockAddr, sizeof(sockAddr));
 	sockAddr.sin_family = AF_INET;	// IPv4
-	sockAddr.sin_addr.s_addr = htonl(INADDR_ANY);	// INADDR_ANY: 서버의 IP주소를 자동으로 찾아서 대입
 	sockAddr.sin_port = htons(this->_port);
+	sockAddr.sin_addr.s_addr = htonl(INADDR_ANY);	// INADDR_ANY: 서버의 IP주소를 자동으로 찾아서 대입
 
 	// 로컬 주소를 소켓과 연결
 	if (bind(this->_serverSoc, (struct sockaddr *)&sockAddr, sizeof(sockAddr)))
@@ -91,7 +91,7 @@ void	Server::_init()
 	}
 
 	// 연결 요청 대기
-	if (listen(this->_serverSoc, 10))
+	if (listen(this->_serverSoc, 128))
 	{
 		close(this->_serverSoc);
 		throw listenException();
