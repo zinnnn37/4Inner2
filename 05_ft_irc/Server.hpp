@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 12:53:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/11/15 11:52:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:21:12 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <exception>
 
 // #include "Client.hpp"
 // #include "Channal.hpp"
@@ -35,7 +36,7 @@ class Server
 {
 	private:
 		int						_port;
-		// int						_server_soc;
+		int						_server_soc;
 		std::string				_password;
 
 		// std::map<int, Client *>	_clients;
@@ -46,13 +47,19 @@ class Server
 
 		Server &operator=( const Server &s );
 
-		// int		_init();
+		void	_init();
 
 	public:
 		Server( int port, std::string password );
 		~Server();
 
-		// int		run();
+		void	run();
+
+		class	socketException : std::exception
+		{
+			public:
+				const char*	what() const throw();
+		};
 };
 
 #endif

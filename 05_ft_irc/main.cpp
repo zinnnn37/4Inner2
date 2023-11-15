@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:10:25 by minjinki          #+#    #+#             */
-/*   Updated: 2023/11/15 11:48:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:21:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ int	main(int ac, char **av)
 
 	try
 	{
-		// server.run();
-		std::cout << "hi" << std::endl;
+		server.run();
 	}
 	catch (const std::exception& e)
 	{
