@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 12:53:51 by minjinki          #+#    #+#             */
-/*   Updated: 2023/11/15 13:07:59 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:46:23 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 #include <sys/socket.h>
 #include <sys/event.h>
 #include <netinet/in.h>
-#include <arpa/inet.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <exception>
@@ -41,7 +40,8 @@ class Server
 		std::string					_password;
 
 		int							_kq;
-		std::list<struct kevent>	_kev;
+		struct kevent				_eventList[1024];
+		std::vector<struct kevent>	_changeList;
 
 		// std::map<int, Client *>		_clients;
 		// std::list<Channal *>		_channals;
@@ -79,6 +79,12 @@ class Server
 		};
 
 		class	kqueueException : std::exception
+		{
+			public:
+				const char*	what() const throw();
+		};
+
+		class	keventException : std::exception
 		{
 			public:
 				const char*	what() const throw();
