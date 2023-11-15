@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:09:10 by minjinki          #+#    #+#             */
-/*   Updated: 2023/11/15 16:43:00 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:56:02 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,13 @@ void	Server::_init()
 		throw socketException();
 
 	// 소켓 설정
-	int	opt = 1;	// SO_REUSEADDR 옵션 true로 설정
+	int	opt = 1;
 	if (setsockopt(this->_serverSoc, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) == -1)
 		throw socketException();
 	/*
 	SOL_SOCKET: 소켓 옵션 레벨
-	SO_REUSEADDR: time-wait 상태의 소켓의 포트 번호도 새로운 소켓에 할당할 수 있게 함
+	-> SO_REUSEADDR: time-wait 상태의 소켓의 포트 번호도 새로운 소켓에 할당할 수 있게 함
+	opt가 1이므로 SO_REUSEADDR 옵션 활성화
 	*/
 
 	// bind
@@ -80,7 +81,7 @@ void	Server::_init()
 	
 	bzero(&sockAddr, sizeof(sockAddr));
 	sockAddr.sin_family = AF_INET;	// IPv4
-	sockAddr.sin_port = htons(this->_port);
+	sockAddr.sin_port = htons(this->_port);	// port를 network byte order로 변환
 	sockAddr.sin_addr.s_addr = htonl(INADDR_ANY);	// INADDR_ANY: 서버의 IP주소를 자동으로 찾아서 대입
 
 	// 로컬 주소를 소켓과 연결
@@ -128,6 +129,12 @@ void	Server::run()
 		for (int i = 0; i < newEv; i++)
 		{
 			kev = &this->_changeList[i];
+
+			// deal error
+
+			// if read is available
+
+			// if write is available
 		}
 	}
 
