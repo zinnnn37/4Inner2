@@ -6,14 +6,29 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 11:51:53 by minjinki          #+#    #+#              #
-#    Updated: 2023/11/15 11:52:01 by minjinki         ###   ########.fr        #
+#    Updated: 2023/12/09 01:24:16 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	ircserv
 
 SRC_FILES	=	main\
-				Server
+				Server\
+				Utils\
+				Client\
+				Command\
+				Cmd_INVITE\
+				Cmd_JOIN\
+				Cmd_KICK\
+				Cmd_MODE\
+				Cmd_PART\
+				Cmd_PASS\
+				Cmd_PING\
+				Cmd_PRIVMSG\
+				Cmd_QUIT\
+				Cmd_TOPIC\
+				Cmd_USER\
+				Channel
 
 SRCS		=	$(addsuffix .cpp, $(SRC_FILES))
 
@@ -30,6 +45,9 @@ all			:	$(NAME)
 
 $(NAME)		:	$(OBJS)
 	$(CXX) $(CPPFLAGS) $(OBJS) -o $(NAME)
+
+mclean		:	$(NAME)
+	$(MAKE)	clean
 
 clean		:
 	$(RM) $(OBJS)

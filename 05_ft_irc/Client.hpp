@@ -6,42 +6,99 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 12:53:46 by minjinki          #+#    #+#             */
-/*   Updated: 2023/11/11 13:45:57 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/11/29 16:49:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #ifndef CLIENT_HPP
 #define CLIENT_HPP
 
-#include <set>
+#include "Command.hpp"
+#include "Client.hpp"
+#include "Channel.hpp"
+#include "Define.hpp"
+#include "Server.hpp"
 
-class	Channel;
-class	Server;
+#include <iostream>
+#include <unistd.h>
+#include <string>
+#include <set>
+#include <map>
+
+class Channel;
+
 
 class	Client
 {
 	private:
-		Server	&_server;
+		static int	_clientNum;
+		bool		_isRegistered;
+		bool		_isClosed;
+		int			_clientSoc;
+		std::string	_addr;
 
 		std::string	_nick;
 		std::string	_userName;
 		std::string	_realName;
+		std::string	_hostName;
+		std::string	_serverName;
 
-		std::set< std::string >	_joinedChannels;
-		std::set< std::string >	_invited;
+		std::string	_buf; 		// server -> client;
+		std::string	_sendData;  // client -> server
 
+		std::map<std::string, Channel *>	_joinedChannels;
+		std::set<Channel *>	_invited;
+
+
+	public:
+		Client( int socket, std::string addr );
 		Client();
 		Client( const Client &c );
 
 		Client	&operator=( const Client &c );
-
-	public:
-		Client( Server &server );
 		~Client();
 
-		int	init( int serverfd );
+		bool	isRegistered() const;
+		bool	isClosed() const;
+		void	setRegistered( bool isRegistered );
+		void	setClosed( bool isClosed );
 
-		int	sendMessage( const std::string &message );
+		int			getSocket() const;
+		std::string	getAddr() const;
+		std::string	getNick() const;
+		void		setNick( const std::string &nick );
+		std::string	getUserName() const;
+		void		setUserName( const std::string &userName );
+		std::string	getRealName() const;
+		void		setRealName( const std::string &realName );
+		std::string	getHostName() const;
+		void		setHostName( const std::string &hostName );
+		std::string	getServerName() const;
+		void		setServerName( const std::string &serverName );
+		std::string	getBuf() const;
+		void		setBuf( std::string &buf );
+		void		setBuf( std::string buf );
+		void		clearBuf();
+		void		appendBuf( std::string buf );
+		void		setSendData( std::string sendData );
+		std::string	getSendData() const;
+		void		appendSendData( std::string sendData );
+		void		clearSendData();
 
-		void	addInvited( Channal &channal );
+		void		disconnectClientFromChannel(Server *server);
+		
+		std::string getPrefix();
+		ChannelMap	getChannels();
+		void 		joinChannel(Channel *channel);
+
+		ChannelMap	&getJoinedChannel();
+		Channel		*findJoinedChannel( std::string &channelName );
+		void		removeJoinedChannel( std::string &channelName );
+
+		ChannelSet	&getInvited();
+		void		addInvited( Channel *channel );
 };
+
+#endif
