@@ -1,3 +1,5 @@
+WORK REPOSITORY: https://github.com/zinnnn37/ft_irc
+
 # ft_irc
 
 **Internet Relay Chat**
