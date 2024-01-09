@@ -1,0 +1,73 @@
+version: '3'
+
+services:
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    pull_policy: never
+    build:
+      context: ./requirements/mariadb
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
+    networks:
+      - inception
+    volumes:
+      - db-volume:/var/lib/mysql
+    restart: always
+    env_file:
+      - .env
+
+  nginx:
+    container_name: nginx
+    image: nginx
+    pull_policy: never
+    build:
+      context: ./requirements/nginx
+      dockerfile: Dockerfile
+    depends_on:
+      - wordpress
+    ports:
+      - "443:443"
+    networks:
+      - inception
+    volumes:
+      - wp-volume:/var/www/wordpress
+    restart: always
+
+  wordpress:
+    container_name: wordpress
+    image: wordpress
+    pull_policy: never
+    build:
+      context: ./requirements/wordpress
+      dockerfile: Dockerfile
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+    volumes:
+      - wp-volume:/var/www/wordpress
+    restart: always
+    env_file:
+      - .env
+
+volumes:
+  db-volume:
+    driver: local
+    driver_opts:
+      device: /home/minjinki/data/db-data
+      type: none
+      o: bind
+
+  wp-volume:
+    driver: local
+    driver_opts:
+      device: /home/minjinki/data/wp-data
+      type: none
+      o: bind
+
+networks:
+  inception:
+    name: inception
+    driver: bridge
