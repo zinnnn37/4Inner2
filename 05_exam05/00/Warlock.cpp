@@ -2,9 +2,17 @@
 
 Warlock::Warlock() {}
 
-Warlock::Warlock( const Warlock &w)
+Warlock::Warlock( const Warlock &w )
 {
 	(void)w;
+}
+
+Warlock&	Warlock::operator=( const Warlock &w )
+{
+	if (this != &w)
+		this->title = w.getTitle();
+
+	return (*this);
 }
 
 Warlock::Warlock( std::string name, std::string title )
