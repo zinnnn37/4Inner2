@@ -7,8 +7,8 @@
 class	Warlock
 {
 	private:
-		const std::string	name;
-		std::string			title;
+		std::string	_name;
+		std::string	_title;
 
 		Warlock();
 		Warlock( const Warlock &w );
