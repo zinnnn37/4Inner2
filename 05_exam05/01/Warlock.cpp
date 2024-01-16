@@ -37,3 +37,11 @@ void	Warlock::introduce() const
 {
 	std::cout << this->name << ": I am " << this->name << ", " << this->title << "!" << std::endl;
 }
+
+void	Warlock::learnSpell( ASpell *as )
+{
+	Warlock::Iter	it = this->_inven.find(as->getName());
+
+	if (it == this->_inven.end())
+		this->_inven.insert(Warlock::Pair( as->getName(), as->clone()) );
+}
