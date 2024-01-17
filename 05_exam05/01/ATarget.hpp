@@ -16,7 +16,7 @@ class	ATarget
 		ATarget();
 		ATarget( std::string type );
 		ATarget( const ATarget& at );
-		~ATarget();
+		virtual ~ATarget();
 
 		ATarget&	operator=( const ATarget& at );
 

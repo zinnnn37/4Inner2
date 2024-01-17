@@ -30,15 +30,14 @@ class	Warlock
 		void	launchSpell( std::string spell, ATarget &at );
 
 	private:
-		const std::string	name;
-		std::string			title;
+		const std::string	_name;
+		std::string			_title;
 		Map					_inven;
 
 		Warlock();
 		Warlock( const Warlock &w );
 
 		Warlock&	operator=( const Warlock &w );
-
 };
 
 #endif
