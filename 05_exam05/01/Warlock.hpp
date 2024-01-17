@@ -26,8 +26,8 @@ class	Warlock
 		void				introduce() const;
 
 		void	learnSpell( ASpell *as );
-		void	forgetSpell( std::string name );
-		void	launchSpell( std::string name, ATarget &at );
+		void	forgetSpell( std::string spell );
+		void	launchSpell( std::string spell, ATarget &at );
 
 	private:
 		const std::string	name;

@@ -45,3 +45,22 @@ void	Warlock::learnSpell( ASpell *as )
 	if (it == this->_inven.end())
 		this->_inven.insert(Warlock::Pair( as->getName(), as->clone()) );
 }
+
+void	Warlock::forgetSpell( std::string spell )
+{
+	Warlock::Iter	it = this->_inven.find(spell);
+
+	if (it != this->_inven.end())
+	{
+		delete it->second;
+		this->_inven.erase(it);
+	}
+}
+
+void	Warlock::launchSpell( std::string spell, ATarget &at )
+{
+	Warlock::Iter	it = this->_inven.find(spell);
+
+	if (it != this->_inven.end())
+		at.getHitBySpell(*(it->second));
+}
