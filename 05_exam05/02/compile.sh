@@ -1,12 +1,12 @@
 c++ -Wall -Wextra -Werror \
-	Warlock.cpp \
 	ASpell.cpp \
 	ATarget.cpp \
-	Fwoosh.cpp \
-	Dummy.cpp \
 	BrickWall.cpp \
+	Dummy.cpp \
 	Fireball.cpp \
+	Fwoosh.cpp \
 	Polymorph.cpp \
 	SpellBook.cpp \
 	TargetGenerator.cpp \
+	Warlock.cpp \
 	main.cpp
