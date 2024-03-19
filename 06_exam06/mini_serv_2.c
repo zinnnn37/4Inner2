@@ -70,15 +70,15 @@ void send_to_all(char *msg, int sender_fd)
 
 int main(int argc, char **argv)
 {
-    int sockfd, connfd;
+    int servfd, clientfd;
     struct sockaddr_in servaddr;
 
     if (argc != 2)
         exit_with_error("Usage: ./mini_serv port\n");
 
     // socket create and verification
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockfd == -1)
+    servfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (servfd == -1)
         fatal_error();
 
     bzero(&servaddr, sizeof(servaddr));
@@ -89,16 +89,16 @@ int main(int argc, char **argv)
     servaddr.sin_port = htons(atoi(argv[1]));
 
     // Binding newly created socket to given IP and verification
-    if ((bind(sockfd, (const struct sockaddr *)&servaddr, sizeof(servaddr))) != 0)
+    if ((bind(servfd, (const struct sockaddr *)&servaddr, sizeof(servaddr))) != 0)
         fatal_error();
 
-    if (listen(sockfd, 10) != 0)
+    if (listen(servfd, 10) != 0)
         fatal_error();
 
-    max_fd = sockfd;
-    FD_SET(sockfd, &all_fds);
+    max_fd = servfd;
+    FD_SET(servfd, &all_fds);
 
-    while (42)
+    while (1)
     {
         read_fds = all_fds;
         write_fds = all_fds;
@@ -110,21 +110,21 @@ int main(int argc, char **argv)
         {
             if (FD_ISSET(fd, &read_fds))
             { // read할 수 있는 fd
-                if (fd == sockfd)
+                if (fd == servfd)
                 { // server socket인 경우
                 // accept_client();
-                    connfd = accept(sockfd, NULL, NULL);
-                    if (connfd < 0)
+                    clientfd = accept(servfd, NULL, NULL);
+                    if (clientfd < 0)
                         continue;
 
-                    FD_SET(connfd, &all_fds);
-                    if (connfd > max_fd)
-                        max_fd = connfd;
+                    FD_SET(clientfd, &all_fds);
+                    if (clientfd > max_fd)
+                        max_fd = clientfd;
 
-                    client_ids[connfd] = client_id++;
+                    client_ids[clientfd] = client_id++;
 
-                    sprintf(write_buf, "server: client %d just arrived\n", client_ids[connfd]);
-                    send_to_all(write_buf, connfd);
+                    sprintf(write_buf, "server: client %d just arrived\n", client_ids[clientfd]);
+                    send_to_all(write_buf, clientfd);
                 }
                 else
                 { // client socket인 경우
