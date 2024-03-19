@@ -34,7 +34,7 @@ int extract_message(char **buf, char **msg)
     {
         if ((*buf)[i] == '\n')
         {
-            newbuf = calloc(1, sizeof(*newbuf) * (strlen(*buf + i + 1) + 1));
+            newbuf = calloc(sizeof(*newbuf) * (strlen(*buf + i + 1) + 1), sizeof(char));
             // if (newbuf == 0)
                 // return (-1);
             strcpy(newbuf, *buf + i + 1);
@@ -128,7 +128,7 @@ int main(int argc, char **argv)
                 }
                 else
                 { // client socket인 경우
-                    read_buf = calloc(1, BUFFER_SIZE);
+                    read_buf = calloc(BUFFER_SIZE, sizeof(char));
 
                     if (recv(fd, read_buf, BUFFER_SIZE, 0) <= 0)
                     { // client가 나간 경우
