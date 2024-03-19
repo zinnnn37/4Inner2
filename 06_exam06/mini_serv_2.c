@@ -6,7 +6,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-#define BUFFER_SIZE 160000
+#define BUFFER_SIZE 200000
 
 int max_fd, client_id;
 
