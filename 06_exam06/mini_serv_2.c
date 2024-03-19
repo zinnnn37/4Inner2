@@ -19,26 +19,26 @@ int client_ids[FD_SETSIZE];
 char *read_buf;
 char write_buf[BUFFER_SIZE];
 
-int extract_message(char **buf, char **msg)
+int extract_message(char **msg)
 {
     char *next;
     int i = -1;
 
     *msg = 0;
 
-    if (*buf == 0)
+    if (read_buf == 0)
         return (0);
 
-    while ((*buf)[++i])
+    while (read_buf[++i])
     {
-        if ((*buf)[i] == '\n')
+        if (read_buf[i] == '\n')
         {
-            next = calloc(strlen(*buf + i + 1) + 1, sizeof(char));
+            next = calloc(strlen(read_buf + i + 1) + 1, sizeof(char));
 
-            strcpy(next, *buf + i + 1);
-            *msg = *buf;
+            strcpy(next, read_buf + i + 1);
+            *msg = read_buf;
             (*msg)[i + 1] = 0;
-            *buf = next;
+            read_buf = next;
 
             return (1);
         }
@@ -144,7 +144,7 @@ int main(int argc, char **argv)
                         // send_message(read_buf);
                         char *msg = NULL;
                             
-                        while (extract_message(&read_buf, &msg))
+                        while (extract_message(&msg))
                         {
                             sprintf(write_buf, "client %d: %s", client_ids[fd], msg);
                             send_to_all(fd);
