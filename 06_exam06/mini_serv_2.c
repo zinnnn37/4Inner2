@@ -23,7 +23,7 @@ char write_buf[BUFFER_SIZE];
 
 int extract_message(char **buf, char **msg)
 {
-    char *newbuf;
+    char *next;
     int i;
 
     *msg = 0;
@@ -34,13 +34,11 @@ int extract_message(char **buf, char **msg)
     {
         if ((*buf)[i] == '\n')
         {
-            newbuf = calloc(strlen(*buf + i + 1) + 1, sizeof(char));
-            // if (newbuf == 0)
-                // return (-1);
-            strcpy(newbuf, *buf + i + 1);
+            next = calloc(strlen(*buf + i + 1) + 1, sizeof(char));
+            strcpy(next, *buf + i + 1);
             *msg = *buf;
             (*msg)[i + 1] = 0;
-            *buf = newbuf;
+            *buf = next;
             return (1);
         }
         i++;
