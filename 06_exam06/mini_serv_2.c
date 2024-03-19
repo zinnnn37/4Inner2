@@ -22,24 +22,26 @@ char write_buf[BUFFER_SIZE];
 int extract_message(char **buf, char **msg)
 {
     char *next;
-    int i;
+    int i = -1;
 
     *msg = 0;
+
     if (*buf == 0)
         return (0);
-    i = 0;
-    while ((*buf)[i])
+
+    while ((*buf)[++i])
     {
         if ((*buf)[i] == '\n')
         {
             next = calloc(strlen(*buf + i + 1) + 1, sizeof(char));
+
             strcpy(next, *buf + i + 1);
             *msg = *buf;
             (*msg)[i + 1] = 0;
             *buf = next;
+
             return (1);
         }
-        i++;
     }
     return (0);
 }
@@ -55,12 +57,12 @@ void fatal_error()
     exit_with_error("Fatal error\n");
 }
 
-void send_to_all(char *msg, int sender_fd)
+void send_to_all(int sender_fd)
 {
     for (int fd = 0; fd <= max_fd; fd++)
     {
         if (FD_ISSET(fd, &write_fds) && fd != sender_fd)
-            send(fd, msg, strlen(msg), 0);
+            send(fd, write_buf, strlen(write_buf), 0);
     }
 }
 
@@ -120,7 +122,7 @@ int main(int argc, char **argv)
                     client_ids[clientfd] = client_id++;
 
                     sprintf(write_buf, "server: client %d just arrived\n", client_ids[clientfd]);
-                    send_to_all(write_buf, clientfd);
+                    send_to_all(clientfd);
                 }
                 else
                 { // client socket인 경우
@@ -135,7 +137,7 @@ int main(int argc, char **argv)
                         close(fd);
 
                         sprintf(write_buf, "server: client %d just left\n", client_ids[fd]);
-                        send_to_all(write_buf, fd);
+                        send_to_all(fd);
                     }
                     else
                     { // client가 메시지를 보낸 경우
@@ -145,7 +147,7 @@ int main(int argc, char **argv)
                         while (extract_message(&read_buf, &msg))
                         {
                             sprintf(write_buf, "client %d: %s", client_ids[fd], msg);
-                            send_to_all(write_buf, fd);
+                            send_to_all(fd);
                             free(msg);
                         }
                     }
