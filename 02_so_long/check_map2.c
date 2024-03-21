@@ -70,7 +70,6 @@ t_bool	bfs2(t_map *map, t_bool **visited, t_queue *q, int *pos)
 t_bool	bfs(t_map *map, t_queue *q, int x, int y)
 {
 	t_bool		**visited;
-	int			i;
 	int			*pos;
 
 	visited = NULL;
@@ -82,7 +81,6 @@ t_bool	bfs(t_map *map, t_queue *q, int x, int y)
 		pos = dequeue(q);
 		if (pos)
 		{
-			i = 0;
 			if (bfs2(map, visited, q, pos))
 			{
 				free(pos);
