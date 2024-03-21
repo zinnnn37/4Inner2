@@ -1,57 +1,58 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/28 12:17:00 by minjinki          #+#    #+#              #
-#    Updated: 2023/07/18 13:14:52 by minjinki         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = cub3d
 
-NAME		=	cub3D
+SRCS =  src/main.c\
+		src/parsing/parsing.c\
+		src/parsing/parsing_utils.c\
+		src/parsing/color.c\
+		src/parsing/utils.c\
+		src/parsing/utils2.c\
+		src/parsing/map_utils.c\
+		src/parsing/map_utils2.c\
+		src/parsing/map.c\
+		src/parsing/check_map.c\
+		src/mlx/init_game.c\
+		src/mlx/exit_game.c\
+		src/mlx/key_hook.c\
+		src/mlx/mlx_utils.c\
+		src/mlx/move_player.c\
+		src/mlx/raycast.c\
+		src/mlx/render.c
 
-LIBFT		=	LIBFT/
-LIBFT_LIB	=	$(LIBFT)libft.a
-
-SRC_FILES	=	main
-
-MLX			=	../mlx/	# mlx/ 도 해보고 결정
-MLX_LIB		=	$(MLX)libmlx.a
-
-SRCS		=	$(addsuffix .c, $(SRC_FILES))
-OBJS		=	$(SRCS:%.c=%.o)
+OBJS = $(patsubst src/%.c,obj/%.o,$(SRCS))
 
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-g -Wall -Werror -Wextra
 CLIB		=	-Lmlx -lmlx -framework OpenGL -framework Appkit
-RM			=	rm -f
-AR			=	ar
-ARFLAGS		=	src
 
-all			:	$(NAME)
+MLX			=	mlx/
+MLX_LIB		=	$(MLX)libmlx.a
 
-%.o			:	%.c
-	$(CC) $(CFLAGS) -IHDRS -c $< -o $@
+all: extern $(NAME)
 
-$(NAME)		:	$(OBJS)
+extern:
 	make -C $(MLX) all
-	make -C $(LIBFT) all
-	$(CC) $(CFLAGS) $(CLIB) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME) -I. -I$(LIBFT) -I$(MLX)
+	make -C libft/
 
-clean		:
-	$(MAKE) -C $(MLX) clean
-	$(MAKE) -C $(LIBFT) clean
-	$(RM) $(OBJS)
+$(NAME): $(OBJS)
+	$(CC) -o $(NAME) $(CLIB) $(OBJS) \
+	libft/libft.a 
 
-fclean		:	clean
-	$(MAKE) -C $(LIBFT) fclean
-	$(MAKE) -C $(MLX) fclean
-	$(RM) $(NAME)
+obj/%.o: src/%.c ./include/cub3d.h
+	mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-re			:
-	$(MAKE) fclean
-	$(MAKE) all
+clean:
+	make clean -C $(MLX)
+	make clean -C libft/
+	rm -rf $(OBJS)
 
-.PHONY		:	all clean fclean re
+fclean: clean
+	make fclean -C $(MLX)
+	make fclean -C libft/
+	rm -rf $(NAME)
+
+re:
+	make fclean
+	make all
+
+.PHONY: all extern clean fclean re
