@@ -21,7 +21,7 @@ int sockfd, id, fd_max;
 fd_set mem_s, r_s, w_s;
 
 void fatal() {
-	write(1, "Fatal error\n", 12);
+	write(2, "Fatal error\n", 12);
 	exit(1);
 }
 
@@ -74,6 +74,7 @@ void add_client()
 //tmp[] needs to be initialized cause not global
 //depending on if client sends a '\n' at the end
 //of final line (multi-line case), add or don't add a '\n' to msg[]
+// 엔터 여러개면 client n: str1\nclient n: str2\n ... 이런 식으로 출력되게..
 void send_msg(int id_from)
 {
 	int i = 0, j = 0;
@@ -99,7 +100,10 @@ void send_msg(int id_from)
 int main(int argc, char **argv)
 {
 	if (argc != 2)
-		return (write(1, "Wrong number of arguments\n", 26) && 1);
+	{
+        write(2, "Wrong number of arguments\n", 26);
+        exit (1);
+    }
 
 	fd_max = sockfd = init_server(atoi(argv[1]));
 	FD_ZERO(&mem_s);
@@ -123,6 +127,7 @@ int main(int argc, char **argv)
 			//recv of 5, if it doesn't pass there is probably an error elsewhere
 			int rval = 1;
 			bzero(buf, sizeof(buf));
+			// 문자 하나씩 입력받는 거..
 			while (rval == 1)
 			{
 				rval = recv(clients[i].fd, buf + strlen(buf), 1, 0);
