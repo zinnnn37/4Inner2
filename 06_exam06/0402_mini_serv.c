@@ -143,7 +143,7 @@ int main(int argc, char **argv)
                     { // client가 메시지를 보낸 경우
                         // send_message(read_buf);
                         char *msg = NULL;
-                            
+
                         while (extract_message(&msg))
                         {
                             sprintf(write_buf, "client %d: %s", client_ids[fd], msg);

@@ -1,161 +1,131 @@
+#include <netinet/in.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <netinet/in.h>
+#include <unistd.h>
 
-int		MAX_CLI = 128;
-int		serverSoc = -1;
-int		maxSoc = 0;
-int		id = 0;
-int		clients[100000], newMsg[100000];
+int MAX_CLIENTS = 128;
+int serverSoc = -1;
+int maxSoc = 0;
+int g_id = 0;
+int id[65536], currMsg[65536];
 
-fd_set	activefds, readyfds, writefds;
+fd_set activeSoc, readySoc, writeSoc;
 
-char	buf[200000], msg[200000], str[200000];
+char buff[4096 * 42], str[4096 * 42], msg[4096 * 42 + 42];
 
-void	ft_exit(int code, char *s, int fd)
-{
-	if (code == 2)
-		close(fd);
-	write(2, s, strlen(s));
+void fatal(int type) {
+	if (type == 1)
+		write(2, "Wrong number of arguments\n", strlen("Wrong number of arguments\n"));
+	else {
+		write(2, "Fatal error\n", strlen("Fatal error\n"));
+		close(serverSoc);
+	}
 	exit(1);
 }
 
-void broadcast(int i)
-{
-	for (int j = 0; j <= maxSoc; j++)
-	{
-		if (FD_ISSET(j, &writefds) && j != i)
-			send(j, msg, strlen(msg), 0);
+void sendAll(int socketId) {
+	for (int fd = 0; fd <= maxSoc; fd++) {
+		if (fd != socketId && FD_ISSET(fd, &writeSoc)) {
+			send(fd, msg, strlen(msg), 0);
+		}
 	}
 }
 
-void	disconnectClient(int i)
-{
-	sprintf(msg, "server: client %d just left\n", clients[i]);
-	broadcast(i);
-	FD_CLR(i, &activefds);
-	close(i);
-}
-
-void	handleMsg(int soc, int buff)
-{
-	for (int i = 0, j = 0; i < buff; i++, j++)
-	{
-		str[j] = buf[i];
-
-		if (buf[i] == '\n')
-		{
+void handleMessage(int socketId, int buffer) {
+	for (int i = 0, j = 0; i < buffer; i++, j++) {
+		str[j] = buff[i];
+		if (str[j] == '\n') {  // if there is a new line in buffer
 			str[j + 1] = '\0';
 
-			if (newMsg[soc])
+			if (currMsg[socketId])
 				sprintf(msg, "%s", str);
 			else
-				sprintf(msg, "client %d: %s", clients[soc], str);
+				sprintf(msg, "client %d: %s", id[socketId], str);
 
-			newMsg[soc] = 0;
-			broadcast(soc);
-
+			currMsg[socketId] = 0;
+			sendAll(socketId);
 			j = -1;
-		}
-		else if (i == buff - 1)
-		{
+		} else if (i == (buffer - 1)) {	 // if end of buffer is reached
 			str[j + 1] = '\0';
 
-			if (newMsg[soc])
+			if (currMsg[socketId])
 				sprintf(msg, "%s", str);
 			else
-				sprintf(msg, "client %d: %s", clients[soc], str);
+				sprintf(msg, "client %d: %s", id[socketId], str);
 
-			newMsg[soc] = 1;
-			broadcast(soc);
-
-			break ;
+			currMsg[socketId] = 1;
+			sendAll(socketId);
+			break;
 		}
 	}
 }
 
-int acceptClient(int i)
-{
-	struct		sockaddr_in clientAddr;
-	socklen_t	clientAddrLen = sizeof(clientAddr);
+void handleClientExit(int socketId) {
+	sprintf(msg, "server: client %d just left\n", id[socketId]);
+	sendAll(socketId);
+	FD_CLR(socketId,
+		   &activeSoc);	 // Remove the client socket from the set of active sockets
+	close(socketId);	 // close the client socket
+}
 
-	int	newSoc = accept(i, (struct sockaddr *)&clientAddr, &clientAddrLen);
-	
-	if (newSoc == -1)
-		return 1;
+int handleClientJoin(int socketId) {
+	struct sockaddr_in clientAddr;
 
-	FD_SET(newSoc, &activefds);
+	socklen_t len = sizeof(clientAddr);
+	int clientSoc = accept(socketId, (struct sockaddr *)&clientAddr, &len);
 
-	clients[newSoc] = id++;
-	newMsg[newSoc] = 0;
+	if (clientSoc == -1) return 1;
 
-	if (newSoc > maxSoc)
-		maxSoc = newSoc;
+	FD_SET(clientSoc, &activeSoc);
 
-	sprintf(msg, "server: client %d just arrived\n", clients[newSoc]);
+	id[clientSoc] = g_id++;
+	currMsg[clientSoc] = 0;	 // not sure why
 
-	broadcast(i);
+	if (clientSoc > maxSoc) maxSoc = clientSoc;
+
+	sprintf(msg, "server: client %d just arrived\n", id[clientSoc]);
+
+	sendAll(socketId);
 	return 0;
 }
 
-int	main(int ac, char **av)
-{
-	if (ac != 2)
-		ft_exit(1, "Wrong number of arguments\n", 0);
-	
-	struct	sockaddr_in serverAddr;
+int main(int argc, char **argv) {
+	if (argc != 2) fatal(1);
 
+	struct sockaddr_in serverAddr;
 	serverAddr.sin_family = AF_INET;
 	serverAddr.sin_addr.s_addr = 16777343;
-	serverAddr.sin_port = htons(atoi(av[1]));
+	serverAddr.sin_port = htons(atoi(argv[1]));
 
-	serverSoc = socket(AF_INET, SOCK_STREAM, 0);
-
-	if (serverSoc == -1)
-		ft_exit(1, "Fatal error\n", serverSoc);
+	if ((serverSoc = socket(AF_INET, SOCK_STREAM, 0)) == -1) fatal(2);
 	if ((bind(serverSoc, (const struct sockaddr *)&serverAddr, sizeof(serverAddr))) != 0)
-		ft_exit(2, "Fatal error\n", serverSoc);
-	if ((listen(serverSoc, MAX_CLI)) != 0)
-		ft_exit(2, "Fatal error\n", serverSoc);
+		fatal(2);
+	if (listen(serverSoc, MAX_CLIENTS) != 0) fatal(2);
 
-	bzero(clients, sizeof(clients));
-	FD_ZERO(&activefds);
-	FD_SET(serverSoc, &activefds);
+	bzero(id, sizeof(id));
+	FD_ZERO(&activeSoc);
+	FD_SET(serverSoc, &activeSoc);
 	maxSoc = serverSoc;
 
-	while (1)
-	{
-		readyfds = activefds;
-		writefds = activefds;
+	while (1) {
+		readySoc = writeSoc = activeSoc;
 
-		if (select(maxSoc + 1, &readyfds, &writefds, NULL, NULL) <= 0)
-			continue ;
-		
-		for (int i = 0; i <= maxSoc; i++)
-		{
-			if (FD_ISSET(i, &readyfds))
-			{
-				if (i == serverSoc)
-				{
-					if (acceptClient(i))
-						continue ;
-					else
-						break ;
-				}
-				else
-				{
-					int	buff = recv(i, buf, 200000, 0);
-					if (buff <= 0)
-					{
-						disconnectClient(i);
-						break ;
+		if (select(maxSoc + 1, &readySoc, &writeSoc, NULL, NULL) <= 0) continue;
+
+		for (int socketId = 0; socketId <= maxSoc; socketId++) {
+			if (FD_ISSET(socketId, &readySoc)) {
+				if (socketId == serverSoc) {
+					if (handleClientJoin(socketId) == 1) continue;
+					break;
+				} else {
+					int buffer = recv(socketId, buff, 4096 * 42, 0);
+					if (buffer <= 0) {
+						handleClientExit(socketId);
+						break;
+					} else {
+						handleMessage(socketId, buffer);
 					}
-					else
-						handleMsg(i, buff);
 				}
 			}
 		}
