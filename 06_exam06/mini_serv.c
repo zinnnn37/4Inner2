@@ -7,7 +7,7 @@
 #include <netinet/in.h>
 
 fd_set	readfds, writefds, allfds;
-int		maxfd, client_id, serverSocket;
+int		maxfd, clientid, serversocket;
 int		clients[FD_SETSIZE];
 char	buf[400000];
 
@@ -32,30 +32,30 @@ void	broadcast(int sender)
 int	main(int ac, char **av)
 {
 	int					clientSocket;
-	struct sockaddr_in	servaddr, clientaddr;
+	struct sockaddr_in	serveraddr, clientaddr;
 	socklen_t			clientaddr_len = sizeof(clientaddr);
 
 	if (ac != 2)
 		fatal("Wrong number of arguments\n");
 
-	serverSocket = socket(AF_INET, SOCK_STREAM, 0);
-	if (serverSocket == -1)
+	serversocket = socket(AF_INET, SOCK_STREAM, 0);
+	if (serversocket == -1)
 		fatal("Fatal error\n");
 
-	bzero(&servaddr, sizeof(servaddr));
+	bzero(&serveraddr, sizeof(serveraddr));
 
-	servaddr.sin_family = AF_INET;
-	servaddr.sin_addr.s_addr = htonl(2130706433); // 127.0.0.1
-	servaddr.sin_port = htons(atoi(av[1]));
+	serveraddr.sin_family = AF_INET;
+	serveraddr.sin_addr.s_addr = htonl(2130706433); // 127.0.0.1
+	serveraddr.sin_port = htons(atoi(av[1]));
 
-	if ((bind(serverSocket, (const struct sockaddr *)&servaddr, sizeof(servaddr))) != 0)
+	if ((bind(serversocket, (const struct sockaddr *)&serveraddr, sizeof(serveraddr))) != 0)
 		fatal("Fatal error\n");
-	if (listen(serverSocket, 10) != 0)
+	if (listen(serversocket, 10) != 0)
 		fatal("Fatal error\n");
 
-	maxfd = serverSocket;
+	maxfd = serversocket;
 	FD_ZERO(&allfds);
-	FD_SET(serverSocket, &allfds);
+	FD_SET(serversocket, &allfds);
 
 	while(1)
 	{
@@ -65,17 +65,17 @@ int	main(int ac, char **av)
 		if (select(maxfd + 1, &readfds, &writefds, 0, 0) < 0)
 			continue;
 
-		if (FD_ISSET(serverSocket, &readfds))
+		if (FD_ISSET(serversocket, &readfds))
 		{
-			clientSocket = accept(serverSocket, (struct sockaddr *)&clientaddr, &clientaddr_len);
+			clientSocket = accept(serversocket, (struct sockaddr *)&clientaddr, &clientaddr_len);
 			if (clientSocket < 0)
 				continue;
 
 			FD_SET(clientSocket, &allfds);
-			clients[clientSocket] = client_id;
+			clients[clientSocket] = clientid;
 			maxfd = maxfd < clientSocket ? clientSocket : maxfd;
 
-			sprintf(buf, "server: client %d just arrived\n", client_id++);
+			sprintf(buf, "server: client %d just arrived\n", clientid++);
 			broadcast(clientSocket);
 
 			continue;
