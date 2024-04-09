@@ -16,7 +16,7 @@ typedef struct client {
 //all global variables initialize to 0 by default
 //select has a limmit of 1024 readable FDs
 client clients[1024];
-char buf[1000000], msg[1000000];
+char buf[400000], msg[400000];
 int sockfd, id, fd_max;
 fd_set mem_s, r_s, w_s;
 
@@ -28,20 +28,20 @@ void fatal() {
 //start from the main provided in exam and trim it down to this
 //it is a rumour that you need a backlog of 128, it doesn't really
 //matter what the size of it is for this exam
-int init_server(int port)
-{
-	struct sockaddr_in serv_addr;
-	serv_addr.sin_family		= AF_INET;
-	serv_addr.sin_addr.s_addr	= 16777343; 
-	serv_addr.sin_port			= htons(port);
+// int init_server(int port)
+// {
+// 	struct sockaddr_in serv_addr;
+// 	serv_addr.sin_family		= AF_INET;
+// 	serv_addr.sin_addr.s_addr	= 16777343; 
+// 	serv_addr.sin_port			= htons(port);
 
-	if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0 ||\
-		 bind(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0 ||\
-		 listen(sockfd, 128) < 0)
-		fatal();
+// 	if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0 ||\
+// 		 bind(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0 ||\
+// 		 listen(sockfd, 128) < 0)
+// 		fatal();
 	
-	return sockfd;
-}
+// 	return sockfd;
+// }
 
 void send_all(int id_from)
 {
@@ -79,7 +79,8 @@ void send_msg(int id_from)
 {
 	int i = 0, j = 0;
 	int len = strlen(buf);
-	char tmp[100000] = {0};
+	char tmp[400000] = {0};
+
 	while (i < len)
 	{
 		tmp[j++] = buf[i];
@@ -105,7 +106,17 @@ int main(int argc, char **argv)
         exit (1);
     }
 
-	fd_max = sockfd = init_server(atoi(argv[1]));
+	struct sockaddr_in serv_addr;
+	serv_addr.sin_family		= AF_INET;
+	serv_addr.sin_addr.s_addr	= 16777343; 
+	serv_addr.sin_port			= htons(atoi(argv[1]));
+
+	if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0 ||\
+		 bind(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0 ||\
+		 listen(sockfd, 128) < 0)
+		fatal();
+
+	fd_max = sockfd;
 	FD_ZERO(&mem_s);
 	FD_SET(sockfd, &mem_s);
 

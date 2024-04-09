@@ -6,7 +6,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 
-#define BUFFER_SIZE 200000
+const int BUFFER_SIZE = 400000;
 
 int max_fd, client_id;
 
